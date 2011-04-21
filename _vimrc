@@ -34,10 +34,22 @@ set background=dark
 set backspace=2
 " don't leave backup files
 set nobackup
-" Use the clipboard register for all yank, delete, change and put
-" operations.
+
+" If the clipboard register is available, use it for all yank, delete,
+" change and put operations.
+function! s:got_clipboard()
+    let save_clip = @*
+    let @* = 'xx__xx'
+    let retval = @* == 'xx'
+    let @* = save_clip
+    return retval
+endfunction
+
 set clipboard-=unnamed
-set clipboard+=unnamed
+if s:got_clipboard()
+    set clipboard+=unnamed
+endif
+
 " :write command with a file name sets alternate file name for the current
 " window.
 " :write command with a file name sets name of buffer if the buffer does not
@@ -1192,5 +1204,5 @@ endif
 
 " }}}1
 
-" Last updated: March 17, 2011
+" Last updated: April 20, 2011
 " vim:fo=cqro tw=75 com=\:\" sw=4 

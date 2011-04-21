@@ -42,7 +42,7 @@ function! s:got_clipboard()
 	return 0
     endif
     let save_clip = @*
-    let @* = 'xx__xx'
+    let @* = 'xx'
     let retval = @* == 'xx'
     let @* = save_clip
     return retval

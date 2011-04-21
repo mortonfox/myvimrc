@@ -38,6 +38,9 @@ set nobackup
 " If the clipboard register is available, use it for all yank, delete,
 " change and put operations.
 function! s:got_clipboard()
+    if !has('clipboard')
+	return 0
+    endif
     let save_clip = @*
     let @* = 'xx__xx'
     let retval = @* == 'xx'

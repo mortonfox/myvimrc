@@ -163,12 +163,12 @@ runtime! ftdetect/*.vim
 
 " In vim 5.4 with GTK+, the .font resource does not work.
 if has("gui_gtk") && has("gui_running")
-    set guifont=7x14bold
+    set guifont=DejaVu\ Sans\ Mono\ 10,7x14bold
 endif
 
-" Disable middle mouse paste in win32 GUI. That is very annoying with
-" a wheel mouse.
-if has("win32") && has("gui_running")
+if (has('win32') || has('win64')) && has('gui_running')
+    " Disable middle mouse paste in win32 GUI. That is very annoying with a
+    " wheel mouse.
     noremap <MiddleMouse> <Nop>
     lnoremap <MiddleMouse> <Nop>
     noremap <2-MiddleMouse> <Nop>
@@ -177,6 +177,9 @@ if has("win32") && has("gui_running")
     lnoremap <3-MiddleMouse> <Nop>
     noremap <4-MiddleMouse> <Nop>
     lnoremap <4-MiddleMouse> <Nop>
+
+    " Special font for the Windows GUI.
+    set guifont=Fixedsys:h9
 endif
 
 " Special font for the Mac
@@ -184,10 +187,6 @@ if has("mac") && has("gui_running")
     set guifont=monaco:h14
 endif
 
-" Special font for the Windows GUI.
-if has("win32") && has("gui_running")
-    set guifont=Fixedsys:h9
-endif
 
 " If the gvim window is too small, try setting it larger.
 if &lines < 40 && has("gui_running")
@@ -1207,5 +1206,5 @@ endif
 
 " }}}1
 
-" Last updated: April 20, 2011
+" Last updated: August 5, 2011
 " vim:fo=cqro tw=75 com=\:\" sw=4 

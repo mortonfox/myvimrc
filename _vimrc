@@ -210,9 +210,19 @@ vnoremap <S-F6> <esc>:bprevious<CR>
 inoremap <S-F6> <C-O>:bprevious<CR>
 
 " F7 will toggle NERDTree.
-nnoremap <F7> :NERDTreeToggle<cr>
-vnoremap <F7> <esc>:NERDTreeToggle<cr>
-inoremap <F7> <C-O>:NERDTreeToggle<cr>
+nnoremap <silent> <F7> :NERDTreeToggle<cr>
+vnoremap <silent> <F7> <esc>:NERDTreeToggle<cr>
+inoremap <silent> <F7> <C-O>:NERDTreeToggle<cr>
+
+" F9 will toggle taglist.
+nnoremap <silent> <F9> :TlistToggle<cr>
+vnoremap <silent> <F9> <esc>:TlistToggle<cr>
+inoremap <silent> <F9> <C-O>:TlistToggle<cr>
+
+let Tlist_Process_File_Always = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_Inc_Winwidth = 0
+let Tlist_Show_Menu = 1
 
 " shift-insert will now paste text from clipboard
 nnoremap <S-Insert> "*P
@@ -462,10 +472,10 @@ function! <SID>Toggle_full_height()
     endif
 endfunction
 
-" F9 toggles full height mode
-nnoremap <F9> :call <SID>Toggle_full_height()<cr>
-vnoremap <F9> <esc>:call <SID>Toggle_full_height()<cr>
-inoremap <F9> <esc>:call <SID>Toggle_full_height()<cr>
+" Ctrl-F9 toggles full height mode
+nnoremap <C-F9> :call <SID>Toggle_full_height()<cr>
+vnoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>
+inoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>
 
 " Also define a :FullHeight command.
 command! FullHeight :call <SID>Toggle_full_height()
@@ -1206,5 +1216,5 @@ endif
 
 " }}}1
 
-" Last updated: August 5, 2011
+" Last updated: September 30, 2011
 " vim:fo=cqro tw=75 com=\:\" sw=4 

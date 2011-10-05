@@ -858,7 +858,7 @@ if has("autocmd")
 
 	autocmd FileType perl call <SID>Set_perl_mode()
 	autocmd FileType php call <SID>Set_php_mode()
-	autocmd FileType dosbatch call <SID>Set_batch_mode()
+	autocmd FileType dosbatch,sh call <SID>Set_batch_mode()
 	autocmd FileType ruby call <SID>Set_ruby_mode()
 	autocmd FileType python call <SID>Set_python_mode()
     augroup END
@@ -1216,5 +1216,5 @@ endif
 
 " }}}1
 
-" Last updated: September 30, 2011
+" Last updated: October 5, 2011
 " vim:fo=cqro tw=75 com=\:\" sw=4 

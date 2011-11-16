@@ -328,6 +328,15 @@ vnoremap <F5> <esc>:set invpaste paste?<CR>
 inoremap <F5> <C-O>:set invpaste<CR>
 set pastetoggle=<F5>
 
+" iTerm2 sends nul characters for anti-idle. Ignore those characters in
+" text mode.
+if has("mac") && !has("gui_running")
+    inoremap <C-@> <Nop>
+    cnoremap <C-@> <Nop>
+    lnoremap <C-@> <Nop>
+endif
+
+
 " ----- Vim Scripts ----- {{{1
 
 " ===== Toggle syntax ===== {{{2
@@ -1216,5 +1225,5 @@ endif
 
 " }}}1
 
-" Last updated: October 5, 2011
+" Last updated: November 16, 2011
 " vim:fo=cqro tw=75 com=\:\" sw=4 

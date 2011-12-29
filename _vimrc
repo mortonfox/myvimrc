@@ -232,6 +232,14 @@ vnoremap <C-Insert> "*y
 vnoremap <S-Delete> "*d
 vnoremap <C-Delete> "*d
 
+" ctrl-tab, ctrl-shift-tab moves between tabs
+nnoremap <C-Tab> gt
+vnoremap <C-Tab> <esc>gt
+noremap! <C-Tab> <esc>gt
+nnoremap <C-S-Tab> gT
+vnoremap <C-S-Tab> <esc>gT
+noremap! <C-S-Tab> <esc>gT
+
 " F12 p runs par on the current paragraph or visual range
 " F12 P does the same thing but waits for user to type in arguments.
 nnoremap <F12>p {!}par<cr>
@@ -1225,5 +1233,5 @@ endif
 
 " }}}1
 
-" Last updated: November 16, 2011
+" Last updated: December 29, 2011
 " vim:fo=cqro tw=75 com=\:\" sw=4 

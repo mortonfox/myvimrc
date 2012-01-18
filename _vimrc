@@ -278,28 +278,12 @@ vnoremap <F12>X !boxes -r<space>
 
 " F12 ve edits .vimrc file
 " F12 vs sources .vimrc file
-function! <SID>Vimrc()
-    if has("unix")
-	if glob('~/.vimrc')
-	    return '~/.vimrc'
-	else
-	    return '~/_vimrc'
-	endif
-    else
-	if glob('$VIM\_vimrc')
-	    return '$VIM\_vimrc'
-	else
-	    return '$VIM\.vimrc'
-	endif
-    endif
-endfunction
-
-nnoremap <F12>ve :execute "edit" '<c-r>=<SID>Vimrc()<cr>'<cr>
-vnoremap <F12>ve <esc>:execute "edit" '<c-r>=<SID>Vimrc()<cr>'<cr>
-inoremap <F12>ve <esc>:execute "edit" '<c-r>=<SID>Vimrc()<cr>'<cr>
-nnoremap <F12>vs :execute "source" '<c-r>=<SID>Vimrc()<cr>'<cr>
-vnoremap <F12>vs <esc>:execute "source" '<c-r>=<SID>Vimrc()<cr>'<cr>
-inoremap <F12>vs <esc>:execute "source" '<c-r>=<SID>Vimrc()<cr>'<cr>
+nnoremap <F12>ve :edit $MYVIMRC<cr>
+vnoremap <F12>ve <esc>:edit $MYVIMRC<cr>
+inoremap <F12>ve <esc>:edit $MYVIMRC<cr>
+nnoremap <F12>vs :source $MYVIMRC<cr>
+vnoremap <F12>vs <esc>:source $MYVIMRC<cr>
+inoremap <F12>vs <esc>:source $MYVIMRC<cr>
 
 " F11: directory change commands
 
@@ -1233,5 +1217,5 @@ endif
 
 " }}}1
 
-" Last updated: December 29, 2011
+" Last updated: January 18, 2012
 " vim:fo=cqro tw=75 com=\:\" sw=4 

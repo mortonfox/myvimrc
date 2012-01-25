@@ -152,12 +152,9 @@ cmapclear
 
 " Make filetype.vim treat .h files as C files.
 " let c_syntax_for_h=1
-filetype on
 
-" For Vim Outliner
 filetype plugin indent on
-runtime! ftdetect/*.vim
-
+" runtime! ftdetect/*.vim
 
 " ----- GUI customization ----- {{{1
 
@@ -862,6 +859,9 @@ if has("autocmd")
 	autocmd FileType dosbatch,sh call <SID>Set_batch_mode()
 	autocmd FileType ruby call <SID>Set_ruby_mode()
 	autocmd FileType python call <SID>Set_python_mode()
+
+	" Clear some artifacts in console Vim.
+	autocmd VimEnter * redraw
     augroup END
 endif
 
@@ -1217,5 +1217,5 @@ endif
 
 " }}}1
 
-" Last updated: January 18, 2012
+" Last updated: January 25, 2012
 " vim:fo=cqro tw=75 com=\:\" sw=4 

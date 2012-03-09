@@ -63,6 +63,8 @@ set cpoptions=AFs
 set display=lastline
 " Do not equalize window heights after closing a window.
 set noequalalways
+" Detect these fileformats.
+set fileformats=unix,dos
 " g is on by default for search and replace
 set gdefault
 " GUI cursor options
@@ -1217,5 +1219,5 @@ endif
 
 " }}}1
 
-" Last updated: January 25, 2012
+" Last updated: March 9, 2012
 " vim:fo=cqro tw=75 com=\:\" sw=4 

@@ -766,13 +766,13 @@ endfunction
 " Function for setting up vim to edit perl source files.
 function! <SID>Set_perl_mode()
     " Turn on C indenting in Perl mode.
-    setlocal cindent
+    " setlocal cindent
 
     " Set shiftwidth to 4.
     setlocal shiftwidth=4 textwidth=75
 
     " I prefer to indent by 4 spaces in perl programs.
-    setlocal cinoptions=>s,:0,=s,hs,ps,t0,+s,(0,g0
+    " setlocal cinoptions=>s,:0,=s,hs,ps,t0,+s,(0,g0
 
     " Autowrap in comments but not in text
     " Automatically insert the comment leader after hitting Return in
@@ -781,7 +781,7 @@ function! <SID>Set_perl_mode()
     setlocal formatoptions=cqro2l
 
     " do not re-indent if the user types in a # sign or a colon
-    setlocal cinkeys=0{,0},!^F,o,O,e
+    " setlocal cinkeys=0{,0},!^F,o,O,e
 
     setlocal comments=:#
 endfunction
@@ -797,6 +797,19 @@ function! s:Set_python_mode()
     setlocal formatoptions=cqro2l
 
     setlocal comments=:#
+endfunction
+
+" Function for setting up Vim to edit CSS and Sass files.
+function! s:Set_css_mode()
+    setlocal shiftwidth=4 textwidth=75
+    
+    " Autowrap in comments but not in text
+    " Automatically insert the comment leader after hitting Return in
+    " insert mode or after hitting o or O in normal mode.
+    " Use second line's indent to format the rest of the paragraph.
+    setlocal formatoptions=cqro2l
+
+    setlocal comments=s1:/*,mb:*,ex:*/,://
 endfunction
 
 " Function for setting up Vim to edit Ruby source files.
@@ -817,13 +830,13 @@ endfunction
 " Function for setting up vim to edit PHP source files.
 function! <SID>Set_php_mode()
     " Turn on C indenting in PHP mode.
-    setlocal cindent
+    " setlocal cindent
 
     " Set shiftwidth to 4.
     setlocal shiftwidth=4 textwidth=75
 
     " I prefer to indent by 4 spaces in PHP programs.
-    setlocal cinoptions=>s,:0,=s,hs,ps,t0,+s,(0,g0
+    " setlocal cinoptions=>s,:0,=s,hs,ps,t0,+s,(0,g0
 
     " Autowrap in comments but not in text
     " Automatically insert the comment leader after hitting Return in
@@ -832,7 +845,7 @@ function! <SID>Set_php_mode()
     setlocal formatoptions=cqro2l
 
     " do not re-indent if the user types in a # sign or a colon
-    setlocal cinkeys=0{,0},!^F,o,O,e
+    " setlocal cinkeys=0{,0},!^F,o,O,e
 
     setlocal comments=://,b:#,n:>,fb:-
     " Fancy comments.
@@ -859,8 +872,9 @@ if has("autocmd")
 	autocmd FileType perl call <SID>Set_perl_mode()
 	autocmd FileType php call <SID>Set_php_mode()
 	autocmd FileType dosbatch,sh call <SID>Set_batch_mode()
-	autocmd FileType ruby call <SID>Set_ruby_mode()
+	autocmd FileType ruby,eruby call <SID>Set_ruby_mode()
 	autocmd FileType python call <SID>Set_python_mode()
+	autocmd FileType css,scss call <SID>Set_css_mode()
 
 	" Clear some artifacts in console Vim.
 	autocmd VimEnter * redraw
@@ -1219,5 +1233,5 @@ endif
 
 " }}}1
 
-" Last updated: March 9, 2012
+" Last updated: May 3, 2012
 " vim:fo=cqro tw=75 com=\:\" sw=4 

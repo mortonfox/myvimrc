@@ -21,6 +21,8 @@ if has("autocmd")
 	" Ignore Library folder if Command-T is installed. Don't need to index
 	" that.
 	autocmd SourcePre command-t.vim set wildignore+=Library
+
+	autocmd VimEnter * call <SID>set_clipboard()
     augroup END
 endif
 
@@ -48,10 +50,13 @@ function! s:got_clipboard()
     return retval
 endfunction
 
-set clipboard-=unnamed
-if s:got_clipboard()
-    set clipboard+=unnamed
-endif
+function! <SID>set_clipboard()
+    " echom "Got clipboard = ".s:got_clipboard()
+    set clipboard-=unnamed
+    if s:got_clipboard()
+	set clipboard+=unnamed
+    endif
+endfunction
 
 " :write command with a file name sets alternate file name for the current
 " window.
@@ -878,6 +883,10 @@ if has("autocmd")
 
 	" Clear some artifacts in console Vim.
 	autocmd VimEnter * redraw
+
+	autocmd BufRead,BufNewFile *.thrift set filetype=thrift
+	autocmd Syntax thrift source ~/.vim/thrift.vim
+
     augroup END
 endif
 
@@ -1233,5 +1242,5 @@ endif
 
 " }}}1
 
-" Last updated: May 3, 2012
+" Last updated: October 11, 2012
 " vim:fo=cqro tw=75 com=\:\" sw=4 

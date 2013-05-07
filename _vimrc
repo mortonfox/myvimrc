@@ -526,9 +526,9 @@ endfunction
 " scripts)
 function! <SID>Commentify_perl()
     if getline(".") =~ '^# '
-	normal 0xx
+	call setline('.', strpart(getline('.'), 2))
     else
-	execute "normal 0i# \<esc>"
+	call setline('.', '# '.getline('.'))
     endif
 endfunction
 
@@ -536,9 +536,9 @@ endfunction
 " scripts)
 function! <SID>Commentify_vim()
     if getline(".") =~ '^" '
-	normal 0xx
+	call setline('.', strpart(getline('.'), 2))
     else
-	execute "normal 0i\" \<esc>"
+	call setline('.', '" '.getline('.'))
     endif
 endfunction
 
@@ -1268,5 +1268,5 @@ endif
 
 " }}}1
 
-" Last updated: April 22, 2013
+" Last updated: May 7, 2013
 " vim:fo=cqro tw=75 com=\:\" sw=4 

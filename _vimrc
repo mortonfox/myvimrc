@@ -335,6 +335,9 @@ endif
 
 " ----- Vim Scripts ----- {{{1
 
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+silent! execute pathogen#infect()
+
 " ===== Toggle syntax ===== {{{2
 
 " Initialize all highlights that have nothing to do with syntax.
@@ -1268,5 +1271,5 @@ endif
 
 " }}}1
 
-" Last updated: May 7, 2013
+" Last updated: May 22, 2013
 " vim:fo=cqro tw=75 com=\:\" sw=4 

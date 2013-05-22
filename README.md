@@ -1,5 +1,24 @@
 # My _vimrc
 
+## Introduction
+
 This is my vimrc file, backed up on GitHub for safekeeping.
 
 I named it _vimrc instead of .vimrc because I use the same configuration file on Windows too and Vim running on other systems don't have any problems with that name.
+
+## Plugins
+
+git clone sources for Vim Pathogen
+
+git://github.com/tpope/vim-pathogen.git
+git://github.com/vim-scripts/Align.git
+git://github.com/godlygeek/tabular.git
+git://github.com/vim-scripts/Command-T.git
+git://github.com/mileszs/ack.vim.git
+git://github.com/scrooloose/nerdtree.git
+git://github.com/vimoutliner/vimoutliner.git
+git://github.com/kchmck/vim-coffee-script.git
+git://github.com/jnwhiteh/vim-golang.git
+git://github.com/vim-scripts/IndentAnything.git
+git://github.com/vim-scripts/Javascript-Indentation.git
+git://github.com/vim-scripts/javacomplete.git

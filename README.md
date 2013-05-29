@@ -22,4 +22,6 @@ git clone sources for Vim Pathogen:
     git://github.com/vim-scripts/IndentAnything.git
     git://github.com/vim-scripts/Javascript-Indentation.git
     git://github.com/vim-scripts/javacomplete.git
+    git://github.com/kien/ctrlp.vim.git
+    git://github.com/rking/ag.vim.git
 

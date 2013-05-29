@@ -13,7 +13,6 @@ git clone sources for Vim Pathogen:
     git://github.com/tpope/vim-pathogen.git
     git://github.com/vim-scripts/Align.git
     git://github.com/godlygeek/tabular.git
-    git://github.com/vim-scripts/Command-T.git
     git://github.com/mileszs/ack.vim.git
     git://github.com/scrooloose/nerdtree.git
     git://github.com/vimoutliner/vimoutliner.git

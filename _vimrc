@@ -6,22 +6,16 @@ version 7.0
 " This option has to come before autochdir in order to not trigger
 " a bug with relative pathnames on Vim startup.
 set encoding=utf-8
-" Automatically change directories if this feature is available.
+" Do not automatically change directories.
 " silent! is needed because this option is not available unless certain
 " features have been enabled.
-silent! set autochdir
+silent! set noautochdir
 
 if has("autocmd")
     augroup cmdt_auto
 	" Clear all auto-commands.
 	autocmd!
-	" Don't set autochdir if Command-T is installed because that plugin
-	" works better without autochdir.
-	autocmd SourcePre command-t.vim silent! set noautochdir
-	" Ignore Library folder if Command-T is installed. Don't need to index
-	" that.
-	autocmd SourcePre command-t.vim set wildignore+=Library
-
+	" Use clipboard register, if available.
 	autocmd VimEnter * call <SID>set_clipboard()
     augroup END
 endif
@@ -1271,5 +1265,5 @@ endif
 
 " }}}1
 
-" Last updated: May 22, 2013
+" Last updated: May 29, 2013
 " vim:fo=cqro tw=75 com=\:\" sw=4 

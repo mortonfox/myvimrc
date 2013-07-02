@@ -23,8 +23,4 @@ git clone sources for Vim Pathogen:
     git://github.com/vim-scripts/javacomplete.git
     git://github.com/kien/ctrlp.vim.git
     git://github.com/rking/ag.vim.git
-
-Also:
-
-    Conque Shell: http://www.vim.org/scripts/script.php?script_id=2771
-    
+    https://github.com/nicoraffo/conque.git

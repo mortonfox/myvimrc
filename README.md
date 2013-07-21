@@ -25,4 +25,4 @@ git clone sources for Vim Pathogen:
     git://github.com/rking/ag.vim.git
     https://github.com/nicoraffo/conque.git
     https://github.com/tpope/vim-commentary.git
-    
+    https://github.com/scrooloose/syntastic.git    

@@ -26,3 +26,8 @@ git clone sources for Vim Pathogen:
     https://github.com/nicoraffo/conque.git
     https://github.com/tpope/vim-commentary.git
     https://github.com/scrooloose/syntastic.git    
+
+Other plugins:
+
+    https://github.com/mortonfox/nerdtree-iterm
+    http://www.vim.org/scripts/script.php?script_id=1910 (QuickBuf)

@@ -1268,5 +1268,5 @@ endif
 
 " }}}1
 
-" Last updated: May 29, 2013
+" Last updated: August 27, 2013
 " vim:fo=cqro tw=75 com=\:\" sw=4 

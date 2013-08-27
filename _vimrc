@@ -157,6 +157,9 @@ cmapclear
 filetype plugin indent on
 " runtime! ftdetect/*.vim
 
+" Shift-F4 brings up QuickBuf.
+let g:qb_hotkey = "<S-F4>"
+
 " ----- GUI customization ----- {{{1
 
 " In vim 5.4 with GTK+, the .font resource does not work.

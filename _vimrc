@@ -1268,7 +1268,8 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 
-  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  " Don't use this if we have the ag plugin.
+  " command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 endif
 
 " }}}1

@@ -1255,6 +1255,22 @@ vnoremap ,U c<lj comm="<c-r>""><esc>
 nnoremap ,u ciw<user name="<c-r>"" site="livejournal.com"><esc>
 vnoremap ,u c<user name="<c-r>"" site="livejournal.com"><esc>
 
+" ===== Use the Silver Searcher for searching, if available ===== {{{2
+" Borrowed from: http://robots.thoughtbot.com/faster-grepping-in-vim/
+
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+endif
+
 " }}}1
 " ----- Local vimrc ----- {{{1
 
@@ -1268,5 +1284,5 @@ endif
 
 " }}}1
 
-" Last updated: August 27, 2013
+" Last updated: December 9, 2013
 " vim:fo=cqro tw=75 com=\:\" sw=4 

@@ -52,6 +52,9 @@ function! <SID>set_clipboard()
     endif
 endfunction
 
+" be iMproved
+set nocompatible
+
 " :write command with a file name sets alternate file name for the current
 " window.
 " :write command with a file name sets name of buffer if the buffer does not
@@ -150,6 +153,42 @@ vmapclear
 omapclear
 imapclear
 cmapclear
+
+" runtime bundle/vim-pathogen/autoload/pathogen.vim
+" silent! execute pathogen#infect()
+
+" ===== Load Vundle ===== {{{2
+filetype off
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+
+" original repos on GitHub
+Bundle 'godlygeek/tabular'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'mortonfox/vim-commentary'
+Bundle 'nicoraffo/conque'
+Bundle 'rking/ag.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'    
+Bundle 'vimoutliner/vimoutliner'
+
+" vim-scripts repos
+Bundle 'Align'
+Bundle 'IndentAnything'
+Bundle 'javacomplete'
+Bundle 'Javascript-Indentation'
+Bundle 'QuickBuf'
+
+" ===== Other Initialization ===== {{{2
 
 " Make filetype.vim treat .h files as C files.
 " let c_syntax_for_h=1
@@ -331,9 +370,6 @@ endif
 
 
 " ----- Vim Scripts ----- {{{1
-
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-silent! execute pathogen#infect()
 
 " ===== Toggle syntax ===== {{{2
 
@@ -1285,5 +1321,5 @@ endif
 
 " }}}1
 
-" Last updated: December 9, 2013
+" Last updated: January 23, 2014
 " vim:fo=cqro tw=75 com=\:\" sw=4 

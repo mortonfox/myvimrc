@@ -179,6 +179,7 @@ Bundle 'nicoraffo/conque'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'    
+Bundle 'tek/vim-quickbuf'
 Bundle 'vimoutliner/vimoutliner'
 
 " vim-scripts repos
@@ -186,7 +187,7 @@ Bundle 'Align'
 Bundle 'IndentAnything'
 Bundle 'javacomplete'
 Bundle 'Javascript-Indentation'
-Bundle 'QuickBuf'
+" Bundle 'QuickBuf'
 
 " ===== Other Initialization ===== {{{2
 
@@ -197,7 +198,8 @@ filetype plugin indent on
 " runtime! ftdetect/*.vim
 
 " Shift-F4 brings up QuickBuf.
-let g:qb_hotkey = "<S-F4>"
+" let g:qb_hotkey = '<S-F4>'
+let g:quickbuf_map = '<S-F4>'
 
 " ----- GUI customization ----- {{{1
 

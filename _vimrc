@@ -276,11 +276,20 @@ vnoremap <C-Delete> "*d
 
 " ctrl-tab, ctrl-shift-tab moves between tabs
 nnoremap <C-Tab> gt
-vnoremap <C-Tab> <esc>gt
-noremap! <C-Tab> <esc>gt
+vnoremap <C-Tab> gt
 nnoremap <C-S-Tab> gT
-vnoremap <C-S-Tab> <esc>gT
-noremap! <C-S-Tab> <esc>gT
+vnoremap <C-S-Tab> gT
+
+" Map ctrl-h/j/k/l to move to other windows.
+" Idea borrowed from spf13-vim. (http://vim.spf13.com/)
+nnoremap <C-h> <C-W>h
+vnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
+vnoremap <C-l> <C-W>l
+nnoremap <C-k> <C-W>k
+vnoremap <C-k> <C-W>k
+nnoremap <C-j> <C-W>j
+vnoremap <C-j> <C-W>j
 
 " F12 p runs par on the current paragraph or visual range
 " F12 P does the same thing but waits for user to type in arguments.

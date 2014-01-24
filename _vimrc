@@ -170,12 +170,12 @@ Bundle 'gmarik/vundle'
 
 " original repos on GitHub
 Bundle 'godlygeek/tabular'
-Bundle 'jnwhiteh/vim-golang'
+" Bundle 'jnwhiteh/vim-golang'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'mortonfox/vim-commentary'
-Bundle 'nicoraffo/conque'
+" Bundle 'nicoraffo/conque'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'    
@@ -185,7 +185,7 @@ Bundle 'vimoutliner/vimoutliner'
 " vim-scripts repos
 Bundle 'Align'
 Bundle 'IndentAnything'
-Bundle 'javacomplete'
+" Bundle 'javacomplete'
 Bundle 'Javascript-Indentation'
 " Bundle 'QuickBuf'
 

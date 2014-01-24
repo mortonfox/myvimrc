@@ -257,14 +257,14 @@ vnoremap <silent> <F7> <esc>:NERDTreeToggle<cr>
 inoremap <silent> <F7> <C-O>:NERDTreeToggle<cr>
 
 " F9 will toggle taglist.
-nnoremap <silent> <F9> :TlistToggle<cr>
-vnoremap <silent> <F9> <esc>:TlistToggle<cr>
-inoremap <silent> <F9> <C-O>:TlistToggle<cr>
+" nnoremap <silent> <F9> :TlistToggle<cr>
+" vnoremap <silent> <F9> <esc>:TlistToggle<cr>
+" inoremap <silent> <F9> <C-O>:TlistToggle<cr>
 
-let Tlist_Process_File_Always = 1
-let Tlist_Use_Right_Window = 1
-let Tlist_Inc_Winwidth = 0
-let Tlist_Show_Menu = 1
+" let Tlist_Process_File_Always = 1
+" let Tlist_Use_Right_Window = 1
+" let Tlist_Inc_Winwidth = 0
+" let Tlist_Show_Menu = 1
 
 " shift-insert will now paste text from clipboard
 nnoremap <S-Insert> "*P
@@ -1323,5 +1323,5 @@ endif
 
 " }}}1
 
-" Last updated: January 23, 2014
+" Last updated: January 24, 2014
 " vim:fo=cqro tw=75 com=\:\" sw=4 

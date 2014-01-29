@@ -295,6 +295,7 @@ vmap <expr> <C-h> DVB_Drag('left')
 vmap <expr> <C-l> DVB_Drag('right')
 vmap <expr> <C-k> DVB_Drag('up')
 vmap <expr> <C-j> DVB_Drag('down')
+vmap <expr> D DVB_Duplicate() 
 
 " F12 p runs par on the current paragraph or visual range
 " F12 P does the same thing but waits for user to type in arguments.

@@ -103,6 +103,8 @@ set laststatus=2
 set lazyredraw
 " magic search patterns
 set magic
+" Enable mouse in console Vim.
+set mouse=a
 " hide the mouse pointer while typing characters
 set mousehide
 " Support Ctrl-A and Ctrl-X for letters and hex numbers, not octal
@@ -169,6 +171,7 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 
 " original repos on GitHub
+Bundle 'atweiden/vim-dragvisuals'
 Bundle 'godlygeek/tabular'
 " Bundle 'jnwhiteh/vim-golang'
 Bundle 'kchmck/vim-coffee-script'
@@ -178,7 +181,7 @@ Bundle 'mortonfox/vim-commentary'
 " Bundle 'nicoraffo/conque'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'    
+Bundle 'scrooloose/syntastic'
 Bundle 'tek/vim-quickbuf'
 Bundle 'vimoutliner/vimoutliner'
 
@@ -283,13 +286,15 @@ vnoremap <C-S-Tab> gT
 " Map ctrl-h/j/k/l to move to other windows.
 " Idea borrowed from spf13-vim. (http://vim.spf13.com/)
 nnoremap <C-h> <C-W>h
-vnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
-vnoremap <C-l> <C-W>l
 nnoremap <C-k> <C-W>k
-vnoremap <C-k> <C-W>k
 nnoremap <C-j> <C-W>j
-vnoremap <C-j> <C-W>j
+
+" Map ctrl-h/j/k/l in visual mode to drag the block.
+vmap <expr> <C-h> DVB_Drag('left')
+vmap <expr> <C-l> DVB_Drag('right')
+vmap <expr> <C-k> DVB_Drag('up')
+vmap <expr> <C-j> DVB_Drag('down')
 
 " F12 p runs par on the current paragraph or visual range
 " F12 P does the same thing but waits for user to type in arguments.
@@ -1332,5 +1337,5 @@ endif
 
 " }}}1
 
-" Last updated: January 24, 2014
+" Last updated: January 29, 2014
 " vim:fo=cqro tw=75 com=\:\" sw=4 

@@ -1,5 +1,3 @@
-version 7.0
-
 " ----- General Options ----- {{{1
 
 " Set the character encoding used inside Vim.
@@ -204,6 +202,10 @@ filetype plugin indent on
 " let g:qb_hotkey = '<S-F4>'
 let g:quickbuf_map = '<S-F4>'
 
+" Make vimpager use MacVim.
+" Assuming that .vimpagerrc sources this file.
+let vimpager_use_gvim = 1
+
 " ----- GUI customization ----- {{{1
 
 " In vim 5.4 with GTK+, the .font resource does not work.
@@ -384,7 +386,6 @@ if has("mac") && !has("gui_running")
     cnoremap <C-@> <Nop>
     lnoremap <C-@> <Nop>
 endif
-
 
 " ----- Vim Scripts ----- {{{1
 
@@ -1338,5 +1339,5 @@ endif
 
 " }}}1
 
-" Last updated: January 29, 2014
-" vim:fo=cqro tw=75 com=\:\" sw=4 
+" Last updated: February 10, 2014
+" vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

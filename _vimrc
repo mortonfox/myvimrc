@@ -172,6 +172,7 @@ Bundle 'gmarik/vundle'
 Bundle 'atweiden/vim-dragvisuals'
 Bundle 'godlygeek/tabular'
 " Bundle 'jnwhiteh/vim-golang'
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
@@ -205,6 +206,9 @@ let g:quickbuf_map = '<S-F4>'
 " Make vimpager use MacVim.
 " Assuming that .vimpagerrc sources this file.
 let vimpager_use_gvim = 1
+
+" Don't open NERDTree on GUI startup.
+let g:nerdtree_tabs_open_on_gui_startup = 0
 
 " ----- GUI customization ----- {{{1
 
@@ -244,7 +248,7 @@ endif
 
 " map F2 key to save file in insert and command modes
 nnoremap <F2> :write<CR>
-vnoremap <F2> <esc>:write<CR>
+vnoremap <F2> <esc>:write<CR>gv
 inoremap <F2> <C-O>:write<CR>
 
 " Map F6 key to go to the next buffer and Shift-F6 to go to the previous
@@ -257,9 +261,13 @@ vnoremap <S-F6> <esc>:bprevious<CR>
 inoremap <S-F6> <C-O>:bprevious<CR>
 
 " F7 will toggle NERDTree.
-nnoremap <silent> <F7> :NERDTreeToggle<cr>
-vnoremap <silent> <F7> <esc>:NERDTreeToggle<cr>
-inoremap <silent> <F7> <C-O>:NERDTreeToggle<cr>
+nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
+vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
+imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
+" Alt-F7 finds the current file in the NERDTree.
+nnoremap <silent> <A-F7> :NERDTreeFind<CR>
+vnoremap <silent> <A-F7> <esc>:NERDTreeFind<CR>
+inoremap <silent> <A-F7> <C-O>:NERDTreeFind<CR>
 
 " F9 will toggle taglist.
 " nnoremap <silent> <F9> :TlistToggle<cr>
@@ -368,12 +376,12 @@ inoremap <F12>e <esc>:e <C-R>=expand("%:p:h")."/"<cr>
 
 " F4 toggles list mode
 nnoremap <F4> :set invlist list?<cr>
-vnoremap <F4> <esc>:set invlist list?<cr>
+vnoremap <F4> <esc>:set invlist list?<cr>gv
 inoremap <F4> <C-o>:set invlist list?<cr>
 
 " F5 toggles paste mode
 nnoremap <F5> :set invpaste paste?<CR>
-vnoremap <F5> <esc>:set invpaste paste?<CR>
+vnoremap <F5> <esc>:set invpaste paste?<CR>gv
 " pastetoggle key in vim 5.4 allows us to get out of paste mode
 " even from within insert mode.
 inoremap <F5> <C-O>:set invpaste<CR>
@@ -505,7 +513,7 @@ endfunction
 
 " Ctrl-F7 toggles syntax coloring on and off
 nnoremap <C-F7> :call <SID>Toggle_syntax()<cr>
-vnoremap <C-F7> <esc>:call <SID>Toggle_syntax()<cr>
+vnoremap <C-F7> <esc>:call <SID>Toggle_syntax()<cr>gv
 inoremap <C-F7> <esc>:call <SID>Toggle_syntax()<cr>
 
 " Also define a :ToggleSyntax command.
@@ -513,7 +521,7 @@ command! ToggleSyntax :call <SID>Toggle_syntax()
 
 " Shift-F7 will show syntax item at cursor
 nnoremap <S-F7> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
-vnoremap <S-F7> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
+vnoremap <S-F7> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>gv
 inoremap <S-F7> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
 " Start with syntax highlighting enabled.
@@ -533,7 +541,7 @@ endfunction
 
 " Ctrl-F9 toggles full height mode
 nnoremap <C-F9> :call <SID>Toggle_full_height()<cr>
-vnoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>
+vnoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>gv
 inoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>
 
 " Also define a :FullHeight command.
@@ -713,7 +721,7 @@ inoremap <F12>s <C-R>=<SID>Date_string()<CR>
 let m = "1G/La[s]t updated:/e+0<CR>a <C-R>=<SID>Date_string()<CR><CR><ESC>dd"
 execute "nnoremap <F12>l" m
 execute "inoremap <F12>l <esc>" . m . "i"
-execute "vnoremap <F12>l <esc>" . m
+execute "vnoremap <F12>l <esc>" . m . "gv"
 unlet m
 
 " F12 u: This mapping will format any bullet list. It requires
@@ -746,7 +754,7 @@ function! <SID>Run_ctags()
 endfunction
 
 nnoremap <F12>c :call <SID>Run_ctags()<cr>
-vnoremap <F12>c <esc>:call <SID>Run_ctags()<cr>
+vnoremap <F12>c <esc>:call <SID>Run_ctags()<cr>gv
 inoremap <F12>c <esc>:call <SID>Run_ctags()<cr>
 
 " ===== Customize vim modes ===== {{{2
@@ -1023,7 +1031,7 @@ endfunction
 
 " F3 toggles no-linebreak mode
 nnoremap <F3> :call <SID>Toggle_no_lbr()<cr>
-vnoremap <F3> <esc>:call <SID>Toggle_no_lbr()<cr>
+vnoremap <F3> <esc>:call <SID>Toggle_no_lbr()<cr>gv
 inoremap <F3> <esc>:call <SID>Toggle_no_lbr()<cr>
 
 " ===== Command-line completion ===== {{{2
@@ -1109,7 +1117,7 @@ function! <SID>ConvertCoords()
 endfunction
 
 nnoremap <f12>g :call <SID>ConvertCoords()<cr>
-vnoremap <f12>g <esc>:call <SID>ConvertCoords()<cr>
+vnoremap <f12>g <esc>:call <SID>ConvertCoords()<cr>gv
 
 " ------------------------------------------------------------------
 " Convert geocaching URL followed by cache name into a HTML link.
@@ -1296,7 +1304,7 @@ function! <SID>ConvertGeoTag()
 endfunction
 
 nnoremap ,f :call <SID>ConvertGeoTag()<cr>
-vnoremap ,f <esc>:call <SID>ConvertGeoTag()<cr>
+vnoremap ,f <esc>:call <SID>ConvertGeoTag()<cr>gv
 
 " ===== Add LJ user tag around the current word. ===== {{{2
 nnoremap ,u ciw<lj user="<c-r>""><esc>
@@ -1339,5 +1347,5 @@ endif
 
 " }}}1
 
-" Last updated: February 10, 2014
+" Last updated: February 13, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

@@ -264,10 +264,10 @@ inoremap <S-F6> <C-O>:bprevious<CR>
 nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
 vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
 imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
-" Alt-F7 finds the current file in the NERDTree.
-nnoremap <silent> <A-F7> :NERDTreeFind<CR>
-vnoremap <silent> <A-F7> <esc>:NERDTreeFind<CR>
-inoremap <silent> <A-F7> <C-O>:NERDTreeFind<CR>
+" Ctrl-F7 finds the current file in the NERDTree.
+nnoremap <silent> <C-F7> :NERDTreeFind<CR>
+vnoremap <silent> <C-F7> <esc>:NERDTreeFind<CR>
+inoremap <silent> <C-F7> <C-O>:NERDTreeFind<CR>
 
 " F9 will toggle taglist.
 " nnoremap <silent> <F9> :TlistToggle<cr>
@@ -511,18 +511,18 @@ function! <SID>Toggle_syntax()
     endif
 endfunction
 
-" Ctrl-F7 toggles syntax coloring on and off
-nnoremap <C-F7> :call <SID>Toggle_syntax()<cr>
-vnoremap <C-F7> <esc>:call <SID>Toggle_syntax()<cr>gv
-inoremap <C-F7> <esc>:call <SID>Toggle_syntax()<cr>
+" Ctrl-F8 toggles syntax coloring on and off
+nnoremap <C-F8> :call <SID>Toggle_syntax()<cr>
+vnoremap <C-F8> <esc>:call <SID>Toggle_syntax()<cr>gv
+inoremap <C-F8> <esc>:call <SID>Toggle_syntax()<cr>
 
 " Also define a :ToggleSyntax command.
 command! ToggleSyntax :call <SID>Toggle_syntax()
 
-" Shift-F7 will show syntax item at cursor
-nnoremap <S-F7> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
-vnoremap <S-F7> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>gv
-inoremap <S-F7> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
+" Shift-F8 will show syntax item at cursor
+nnoremap <S-F8> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
+vnoremap <S-F8> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>gv
+inoremap <S-F8> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
 " Start with syntax highlighting enabled.
 call s:Highlight_Init()
@@ -1347,5 +1347,5 @@ endif
 
 " }}}1
 
-" Last updated: February 13, 2014
+" Last updated: February 17, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

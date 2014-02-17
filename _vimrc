@@ -182,6 +182,7 @@ Bundle 'mortonfox/vim-commentary'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'sjl/gundo.vim'
 Bundle 'tek/vim-quickbuf'
 Bundle 'vimoutliner/vimoutliner'
 
@@ -269,6 +270,11 @@ imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
 nnoremap <silent> <C-F7> :NERDTreeFind<CR>
 vnoremap <silent> <C-F7> <esc>:NERDTreeFind<CR>
 inoremap <silent> <C-F7> <C-O>:NERDTreeFind<CR>
+
+" F9 toggles Gundo.
+nnoremap <F9> :silent GundoToggle<cr>
+vnoremap <F9> <esc>:silent GundoToggle<cr>
+inoremap <F9> <esc>:silent GundoToggle<cr>
 
 " F9 will toggle taglist.
 " nnoremap <silent> <F9> :TlistToggle<cr>

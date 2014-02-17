@@ -175,6 +175,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
+Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'mortonfox/vim-commentary'
 " Bundle 'nicoraffo/conque'
@@ -511,6 +512,11 @@ function! <SID>Toggle_syntax()
     endif
 endfunction
 
+" F8 toggles rainbow parentheses.
+nnoremap <F8> :RainbowParenthesesToggle<cr>
+vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
+inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
+
 " Ctrl-F8 toggles syntax coloring on and off
 nnoremap <C-F8> :call <SID>Toggle_syntax()<cr>
 vnoremap <C-F8> <esc>:call <SID>Toggle_syntax()<cr>gv
@@ -776,6 +782,10 @@ function! <SID>Set_default_mode()
 
     " set default textwidth and shiftwidth 
     setlocal textwidth=75 shiftwidth=4
+
+    RainbowParenthesesLoadBraces
+    RainbowParenthesesLoadRound
+    RainbowParenthesesLoadSquare
 endfunction
 
 " Function for setting up vim for editing C source files.
@@ -956,7 +966,8 @@ if has("autocmd")
 	" Clear all auto-commands.
 	autocmd!
 
-	autocmd BufNewFile,BufReadPre * call <SID>Set_default_mode()
+	" autocmd BufNewFile,BufReadPre * call <SID>Set_default_mode()
+	autocmd FileType * call <SID>Set_default_mode()
 	autocmd FileType c,cpp call <SID>Set_c_mode()
 
 	" Use Java mode for C# source files too.

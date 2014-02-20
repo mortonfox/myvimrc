@@ -267,9 +267,9 @@ nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
 vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
 imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
 " Ctrl-F7 finds the current file in the NERDTree.
-nnoremap <silent> <C-F7> :NERDTreeFind<CR>
-vnoremap <silent> <C-F7> <esc>:NERDTreeFind<CR>
-inoremap <silent> <C-F7> <C-O>:NERDTreeFind<CR>
+nnoremap <silent> <S-F7> :NERDTreeFind<CR>
+vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
+inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
 
 " F9 toggles Gundo.
 nnoremap <F9> :silent GundoToggle<cr>
@@ -1364,5 +1364,5 @@ endif
 
 " }}}1
 
-" Last updated: February 18, 2014
+" Last updated: February 20, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

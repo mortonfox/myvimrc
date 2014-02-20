@@ -934,6 +934,9 @@ function! s:Set_ruby_mode()
     setlocal expandtab
 
     setlocal comments=:#
+
+    " Workaround needed because Perl ftplugin adds a colon to iskeyword globally.
+    setlocal iskeyword-=:
 endfunction
 
 " Function for setting up vim to edit PHP source files.
@@ -1364,5 +1367,5 @@ endif
 
 " }}}1
 
-" Last updated: February 18, 2014
+" Last updated: February 19, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

@@ -212,6 +212,9 @@ let vimpager_use_gvim = 1
 " Don't open NERDTree on GUI startup.
 let g:nerdtree_tabs_open_on_gui_startup = 0
 
+" Turn off syntastic balloons.
+let g:syntastic_enable_balloons = 0
+
 " ----- GUI customization ----- {{{1
 
 " In vim 5.4 with GTK+, the .font resource does not work.
@@ -1367,5 +1370,5 @@ endif
 
 " }}}1
 
-" Last updated: February 20, 2014
+" Last updated: February 21, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

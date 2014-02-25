@@ -184,6 +184,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
 Bundle 'tek/vim-quickbuf'
+Bundle 'tsaleh/vim-matchit'
 Bundle 'vimoutliner/vimoutliner'
 
 " vim-scripts repos
@@ -1370,5 +1371,5 @@ endif
 
 " }}}1
 
-" Last updated: February 21, 2014
+" Last updated: February 25, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

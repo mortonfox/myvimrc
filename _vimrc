@@ -252,44 +252,6 @@ endif
 
 " ----- Hotkey Customization ----- {{{1
 
-" map F2 key to save file in insert and command modes
-nnoremap <F2> :write<CR>
-vnoremap <F2> <esc>:write<CR>gv
-inoremap <F2> <C-O>:write<CR>
-
-" Map F6 key to go to the next buffer and Shift-F6 to go to the previous
-" buffer.
-nnoremap <F6> :bnext<CR>
-vnoremap <F6> <esc>:bnext<CR>
-inoremap <F6> <C-O>:bnext<CR>
-nnoremap <S-F6> :bprevious<CR>
-vnoremap <S-F6> <esc>:bprevious<CR>
-inoremap <S-F6> <C-O>:bprevious<CR>
-
-" F7 will toggle NERDTree.
-nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
-vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
-imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
-" Ctrl-F7 finds the current file in the NERDTree.
-nnoremap <silent> <S-F7> :NERDTreeFind<CR>
-vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
-inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
-
-" F9 toggles Gundo.
-nnoremap <F9> :silent GundoToggle<cr>
-vnoremap <F9> <esc>:silent GundoToggle<cr>
-inoremap <F9> <esc>:silent GundoToggle<cr>
-
-" F9 will toggle taglist.
-" nnoremap <silent> <F9> :TlistToggle<cr>
-" vnoremap <silent> <F9> <esc>:TlistToggle<cr>
-" inoremap <silent> <F9> <C-O>:TlistToggle<cr>
-
-" let Tlist_Process_File_Always = 1
-" let Tlist_Use_Right_Window = 1
-" let Tlist_Inc_Winwidth = 0
-" let Tlist_Show_Menu = 1
-
 " shift-insert will now paste text from clipboard
 nnoremap <S-Insert> "*P
 vnoremap <S-Insert> "-d"*P
@@ -318,14 +280,96 @@ vmap <expr> <C-k> DVB_Drag('up')
 vmap <expr> <C-j> DVB_Drag('down')
 vmap <expr> ,d DVB_Duplicate() 
 
-" F12 p runs par on the current paragraph or visual range
-" F12 P does the same thing but waits for user to type in arguments.
-nnoremap <F12>p {!}par<cr>
-inoremap <F12>p <esc>{!}par<cr>
-vnoremap <F12>p !par<cr>
-nnoremap <F12>P {!}par<space>
-inoremap <F12>P <esc>{!}par<space>
-vnoremap <F12>P !par<space>
+" map F2 key to save file in insert and command modes
+nnoremap <F2> :write<CR>
+vnoremap <F2> <esc>:write<CR>gv
+inoremap <F2> <C-O>:write<CR>
+
+" F3 toggles no-linebreak mode
+nnoremap <F3> :call <SID>Toggle_no_lbr()<cr>
+vnoremap <F3> <esc>:call <SID>Toggle_no_lbr()<cr>gv
+inoremap <F3> <esc>:call <SID>Toggle_no_lbr()<cr>
+
+" F4 toggles list mode
+nnoremap <F4> :set invlist list?<cr>
+vnoremap <F4> <esc>:set invlist list?<cr>gv
+inoremap <F4> <C-o>:set invlist list?<cr>
+
+" F5 toggles paste mode
+nnoremap <F5> :set invpaste paste?<CR>
+vnoremap <F5> <esc>:set invpaste paste?<CR>gv
+" pastetoggle key in vim 5.4 allows us to get out of paste mode
+" even from within insert mode.
+inoremap <F5> <C-O>:set invpaste<CR>
+set pastetoggle=<F5>
+
+" Map F6 key to go to the next buffer and Shift-F6 to go to the previous
+" buffer.
+nnoremap <F6> :bnext<CR>
+vnoremap <F6> <esc>:bnext<CR>
+inoremap <F6> <C-O>:bnext<CR>
+nnoremap <S-F6> :bprevious<CR>
+vnoremap <S-F6> <esc>:bprevious<CR>
+inoremap <S-F6> <C-O>:bprevious<CR>
+
+" F7 will toggle NERDTree.
+nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
+vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
+imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
+" Ctrl-F7 finds the current file in the NERDTree.
+nnoremap <silent> <S-F7> :NERDTreeFind<CR>
+vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
+inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
+
+" F8 toggles rainbow parentheses.
+nnoremap <F8> :RainbowParenthesesToggle<cr>
+vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
+inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
+
+" Ctrl-F8 toggles syntax coloring on and off
+nnoremap <C-F8> :call <SID>Toggle_syntax()<cr>
+vnoremap <C-F8> <esc>:call <SID>Toggle_syntax()<cr>gv
+inoremap <C-F8> <esc>:call <SID>Toggle_syntax()<cr>
+
+" Shift-F8 will show syntax item at cursor
+nnoremap <S-F8> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
+vnoremap <S-F8> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>gv
+inoremap <S-F8> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
+
+" F9 toggles Gundo.
+nnoremap <F9> :silent GundoToggle<cr>
+vnoremap <F9> <esc>:silent GundoToggle<cr>
+inoremap <F9> <esc>:silent GundoToggle<cr>
+
+" F9 will toggle taglist.
+" nnoremap <silent> <F9> :TlistToggle<cr>
+" vnoremap <silent> <F9> <esc>:TlistToggle<cr>
+" inoremap <silent> <F9> <C-O>:TlistToggle<cr>
+
+" let Tlist_Process_File_Always = 1
+" let Tlist_Use_Right_Window = 1
+" let Tlist_Inc_Winwidth = 0
+" let Tlist_Show_Menu = 1
+
+" Ctrl-F9 toggles full height mode
+nnoremap <C-F9> :call <SID>Toggle_full_height()<cr>
+vnoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>gv
+inoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>
+
+" F11 c: change current directory to the directory in which the current
+" file resides.
+nnoremap <F11>c :cd <C-R>=expand("%:p:h")<cr><cr>
+vnoremap <F11>c <esc>:cd <C-R>=expand("%:p:h")<cr><cr>
+inoremap <F11>c <esc>:cd <C-R>=expand("%:p:h")<cr><cr>
+
+" F11 h: startup directory (home)
+let s:startdir=getcwd()
+function! <SID>GetStartDir()
+    return s:startdir
+endfunction
+nnoremap <F11>h :execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
+vnoremap <F11>h <esc>:execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
+inoremap <F11>h <esc>:execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
 
 " F12 a runs tal on the current paragraph or visual range.
 " F12 A does the same thing but waits for user to type in arguments.
@@ -345,14 +389,65 @@ nnoremap <F12>B {!}boxes<space>
 inoremap <F12>B <esc>{!}boxes<space>
 vnoremap <F12>B !boxes<space>
 
-" F12 x runs boxes -r on the current paragraph or visual range.
-" F12 X does the same thing but waits for user to type in arguments.
-nnoremap <F12>x {!}boxes -r<cr>
-inoremap <F12>x <esc>{!}boxes -r<cr>
-vnoremap <F12>x !boxes -r<cr>
-nnoremap <F12>X {!}boxes -r<space>
-inoremap <F12>X <esc>{!}boxes -r<space>
-vnoremap <F12>X !boxes -r<space>
+" F12 c runs ctags in the current file's directory.
+nnoremap <F12>c :call <SID>Run_ctags()<cr>
+vnoremap <F12>c <esc>:call <SID>Run_ctags()<cr>gv
+inoremap <F12>c <esc>:call <SID>Run_ctags()<cr>
+
+" F12 d removes all buffers.
+nnoremap <F12>d :call <SID>Del_all_buf()<cr>
+vnoremap <F12>d <esc>:call <SID>Del_all_buf()<cr>
+inoremap <F12>d <esc>:call <SID>Del_all_buf()<cr>
+
+" F12 e: edit another file in the same directory as the current file.
+set wildcharm=<c-z>
+nnoremap <F12>e :e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
+vnoremap <F12>e <esc>:e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
+inoremap <F12>e <esc>:e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
+
+" F12 g converts coordinates from N ddd mm.mmm W ddd mm.mmm to 
+" dd.ddddd -dd.ddddd
+nnoremap <f12>g :call <SID>ConvertCoords()<cr>
+vnoremap <f12>g <esc>:call <SID>ConvertCoords()<cr>gv
+
+" F12 l updates a 'Last up-dated:' line
+" Need to use a [s] here so that this macro won't change itself if
+" invoked on this file.
+let m = "1G/La[s]t updated:/e+0<CR>a <C-R>=<SID>Date_string()<CR><CR><ESC>dd"
+execute "nnoremap <F12>l" m
+execute "inoremap <F12>l <esc>" . m . "i"
+execute "vnoremap <F12>l <esc>" . m . "gv"
+unlet m
+
+" F12 p runs par on the current paragraph or visual range
+" F12 P does the same thing but waits for user to type in arguments.
+nnoremap <F12>p {!}par<cr>
+inoremap <F12>p <esc>{!}par<cr>
+vnoremap <F12>p !par<cr>
+nnoremap <F12>P {!}par<space>
+inoremap <F12>P <esc>{!}par<space>
+vnoremap <F12>P !par<space>
+
+" F12 s inserts a date stamp.
+" F12 s in visual mode replaces the selection with a date stamp.
+nnoremap <F12>s i<C-R>=<SID>Date_string()<CR><ESC>
+vnoremap <F12>s c<C-R>=<SID>Date_string()<CR><ESC>
+inoremap <F12>s <C-R>=<SID>Date_string()<CR>
+
+" F12 u: This mapping will format any bullet list. It requires
+" that there is an empty line above and below each list entry. The
+" expression commands are used to be able to give comments to the
+" parts of the mapping. (from the vim tips file)
+
+let m =     ":noremap <f12>u :set ai<CR>"    " need 'autoindent' set
+let m = m . "{O<Esc>"		      " add empty line above item
+let m = m . "}{)^W"		      " move to text after bullet
+let m = m . "i     <CR>     <Esc>"    " add space for indent
+let m = m . "gq}"		      " format text after the bullet
+let m = m . "{dd"		      " remove the empty line
+let m = m . "5lDJ"		      " put text after bullet
+execute m			      |" define the mapping
+unlet m
 
 " F12 ve edits .vimrc file
 " F12 vs sources .vimrc file
@@ -363,41 +458,14 @@ nnoremap <F12>vs :source $MYVIMRC<cr>
 vnoremap <F12>vs <esc>:source $MYVIMRC<cr>
 inoremap <F12>vs <esc>:source $MYVIMRC<cr>
 
-" F11: directory change commands
-
-" F11 h: startup directory (home)
-let s:startdir=getcwd()
-function! <SID>GetStartDir()
-    return s:startdir
-endfunction
-nnoremap <F11>h :execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
-vnoremap <F11>h <esc>:execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
-inoremap <F11>h <esc>:execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
-
-" F11 c: change current directory to the directory in which the current
-" file resides.
-nnoremap <F11>c :cd <C-R>=expand("%:p:h")<cr><cr>
-vnoremap <F11>c <esc>:cd <C-R>=expand("%:p:h")<cr><cr>
-inoremap <F11>c <esc>:cd <C-R>=expand("%:p:h")<cr><cr>
-
-" F12 e: edit another file in the same directory as the current file.
-set wildcharm=<c-z>
-nnoremap <F12>e :e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
-vnoremap <F12>e <esc>:e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
-inoremap <F12>e <esc>:e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
-
-" F4 toggles list mode
-nnoremap <F4> :set invlist list?<cr>
-vnoremap <F4> <esc>:set invlist list?<cr>gv
-inoremap <F4> <C-o>:set invlist list?<cr>
-
-" F5 toggles paste mode
-nnoremap <F5> :set invpaste paste?<CR>
-vnoremap <F5> <esc>:set invpaste paste?<CR>gv
-" pastetoggle key in vim 5.4 allows us to get out of paste mode
-" even from within insert mode.
-inoremap <F5> <C-O>:set invpaste<CR>
-set pastetoggle=<F5>
+" F12 x runs boxes -r on the current paragraph or visual range.
+" F12 X does the same thing but waits for user to type in arguments.
+nnoremap <F12>x {!}boxes -r<cr>
+inoremap <F12>x <esc>{!}boxes -r<cr>
+vnoremap <F12>x !boxes -r<cr>
+nnoremap <F12>X {!}boxes -r<space>
+inoremap <F12>X <esc>{!}boxes -r<space>
+vnoremap <F12>X !boxes -r<space>
 
 " iTerm2 sends nul characters for anti-idle. Ignore those characters in
 " text mode.
@@ -523,23 +591,8 @@ function! <SID>Toggle_syntax()
     endif
 endfunction
 
-" F8 toggles rainbow parentheses.
-nnoremap <F8> :RainbowParenthesesToggle<cr>
-vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
-inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
-
-" Ctrl-F8 toggles syntax coloring on and off
-nnoremap <C-F8> :call <SID>Toggle_syntax()<cr>
-vnoremap <C-F8> <esc>:call <SID>Toggle_syntax()<cr>gv
-inoremap <C-F8> <esc>:call <SID>Toggle_syntax()<cr>
-
-" Also define a :ToggleSyntax command.
+" Define a :ToggleSyntax command.
 command! ToggleSyntax :call <SID>Toggle_syntax()
-
-" Shift-F8 will show syntax item at cursor
-nnoremap <S-F8> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
-vnoremap <S-F8> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>gv
-inoremap <S-F8> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
 " Start with syntax highlighting enabled.
 call s:Highlight_Init()
@@ -556,12 +609,7 @@ function! <SID>Toggle_full_height()
     endif
 endfunction
 
-" Ctrl-F9 toggles full height mode
-nnoremap <C-F9> :call <SID>Toggle_full_height()<cr>
-vnoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>gv
-inoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>
-
-" Also define a :FullHeight command.
+" Define a :FullHeight command.
 command! FullHeight :call <SID>Toggle_full_height()
 
 " ===== Remove all buffers. ===== {{{2
@@ -574,11 +622,6 @@ function! <SID>Del_all_buf()
 	let bufidx = bufidx + 1
     endw
 endfunction
-
-" F12 d removes all buffers.
-nnoremap <F12>d :call <SID>Del_all_buf()<cr>
-vnoremap <F12>d <esc>:call <SID>Del_all_buf()<cr>
-inoremap <F12>d <esc>:call <SID>Del_all_buf()<cr>
 
 " ===== Commentify ===== {{{2
 " A function that commentifies or uncommentifies a line. (for C
@@ -726,38 +769,8 @@ function! <SID>Date_string()
     return substitute(strftime("%B %d, %Y"), " 0", " ", "")
 endfunction
 
-" F12 s inserts a date stamp.
-" F12 s in visual mode replaces the selection with a date stamp.
-nnoremap <F12>s i<C-R>=<SID>Date_string()<CR><ESC>
-vnoremap <F12>s c<C-R>=<SID>Date_string()<CR><ESC>
-inoremap <F12>s <C-R>=<SID>Date_string()<CR>
-
-" F12 l updates a 'Last up-dated:' line
-" Need to use a [s] here so that this macro won't change itself if
-" invoked on this file.
-let m = "1G/La[s]t updated:/e+0<CR>a <C-R>=<SID>Date_string()<CR><CR><ESC>dd"
-execute "nnoremap <F12>l" m
-execute "inoremap <F12>l <esc>" . m . "i"
-execute "vnoremap <F12>l <esc>" . m . "gv"
-unlet m
-
-" F12 u: This mapping will format any bullet list. It requires
-" that there is an empty line above and below each list entry. The
-" expression commands are used to be able to give comments to the
-" parts of the mapping. (from the vim tips file)
-
-let m =     ":noremap <f12>u :set ai<CR>"    " need 'autoindent' set
-let m = m . "{O<Esc>"		      " add empty line above item
-let m = m . "}{)^W"		      " move to text after bullet
-let m = m . "i     <CR>     <Esc>"    " add space for indent
-let m = m . "gq}"		      " format text after the bullet
-let m = m . "{dd"		      " remove the empty line
-let m = m . "5lDJ"		      " put text after bullet
-execute m			      |" define the mapping
-unlet m
-
 " ===== Run ctags ===== {{{2
-" F12 c runs ctags in the current file's directory.
+" Runs ctags in the current file's directory.
 " Under win32, run ctags in the current directory because we can't
 " reliably do a cd.
 function! <SID>Run_ctags()
@@ -769,10 +782,6 @@ function! <SID>Run_ctags()
     endif
     execute ctagscmd
 endfunction
-
-nnoremap <F12>c :call <SID>Run_ctags()<cr>
-vnoremap <F12>c <esc>:call <SID>Run_ctags()<cr>gv
-inoremap <F12>c <esc>:call <SID>Run_ctags()<cr>
 
 " ===== Customize vim modes ===== {{{2
 " Function for setting up vim buffer defaults.
@@ -1054,11 +1063,6 @@ function! <SID>Toggle_no_lbr()
     set linebreak?
 endfunction
 
-" F3 toggles no-linebreak mode
-nnoremap <F3> :call <SID>Toggle_no_lbr()<cr>
-vnoremap <F3> <esc>:call <SID>Toggle_no_lbr()<cr>gv
-inoremap <F3> <esc>:call <SID>Toggle_no_lbr()<cr>
-
 " ===== Command-line completion ===== {{{2
 "
 " Based on:
@@ -1140,9 +1144,6 @@ function! <SID>ConvertCoords()
     let x = substitute(getline("."), '\D*'.coord.'\D\+'.coord.'.*', '\=<SID>ToDecimals(submatch(1), submatch(2), submatch(3)) . "\<cr>-" . <SID>ToDecimals(submatch(4), submatch(5), submatch(6))', "")
     execute "normal o\<home>" . x . "\<esc>"
 endfunction
-
-nnoremap <f12>g :call <SID>ConvertCoords()<cr>
-vnoremap <f12>g <esc>:call <SID>ConvertCoords()<cr>gv
 
 " ------------------------------------------------------------------
 " Convert geocaching URL followed by cache name into a HTML link.

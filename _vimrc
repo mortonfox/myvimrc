@@ -381,9 +381,10 @@ vnoremap <F11>c <esc>:cd <C-R>=expand("%:p:h")<cr><cr>
 inoremap <F11>c <esc>:cd <C-R>=expand("%:p:h")<cr><cr>
 
 " F12 e: edit another file in the same directory as the current file.
-nnoremap <F12>e :e <C-R>=expand("%:p:h")."/"<cr>
-vnoremap <F12>e <esc>:e <C-R>=expand("%:p:h")."/"<cr>
-inoremap <F12>e <esc>:e <C-R>=expand("%:p:h")."/"<cr>
+set wildcharm=<c-z>
+nnoremap <F12>e :e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
+vnoremap <F12>e <esc>:e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
+inoremap <F12>e <esc>:e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
 
 " F4 toggles list mode
 nnoremap <F4> :set invlist list?<cr>
@@ -1371,5 +1372,5 @@ endif
 
 " }}}1
 
-" Last updated: February 25, 2014
+" Last updated: February 26, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

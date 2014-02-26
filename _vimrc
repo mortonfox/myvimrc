@@ -356,6 +356,11 @@ nnoremap <C-F9> :call <SID>Toggle_full_height()<cr>
 vnoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>gv
 inoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>
 
+" F11 b: Invoke CtrlP in buffer mode.
+nnoremap <F11>b :CtrlPBuffer<cr>
+vnoremap <F11>b <esc>:CtrlPBuffer<cr>
+inoremap <F11>b <esc>:CtrlPBuffer<cr>
+
 " F11 c: change current directory to the directory in which the current
 " file resides.
 nnoremap <F11>c :cd <C-R>=expand("%:p:h")<cr><cr>

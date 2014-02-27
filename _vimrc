@@ -81,8 +81,10 @@ set guioptions-=m
 set guioptions-=a
 set guioptions+=a
 set guioptions-=T
-set guioptions-=r
 set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
 " hide current buffer when switching to a new file
 set hidden
 " increase amount of command line history kept

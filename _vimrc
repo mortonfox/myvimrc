@@ -76,11 +76,17 @@ set guicursor+=o:hor50-Cursor-blinkon0
 set guicursor+=i-ci:ver25-Cursor-blinkon0
 set guicursor+=r-cr:hor20-Cursor-blinkon0
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
-" gui options: disable menus, toolbar, scrollbars
+" Disable menus.
 set guioptions-=m
+" Visual mode controls global window system selection.
 set guioptions-=a
 set guioptions+=a
+" Use console dialogs.
+set guioptions-=c
+set guioptions+=c
+" Disable toolbar.
 set guioptions-=T
+" Disable scrollbars.
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
@@ -1380,5 +1386,5 @@ endif
 
 " }}}1
 
-" Last updated: February 26, 2014
+" Last updated: March 3, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

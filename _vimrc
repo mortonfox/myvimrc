@@ -177,6 +177,7 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 
 " original repos on GitHub
+Bundle 'artnez/vim-wipeout'
 Bundle 'atweiden/vim-dragvisuals'
 Bundle 'godlygeek/tabular'
 " Bundle 'jnwhiteh/vim-golang'
@@ -364,11 +365,6 @@ nnoremap <C-F9> :call <SID>Toggle_full_height()<cr>
 vnoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>gv
 inoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>
 
-" F11 b: Invoke CtrlP in buffer mode.
-nnoremap <F11>b :CtrlPBuffer<cr>
-vnoremap <F11>b <esc>:CtrlPBuffer<cr>
-inoremap <F11>b <esc>:CtrlPBuffer<cr>
-
 " F11 c: change current directory to the directory in which the current
 " file resides.
 nnoremap <F11>c :cd <C-R>=expand("%:p:h")<cr><cr>
@@ -383,6 +379,16 @@ endfunction
 nnoremap <F11>h :execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
 vnoremap <F11>h <esc>:execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
 inoremap <F11>h <esc>:execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
+
+" F12 F4 wipes out non-visible buffers.
+nnoremap <F12><F4> :Wipeout<cr>
+vnoremap <F12><F4> <esc>:Wipeout<cr>gv
+inoremap <F12><F4> <C-o>:Wipeout<cr>
+
+" F12 F12: Invoke CtrlP in buffer mode.
+nnoremap <F12><F12> :CtrlPBuffer<cr>
+vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
+inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 
 " F12 a runs tal on the current paragraph or visual range.
 " F12 A does the same thing but waits for user to type in arguments.

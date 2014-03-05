@@ -494,6 +494,10 @@ if has("mac") && !has("gui_running")
     lnoremap <C-@> <Nop>
 endif
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+" See: http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
+cmap w!! w !sudo tee > /dev/null %
+
 " ----- Vim Scripts ----- {{{1
 
 " ===== Toggle syntax ===== {{{2
@@ -1392,5 +1396,5 @@ endif
 
 " }}}1
 
-" Last updated: March 3, 2014
+" Last updated: March 4, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

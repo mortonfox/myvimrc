@@ -498,6 +498,10 @@ endif
 " See: http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
 
+" Replace words with gn command.
+nnoremap ,x *``cgn
+nnoremap ,X #``cgN
+
 " ----- Vim Scripts ----- {{{1
 
 " ===== Toggle syntax ===== {{{2
@@ -1396,5 +1400,5 @@ endif
 
 " }}}1
 
-" Last updated: March 4, 2014
+" Last updated: March 8, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

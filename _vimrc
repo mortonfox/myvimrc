@@ -179,6 +179,7 @@ Bundle 'gmarik/vundle'
 " original repos on GitHub
 Bundle 'artnez/vim-wipeout'
 Bundle 'atweiden/vim-dragvisuals'
+Bundle 'edsono/vim-matchit'
 Bundle 'godlygeek/tabular'
 " Bundle 'jnwhiteh/vim-golang'
 Bundle 'jistr/vim-nerdtree-tabs'
@@ -193,7 +194,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
 Bundle 'tek/vim-quickbuf'
-Bundle 'tsaleh/vim-matchit'
 Bundle 'vimoutliner/vimoutliner'
 
 " vim-scripts repos
@@ -1400,5 +1400,5 @@ endif
 
 " }}}1
 
-" Last updated: March 8, 2014
+" Last updated: March 11, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

@@ -195,6 +195,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
 Bundle 'tek/vim-quickbuf'
 Bundle 'vimoutliner/vimoutliner'
+Bundle 'vim-ruby/vim-ruby'
 
 " vim-scripts repos
 Bundle 'Align'
@@ -937,29 +938,29 @@ function! s:Set_css_mode()
 endfunction
 
 " Fix for runtime/ftplugin/ruby.vim ruby_path
-function! s:Get_ruby_path()
-    if has("ruby") && has("win32")
-	" ruby VIM::command('let ruby_path = "%s"' % ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,}) )
-	ruby VIM::command('let ruby_path = "%s"' % ($: + begin; require %q{rubygems}; Gem::Specification.map(&:lib_dirs_glob).sort.uniq; rescue LoadError; []; end).join(%q{,}) )
-	let ruby_path = '.,,' . substitute(ruby_path, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
-    elseif executable("ruby")
-	" let s:code = "print ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,})"
-	let s:code = "print ($: + begin; require %q{rubygems}; Gem::Specification.map(&:lib_dirs_glob).sort.uniq;  rescue LoadError; []; end).join(%q{,})"
-	if &shellxquote == "'"
-	    let ruby_path = system('ruby -e "' . s:code . '"')
-	else
-	    let ruby_path = system("ruby -e '" . s:code . "'")
-	endif
-	let ruby_path = '.,,' . substitute(ruby_path, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
-    else
-	" If we can't call ruby to get its path, just default to using the
-	" current directory and the directory of the current file.
-	let ruby_path = ".,,"
-    endif
-    return ruby_path
-endfunction
+" function! s:Get_ruby_path()
+"     if has("ruby") && has("win32")
+" 	" ruby VIM::command('let ruby_path = "%s"' % ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,}) )
+" 	ruby VIM::command('let ruby_path = "%s"' % ($: + begin; require %q{rubygems}; Gem::Specification.map(&:lib_dirs_glob).sort.uniq; rescue LoadError; []; end).join(%q{,}) )
+" 	let ruby_path = '.,,' . substitute(ruby_path, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
+"     elseif executable("ruby")
+" 	" let s:code = "print ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,})"
+" 	let s:code = "print ($: + begin; require %q{rubygems}; Gem::Specification.map(&:lib_dirs_glob).sort.uniq;  rescue LoadError; []; end).join(%q{,})"
+" 	if &shellxquote == "'"
+" 	    let ruby_path = system('ruby -e "' . s:code . '"')
+" 	else
+" 	    let ruby_path = system("ruby -e '" . s:code . "'")
+" 	endif
+" 	let ruby_path = '.,,' . substitute(ruby_path, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
+"     else
+" 	" If we can't call ruby to get its path, just default to using the
+" 	" current directory and the directory of the current file.
+" 	let ruby_path = ".,,"
+"     endif
+"     return ruby_path
+" endfunction
 
-let g:ruby_path = s:Get_ruby_path()
+" let g:ruby_path = s:Get_ruby_path()
 
 
 " Function for setting up Vim to edit Ruby source files.
@@ -1400,5 +1401,5 @@ endif
 
 " }}}1
 
-" Last updated: March 11, 2014
+" Last updated: March 21, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

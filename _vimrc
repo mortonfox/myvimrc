@@ -79,10 +79,8 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 " Disable menus.
 set guioptions-=m
 " Visual mode controls global window system selection.
-set guioptions-=a
 set guioptions+=a
 " Use console dialogs.
-set guioptions-=c
 set guioptions+=c
 " Disable toolbar.
 set guioptions-=T
@@ -145,8 +143,12 @@ set statusline+=\ [%M%R%W]\ [%{&fileformat}]%y\ B%n%a
 set statusline+=\ %=L%l/%L\ C%-4(%c%V/%{strlen(getline('.'))}%)\ %3p%%
 " match .err (Watcom C++ errors) files last
 " match graphics files and executables last
-set suffixes-=.err,.gif,.jpg,.png,.exe,.dll
-set suffixes+=.err,.gif,.jpg,.png,.exe,.dll
+set suffixes+=.err
+set suffixes+=.gif
+set suffixes+=.jpg
+set suffixes+=.png
+set suffixes+=.exe
+set suffixes+=.dll
 " mode for fast tty
 set ttyfast
 " allow cursor to wrap across line boundaries for all commands

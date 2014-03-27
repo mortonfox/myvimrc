@@ -229,6 +229,9 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 " Turn off syntastic balloons.
 let g:syntastic_enable_balloons = 0
 
+" Use CtrlPMRU as default.
+let g:ctrlp_cmd = 'CtrlPMRU'
+
 " ----- GUI customization ----- {{{1
 
 " In vim 5.4 with GTK+, the .font resource does not work.

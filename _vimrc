@@ -197,6 +197,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
 Bundle 'tek/vim-quickbuf'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-unimpaired'
 Bundle 'vimoutliner/vimoutliner'
 Bundle 'vim-ruby/vim-ruby'
 
@@ -1407,5 +1408,5 @@ endif
 
 " }}}1
 
-" Last updated: March 27, 2014
+" Last updated: March 28, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

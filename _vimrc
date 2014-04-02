@@ -401,12 +401,16 @@ inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 
 " F12 a runs tal on the current paragraph or visual range.
 " F12 A does the same thing but waits for user to type in arguments.
-nnoremap <F12>a {!}tal<cr>
-inoremap <F12>a <esc>{!}tal<cr>
-vnoremap <F12>a !tal<cr>
-nnoremap <F12>A {!}tal<space>
-inoremap <F12>A <esc>{!}tal<space>
-vnoremap <F12>A !tal<space>
+" nnoremap <F12>a {!}tal<cr>
+" inoremap <F12>a <esc>{!}tal<cr>
+" vnoremap <F12>a !tal<cr>
+" nnoremap <F12>A {!}tal<space>
+" inoremap <F12>A <esc>{!}tal<space>
+" vnoremap <F12>A !tal<space>
+
+" F12 a invokes EasyAlign.
+nmap <F12>a <Plug>(EasyAlign)
+vmap <F12>a <Plug>(EasyAlign)
 
 " F12 b runs boxes on the current paragraph or visual range.
 " F12 B does the same thing but waits for user to type in arguments.

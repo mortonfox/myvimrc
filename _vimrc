@@ -185,6 +185,7 @@ Bundle 'edsono/vim-matchit'
 Bundle 'godlygeek/tabular'
 " Bundle 'jnwhiteh/vim-golang'
 Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'junegunn/vim-easy-align'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kien/rainbow_parentheses.vim'
@@ -1408,5 +1409,5 @@ endif
 
 " }}}1
 
-" Last updated: March 28, 2014
+" Last updated: April 2, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

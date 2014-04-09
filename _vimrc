@@ -1046,9 +1046,12 @@ if has("autocmd")
 	" Clear some artifacts in console Vim.
 	autocmd VimEnter * redraw
 
-	autocmd BufRead,BufNewFile *.thrift set filetype=thrift
+	autocmd BufRead,BufNewFile *.thrift setfiletype thrift
 	autocmd Syntax thrift source ~/.vim/thrift.vim
 
+	" Override file type for .md since I'm not working on Modula-2
+	" files.
+	autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
     augroup END
 endif
 
@@ -1413,5 +1416,5 @@ endif
 
 " }}}1
 
-" Last updated: April 2, 2014
+" Last updated: April 8, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

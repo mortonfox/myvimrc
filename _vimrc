@@ -451,6 +451,12 @@ execute "inoremap <F12>l <esc>" . m . "i"
 execute "vnoremap <F12>l <esc>" . m . "gv"
 unlet m
 
+" F12 m runs Marked on the Markdown file.
+augroup markdown_auto
+    autocmd!
+    autocmd FileType markdown nnoremap <F12>m :silent !open -a Marked %<cr>
+augroup END
+
 " F12 p runs par on the current paragraph or visual range
 " F12 P does the same thing but waits for user to type in arguments.
 nnoremap <F12>p {!}par<cr>
@@ -1416,5 +1422,5 @@ endif
 
 " }}}1
 
-" Last updated: April 8, 2014
+" Last updated: April 9, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

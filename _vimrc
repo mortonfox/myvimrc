@@ -454,7 +454,7 @@ unlet m
 " F12 m runs Marked on the Markdown file.
 augroup markdown_auto
     autocmd!
-    autocmd FileType markdown nnoremap <F12>m :silent !open -a Marked %<cr>
+    autocmd FileType markdown nnoremap <buffer> <F12>m :silent !open -a Marked %<cr>
 augroup END
 
 " F12 p runs par on the current paragraph or visual range

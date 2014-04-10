@@ -196,6 +196,7 @@ Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
+Bundle 'solarnz/thrift.vim'
 Bundle 'tek/vim-quickbuf'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
@@ -1052,8 +1053,8 @@ if has("autocmd")
 	" Clear some artifacts in console Vim.
 	autocmd VimEnter * redraw
 
-	autocmd BufRead,BufNewFile *.thrift setfiletype thrift
-	autocmd Syntax thrift source ~/.vim/thrift.vim
+	" autocmd BufRead,BufNewFile *.thrift setfiletype thrift
+	" autocmd Syntax thrift source ~/.vim/thrift.vim
 
 	" Override file type for .md since I'm not working on Modula-2
 	" files.

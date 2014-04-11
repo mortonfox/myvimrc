@@ -190,7 +190,6 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'mileszs/ack.vim'
-Bundle 'mortonfox/vim-commentary'
 " Bundle 'nicoraffo/conque'
 Bundle 'rking/ag.vim'
 Bundle 'scrooloose/nerdtree'
@@ -198,6 +197,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
 Bundle 'solarnz/thrift.vim'
 Bundle 'tek/vim-quickbuf'
+Bundle 'tpope/vim-commentary'
+let g:commentary_map_backslash=0
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vimoutliner/vimoutliner'
@@ -1423,5 +1424,5 @@ endif
 
 " }}}1
 
-" Last updated: April 9, 2014
+" Last updated: April 11, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

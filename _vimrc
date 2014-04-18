@@ -179,30 +179,99 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 
 " original repos on GitHub
+Bundle 'aaronbieber/vim-vault'
+
 Bundle 'artnez/vim-wipeout'
-Bundle 'atweiden/vim-dragvisuals'
+" F12 F4 wipes out non-visible buffers.
+nnoremap <F12><F4> :Wipeout<cr>
+vnoremap <F12><F4> <esc>:Wipeout<cr>gv
+inoremap <F12><F4> <C-o>:Wipeout<cr>
+
+" Bundle 'atweiden/vim-dragvisuals'
+" Map ctrl-h/j/k/l in visual mode to drag the block.
+" vmap <expr> <C-h> DVB_Drag('left')
+" vmap <expr> <C-l> DVB_Drag('right')
+" vmap <expr> <C-k> DVB_Drag('up')
+" vmap <expr> <C-j> DVB_Drag('down')
+" vmap <expr> ,d DVB_Duplicate() 
+
+Bundle 'dhruvasagar/vim-vinegar'
 Bundle 'edsono/vim-matchit'
 Bundle 'godlygeek/tabular'
 " Bundle 'jnwhiteh/vim-golang'
+
 Bundle 'jistr/vim-nerdtree-tabs'
+" Don't open NERDTree on GUI startup.
+let g:nerdtree_tabs_open_on_gui_startup = 0
+" F7 will toggle NERDTree.
+nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
+vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
+imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
+
 Bundle 'junegunn/vim-easy-align'
+" F12 a invokes EasyAlign.
+nmap <F12>a <Plug>(EasyAlign)
+vmap <F12>a <Plug>(EasyAlign)
+
 Bundle 'kchmck/vim-coffee-script'
+
 Bundle 'kien/ctrlp.vim'
+" Use CtrlPMRU as default.
+let g:ctrlp_cmd = 'CtrlPMRU'
+" F12 F12: Invoke CtrlP in buffer mode.
+nnoremap <F12><F12> :CtrlPBuffer<cr>
+vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
+inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
+
 Bundle 'kien/rainbow_parentheses.vim'
+" F8 toggles rainbow parentheses.
+nnoremap <F8> :RainbowParenthesesToggle<cr>
+vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
+inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
+
 Bundle 'mileszs/ack.vim'
 " Bundle 'nicoraffo/conque'
 Bundle 'rking/ag.vim'
+
 Bundle 'scrooloose/nerdtree'
+" Ctrl-F7 finds the current file in the NERDTree.
+nnoremap <silent> <S-F7> :NERDTreeFind<CR>
+vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
+inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
+
 Bundle 'scrooloose/syntastic'
+" Turn off syntastic balloons.
+let g:syntastic_enable_balloons = 0
+
 Bundle 'sjl/gundo.vim'
+" F9 toggles Gundo.
+nnoremap <F9> :silent GundoToggle<cr>
+vnoremap <F9> <esc>:silent GundoToggle<cr>
+inoremap <F9> <esc>:silent GundoToggle<cr>
+
 Bundle 'solarnz/thrift.vim'
+
 Bundle 'tek/vim-quickbuf'
+" Shift-F4 brings up QuickBuf.
+" let g:qb_hotkey = '<S-F4>'
+let g:quickbuf_map = '<S-F4>'
+
 Bundle 'tpope/vim-commentary'
 let g:commentary_map_backslash=0
+
+Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vimoutliner/vimoutliner'
 Bundle 'vim-ruby/vim-ruby'
+
+Bundle 'zirrostig/vim-schlepp'
+" Map ctrl-h/j/k/l in visual mode to drag the block.
+vmap <C-h> <Plug>SchleppUp
+vmap <C-l> <Plug>SchleppDown
+vmap <C-k> <Plug>SchleppLeft
+vmap <C-j> <Plug>SchleppRight
+vmap ,d <Plug>SchleppDup
 
 " vim-scripts repos
 Bundle 'Align'
@@ -219,22 +288,9 @@ Bundle 'Javascript-Indentation'
 filetype plugin indent on
 " runtime! ftdetect/*.vim
 
-" Shift-F4 brings up QuickBuf.
-" let g:qb_hotkey = '<S-F4>'
-let g:quickbuf_map = '<S-F4>'
-
 " Make vimpager use MacVim.
 " Assuming that .vimpagerrc sources this file.
 let vimpager_use_gvim = 1
-
-" Don't open NERDTree on GUI startup.
-let g:nerdtree_tabs_open_on_gui_startup = 0
-
-" Turn off syntastic balloons.
-let g:syntastic_enable_balloons = 0
-
-" Use CtrlPMRU as default.
-let g:ctrlp_cmd = 'CtrlPMRU'
 
 " ----- GUI customization ----- {{{1
 
@@ -293,13 +349,6 @@ nnoremap <C-l> <C-W>l
 nnoremap <C-k> <C-W>k
 nnoremap <C-j> <C-W>j
 
-" Map ctrl-h/j/k/l in visual mode to drag the block.
-vmap <expr> <C-h> DVB_Drag('left')
-vmap <expr> <C-l> DVB_Drag('right')
-vmap <expr> <C-k> DVB_Drag('up')
-vmap <expr> <C-j> DVB_Drag('down')
-vmap <expr> ,d DVB_Duplicate() 
-
 " map F2 key to save file in insert and command modes
 nnoremap <F2> :write<CR>
 vnoremap <F2> <esc>:write<CR>gv
@@ -332,20 +381,6 @@ nnoremap <S-F6> :bprevious<CR>
 vnoremap <S-F6> <esc>:bprevious<CR>
 inoremap <S-F6> <C-O>:bprevious<CR>
 
-" F7 will toggle NERDTree.
-nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
-vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
-imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
-" Ctrl-F7 finds the current file in the NERDTree.
-nnoremap <silent> <S-F7> :NERDTreeFind<CR>
-vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
-inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
-
-" F8 toggles rainbow parentheses.
-nnoremap <F8> :RainbowParenthesesToggle<cr>
-vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
-inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
-
 " Ctrl-F8 toggles syntax coloring on and off
 nnoremap <C-F8> :call <SID>Toggle_syntax()<cr>
 vnoremap <C-F8> <esc>:call <SID>Toggle_syntax()<cr>gv
@@ -355,11 +390,6 @@ inoremap <C-F8> <esc>:call <SID>Toggle_syntax()<cr>
 nnoremap <S-F8> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 vnoremap <S-F8> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>gv
 inoremap <S-F8> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
-
-" F9 toggles Gundo.
-nnoremap <F9> :silent GundoToggle<cr>
-vnoremap <F9> <esc>:silent GundoToggle<cr>
-inoremap <F9> <esc>:silent GundoToggle<cr>
 
 " F9 will toggle taglist.
 " nnoremap <silent> <F9> :TlistToggle<cr>
@@ -391,16 +421,6 @@ nnoremap <F11>h :execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
 vnoremap <F11>h <esc>:execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
 inoremap <F11>h <esc>:execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
 
-" F12 F4 wipes out non-visible buffers.
-nnoremap <F12><F4> :Wipeout<cr>
-vnoremap <F12><F4> <esc>:Wipeout<cr>gv
-inoremap <F12><F4> <C-o>:Wipeout<cr>
-
-" F12 F12: Invoke CtrlP in buffer mode.
-nnoremap <F12><F12> :CtrlPBuffer<cr>
-vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
-inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
-
 " F12 a runs tal on the current paragraph or visual range.
 " F12 A does the same thing but waits for user to type in arguments.
 " nnoremap <F12>a {!}tal<cr>
@@ -409,10 +429,6 @@ inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 " nnoremap <F12>A {!}tal<space>
 " inoremap <F12>A <esc>{!}tal<space>
 " vnoremap <F12>A !tal<space>
-
-" F12 a invokes EasyAlign.
-nmap <F12>a <Plug>(EasyAlign)
-vmap <F12>a <Plug>(EasyAlign)
 
 " F12 b runs boxes on the current paragraph or visual range.
 " F12 B does the same thing but waits for user to type in arguments.
@@ -851,9 +867,12 @@ function! <SID>Set_default_mode()
     " set default textwidth and shiftwidth 
     setlocal textwidth=75 shiftwidth=4
 
-    RainbowParenthesesLoadBraces
-    RainbowParenthesesLoadRound
-    RainbowParenthesesLoadSquare
+    " Rainbow Parentheses interferes with vault password hiding.
+    if &filetype != 'vault'
+	RainbowParenthesesLoadBraces
+	RainbowParenthesesLoadRound
+	RainbowParenthesesLoadSquare
+    endif
 endfunction
 
 " Function for setting up vim for editing C source files.
@@ -981,7 +1000,6 @@ endfunction
 " endfunction
 
 " let g:ruby_path = s:Get_ruby_path()
-
 
 " Function for setting up Vim to edit Ruby source files.
 function! s:Set_ruby_mode()
@@ -1444,5 +1462,5 @@ endif
 
 " }}}1
 
-" Last updated: April 12, 2014
+" Last updated: April 18, 2014
 " vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

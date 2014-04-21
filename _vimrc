@@ -1413,16 +1413,23 @@ nnoremap ,u ciw<user name="<c-r>"" site="livejournal.com"><esc>
 vnoremap ,u c<user name="<c-r>"" site="livejournal.com"><esc>
 
 " ===== Toggle between name and name=aname in nuvigc shell script. ===== {{{2
-function! s:Equal_toggle_2(str) abort
+function! s:equal_toggle_2(str) abort
     return join(map(split(a:str), stridx(a:str, '=') < 0 ? 'v:val."=a".v:val' : 'split(v:val, "=")[0]'))
 endfunction
 
-function! s:Equal_toggle() abort
-    call setline('.', substitute(getline('.'), '(\(.*\))', '\="(".s:Equal_toggle_2(submatch(1)).")"', ''))
+function! s:equal_toggle(lineno) abort
+    call setline(a:lineno, substitute(getline(a:lineno), '(\(.*\))', '\="(".s:equal_toggle_2(submatch(1)).")"', ''))
 endfunction
 
-nnoremap <F12>= :call <SID>Equal_toggle()<cr>
-vnoremap <F12>= :call <SID>Equal_toggle()<cr>
+function! s:do_equal_toggle(type) abort
+    for lnum in range(line("'["), line("']"))
+        call s:equal_toggle(lnum)
+    endfor
+endfunction
+
+nnoremap <F12>== :call <SID>equal_toggle('.')<cr>
+vnoremap <F12>= :call <SID>equal_toggle('.')<cr>
+nnoremap <F12>= :<C-U>set operatorfunc=<SID>do_equal_toggle<cr>g@
 
 " ===== Use the Silver Searcher for searching, if available ===== {{{2
 " Borrowed from: http://robots.thoughtbot.com/faster-grepping-in-vim/

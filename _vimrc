@@ -11,10 +11,10 @@ silent! set noautochdir
 
 if has("autocmd")
     augroup cmdt_auto
-	" Clear all auto-commands.
-	autocmd!
-	" Use clipboard register, if available.
-	autocmd VimEnter * call <SID>set_clipboard()
+        " Clear all auto-commands.
+        autocmd!
+        " Use clipboard register, if available.
+        autocmd VimEnter * call <SID>set_clipboard()
     augroup END
 endif
 
@@ -33,7 +33,7 @@ set nobackup
 " change and put operations.
 function! s:got_clipboard()
     if !has('clipboard')
-	return 0
+        return 0
     endif
     let save_clip = @*
     let @* = 'xx'
@@ -46,7 +46,7 @@ function! <SID>set_clipboard()
     " echom "Got clipboard = ".s:got_clipboard()
     set clipboard-=unnamed
     if s:got_clipboard()
-	set clipboard+=unnamed
+        set clipboard+=unnamed
     endif
 endfunction
 
@@ -496,13 +496,13 @@ inoremap <F12>s <C-R>=<SID>Date_string()<CR>
 " parts of the mapping. (from the vim tips file)
 
 let m =     ":noremap <f12>u :set ai<CR>"    " need 'autoindent' set
-let m = m . "{O<Esc>"		      " add empty line above item
-let m = m . "}{)^W"		      " move to text after bullet
+let m = m . "{O<Esc>"                 " add empty line above item
+let m = m . "}{)^W"                   " move to text after bullet
 let m = m . "i     <CR>     <Esc>"    " add space for indent
-let m = m . "gq}"		      " format text after the bullet
-let m = m . "{dd"		      " remove the empty line
-let m = m . "5lDJ"		      " put text after bullet
-execute m			      |" define the mapping
+let m = m . "gq}"                     " format text after the bullet
+let m = m . "{dd"                     " remove the empty line
+let m = m . "5lDJ"                    " put text after bullet
+execute m                             |" define the mapping
 unlet m
 
 " F12 ve edits .vimrc file
@@ -550,14 +550,14 @@ function! s:Highlight_Init()
     highlight StatusLineNC gui=NONE guifg=yellow guibg=#505050
     highlight User1 term=inverse cterm=inverse 
     highlight User1 gui=NONE guifg=green guibg=#505050
-	
+        
     " Use some special X11 colors.
     if has("x11") && has("gui_running")
-	let backgr="MidnightBlue"
-	let s:commentfg="gold"
+        let backgr="MidnightBlue"
+        let s:commentfg="gold"
     else
-	let backgr="black"
-	let s:commentfg="orange"
+        let backgr="black"
+        let s:commentfg="orange"
     endif
 
     " color customizations
@@ -576,11 +576,11 @@ function! s:Highlight_Init()
     execute "highlight ModeMsg guibg=" . backgr "ctermbg=black"
 
     if version >= 700
-	highlight MatchParen guifg=Yellow ctermfg=Yellow guibg=Blue ctermbg=Blue
-	highlight PMenu guifg=Gray guibg=#513692
-	highlight PMenuSel guifg=Gray guibg=#824C21
-	highlight PMenuSbar guifg=Gray guibg=#824C21
-	highlight PMenuThumb guifg=Gray guibg=#824C21
+        highlight MatchParen guifg=Yellow ctermfg=Yellow guibg=Blue ctermbg=Blue
+        highlight PMenu guifg=Gray guibg=#513692
+        highlight PMenuSel guifg=Gray guibg=#824C21
+        highlight PMenuSbar guifg=Gray guibg=#824C21
+        highlight PMenuThumb guifg=Gray guibg=#824C21
     endif
 
     " Customize folding colors.
@@ -609,7 +609,7 @@ function! s:Turn_syntax_on()
     highlight Type guifg=Cyan ctermfg=Cyan gui=NONE
     highlight Identifier guifg=LightCyan ctermfg=LightCyan
     if has('mac')
-	highlight Identifier guifg=Cyan ctermfg=LightCyan
+        highlight Identifier guifg=Cyan ctermfg=LightCyan
     endif
 
     " Set the html_my_rendering variable so that html.vim won't clobber
@@ -648,10 +648,10 @@ endfunction
 
 function! <SID>Toggle_syntax()
     if has("syntax_items")
-	syntax off
+        syntax off
     else
-	call s:Highlight_Init()
-	call s:Turn_syntax_on()
+        call s:Highlight_Init()
+        call s:Turn_syntax_on()
     endif
 endfunction
 
@@ -665,11 +665,11 @@ call s:Turn_syntax_on()
 " ===== Maximize/unmaximize vertically. ===== {{{2
 function! <SID>Toggle_full_height()
     if exists("s:orig_height")
-	execute 'set lines=' . s:orig_height
-	unlet s:orig_height
+        execute 'set lines=' . s:orig_height
+        unlet s:orig_height
     else
-	let s:orig_height=&lines
-	set lines=999
+        let s:orig_height=&lines
+        set lines=999
     endif
 endfunction
 
@@ -680,10 +680,10 @@ command! FullHeight :call <SID>Toggle_full_height()
 function! <SID>Del_all_buf()
     let bufidx = 1
     while bufidx <= bufnr("$")
-	if bufloaded(bufidx)
-	    execute 'bd' bufidx
-	endif
-	let bufidx = bufidx + 1
+        if bufloaded(bufidx)
+            execute 'bd' bufidx
+        endif
+        let bufidx = bufidx + 1
     endw
 endfunction
 
@@ -692,9 +692,9 @@ endfunction
 " programs)
 " function! <SID>Commentify_c()
 "     if getline(".") =~ '^\s*/\* ' && getline(".") =~ ' \*/\s*$'
-" 	normal ^3x$xxx
+"       normal ^3x$xxx
 "     else
-" 	execute "normal ^i/* \<esc>A */\<esc>"
+"       execute "normal ^i/* \<esc>A */\<esc>"
 "     endif
 " endfunction
 
@@ -702,9 +702,9 @@ endfunction
 " programs)
 " function! <SID>Commentify_java()
 "     if getline(".") =~ '^\s*// ' 
-" 	normal ^3x
+"       normal ^3x
 "     else
-" 	execute "normal ^i// \<esc>"
+"       execute "normal ^i// \<esc>"
 "     endif
 " endfunction
 
@@ -712,9 +712,9 @@ endfunction
 " scripts)
 " function! <SID>Commentify_perl()
 "     if getline(".") =~ '^# '
-" 	call setline('.', strpart(getline('.'), 2))
+"       call setline('.', strpart(getline('.'), 2))
 "     else
-" 	call setline('.', '# '.getline('.'))
+"       call setline('.', '# '.getline('.'))
 "     endif
 " endfunction
 
@@ -722,27 +722,27 @@ endfunction
 " scripts)
 " function! <SID>Commentify_vim()
 "     if getline(".") =~ '^" '
-" 	call setline('.', strpart(getline('.'), 2))
+"       call setline('.', strpart(getline('.'), 2))
 "     else
-" 	call setline('.', '" '.getline('.'))
+"       call setline('.', '" '.getline('.'))
 "     endif
 " endfunction
 
 " A function that commentifies or uncommentifies a line. (for TeX)
 " function! <SID>Commentify_tex()
 "     if getline(".") =~ '^% '
-" 	normal 0xx
+"       normal 0xx
 "     else
-" 	execute "normal 0i% \<esc>"
+"       execute "normal 0i% \<esc>"
 "     endif
 " endfunction
 
 " A function that commentifies or uncommentifies a line. (for Lua)
 " function! <SID>Commentify_lua()
 "     if getline(".") =~ '^-- '
-" 	normal 0xxx
+"       normal 0xxx
 "     else
-" 	execute "normal 0i-- \<esc>"
+"       execute "normal 0i-- \<esc>"
 "     endif
 " endfunction
 
@@ -751,19 +751,19 @@ endfunction
 " function! <SID>Commentify()
 "     " The current_syntax variable may not exist in a new buffer.
 "     if (exists("b:current_syntax"))
-" 	if b:current_syntax == "c" || b:current_syntax == "cpp"
-" 	    call <SID>Commentify_c()
-" 	elseif b:current_syntax == "java" || b:current_syntax == "cs"
-" 	    call <SID>Commentify_java()
-" 	elseif b:current_syntax == "vim"
-" 	    call <SID>Commentify_vim()
-" 	elseif b:current_syntax == "tex"
-" 	    call <SID>Commentify_tex()
-" 	elseif b:current_syntax == "lua"
-" 	    call <SID>Commentify_lua()
-" 	else
-" 	    call <SID>Commentify_perl()
-" 	endif
+"       if b:current_syntax == "c" || b:current_syntax == "cpp"
+"           call <SID>Commentify_c()
+"       elseif b:current_syntax == "java" || b:current_syntax == "cs"
+"           call <SID>Commentify_java()
+"       elseif b:current_syntax == "vim"
+"           call <SID>Commentify_vim()
+"       elseif b:current_syntax == "tex"
+"           call <SID>Commentify_tex()
+"       elseif b:current_syntax == "lua"
+"           call <SID>Commentify_lua()
+"       else
+"           call <SID>Commentify_perl()
+"       endif
 "     endif
 " endfunction
 
@@ -786,43 +786,43 @@ if (version < 504 || has("gui_athena")) && has("autocmd")
     " Go to the buffer if it is already loaded. Otherwise load the file.
 
     function! Goto_buf(bufnum, bufname)
-	if bufexists(a:bufnum)
-	    execute 'buffer' a:bufnum
-	else
-	    execute 'edit' a:bufname
-	endif
+        if bufexists(a:bufnum)
+            execute 'buffer' a:bufnum
+        else
+            execute 'edit' a:bufname
+        endif
     endfunction
     
     " This user-defined function adds the current buffer to the Buffers
     " menu. The menu action either switches to the buffer if the buffer
     " still exists, or loads the file if the buffer has been deleted.
     function! Menu_add_buf()
-	let bufname = bufname("%")
-	let bufnum = bufnr("%")
-	if bufname != ""
-	    let bufname = fnamemodify(bufname, ":p")
-	    " The dot needs to be escaped too because it is a menu
-	    " separator.
-	    let bufname = escape(bufname, ' \.')
-	    let bufcmd=':call Goto_buf('.bufnum.",'".bufname."')<cr>"
-	    execute '80amenu &Buffers.'.bufname bufcmd
-	endif
+        let bufname = bufname("%")
+        let bufnum = bufnr("%")
+        if bufname != ""
+            let bufname = fnamemodify(bufname, ":p")
+            " The dot needs to be escaped too because it is a menu
+            " separator.
+            let bufname = escape(bufname, ' \.')
+            let bufcmd=':call Goto_buf('.bufnum.",'".bufname."')<cr>"
+            execute '80amenu &Buffers.'.bufname bufcmd
+        endif
     endfunction
 
     " Add a List All menu item to the Buffers menu.
     80amenu &Buffers.List\ All<tab>:ls :ls<cr>
 
     augroup vimrc_buffers
-	" Clear auto-commands.
-	autocmd!
+        " Clear auto-commands.
+        autocmd!
 
-	" This will maintain a list of Buffers in a pull-down menu. Because
-	" of vim problems, we do not remove deleted buffers from the menu.
-	autocmd BufNewFile * call Menu_add_buf()
-	autocmd BufReadPost * call Menu_add_buf()
-	autocmd BufWritePost * call Menu_add_buf()
-	autocmd BufEnter * call Menu_add_buf()
-	autocmd WinEnter * call Menu_add_buf()
+        " This will maintain a list of Buffers in a pull-down menu. Because
+        " of vim problems, we do not remove deleted buffers from the menu.
+        autocmd BufNewFile * call Menu_add_buf()
+        autocmd BufReadPost * call Menu_add_buf()
+        autocmd BufWritePost * call Menu_add_buf()
+        autocmd BufEnter * call Menu_add_buf()
+        autocmd WinEnter * call Menu_add_buf()
     augroup END
 endif " version < 504 || has("gui_athena")
 
@@ -840,9 +840,9 @@ endfunction
 function! <SID>Run_ctags()
     let ctagsrun = "ctags --if0 --totals --exclude=...* -n *.c *.cpp *.cc *.h"
     if has("win32")
-	let ctagscmd = "!".ctagsrun
+        let ctagscmd = "!".ctagsrun
     else
-	let ctagscmd = "!cd ".expand("%:p:h").";".ctagsrun
+        let ctagscmd = "!cd ".expand("%:p:h").";".ctagsrun
     endif
     execute ctagscmd
 endfunction
@@ -869,9 +869,9 @@ function! <SID>Set_default_mode()
 
     " Rainbow Parentheses interferes with vault password hiding.
     if &filetype != 'vault'
-	RainbowParenthesesLoadBraces
-	RainbowParenthesesLoadRound
-	RainbowParenthesesLoadSquare
+        RainbowParenthesesLoadBraces
+        RainbowParenthesesLoadRound
+        RainbowParenthesesLoadSquare
     endif
 endfunction
 
@@ -979,22 +979,22 @@ endfunction
 " Fix for runtime/ftplugin/ruby.vim ruby_path
 " function! s:Get_ruby_path()
 "     if has("ruby") && has("win32")
-" 	" ruby VIM::command('let ruby_path = "%s"' % ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,}) )
-" 	ruby VIM::command('let ruby_path = "%s"' % ($: + begin; require %q{rubygems}; Gem::Specification.map(&:lib_dirs_glob).sort.uniq; rescue LoadError; []; end).join(%q{,}) )
-" 	let ruby_path = '.,,' . substitute(ruby_path, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
+"       " ruby VIM::command('let ruby_path = "%s"' % ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,}) )
+"       ruby VIM::command('let ruby_path = "%s"' % ($: + begin; require %q{rubygems}; Gem::Specification.map(&:lib_dirs_glob).sort.uniq; rescue LoadError; []; end).join(%q{,}) )
+"       let ruby_path = '.,,' . substitute(ruby_path, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
 "     elseif executable("ruby")
-" 	" let s:code = "print ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,})"
-" 	let s:code = "print ($: + begin; require %q{rubygems}; Gem::Specification.map(&:lib_dirs_glob).sort.uniq;  rescue LoadError; []; end).join(%q{,})"
-" 	if &shellxquote == "'"
-" 	    let ruby_path = system('ruby -e "' . s:code . '"')
-" 	else
-" 	    let ruby_path = system("ruby -e '" . s:code . "'")
-" 	endif
-" 	let ruby_path = '.,,' . substitute(ruby_path, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
+"       " let s:code = "print ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,})"
+"       let s:code = "print ($: + begin; require %q{rubygems}; Gem::Specification.map(&:lib_dirs_glob).sort.uniq;  rescue LoadError; []; end).join(%q{,})"
+"       if &shellxquote == "'"
+"           let ruby_path = system('ruby -e "' . s:code . '"')
+"       else
+"           let ruby_path = system("ruby -e '" . s:code . "'")
+"       endif
+"       let ruby_path = '.,,' . substitute(ruby_path, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
 "     else
-" 	" If we can't call ruby to get its path, just default to using the
-" 	" current directory and the directory of the current file.
-" 	let ruby_path = ".,,"
+"       " If we can't call ruby to get its path, just default to using the
+"       " current directory and the directory of the current file.
+"       let ruby_path = ".,,"
 "     endif
 "     return ruby_path
 " endfunction
@@ -1052,32 +1052,32 @@ endfunction
 
 if has("autocmd")
     augroup vimrc_auto
-	" Clear all auto-commands.
-	autocmd!
+        " Clear all auto-commands.
+        autocmd!
 
-	" autocmd BufNewFile,BufReadPre * call <SID>Set_default_mode()
-	autocmd FileType * call <SID>Set_default_mode()
-	autocmd FileType c,cpp call <SID>Set_c_mode()
+        " autocmd BufNewFile,BufReadPre * call <SID>Set_default_mode()
+        autocmd FileType * call <SID>Set_default_mode()
+        autocmd FileType c,cpp call <SID>Set_c_mode()
 
-	" Use Java mode for C# source files too.
-	autocmd FileType java,cs call <SID>Set_java_mode()
+        " Use Java mode for C# source files too.
+        autocmd FileType java,cs call <SID>Set_java_mode()
 
-	autocmd FileType perl call <SID>Set_perl_mode()
-	autocmd FileType php call <SID>Set_php_mode()
-	autocmd FileType dosbatch,sh call <SID>Set_batch_mode()
-	autocmd FileType ruby,eruby call <SID>Set_ruby_mode()
-	autocmd FileType python call <SID>Set_python_mode()
-	autocmd FileType css,scss call <SID>Set_css_mode()
+        autocmd FileType perl call <SID>Set_perl_mode()
+        autocmd FileType php call <SID>Set_php_mode()
+        autocmd FileType dosbatch,sh call <SID>Set_batch_mode()
+        autocmd FileType ruby,eruby call <SID>Set_ruby_mode()
+        autocmd FileType python call <SID>Set_python_mode()
+        autocmd FileType css,scss call <SID>Set_css_mode()
 
-	" Clear some artifacts in console Vim.
-	autocmd VimEnter * redraw
+        " Clear some artifacts in console Vim.
+        autocmd VimEnter * redraw
 
-	" autocmd BufRead,BufNewFile *.thrift setfiletype thrift
-	" autocmd Syntax thrift source ~/.vim/thrift.vim
+        " autocmd BufRead,BufNewFile *.thrift setfiletype thrift
+        " autocmd Syntax thrift source ~/.vim/thrift.vim
 
-	" Override file type for .md since I'm not working on Modula-2
-	" files.
-	autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
+        " Override file type for .md since I'm not working on Modula-2
+        " files.
+        autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
     augroup END
 endif
 
@@ -1125,9 +1125,9 @@ endfunction
 
 function! <SID>Toggle_no_lbr()
     if &linebreak
-	call <SID>Reset_no_lbr()
+        call <SID>Reset_no_lbr()
     else
-	call <SID>Set_no_lbr()
+        call <SID>Set_no_lbr()
     endif
     set linebreak?
 endfunction
@@ -1148,15 +1148,15 @@ function! <SID>CmdlineComplete()
     let cmdline = getcmdline()
     let cmdpos = getcmdpos()
     if cmdline == s:lastcmdline && cmdpos == s:lastcmdpos
-	" User invoked completion again without moving cursor or editing
-	let cmdline = s:origcmdline
-	let cmdpos = s:origcmdpos
-	let s:completeDepth = s:completeDepth . "\<C-N>"
+        " User invoked completion again without moving cursor or editing
+        let cmdline = s:origcmdline
+        let cmdpos = s:origcmdpos
+        let s:completeDepth = s:completeDepth . "\<C-N>"
     else
-	" Starting new completion
-	let s:origcmdline = cmdline
-	let s:origcmdpos = cmdpos
-	let s:completeDepth = "\<C-N>"
+        " Starting new completion
+        let s:origcmdline = cmdline
+        let s:origcmdpos = cmdpos
+        let s:completeDepth = "\<C-N>"
     endif
 
     " Set paste option to disable indent
@@ -1175,7 +1175,7 @@ function! <SID>CmdlineComplete()
     " needs to be done because Vim behaves in a weird way if too many
     " Ctrl-Ns are used in a macro.
     if s:lastcmdline == s:origcmdline
-	let s:completeDepth = ""
+        let s:completeDepth = ""
     endif
 
     " Undo changes and restore cursor position
@@ -1217,7 +1217,7 @@ endfunction
 " ------------------------------------------------------------------
 " Convert geocaching URL followed by cache name into a HTML link.
 "     function! Convert_gc_url()
-" 	s+^\([^ ]*?\)[^ ]*\(ID=\d\+\)[^ ]* \+\(.*\)$+<p><a href="\1pf=y\&\2\&log=y\&decrypt=y">\3</a>+e
+"       s+^\([^ ]*?\)[^ ]*\(ID=\d\+\)[^ ]* \+\(.*\)$+<p><a href="\1pf=y\&\2\&log=y\&decrypt=y">\3</a>+e
 "     endfunction
 
 "     map ,c :call Convert_gc_url()<cr>
@@ -1232,33 +1232,33 @@ function! s:GCtoID(waypt)
     let WPTCHARS = "0123456789ABCDEFGHJKMNPQRTVWXYZ"
 
     if match(waypt, '^GC[0-9A-F]\{1,4}$') >= 0
-	return "0x" . strpart(waypt, 2) + 0
+        return "0x" . strpart(waypt, 2) + 0
     " elseif match(waypt, '^GC[GHJ-KM-NP-RTV-Z][0-9A-HJ-KM-NP-RTV-Z]\{3}$') >= 0
     elseif match(waypt, '^GC[' . strpart(WPTCHARS, 16) . '][' . WPTCHARS . ']\{3}$') >= 0
-	let accum = 0
-	let i = 2
-	while i < 6
-	    " echo waypt[i]
-	    let accum = accum * 31 + match(WPTCHARS, waypt[i])
-	    if i == 2
-		let accum = accum - 16
-	    endif
-	    let i = i + 1
-	endwhile
-	return accum + 65536
+        let accum = 0
+        let i = 2
+        while i < 6
+            " echo waypt[i]
+            let accum = accum * 31 + match(WPTCHARS, waypt[i])
+            if i == 2
+                let accum = accum - 16
+            endif
+            let i = i + 1
+        endwhile
+        return accum + 65536
     elseif match(waypt, '^GC[' . WPTCHARS . ']\{5}$') >= 0
-	let accum = 0
-	let i = 2
-	while i < 7
-	    let accum = accum * 31 + match(WPTCHARS, waypt[i])
-	    if i == 2
-		let accum = accum - 1
-	    endif
-	    let i = i + 1
-	endwhile
-	return accum + 512401
+        let accum = 0
+        let i = 2
+        while i < 7
+            let accum = accum * 31 + match(WPTCHARS, waypt[i])
+            if i == 2
+                let accum = accum - 1
+            endif
+            let i = i + 1
+        endwhile
+        return accum + 512401
     else
-	return -1
+        return -1
     endif
 endfunction
 
@@ -1279,20 +1279,20 @@ function! <SID>ConvertGC()
 
     let res = matchlist(line, fmt1)
     if res != []
-	let waypt = res[2]
-	let title = res[1]
+        let waypt = res[2]
+        let title = res[1]
     else
-	let res = matchlist(line, fmt2)
-	if res != []
-	    let waypt = res[2]
-	    let title = res[1]
-	else
-	    let res = matchlist(line, fmt3)
-	    if res != []
-		let waypt = res[1]
-		let title = res[2]
-	    endif
-	endif
+        let res = matchlist(line, fmt2)
+        if res != []
+            let waypt = res[2]
+            let title = res[1]
+        else
+            let res = matchlist(line, fmt3)
+            if res != []
+                let waypt = res[1]
+                let title = res[2]
+            endif
+        endif
     endif
 
     let title = substitute(title, '&', '\&amp;', 'g')
@@ -1303,7 +1303,7 @@ function! <SID>ConvertGC()
 
     let id = s:GCtoID(waypt)
     if id >= 0
-	call setline(".", "<p><a href=\"http://www.geocaching.com/seek/cache_details.aspx?pf=y&ID=" . id . "&log=y&decrypt=y\">" . title . "</a>")
+        call setline(".", "<p><a href=\"http://www.geocaching.com/seek/cache_details.aspx?pf=y&ID=" . id . "&log=y&decrypt=y\">" . title . "</a>")
     endif
 endfunction
 
@@ -1343,30 +1343,30 @@ function! s:Convert_mycaches_3() range
 
     let trcount = 1
     while 1
-	let logitem = s:xml_get_nth(str, 'tr', trcount)
-	if logitem == ""
-	    break
-	endif
+        let logitem = s:xml_get_nth(str, 'tr', trcount)
+        if logitem == ""
+            break
+        endif
 
-	let linkitem = s:xml_get_nth(logitem, 'td', 3)
+        let linkitem = s:xml_get_nth(logitem, 'td', 3)
 
-	" Get cache link.
-	let linkstr = matchstr(linkitem, m1, 0)
-	if linkstr != ""
+        " Get cache link.
+        let linkstr = matchstr(linkitem, m1, 0)
+        if linkstr != ""
 
-	    " Get cache name.
-	    let matchres = matchlist(linkitem, m2)
-	    let name = s:trim_both(matchres[1])
+            " Get cache name.
+            let matchres = matchlist(linkitem, m2)
+            let name = s:trim_both(matchres[1])
 
-	    let state = s:trim_both(s:xml_get_nth(logitem, 'td', 4))
-	    
-	    let link = '<a href="'.linkstr.'">'.name.' ('.state.")</a>\r"
+            let state = s:trim_both(s:xml_get_nth(logitem, 'td', 4))
+            
+            let link = '<a href="'.linkstr.'">'.name.' ('.state.")</a>\r"
 
-	    " Prepend to reverse the order of the log items.
-	    let outstr = link . outstr
-	endif
+            " Prepend to reverse the order of the log items.
+            let outstr = link . outstr
+        endif
 
-	let trcount += 1
+        let trcount += 1
     endwhile
 
     " Pick the correct change command so that autoindent is not in effect.
@@ -1416,9 +1416,9 @@ vnoremap ,u c<user name="<c-r>"" site="livejournal.com"><esc>
 function! s:Equal_toggle_2(str) abort
     let strs = split(a:str)
     if stridx(a:str, '=') < 0
-	let strs = map(strs, 'v:val."=a".v:val')
+        let strs = map(strs, 'v:val."=a".v:val')
     else
-	let strs = map(strs, 'split(v:val, "=")[0]')
+        let strs = map(strs, 'split(v:val, "=")[0]')
     endif
     return join(strs)
 endfunction
@@ -1462,5 +1462,5 @@ endif
 
 " }}}1
 
-" Last updated: April 18, 2014
-" vim:formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:
+" Last updated: April 21, 2014
+" vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

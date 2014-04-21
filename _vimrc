@@ -1429,7 +1429,7 @@ endfunction
 
 nnoremap <F12>== :call <SID>equal_toggle('.')<cr>
 vnoremap <F12>= :call <SID>equal_toggle('.')<cr>
-nnoremap <F12>= :<C-U>set operatorfunc=<SID>do_equal_toggle<cr>g@
+nnoremap <F12>= :set operatorfunc=<SID>do_equal_toggle<cr>g@
 
 " ===== Use the Silver Searcher for searching, if available ===== {{{2
 " Borrowed from: http://robots.thoughtbot.com/faster-grepping-in-vim/

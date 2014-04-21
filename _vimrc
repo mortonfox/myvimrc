@@ -1414,19 +1414,11 @@ vnoremap ,u c<user name="<c-r>"" site="livejournal.com"><esc>
 
 " ===== Toggle between name and name=aname in nuvigc shell script. ===== {{{2
 function! s:Equal_toggle_2(str) abort
-    let strs = split(a:str)
-    if stridx(a:str, '=') < 0
-        let strs = map(strs, 'v:val."=a".v:val')
-    else
-        let strs = map(strs, 'split(v:val, "=")[0]')
-    endif
-    return join(strs)
+    return join(map(split(a:str), stridx(a:str, '=') < 0 ? 'v:val."=a".v:val' : 'split(v:val, "=")[0]'))
 endfunction
 
 function! s:Equal_toggle() abort
-    let line = getline('.')
-    let line = substitute(line, '(\(.*\))', '\="(".s:Equal_toggle_2(submatch(1)).")"', '')
-    call setline('.', line)
+    call setline('.', substitute(getline('.'), '(\(.*\))', '\="(".s:Equal_toggle_2(submatch(1)).")"', ''))
 endfunction
 
 nnoremap <F12>= :call <SID>Equal_toggle()<cr>

@@ -256,6 +256,8 @@ Bundle 'tek/vim-quickbuf'
 " let g:qb_hotkey = '<S-F4>'
 let g:quickbuf_map = '<S-F4>'
 
+Bundle 'tommcdo/vim-exchange'
+
 Bundle 'tpope/vim-commentary'
 let g:commentary_map_backslash=0
 
@@ -1461,5 +1463,5 @@ endif
 
 " }}}1
 
-" Last updated: April 21, 2014
+" Last updated: April 24, 2014
 " vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

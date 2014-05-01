@@ -169,25 +169,25 @@ cmapclear
 
 " ===== Load Vundle ===== {{{2
 filetype off
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-" My Bundles here:
+" My Plugins here:
 
 " original repos on GitHub
-Bundle 'aaronbieber/vim-vault'
+Plugin 'aaronbieber/vim-vault'
 
-Bundle 'artnez/vim-wipeout'
+Plugin 'artnez/vim-wipeout'
 " F12 F4 wipes out non-visible buffers.
 nnoremap <F12><F4> :Wipeout<cr>
 vnoremap <F12><F4> <esc>:Wipeout<cr>gv
 inoremap <F12><F4> <C-o>:Wipeout<cr>
 
-" Bundle 'atweiden/vim-dragvisuals'
+" Plugin 'atweiden/vim-dragvisuals'
 " Map ctrl-h/j/k/l in visual mode to drag the block.
 " vmap <expr> <C-h> DVB_Drag('left')
 " vmap <expr> <C-l> DVB_Drag('right')
@@ -195,12 +195,12 @@ inoremap <F12><F4> <C-o>:Wipeout<cr>
 " vmap <expr> <C-j> DVB_Drag('down')
 " vmap <expr> ,d DVB_Duplicate() 
 
-Bundle 'dhruvasagar/vim-vinegar'
-Bundle 'edsono/vim-matchit'
-Bundle 'godlygeek/tabular'
-" Bundle 'jnwhiteh/vim-golang'
+Plugin 'dhruvasagar/vim-vinegar'
+Plugin 'edsono/vim-matchit'
+Plugin 'godlygeek/tabular'
+" Plugin 'jnwhiteh/vim-golang'
 
-Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'jistr/vim-nerdtree-tabs'
 " Don't open NERDTree on GUI startup.
 let g:nerdtree_tabs_open_on_gui_startup = 0
 " F7 will toggle NERDTree.
@@ -208,14 +208,14 @@ nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
 vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
 imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
 
-Bundle 'junegunn/vim-easy-align'
+Plugin 'junegunn/vim-easy-align'
 " F12 a invokes EasyAlign.
 nmap <F12>a <Plug>(EasyAlign)
 vmap <F12>a <Plug>(EasyAlign)
 
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'kchmck/vim-coffee-script'
 
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 " Use CtrlPMRU as default.
 let g:ctrlp_cmd = 'CtrlPMRU'
 " F12 F12: Invoke CtrlP in buffer mode.
@@ -223,51 +223,51 @@ nnoremap <F12><F12> :CtrlPBuffer<cr>
 vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 
-Bundle 'kien/rainbow_parentheses.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 " F8 toggles rainbow parentheses.
 nnoremap <F8> :RainbowParenthesesToggle<cr>
 vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
 inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
 
-Bundle 'mileszs/ack.vim'
-" Bundle 'nicoraffo/conque'
-Bundle 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
+" Plugin 'nicoraffo/conque'
+Plugin 'rking/ag.vim'
 
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 " Ctrl-F7 finds the current file in the NERDTree.
 nnoremap <silent> <S-F7> :NERDTreeFind<CR>
 vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
 inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
 
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 " Turn off syntastic balloons.
 let g:syntastic_enable_balloons = 0
 
-Bundle 'sjl/gundo.vim'
+Plugin 'sjl/gundo.vim'
 " F9 toggles Gundo.
 nnoremap <F9> :silent GundoToggle<cr>
 vnoremap <F9> <esc>:silent GundoToggle<cr>
 inoremap <F9> <esc>:silent GundoToggle<cr>
 
-Bundle 'solarnz/thrift.vim'
+Plugin 'solarnz/thrift.vim'
 
-Bundle 'tek/vim-quickbuf'
+Plugin 'tek/vim-quickbuf'
 " Shift-F4 brings up QuickBuf.
 " let g:qb_hotkey = '<S-F4>'
 let g:quickbuf_map = '<S-F4>'
 
-Bundle 'tommcdo/vim-exchange'
+Plugin 'tommcdo/vim-exchange'
 
-Bundle 'tpope/vim-commentary'
+Plugin 'tpope/vim-commentary'
 let g:commentary_map_backslash=0
 
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'vimoutliner/vimoutliner'
-Bundle 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vimoutliner/vimoutliner'
+Plugin 'vim-ruby/vim-ruby'
 
-Bundle 'zirrostig/vim-schlepp'
+Plugin 'zirrostig/vim-schlepp'
 " Map ctrl-h/j/k/l in visual mode to drag the block.
 vmap <C-h> <Plug>SchleppUp
 vmap <C-l> <Plug>SchleppDown
@@ -276,18 +276,21 @@ vmap <C-j> <Plug>SchleppRight
 vmap ,d <Plug>SchleppDup
 
 " vim-scripts repos
-Bundle 'Align'
-Bundle 'IndentAnything'
-" Bundle 'javacomplete'
-Bundle 'Javascript-Indentation'
-" Bundle 'QuickBuf'
+Plugin 'Align'
+Plugin 'IndentAnything'
+" Plugin 'javacomplete'
+Plugin 'Javascript-Indentation'
+" Plugin 'QuickBuf'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on
 
 " ===== Other Initialization ===== {{{2
 
 " Make filetype.vim treat .h files as C files.
 " let c_syntax_for_h=1
 
-filetype plugin indent on
 " runtime! ftdetect/*.vim
 
 " Make vimpager use MacVim.

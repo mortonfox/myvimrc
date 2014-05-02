@@ -231,6 +231,7 @@ inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
 
 Plugin 'mileszs/ack.vim'
 " Plugin 'nicoraffo/conque'
+Plugin 'pangloss/vim-javascript'
 Plugin 'rking/ag.vim'
 
 Plugin 'scrooloose/nerdtree'
@@ -277,9 +278,9 @@ vmap ,d <Plug>SchleppDup
 
 " vim-scripts repos
 Plugin 'Align'
-Plugin 'IndentAnything'
+" Plugin 'IndentAnything'
 " Plugin 'javacomplete'
-Plugin 'Javascript-Indentation'
+" Plugin 'Javascript-Indentation'
 " Plugin 'QuickBuf'
 
 " All of your Plugins must be added before the following line
@@ -1466,5 +1467,5 @@ endif
 
 " }}}1
 
-" Last updated: April 24, 2014
+" Last updated: May 2, 2014
 " vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

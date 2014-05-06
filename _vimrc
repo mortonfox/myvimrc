@@ -283,6 +283,8 @@ Plugin 'Align'
 " Plugin 'Javascript-Indentation'
 " Plugin 'QuickBuf'
 
+Plugin 'file:///Users/pcheah/proj/twitvim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on
@@ -1467,5 +1469,5 @@ endif
 
 " }}}1
 
-" Last updated: May 2, 2014
+" Last updated: May 6, 2014
 " vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

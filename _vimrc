@@ -558,7 +558,6 @@ function! s:Highlight_Init()
     highlight StatusLineNC gui=NONE guifg=yellow guibg=#505050
     highlight User1 term=inverse cterm=inverse 
     highlight User1 gui=NONE guifg=green guibg=#505050
-    highlight CursorLine term=underline cterm=NONE ctermfg=white ctermbg=darkblue gui=NONE guifg=white guibg=blue
         
     " Use some special X11 colors.
     if has("x11") && has("gui_running")
@@ -575,8 +574,9 @@ function! s:Highlight_Init()
     highlight Question guifg=LightGreen ctermfg=LightGreen
     highlight Directory guifg=LightBlue ctermfg=Cyan
     highlight NonText guifg=Yellow ctermfg=Yellow
-    highlight Visual gui=reverse guifg=grey guibg=bg
     highlight SpecialKey guifg=Magenta
+    highlight CursorLine term=underline cterm=NONE ctermfg=white ctermbg=darkblue gui=NONE guifg=white guibg=blue
+    highlight Visual term=reverse cterm=NONE ctermbg=darkblue gui=NONE guibg=blue
 
     execute "highlight Normal guibg=" . backgr "ctermbg=black"
     execute "highlight MoreMsg guibg=" . backgr "ctermbg=black"

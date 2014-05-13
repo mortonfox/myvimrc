@@ -558,7 +558,7 @@ function! s:Highlight_Init()
     highlight StatusLineNC gui=NONE guifg=yellow guibg=#505050
     highlight User1 term=inverse cterm=inverse 
     highlight User1 gui=NONE guifg=green guibg=#505050
-    highlight CursorLine term=underline cterm=NONE ctermfg=white ctermbg=blue gui=NONE guifg=white guibg=blue
+    highlight CursorLine term=underline cterm=NONE ctermfg=white ctermbg=darkblue gui=NONE guifg=white guibg=blue
         
     " Use some special X11 colors.
     if has("x11") && has("gui_running")

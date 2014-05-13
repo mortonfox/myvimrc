@@ -558,6 +558,7 @@ function! s:Highlight_Init()
     highlight StatusLineNC gui=NONE guifg=yellow guibg=#505050
     highlight User1 term=inverse cterm=inverse 
     highlight User1 gui=NONE guifg=green guibg=#505050
+    highlight CursorLine term=underline cterm=NONE ctermfg=white ctermbg=blue gui=NONE guifg=white guibg=blue
         
     " Use some special X11 colors.
     if has("x11") && has("gui_running")
@@ -1469,5 +1470,5 @@ endif
 
 " }}}1
 
-" Last updated: May 6, 2014
+" Last updated: May 13, 2014
 " vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

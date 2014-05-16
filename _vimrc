@@ -218,6 +218,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 " Use CtrlPMRU as default.
 let g:ctrlp_cmd = 'CtrlPMRU'
+" Increase size of MRU cache.
+let g:ctrlp_mruf_max = 2000
 " F12 F12: Invoke CtrlP in buffer mode.
 nnoremap <F12><F12> :CtrlPBuffer<cr>
 vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
@@ -577,6 +579,8 @@ function! s:Highlight_Init()
     highlight SpecialKey guifg=Magenta
     highlight CursorLine term=underline cterm=NONE ctermfg=white ctermbg=darkblue gui=NONE guifg=white guibg=blue
     highlight Visual term=reverse cterm=NONE ctermbg=darkblue gui=NONE guibg=blue
+    highlight SpellCap term=reverse cterm=NONE ctermbg=darkblue gui=undercurl guisp=blue
+    highlight SpellBad term=reverse cterm=NONE ctermbg=darkred gui=undercurl guisp=red
 
     execute "highlight Normal guibg=" . backgr "ctermbg=black"
     execute "highlight MoreMsg guibg=" . backgr "ctermbg=black"
@@ -1470,5 +1474,5 @@ endif
 
 " }}}1
 
-" Last updated: May 13, 2014
+" Last updated: May 16, 2014
 " vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

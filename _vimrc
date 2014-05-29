@@ -180,6 +180,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " original repos on GitHub
 Plugin 'aaronbieber/vim-vault'
+Plugin 'AndrewRadev/splitjoin.vim'
 
 Plugin 'artnez/vim-wipeout'
 " F12 F4 wipes out non-visible buffers.
@@ -1474,5 +1475,5 @@ endif
 
 " }}}1
 
-" Last updated: May 16, 2014
+" Last updated: May 29, 2014
 " vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

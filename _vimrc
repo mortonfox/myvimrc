@@ -233,6 +233,7 @@ vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
 inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
 
 Plugin 'mileszs/ack.vim'
+Plugin 'mortonfox/nerdtree-iterm'
 " Plugin 'nicoraffo/conque'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rking/ag.vim'
@@ -1475,5 +1476,5 @@ endif
 
 " }}}1
 
-" Last updated: May 29, 2014
+" Last updated: June 10, 2014
 " vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

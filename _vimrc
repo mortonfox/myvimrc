@@ -232,9 +232,10 @@ nnoremap <F8> :RainbowParenthesesToggle<cr>
 vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
 inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
 
-" Plugin 'ludovicchabant/vim-gutentags'
-" set statusline+=%{gutentags#statusline()}
-" let g:gutentags_cache_dir=$HOME.'/gutentags'
+Plugin 'ludovicchabant/vim-gutentags'
+set statusline+=%{gutentags#statusline('\ [TAGS]')}
+let g:gutentags_cache_dir=$HOME.'/gutentags'
+let g:gutentags_project_root=['.svn']
 
 Plugin 'mileszs/ack.vim'
 Plugin 'mortonfox/nerdtree-iterm'

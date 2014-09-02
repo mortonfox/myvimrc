@@ -196,6 +196,16 @@ inoremap <F12><F4> <C-o>:Wipeout<cr>
 " vmap <expr> <C-j> DVB_Drag('down')
 " vmap <expr> ,d DVB_Duplicate() 
 
+Plugin 'ctrlpvim/ctrlp.vim'
+" Use CtrlPMRU as default.
+let g:ctrlp_cmd = 'CtrlPMRU'
+" Increase size of MRU cache.
+let g:ctrlp_mruf_max = 2000
+" F12 F12: Invoke CtrlP in buffer mode.
+nnoremap <F12><F12> :CtrlPBuffer<cr>
+vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
+inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
+
 Plugin 'dhruvasagar/vim-vinegar'
 Plugin 'edsono/vim-matchit'
 Plugin 'godlygeek/tabular'
@@ -216,21 +226,15 @@ vmap <F12>a <Plug>(EasyAlign)
 
 Plugin 'kchmck/vim-coffee-script'
 
-Plugin 'kien/ctrlp.vim'
-" Use CtrlPMRU as default.
-let g:ctrlp_cmd = 'CtrlPMRU'
-" Increase size of MRU cache.
-let g:ctrlp_mruf_max = 2000
-" F12 F12: Invoke CtrlP in buffer mode.
-nnoremap <F12><F12> :CtrlPBuffer<cr>
-vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
-inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
-
 Plugin 'kien/rainbow_parentheses.vim'
 " F8 toggles rainbow parentheses.
 nnoremap <F8> :RainbowParenthesesToggle<cr>
 vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
 inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
+
+" Plugin 'ludovicchabant/vim-gutentags'
+" set statusline+=%{gutentags#statusline()}
+" let g:gutentags_cache_dir=$HOME.'/gutentags'
 
 Plugin 'mileszs/ack.vim'
 Plugin 'mortonfox/nerdtree-iterm'
@@ -1476,5 +1480,5 @@ endif
 
 " }}}1
 
-" Last updated: June 10, 2014
+" Last updated: September 2, 2014
 " vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

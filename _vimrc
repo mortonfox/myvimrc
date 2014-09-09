@@ -274,8 +274,18 @@ let g:commentary_map_backslash=0
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+
+Plugin 'troydm/asyncfinder.vim'
+let g:asyncfinder_ignore_dirs="['.AppleDouble','.DS_Store','.git','.hg','.bzr','.svn','.idea','.redcar']"
+let g:asyncfinder_ignore_files="['*.sw?']"
+nnoremap <F12>f :AsyncFinder<cr>
+vnoremap <F12>f <esc>:AsyncFinder<cr>
+inoremap <F12>f <esc>:AsyncFinder<cr>
+
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'vim-ruby/vim-ruby'
+
+Plugin 'yegappan/mru'
 
 Plugin 'zirrostig/vim-schlepp'
 " Map ctrl-h/j/k/l in visual mode to drag the block.
@@ -1481,5 +1491,5 @@ endif
 
 " }}}1
 
-" Last updated: September 2, 2014
+" Last updated: September 9, 2014
 " vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

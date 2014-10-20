@@ -879,24 +879,9 @@ endfunction
 
 " ===== Customize vim modes ===== {{{2
 " Function for setting up vim buffer defaults.
-" This will be overridden by settings for C and perl below if
+" This will be overridden by settings for various programming languages if
 " applicable.
 function! <SID>Set_default_mode()
-    " No c indent mode.
-    setlocal nocindent
-
-    " No smart indenting by default.
-    setlocal nosmartindent
-
-    " Default format options.
-    " Autowrap text and comments.
-    " Allow formatting of comments with gq.
-    " Use second line's indent to format the rest of the paragraph.
-    setlocal formatoptions=tcq2
-
-    " set default textwidth and shiftwidth 
-    setlocal textwidth=75 shiftwidth=4
-
     " Rainbow Parentheses interferes with vault password hiding.
     if &filetype != 'vault'
         RainbowParenthesesLoadBraces
@@ -905,21 +890,24 @@ function! <SID>Set_default_mode()
     endif
 endfunction
 
+" Generic code setup for most languages.
+function! s:Set_generic_code_mode()
+    setlocal shiftwidth=2
+    setlocal expandtab
+    setlocal textwidth=78
+
+    " q = Format comments with gq.
+    " l = Don't break long lines in insert mode.
+    " j = Remove comment leader when joining lines.
+    setlocal formatoptions=qlj
+endfunction
+
 " Function for setting up vim for editing C source files.
-function! <SID>Set_c_mode()
-    " set c indent mode for C source code
+function! s:Set_c_mode()
+    call s:Set_generic_code_mode()
+
     setlocal cindent
-
-    " set shiftwidth to 2, textwidth to 75
-    setlocal shiftwidth=2 textwidth=75 
-
     setlocal cinoptions=>s,:0,=s,hs,ps,t0,+s,(0,g0
-
-    " Autowrap in comments but not in text
-    " Automatically insert the comment leader after hitting Return in
-    " insert mode or after hitting o or O in normal mode.
-    " Use second line's indent to format the rest of the paragraph.
-    setlocal formatoptions=cqro2l
 
     setlocal comments=://,b:#,:%,:XCOMM,n:>,fb:- 
     " Fancy comments.
@@ -929,155 +917,34 @@ function! <SID>Set_c_mode()
     setlocal cinkeys=0{,0},0#,!^F,o,O,e
 endfunction
 
-" Function for setting up vim for editing Java source files.
-function! <SID>Set_java_mode()
-    " set c indent mode for Java source code
-    setlocal cindent
-
-    " set shiftwidth to 4, textwidth to 75
-    setlocal shiftwidth=4 textwidth=75 
-
-    setlocal cinoptions=>s,:0,=s,hs,ps,t0,+s,(0,g0
-
-    " Autowrap in comments but not in text
-    " Automatically insert the comment leader after hitting Return in
-    " insert mode or after hitting o or O in normal mode.
-    " Use second line's indent to format the rest of the paragraph.
-    setlocal formatoptions=cqro2l
-
-    setlocal comments=:///,://,b:#,n:>,fb:-
-    " Fancy comments.
-    setlocal comments+=s1:/*,mb:*,elx:*/
-
-    " do not re-indent if the user types in a colon.
-    setlocal cinkeys=0{,0},0#,!^F,o,O,e
-
-    " Use javacomplete.vim for omni-completion and user-completion.
-    setlocal omnifunc=javacomplete#Complete
-    setlocal completefunc=javacomplete#CompleteParamsInfo
-endfunction
-
-" Function for setting up vim to edit perl source files.
-function! <SID>Set_perl_mode()
-    " Turn on C indenting in Perl mode.
-    " setlocal cindent
-
-    " Set shiftwidth to 4.
-    setlocal shiftwidth=4 textwidth=75
-
-    " I prefer to indent by 4 spaces in perl programs.
-    " setlocal cinoptions=>s,:0,=s,hs,ps,t0,+s,(0,g0
-
-    " Autowrap in comments but not in text
-    " Automatically insert the comment leader after hitting Return in
-    " insert mode or after hitting o or O in normal mode.
-    " Use second line's indent to format the rest of the paragraph.
-    setlocal formatoptions=cqro2l
-
-    " do not re-indent if the user types in a # sign or a colon
-    " setlocal cinkeys=0{,0},!^F,o,O,e
-
-    setlocal comments=:#
-endfunction
-
-" Function for setting up Vim to edit Python source files.
-function! s:Set_python_mode()
-    setlocal shiftwidth=4 textwidth=75
-    
-    " Autowrap in comments but not in text
-    " Automatically insert the comment leader after hitting Return in
-    " insert mode or after hitting o or O in normal mode.
-    " Use second line's indent to format the rest of the paragraph.
-    setlocal formatoptions=cqro2l
-
-    setlocal comments=:#
-endfunction
-
-" Function for setting up Vim to edit CSS and Sass files.
-function! s:Set_css_mode()
-    setlocal shiftwidth=4 textwidth=75
-    
-    " Autowrap in comments but not in text
-    " Automatically insert the comment leader after hitting Return in
-    " insert mode or after hitting o or O in normal mode.
-    " Use second line's indent to format the rest of the paragraph.
-    setlocal formatoptions=cqro2l
-
-    setlocal comments=s1:/*,mb:*,ex:*/,://
-endfunction
-
-" Fix for runtime/ftplugin/ruby.vim ruby_path
-" function! s:Get_ruby_path()
-"     if has("ruby") && has("win32")
-"       " ruby VIM::command('let ruby_path = "%s"' % ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,}) )
-"       ruby VIM::command('let ruby_path = "%s"' % ($: + begin; require %q{rubygems}; Gem::Specification.map(&:lib_dirs_glob).sort.uniq; rescue LoadError; []; end).join(%q{,}) )
-"       let ruby_path = '.,,' . substitute(ruby_path, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
-"     elseif executable("ruby")
-"       " let s:code = "print ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,})"
-"       let s:code = "print ($: + begin; require %q{rubygems}; Gem::Specification.map(&:lib_dirs_glob).sort.uniq;  rescue LoadError; []; end).join(%q{,})"
-"       if &shellxquote == "'"
-"           let ruby_path = system('ruby -e "' . s:code . '"')
-"       else
-"           let ruby_path = system("ruby -e '" . s:code . "'")
-"       endif
-"       let ruby_path = '.,,' . substitute(ruby_path, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
-"     else
-"       " If we can't call ruby to get its path, just default to using the
-"       " current directory and the directory of the current file.
-"       let ruby_path = ".,,"
-"     endif
-"     return ruby_path
-" endfunction
-
-" let g:ruby_path = s:Get_ruby_path()
-
 " Function for setting up Vim to edit Ruby source files.
 function! s:Set_ruby_mode()
-    setlocal shiftwidth=2 textwidth=75
-    
-    " Autowrap in comments but not in text
-    " Automatically insert the comment leader after hitting Return in
-    " insert mode or after hitting o or O in normal mode.
-    " Use second line's indent to format the rest of the paragraph.
-    setlocal formatoptions=cqro2l
-
-    setlocal expandtab
-
-    setlocal comments=:#
+    call s:Set_generic_code_mode()
 
     " Workaround needed because Perl ftplugin adds a colon to iskeyword globally.
     setlocal iskeyword-=:
 endfunction
 
-" Function for setting up vim to edit PHP source files.
-function! <SID>Set_php_mode()
-    " Turn on C indenting in PHP mode.
-    " setlocal cindent
-
-    " Set shiftwidth to 4.
-    setlocal shiftwidth=4 textwidth=75
-
-    " I prefer to indent by 4 spaces in PHP programs.
-    " setlocal cinoptions=>s,:0,=s,hs,ps,t0,+s,(0,g0
-
-    " Autowrap in comments but not in text
-    " Automatically insert the comment leader after hitting Return in
-    " insert mode or after hitting o or O in normal mode.
-    " Use second line's indent to format the rest of the paragraph.
-    setlocal formatoptions=cqro2l
-
-    " do not re-indent if the user types in a # sign or a colon
-    " setlocal cinkeys=0{,0},!^F,o,O,e
-
-    setlocal comments=://,b:#,n:>,fb:-
-    " Fancy comments.
-    setlocal comments+=s1:/*,mb:*,elx:*/
+" Function for setting up Vim to edit Vimscript source files.
+function! s:Set_vimscript_mode()
+    call s:Set_generic_code_mode()
+    setlocal shiftwidth=4
 endfunction
 
-" Function for setting up vim to edit DOS batch files.
-function! <SID>Set_batch_mode()
-    " Set shiftwidth to 4.
-    setlocal shiftwidth=4 textwidth=0
+" Vim setup for editing text files.
+function! s:Set_text_mode()
+    setlocal nocindent
+    setlocal nosmartindent
+
+    setlocal shiftwidth=4
+    setlocal expandtab
+    setlocal textwidth=78
+
+    " t = Autowrap text.
+    " c = Autowrap comments.
+    " q = Format comments with gq.
+    " 2 = Use second line's indent to format rest of paragraph.
+    setlocal formatoptions=tcq2
 endfunction
 
 if has("autocmd")
@@ -1085,19 +952,26 @@ if has("autocmd")
         " Clear all auto-commands.
         autocmd!
 
-        " autocmd BufNewFile,BufReadPre * call <SID>Set_default_mode()
         autocmd FileType * call <SID>Set_default_mode()
-        autocmd FileType c,cpp call <SID>Set_c_mode()
 
-        " Use Java mode for C# source files too.
-        autocmd FileType java,cs call <SID>Set_java_mode()
+        autocmd FileType java        call <SID>Set_generic_code_mode()
+        autocmd FileType cs          call <SID>Set_generic_code_mode()
+        autocmd FileType dosbatch,sh call <SID>Set_generic_code_mode()
+        autocmd FileType php         call <SID>Set_generic_code_mode()
+        autocmd FileType css,scss    call <SID>Set_generic_code_mode()
+        autocmd FileType perl        call <SID>Set_generic_code_mode()
+        autocmd FileType python      call <SID>Set_generic_code_mode()
+        autocmd FileType javascript  call <SID>Set_generic_code_mode()
+        autocmd FileType coffee      call <SID>Set_generic_code_mode()
+        autocmd FileType clojure     call <SID>Set_generic_code_mode()
+        autocmd FileType haskell     call <SID>Set_generic_code_mode()
+        autocmd FileType conf        call <SID>Set_generic_code_mode()
+        autocmd FileType thrift      call <SID>Set_generic_code_mode()
 
-        autocmd FileType perl call <SID>Set_perl_mode()
-        autocmd FileType php call <SID>Set_php_mode()
-        autocmd FileType dosbatch,sh call <SID>Set_batch_mode()
+        autocmd FileType c,cpp      call <SID>Set_c_mode()
         autocmd FileType ruby,eruby call <SID>Set_ruby_mode()
-        autocmd FileType python call <SID>Set_python_mode()
-        autocmd FileType css,scss call <SID>Set_css_mode()
+        autocmd FileType vim        call <SID>Set_vimscript_mode()
+        autocmd FileType text       call <SID>Set_text_mode()
 
         " Clear some artifacts in console Vim.
         autocmd VimEnter * redraw
@@ -1108,6 +982,9 @@ if has("autocmd")
         " Override file type for .md since I'm not working on Modula-2
         " files.
         autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
+
+        " Use conf file type for monit files.
+        autocmd BufRead,BufNewFile monitrc setlocal filetype=conf
     augroup END
 endif
 
@@ -1491,5 +1368,5 @@ endif
 
 " }}}1
 
-" Last updated: September 9, 2014
+" Last updated: October 20, 2014
 " vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

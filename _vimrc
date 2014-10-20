@@ -201,6 +201,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlPMRU'
 " Increase size of MRU cache.
 let g:ctrlp_mruf_max = 2000
+" e - jump when <cr> is pressed, but only to windows in the current tab.
+" t - jump when <c-t> is pressed, but only to windows in another tab.
+let g:ctrlp_switch_buffer = 'et'
 " F12 F12: Invoke CtrlP in buffer mode.
 nnoremap <F12><F12> :CtrlPBuffer<cr>
 vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
@@ -1369,4 +1372,3 @@ endif
 " }}}1
 
 " Last updated: October 20, 2014
-" vim:expandtab formatoptions=cqro textwidth=75 comments=\:\" shiftwidth=4:

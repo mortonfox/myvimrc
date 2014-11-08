@@ -213,6 +213,7 @@ Plugin 'dhruvasagar/vim-vinegar'
 Plugin 'edsono/vim-matchit'
 Plugin 'godlygeek/tabular'
 " Plugin 'jnwhiteh/vim-golang'
+Plugin 'JarrodCTaylor/vim-shell-executor'
 
 Plugin 'jistr/vim-nerdtree-tabs'
 " Don't open NERDTree on GUI startup.
@@ -1371,4 +1372,4 @@ endif
 
 " }}}1
 
-" Last updated: October 20, 2014
+" Last updated: November 7, 2014

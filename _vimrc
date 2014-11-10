@@ -271,6 +271,7 @@ Plugin 'tek/vim-quickbuf'
 let g:quickbuf_map = '<S-F4>'
 
 Plugin 'tommcdo/vim-exchange'
+Plugin 'tommcdo/vim-lion'
 
 Plugin 'tpope/vim-commentary'
 let g:commentary_map_backslash=0
@@ -1372,4 +1373,4 @@ endif
 
 " }}}1
 
-" Last updated: November 7, 2014
+" Last updated: November 10, 2014

@@ -179,7 +179,7 @@ Plugin 'gmarik/Vundle.vim'
 " My Plugins here:
 
 " original repos on GitHub
-Plugin 'aaronbieber/vim-vault'
+" Plugin 'aaronbieber/vim-vault'
 Plugin 'AndrewRadev/splitjoin.vim'
 
 Plugin 'artnez/vim-wipeout'
@@ -212,6 +212,38 @@ inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 Plugin 'dhruvasagar/vim-vinegar'
 Plugin 'edsono/vim-matchit'
 Plugin 'godlygeek/tabular'
+
+Plugin 'haya14busa/incsearch.vim'
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+let g:incsearch#consistent_n_direction = 1
+
+augroup incsearch-keymap
+    autocmd!
+    autocmd VimEnter * call s:incsearch_keymap()
+augroup END
+function! s:incsearch_keymap()
+    IncSearchNoreMap <C-f> <Over>(incsearch-scroll-f)
+    IncSearchNoreMap <C-b> <Over>(incsearch-scroll-b)
+    IncSearchNoreMap <PageDown> <Over>(incsearch-scroll-f)
+    IncSearchNoreMap <PageUp> <Over>(incsearch-scroll-b)
+    IncSearchNoreMap <Right> <Over>(incsearch-next)
+    IncSearchNoreMap <Left>  <Over>(incsearch-prev)
+    IncSearchNoreMap <Tab> <Over>(buffer-complete)
+endfunction
+
+
 " Plugin 'jnwhiteh/vim-golang'
 Plugin 'JarrodCTaylor/vim-shell-executor'
 
@@ -243,6 +275,7 @@ let g:gutentags_project_root=['.svn']
 
 Plugin 'mileszs/ack.vim'
 Plugin 'mortonfox/nerdtree-iterm'
+Plugin 'ngmy/vim-rubocop'
 " Plugin 'nicoraffo/conque'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rking/ag.vim'
@@ -289,7 +322,6 @@ inoremap <F12>f <esc>:AsyncFinder<cr>
 
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'vim-ruby/vim-ruby'
-
 Plugin 'yegappan/mru'
 
 Plugin 'zirrostig/vim-schlepp'
@@ -1373,4 +1405,4 @@ endif
 
 " }}}1
 
-" Last updated: November 10, 2014
+" Last updated: November 21, 2014

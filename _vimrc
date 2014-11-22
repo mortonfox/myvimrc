@@ -632,7 +632,7 @@ function! s:Highlight_Init()
     highlight NonText guifg=Yellow ctermfg=Yellow
     highlight SpecialKey guifg=Magenta
     highlight CursorLine term=underline cterm=NONE ctermfg=white ctermbg=darkblue gui=NONE guifg=white guibg=blue
-    highlight Visual term=reverse cterm=NONE ctermbg=darkblue gui=NONE guibg=blue
+    highlight Visual term=reverse cterm=NONE ctermbg=blue gui=NONE guibg=#1c68aa
     highlight SpellCap term=reverse cterm=NONE ctermbg=darkblue gui=undercurl guisp=blue
     highlight SpellBad term=reverse cterm=NONE ctermbg=darkred gui=undercurl guisp=red
 

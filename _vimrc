@@ -226,6 +226,10 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
+nnoremap v :<C-u>nohlsearch<cr>v
+nnoremap V :<C-u>nohlsearch<cr>V
+nnoremap <C-v> :<C-u>nohlsearch<cr><C-v>
 
 let g:incsearch#consistent_n_direction = 1
 
@@ -1405,4 +1409,4 @@ endif
 
 " }}}1
 
-" Last updated: November 21, 2014
+" Last updated: November 22, 2014

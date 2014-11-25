@@ -210,7 +210,7 @@ vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 
 Plugin 'dhruvasagar/vim-vinegar'
-Plugin 'edsono/vim-matchit'
+" Plugin 'edsono/vim-matchit'
 Plugin 'godlygeek/tabular'
 
 Plugin 'haya14busa/incsearch.vim'
@@ -276,6 +276,20 @@ Plugin 'ludovicchabant/vim-gutentags'
 set statusline+=%{gutentags#statusline('\ [TAGS]')}
 let g:gutentags_cache_dir=$HOME.'/gutentags'
 let g:gutentags_project_root=['.svn']
+
+Plugin 'michaelavila/selecta.vim'
+
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+nnoremap <leader>sf :call SelectaFile()<cr>
+
+" Find all buffers that have been opened.
+" Fuzzy select one of those. Open the selected file with :b.
+nnoremap <leader>sb :call SelectaBuffer()<cr>
+
+" Find previously run commands.
+" Fuzzy select one of those. Run that command with :
+nnoremap <leader>sh :call SelectaHistoryCommand()<cr>
 
 Plugin 'mileszs/ack.vim'
 Plugin 'mortonfox/nerdtree-iterm'
@@ -355,6 +369,7 @@ filetype plugin indent on
 " let c_syntax_for_h=1
 
 " runtime! ftdetect/*.vim
+runtime macros/matchit.vim
 
 " Make vimpager use MacVim.
 " Assuming that .vimpagerrc sources this file.
@@ -1409,4 +1424,4 @@ endif
 
 " }}}1
 
-" Last updated: November 22, 2014
+" Last updated: November 25, 2014

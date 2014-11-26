@@ -553,9 +553,13 @@ execute "vnoremap <F12>l <esc>" . m . "gv"
 unlet m
 
 " F12 m runs Marked on the Markdown file.
+function! s:Run_marked()
+    silent !open -a "Marked 2" %
+    redraw!
+endfunction
 augroup markdown_auto
     autocmd!
-    autocmd FileType markdown nnoremap <buffer> <F12>m :silent !open -a Marked %<cr>
+    autocmd FileType markdown nnoremap <buffer> <F12>m :call <SID>Run_marked()<cr>
 augroup END
 
 " F12 p runs par on the current paragraph or visual range
@@ -1424,4 +1428,4 @@ endif
 
 " }}}1
 
-" Last updated: November 25, 2014
+" Last updated: November 26, 2014

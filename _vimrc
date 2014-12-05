@@ -201,9 +201,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlPMRU'
 " Increase size of MRU cache.
 let g:ctrlp_mruf_max = 2000
-" e - jump when <cr> is pressed, but only to windows in the current tab.
-" t - jump when <c-t> is pressed, but only to windows in another tab.
-let g:ctrlp_switch_buffer = 'et'
+" Don't jump to an existing window when opening a file.
+let g:ctrlp_switch_buffer = ''
 " F12 F12: Invoke CtrlP in buffer mode.
 nnoremap <F12><F12> :CtrlPBuffer<cr>
 vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
@@ -293,6 +292,7 @@ nnoremap <leader>sh :call SelectaHistoryCommand()<cr>
 
 Plugin 'mileszs/ack.vim'
 Plugin 'mortonfox/nerdtree-iterm'
+" Plugin 'mtth/scratch.vim'
 Plugin 'ngmy/vim-rubocop'
 " Plugin 'nicoraffo/conque'
 Plugin 'pangloss/vim-javascript'
@@ -1428,4 +1428,4 @@ endif
 
 " }}}1
 
-" Last updated: November 26, 2014
+" Last updated: December 5, 2014

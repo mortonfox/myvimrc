@@ -105,6 +105,8 @@ set nojoinspaces
 set laststatus=2
 " do not redraw while executing macros
 set lazyredraw
+" make non-breaking spaces visible
+set lcs+=nbsp:%
 " magic search patterns
 set magic
 " Enable mouse in console Vim.
@@ -198,7 +200,7 @@ inoremap <F12><F4> <C-o>:Wipeout<cr>
 
 Plugin 'ctrlpvim/ctrlp.vim'
 " Use CtrlPMRU as default.
-let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_cmd = 'CtrlPMRUFiles'
 " Increase size of MRU cache.
 let g:ctrlp_mruf_max = 2000
 " Don't jump to an existing window when opening a file.
@@ -212,40 +214,39 @@ Plugin 'dhruvasagar/vim-vinegar'
 " Plugin 'edsono/vim-matchit'
 Plugin 'godlygeek/tabular'
 
-Plugin 'haya14busa/incsearch.vim'
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+" Plugin 'haya14busa/incsearch.vim'
+" map /  <Plug>(incsearch-forward)
+" map ?  <Plug>(incsearch-backward)
+" map g/ <Plug>(incsearch-stay)
 
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
-nnoremap v :<C-u>nohlsearch<cr>v
-nnoremap V :<C-u>nohlsearch<cr>V
-nnoremap <C-v> :<C-u>nohlsearch<cr><C-v>
+" set hlsearch
+" let g:incsearch#auto_nohlsearch = 1
+" map n  <Plug>(incsearch-nohl-n)
+" map N  <Plug>(incsearch-nohl-N)
+" map *  <Plug>(incsearch-nohl-*)
+" map #  <Plug>(incsearch-nohl-#)
+" map g* <Plug>(incsearch-nohl-g*)
+" map g# <Plug>(incsearch-nohl-g#)
+" nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
+" nnoremap v :<C-u>nohlsearch<cr>v
+" nnoremap V :<C-u>nohlsearch<cr>V
+" nnoremap <C-v> :<C-u>nohlsearch<cr><C-v>
 
-let g:incsearch#consistent_n_direction = 1
+" let g:incsearch#consistent_n_direction = 1
 
-augroup incsearch-keymap
-    autocmd!
-    autocmd VimEnter * call s:incsearch_keymap()
-augroup END
-function! s:incsearch_keymap()
-    IncSearchNoreMap <C-f> <Over>(incsearch-scroll-f)
-    IncSearchNoreMap <C-b> <Over>(incsearch-scroll-b)
-    IncSearchNoreMap <PageDown> <Over>(incsearch-scroll-f)
-    IncSearchNoreMap <PageUp> <Over>(incsearch-scroll-b)
-    IncSearchNoreMap <Right> <Over>(incsearch-next)
-    IncSearchNoreMap <Left>  <Over>(incsearch-prev)
-    IncSearchNoreMap <Tab> <Over>(buffer-complete)
-endfunction
-
+" augroup incsearch-keymap
+"     autocmd!
+"     autocmd VimEnter * call s:incsearch_keymap()
+" augroup END
+" function! s:incsearch_keymap()
+"     IncSearchNoreMap <C-f> <Over>(incsearch-scroll-f)
+"     IncSearchNoreMap <C-b> <Over>(incsearch-scroll-b)
+"     IncSearchNoreMap <PageDown> <Over>(incsearch-scroll-f)
+"     IncSearchNoreMap <PageUp> <Over>(incsearch-scroll-b)
+"     IncSearchNoreMap <Right> <Over>(incsearch-next)
+"     IncSearchNoreMap <Left>  <Over>(incsearch-prev)
+"     IncSearchNoreMap <Tab> <Over>(buffer-complete)
+" endfunction
 
 " Plugin 'jnwhiteh/vim-golang'
 Plugin 'JarrodCTaylor/vim-shell-executor'
@@ -625,6 +626,9 @@ cmap w!! w !sudo tee > /dev/null %
 " Replace words with gn command.
 nnoremap ,x *``cgn
 nnoremap ,X #``cgN
+
+" Clean up nbsp characters.
+command! -range=% CleanNBSP :<line1>,<line2>s/\\%xa0/ /gg
 
 " ----- Vim Scripts ----- {{{1
 
@@ -1428,4 +1432,4 @@ endif
 
 " }}}1
 
-" Last updated: December 5, 2014
+" Last updated: January 30, 2015

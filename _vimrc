@@ -25,7 +25,7 @@ set autowrite
 " dark background
 set background=dark
 " allow backspacing over newlines and past start of insert
-set backspace=2
+set backspace=indent,eol,start
 " don't leave backup files
 set nobackup
 
@@ -1432,4 +1432,4 @@ endif
 
 " }}}1
 
-" Last updated: January 30, 2015
+" Last updated: February 4, 2015

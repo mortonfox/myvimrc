@@ -106,7 +106,7 @@ set laststatus=2
 " do not redraw while executing macros
 set lazyredraw
 " make non-breaking spaces visible
-set lcs+=nbsp:%
+set listchars+=nbsp:%
 " magic search patterns
 set magic
 " Enable mouse in console Vim.

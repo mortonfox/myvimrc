@@ -628,7 +628,10 @@ nnoremap ,x *``cgn
 nnoremap ,X #``cgN
 
 " Clean up nbsp characters.
-command! -range=% CleanNBSP :<line1>,<line2>s/\\%xa0/ /gg
+function! s:clean_nbsp()
+    call setline('.', substitute(getline('.'), '\%xa0', ' ', 'g'))
+endfunction
+command! -range=% CleanNBSP :<line1>,<line2>call s:clean_nbsp()
 
 " ----- Vim Scripts ----- {{{1
 

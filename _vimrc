@@ -676,10 +676,12 @@ function! s:Highlight_Init()
 
     if version >= 700
         highlight MatchParen guifg=Yellow ctermfg=Yellow guibg=Blue ctermbg=Blue
-        highlight PMenu guifg=Gray guibg=#513692
-        highlight PMenuSel guifg=Gray guibg=#824C21
-        highlight PMenuSbar guifg=Gray guibg=#824C21
-        highlight PMenuThumb guifg=Gray guibg=#824C21
+
+        " Popup menu colors.
+        highlight PMenu ctermfg=White ctermbg=DarkMagenta guifg=Gray guibg=#513692
+        highlight PMenuSel ctermfg=White ctermbg=Brown guifg=Gray guibg=#824C21
+        highlight PMenuSbar ctermfg=White ctermbg=Brown guifg=Gray guibg=#824C21
+        highlight PMenuThumb ctermfg=Black ctermbg=Gray guifg=Black guibg=Gray
     endif
 
     " Customize folding colors.
@@ -1437,4 +1439,4 @@ endif
 
 " }}}1
 
-" Last updated: February 13, 2015
+" Last updated: March 17, 2015

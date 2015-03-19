@@ -641,41 +641,27 @@ command! -range=% CleanNBSP :<line1>,<line2>call s:clean_nbsp()
 
 " Initialize all highlights that have nothing to do with syntax.
 function! s:Highlight_Init()
-    highlight vCursor guifg=bg guibg=DarkGrey
     highlight StatusLine gui=bold guifg=yellow guibg=#505050
     highlight StatusLineNC gui=NONE guifg=yellow guibg=#505050
     highlight User1 term=inverse cterm=inverse 
     highlight User1 gui=NONE guifg=green guibg=#505050
         
-    " Use some special X11 colors.
-    if has("x11") && has("gui_running")
-        let backgr="MidnightBlue"
-        let s:commentfg="gold"
-    else
-        let backgr="black"
-        let s:commentfg="orange"
-    endif
-
     " color customizations
-    highlight Normal guifg=Gray ctermfg=Gray
-    highlight MoreMsg guifg=LightGreen ctermfg=LightGreen
-    highlight Question guifg=LightGreen ctermfg=LightGreen
-    highlight Directory guifg=LightBlue ctermfg=Cyan
-    highlight NonText guifg=Yellow ctermfg=Yellow
-    highlight SpecialKey guifg=Magenta
+    highlight Normal guifg=Gray guibg=black ctermfg=Gray ctermbg=black
+    highlight Cursor ctermfg=black ctermbg=gray guifg=black guibg=DarkGrey
+    highlight ModeMsg guifg=gray guibg=black ctermfg=gray ctermbg=black
+    highlight MoreMsg guifg=LightGreen guibg=black ctermfg=LightGreen ctermbg=black
+    highlight Question guifg=LightGreen guibg=black ctermfg=LightGreen ctermbg=black
+    highlight Directory guifg=LightBlue guibg=black ctermfg=Cyan ctermbg=black
+    highlight NonText guifg=Yellow guibg=black ctermfg=Yellow ctermbg=black
+    highlight SpecialKey guifg=Magenta guibg=black ctermfg=Magenta ctermbg=black
     highlight CursorLine term=underline cterm=NONE ctermfg=white ctermbg=darkblue gui=NONE guifg=white guibg=blue
-    highlight Visual term=reverse cterm=NONE ctermbg=blue gui=NONE guibg=#1c68aa
+    highlight Visual term=reverse cterm=NONE ctermfg=black ctermbg=cyan gui=NONE guibg=#1c68aa
     highlight SpellCap term=reverse cterm=NONE ctermbg=darkblue gui=undercurl guisp=blue
     highlight SpellBad term=reverse cterm=NONE ctermbg=darkred gui=undercurl guisp=red
 
-    execute "highlight Normal guibg=" . backgr "ctermbg=black"
-    execute "highlight MoreMsg guibg=" . backgr "ctermbg=black"
-    execute "highlight Question guibg=" . backgr "ctermbg=black"
-    execute "highlight NonText guibg=" . backgr "ctermbg=black"
-    execute "highlight ModeMsg guibg=" . backgr "ctermbg=black"
-
     if version >= 700
-        highlight MatchParen guifg=Yellow ctermfg=Yellow guibg=Blue ctermbg=Blue
+        highlight MatchParen guifg=Yellow guibg=darkgreen ctermfg=Yellow ctermbg=darkgreen
 
         " Popup menu colors.
         highlight PMenu ctermfg=White ctermbg=DarkMagenta guifg=Gray guibg=#513692
@@ -702,7 +688,7 @@ function! s:Turn_syntax_on()
     " colors.
     let g:colors_name='vimrc'
 
-    execute "highlight Comment guifg=". s:commentfg "ctermfg=Yellow"
+    highlight Comment guifg=orange ctermfg=Yellow
     highlight PreProc guifg=Magenta ctermfg=LightMagenta
     highlight Statement guifg=LightGreen ctermfg=LightGreen gui=NONE
     highlight Delimiter guifg=Yellow ctermfg=Yellow
@@ -1439,4 +1425,4 @@ endif
 
 " }}}1
 
-" Last updated: March 17, 2015
+" Last updated: March 19, 2015

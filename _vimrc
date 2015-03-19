@@ -648,7 +648,7 @@ function! s:Highlight_Init()
         
     " color customizations
     highlight Normal guifg=Gray guibg=black ctermfg=Gray ctermbg=black
-    highlight Cursor ctermfg=black ctermbg=gray guifg=black guibg=DarkGrey
+    highlight Cursor ctermfg=black ctermbg=gray guifg=black guibg=gray
     highlight ModeMsg guifg=gray guibg=black ctermfg=gray ctermbg=black
     highlight MoreMsg guifg=LightGreen guibg=black ctermfg=LightGreen ctermbg=black
     highlight Question guifg=LightGreen guibg=black ctermfg=LightGreen ctermbg=black
@@ -656,7 +656,8 @@ function! s:Highlight_Init()
     highlight NonText guifg=Yellow guibg=black ctermfg=Yellow ctermbg=black
     highlight SpecialKey guifg=Magenta guibg=black ctermfg=Magenta ctermbg=black
     highlight CursorLine term=underline cterm=NONE ctermfg=white ctermbg=darkblue gui=NONE guifg=white guibg=blue
-    highlight Visual term=reverse cterm=NONE ctermfg=black ctermbg=cyan gui=NONE guibg=#1c68aa
+    highlight Visual term=reverse cterm=NONE ctermfg=black ctermbg=cyan gui=NONE guifg=black guibg=#32CED7
+    highlight IncSearch term=reverse cterm=NONE ctermfg=black ctermbg=cyan gui=NONE guifg=black guibg=#32CED7
     highlight SpellCap term=reverse cterm=NONE ctermbg=darkblue gui=undercurl guisp=blue
     highlight SpellBad term=reverse cterm=NONE ctermbg=darkred gui=undercurl guisp=red
 
@@ -737,8 +738,8 @@ function! <SID>Toggle_syntax()
     if has("syntax_items")
         syntax off
     else
-        call s:Highlight_Init()
         call s:Turn_syntax_on()
+        call s:Highlight_Init()
     endif
 endfunction
 
@@ -746,8 +747,8 @@ endfunction
 command! ToggleSyntax :call <SID>Toggle_syntax()
 
 " Start with syntax highlighting enabled.
-call s:Highlight_Init()
 call s:Turn_syntax_on()
+call s:Highlight_Init()
 
 " ===== Maximize/unmaximize vertically. ===== {{{2
 function! <SID>Toggle_full_height()

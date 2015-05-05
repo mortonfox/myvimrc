@@ -212,6 +212,10 @@ inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 
 Plugin 'dhruvasagar/vim-vinegar'
 " Plugin 'edsono/vim-matchit'
+
+Plugin 'gabesoft/vim-ags'
+autocmd BufNewFile,BufRead *.agsv call s:Turn_syntax_on()
+
 Plugin 'godlygeek/tabular'
 
 " Plugin 'haya14busa/incsearch.vim'
@@ -297,7 +301,7 @@ Plugin 'mortonfox/nerdtree-iterm'
 Plugin 'ngmy/vim-rubocop'
 " Plugin 'nicoraffo/conque'
 Plugin 'pangloss/vim-javascript'
-Plugin 'rking/ag.vim'
+" Plugin 'rking/ag.vim'
 
 " Plugin 'scrooloose/nerdtree'
 Plugin 'mortonfox/nerdtree'
@@ -1426,4 +1430,4 @@ endif
 
 " }}}1
 
-" Last updated: May 1, 2015
+" Last updated: May 5, 2015

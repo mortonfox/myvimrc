@@ -214,6 +214,8 @@ Plugin 'dhruvasagar/vim-vinegar'
 " Plugin 'edsono/vim-matchit'
 
 Plugin 'gabesoft/vim-ags'
+" The following autocmd fixes a weird issue with syntax highlighting in the
+" vim-ags search results window.
 autocmd BufNewFile,BufRead *.agsv call s:Turn_syntax_on()
 
 Plugin 'godlygeek/tabular'

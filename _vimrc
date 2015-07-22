@@ -305,9 +305,9 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'pangloss/vim-javascript'
 " Plugin 'rking/ag.vim'
 
-" Plugin 'scrooloose/nerdtree'
-Plugin 'mortonfox/nerdtree'
-let NERDTreeNoSwitchTabs=1
+Plugin 'scrooloose/nerdtree'
+" Plugin 'mortonfox/nerdtree'
+" let NERDTreeNoSwitchTabs=1
 " Ctrl-F7 finds the current file in the NERDTree.
 nnoremap <silent> <S-F7> :NERDTreeFind<CR>
 vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
@@ -1432,4 +1432,4 @@ endif
 
 " }}}1
 
-" Last updated: May 5, 2015
+" Last updated: July 22, 2015

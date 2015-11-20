@@ -176,7 +176,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " My Plugins here:
 
@@ -1432,4 +1432,4 @@ endif
 
 " }}}1
 
-" Last updated: July 22, 2015
+" Last updated: November 19, 2015

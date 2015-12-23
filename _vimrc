@@ -366,7 +366,8 @@ Plugin 'Align'
 " Plugin 'Javascript-Indentation'
 " Plugin 'QuickBuf'
 
-Plugin 'https://bitbucket.org/mortonfox/twitvim'
+Plugin 'twitvim/twitvim'
+" Plugin 'file:///Users/pcheah/proj/twitvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -1432,4 +1433,4 @@ endif
 
 " }}}1
 
-" Last updated: November 19, 2015
+" Last updated: December 23, 2015

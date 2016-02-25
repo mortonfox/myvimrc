@@ -198,6 +198,16 @@ inoremap <F12><F4> <C-o>:Wipeout<cr>
 " vmap <expr> <C-j> DVB_Drag('down')
 " vmap <expr> ,d DVB_Duplicate() 
 
+Plugin 'chrisbra/csv.vim'
+" Don't conceal delimiters.
+let g:csv_no_conceal = 1
+" Customize CSV highlights.
+highlight CSVColumnEven guifg=gray guibg=#000066 ctermfg=gray ctermbg=DarkBlue
+highlight CSVColumnOdd guifg=gray guibg=black ctermfg=gray ctermbg=black
+highlight CSVDelimiter guifg=cyan guibg=black ctermfg=cyan ctermbg=black
+highlight CSVColumnHeaderEven guifg=green guibg=#000066 ctermfg=green ctermbg=DarkBlue
+highlight CSVColumnHeaderOdd guifg=green guibg=black ctermfg=green ctermbg=black
+
 Plugin 'ctrlpvim/ctrlp.vim'
 " Use CtrlPMRU as default.
 let g:ctrlp_cmd = 'CtrlPMRUFiles'
@@ -297,7 +307,7 @@ nnoremap <leader>sb :call SelectaBuffer()<cr>
 " Fuzzy select one of those. Run that command with :
 nnoremap <leader>sh :call SelectaHistoryCommand()<cr>
 
-Plugin 'mileszs/ack.vim'
+" Plugin 'mileszs/ack.vim'
 Plugin 'mortonfox/nerdtree-iterm'
 " Plugin 'mtth/scratch.vim'
 Plugin 'ngmy/vim-rubocop'
@@ -336,8 +346,12 @@ Plugin 'tommcdo/vim-lion'
 Plugin 'tpope/vim-commentary'
 let g:commentary_map_backslash=0
 
+Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-scriptease'
+Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
 
 Plugin 'troydm/asyncfinder.vim'
@@ -1433,4 +1447,4 @@ endif
 
 " }}}1
 
-" Last updated: December 23, 2015
+" Last updated: February 24, 2016

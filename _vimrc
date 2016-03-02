@@ -309,6 +309,7 @@ nnoremap <leader>sh :call SelectaHistoryCommand()<cr>
 
 " Plugin 'mileszs/ack.vim'
 Plugin 'mortonfox/nerdtree-iterm'
+Plugin 'mortonfox/nerdtree-reuse-currenttab'
 " Plugin 'mtth/scratch.vim'
 Plugin 'ngmy/vim-rubocop'
 " Plugin 'nicoraffo/conque'
@@ -1447,4 +1448,4 @@ endif
 
 " }}}1
 
-" Last updated: February 24, 2016
+" Last updated: March 2, 2016

@@ -315,7 +315,7 @@ Plugin 'ngmy/vim-rubocop'
 " Plugin 'nicoraffo/conque'
 Plugin 'pangloss/vim-javascript'
 " Plugin 'rking/ag.vim'
-
+Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'mortonfox/nerdtree'
 " let NERDTreeNoSwitchTabs=1
@@ -1448,4 +1448,4 @@ endif
 
 " }}}1
 
-" Last updated: March 2, 2016
+" Last updated: May 13, 2016

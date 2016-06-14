@@ -180,7 +180,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " My Plugins here:
 
-" original repos on GitHub
+" --- original repos on GitHub ---
+
 " Plugin 'aaronbieber/vim-vault'
 Plugin 'AndrewRadev/splitjoin.vim'
 
@@ -222,6 +223,7 @@ inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 
 Plugin 'dhruvasagar/vim-vinegar'
 " Plugin 'edsono/vim-matchit'
+Plugin 'elixir-lang/vim-elixir'
 
 Plugin 'gabesoft/vim-ags'
 " The following autocmd fixes a weird issue with syntax highlighting in the
@@ -282,30 +284,30 @@ vmap <F12>a <Plug>(EasyAlign)
 
 Plugin 'kchmck/vim-coffee-script'
 
-Plugin 'kien/rainbow_parentheses.vim'
-" F8 toggles rainbow parentheses.
-nnoremap <F8> :RainbowParenthesesToggle<cr>
-vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
-inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
+" Plugin 'kien/rainbow_parentheses.vim'
+" " F8 toggles rainbow parentheses.
+" nnoremap <F8> :RainbowParenthesesToggle<cr>
+" vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
+" inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
 
 Plugin 'ludovicchabant/vim-gutentags'
 set statusline+=%{gutentags#statusline('\ [TAGS]')}
 let g:gutentags_cache_dir=$HOME.'/gutentags'
 let g:gutentags_project_root=['.svn']
 
-Plugin 'michaelavila/selecta.vim'
+" Plugin 'michaelavila/selecta.vim'
 
-" Find all files in all non-dot directories starting in the working directory.
-" Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>sf :call SelectaFile()<cr>
+" " Find all files in all non-dot directories starting in the working directory.
+" " Fuzzy select one of those. Open the selected file with :e.
+" nnoremap <leader>sf :call SelectaFile()<cr>
 
-" Find all buffers that have been opened.
-" Fuzzy select one of those. Open the selected file with :b.
-nnoremap <leader>sb :call SelectaBuffer()<cr>
+" " Find all buffers that have been opened.
+" " Fuzzy select one of those. Open the selected file with :b.
+" nnoremap <leader>sb :call SelectaBuffer()<cr>
 
-" Find previously run commands.
-" Fuzzy select one of those. Run that command with :
-nnoremap <leader>sh :call SelectaHistoryCommand()<cr>
+" " Find previously run commands.
+" " Fuzzy select one of those. Run that command with :
+" nnoremap <leader>sh :call SelectaHistoryCommand()<cr>
 
 " Plugin 'mileszs/ack.vim'
 Plugin 'mortonfox/nerdtree-iterm'
@@ -355,12 +357,12 @@ Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
 
-Plugin 'troydm/asyncfinder.vim'
-let g:asyncfinder_ignore_dirs="['.AppleDouble','.DS_Store','.git','.hg','.bzr','.svn','.idea','.redcar']"
-let g:asyncfinder_ignore_files="['*.sw?']"
-nnoremap <F12>f :AsyncFinder<cr>
-vnoremap <F12>f <esc>:AsyncFinder<cr>
-inoremap <F12>f <esc>:AsyncFinder<cr>
+" Plugin 'troydm/asyncfinder.vim'
+" let g:asyncfinder_ignore_dirs="['.AppleDouble','.DS_Store','.git','.hg','.bzr','.svn','.idea','.redcar']"
+" let g:asyncfinder_ignore_files="['*.sw?']"
+" nnoremap <F12>f :AsyncFinder<cr>
+" vnoremap <F12>f <esc>:AsyncFinder<cr>
+" inoremap <F12>f <esc>:AsyncFinder<cr>
 
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'vim-ruby/vim-ruby'
@@ -374,7 +376,8 @@ vmap <C-k> <Plug>SchleppLeft
 vmap <C-j> <Plug>SchleppRight
 vmap ,d <Plug>SchleppDup
 
-" vim-scripts repos
+" --- vim-scripts repos ---
+
 Plugin 'Align'
 " Plugin 'IndentAnything'
 " Plugin 'javacomplete'
@@ -963,11 +966,11 @@ endfunction
 " applicable.
 function! <SID>Set_default_mode()
     " Rainbow Parentheses interferes with vault password hiding.
-    if &filetype != 'vault'
-        RainbowParenthesesLoadBraces
-        RainbowParenthesesLoadRound
-        RainbowParenthesesLoadSquare
-    endif
+    " if &filetype != 'vault'
+    "     RainbowParenthesesLoadBraces
+    "     RainbowParenthesesLoadRound
+    "     RainbowParenthesesLoadSquare
+    " endif
 endfunction
 
 " Generic code setup for most languages.
@@ -1448,4 +1451,4 @@ endif
 
 " }}}1
 
-" Last updated: May 13, 2016
+" Last updated: June 14, 2016

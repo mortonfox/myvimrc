@@ -310,7 +310,10 @@ let g:gutentags_project_root=['.svn']
 " nnoremap <leader>sh :call SelectaHistoryCommand()<cr>
 
 " Plugin 'mileszs/ack.vim'
+
 Plugin 'mortonfox/nerdtree-iterm'
+let g:nerdtree_iterm_iterm_version = 3
+
 Plugin 'mortonfox/nerdtree-reuse-currenttab'
 " Plugin 'mtth/scratch.vim'
 Plugin 'ngmy/vim-rubocop'
@@ -1451,4 +1454,4 @@ endif
 
 " }}}1
 
-" Last updated: June 14, 2016
+" Last updated: June 22, 2016

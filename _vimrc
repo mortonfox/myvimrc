@@ -321,9 +321,13 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'pangloss/vim-javascript'
 " Plugin 'rking/ag.vim'
 Plugin 'rust-lang/rust.vim'
-Plugin 'scrooloose/nerdtree'
-" Plugin 'mortonfox/nerdtree'
-" let NERDTreeNoSwitchTabs=1
+
+" Plugin 'scrooloose/nerdtree'
+" Need this fork to disable cascades.
+" Clone it manually with:
+"   git clone -b disable-cascade https://github.com/juanibiapina/nerdtree.git
+Plugin 'juanibiapina/nerdtree', {'pinned': 1}
+let NERDTreeCascadeSingleChildDir=0
 " Ctrl-F7 finds the current file in the NERDTree.
 nnoremap <silent> <S-F7> :NERDTreeFind<CR>
 vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
@@ -1454,4 +1458,4 @@ endif
 
 " }}}1
 
-" Last updated: June 22, 2016
+" Last updated: July 27, 2016

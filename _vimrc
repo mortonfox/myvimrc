@@ -311,6 +311,9 @@ let g:gutentags_project_root=['.svn']
 
 " Plugin 'mileszs/ack.vim'
 
+Plugin 'mortonfox/nerdtree-ags'
+Plugin 'mortonfox/nerdtree-clip'
+
 Plugin 'mortonfox/nerdtree-iterm'
 let g:nerdtree_iterm_iterm_version = 3
 
@@ -322,11 +325,7 @@ Plugin 'pangloss/vim-javascript'
 " Plugin 'rking/ag.vim'
 Plugin 'rust-lang/rust.vim'
 
-" Plugin 'scrooloose/nerdtree'
-" Need this fork to disable cascades.
-" Clone it manually with:
-"   git clone -b disable-cascade https://github.com/juanibiapina/nerdtree.git
-Plugin 'juanibiapina/nerdtree', {'pinned': 1}
+Plugin 'scrooloose/nerdtree'
 let NERDTreeCascadeSingleChildDir=0
 " Ctrl-F7 finds the current file in the NERDTree.
 nnoremap <silent> <S-F7> :NERDTreeFind<CR>
@@ -359,7 +358,7 @@ let g:commentary_map_backslash=0
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
@@ -1458,4 +1457,4 @@ endif
 
 " }}}1
 
-" Last updated: July 27, 2016
+" Last updated: October 19, 2016

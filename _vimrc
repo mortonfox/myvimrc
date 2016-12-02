@@ -336,7 +336,7 @@ nnoremap <silent> <S-F7> :NERDTreeFind<CR>
 vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
 inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
 
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 " Turn off syntastic balloons.
 let g:syntastic_enable_balloons = 0
 
@@ -376,6 +376,10 @@ Plugin 'tpope/vim-unimpaired'
 
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'vim-ruby/vim-ruby'
+
+Plugin 'w0rp/ale'
+let g:ale_ruby_rubocop_options = '--lint'
+
 Plugin 'yegappan/mru'
 
 Plugin 'zirrostig/vim-schlepp'
@@ -1461,4 +1465,4 @@ endif
 
 " }}}1
 
-" Last updated: October 19, 2016
+" Last updated: December 2, 2016

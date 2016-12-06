@@ -9,7 +9,7 @@ set encoding=utf-8
 " features have been enabled.
 silent! set noautochdir
 
-if has("autocmd")
+if has('autocmd')
     augroup cmdt_auto
         " Clear all auto-commands.
         autocmd!
@@ -35,11 +35,11 @@ function! s:got_clipboard()
     if !has('clipboard')
         return 0
     endif
-    let save_clip = @*
+    let l:save_clip = @*
     let @* = 'xx'
-    let retval = @* == 'xx'
-    let @* = save_clip
-    return retval
+    let l:retval = @* ==# 'xx'
+    let @* = l:save_clip
+    return l:retval
 endfunction
 
 function! <SID>set_clipboard()
@@ -49,9 +49,6 @@ function! <SID>set_clipboard()
         set clipboard+=unnamed
     endif
 endfunction
-
-" be iMproved
-set nocompatible
 
 " :write command with a file name sets alternate file name for the current
 " window.
@@ -136,7 +133,7 @@ set shortmess+=T
 " override ignorecase if search pattern contains upper case characters
 set smartcase
 " Customize status line
-if version >= 700
+if v:version >= 700
     set statusline=%f%#User1#
 else
     set statusline=%f%1*
@@ -330,7 +327,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'rust-lang/rust.vim'
 
 Plugin 'scrooloose/nerdtree'
-let NERDTreeCascadeSingleChildDir=0
+let g:NERDTreeCascadeSingleChildDir=0
 " Ctrl-F7 finds the current file in the NERDTree.
 nnoremap <silent> <S-F7> :NERDTreeFind<CR>
 vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
@@ -415,12 +412,12 @@ runtime macros/matchit.vim
 
 " Make vimpager use MacVim.
 " Assuming that .vimpagerrc sources this file.
-let vimpager_use_gvim = 1
+let g:vimpager_use_gvim = 1
 
 " ----- GUI customization ----- {{{1
 
 " In vim 5.4 with GTK+, the .font resource does not work.
-if has("gui_gtk") && has("gui_running")
+if has('gui_gtk') && has('gui_running')
     set guifont=DejaVu\ Sans\ Mono\ 10,7x14bold
 endif
 
@@ -441,13 +438,13 @@ if (has('win32') || has('win64')) && has('gui_running')
 endif
 
 " Special font for the Mac
-if has("mac") && has("gui_running")
+if has('mac') && has('gui_running')
     set guifont=monaco:h14
 endif
 
 
 " If the gvim window is too small, try setting it larger.
-if &lines < 40 && has("gui_running")
+if &lines < 40 && has('gui_running')
     set lines=40
 endif
 
@@ -588,11 +585,11 @@ vnoremap <f12>g <esc>:call <SID>ConvertCoords()<cr>gv
 " F12 l updates a 'Last up-dated:' line
 " Need to use a [s] here so that this macro won't change itself if
 " invoked on this file.
-let m = "1G/La[s]t updated:/e+0<CR>a <C-R>=<SID>Date_string()<CR><CR><ESC>dd"
-execute "nnoremap <F12>l" m
-execute "inoremap <F12>l <esc>" . m . "i"
-execute "vnoremap <F12>l <esc>" . m . "gv"
-unlet m
+let s:m = '1G/La[s]t updated:/e+0<CR>a <C-R>=<SID>Date_string()<CR><CR><ESC>dd'
+execute 'nnoremap <F12>l' s:m
+execute 'inoremap <F12>l <esc>' . s:m . 'i'
+execute 'vnoremap <F12>l <esc>' . s:m . 'gv'
+unlet s:m
 
 " F12 m runs Marked on the Markdown file.
 function! s:Run_marked()
@@ -624,15 +621,15 @@ inoremap <F12>s <C-R>=<SID>Date_string()<CR>
 " expression commands are used to be able to give comments to the
 " parts of the mapping. (from the vim tips file)
 
-let m =     ":noremap <f12>u :set ai<CR>"    " need 'autoindent' set
-let m = m . "{O<Esc>"                 " add empty line above item
-let m = m . "}{)^W"                   " move to text after bullet
-let m = m . "i     <CR>     <Esc>"    " add space for indent
-let m = m . "gq}"                     " format text after the bullet
-let m = m . "{dd"                     " remove the empty line
-let m = m . "5lDJ"                    " put text after bullet
-execute m                             |" define the mapping
-unlet m
+let s:m =     ':noremap <f12>u :set ai<CR>'    " need 'autoindent' set
+let s:m = s:m . '{O<Esc>'                 " add empty line above item
+let s:m = s:m . '}{)^W'                   " move to text after bullet
+let s:m = s:m . 'i     <CR>     <Esc>'    " add space for indent
+let s:m = s:m . 'gq}'                     " format text after the bullet
+let s:m = s:m . '{dd'                     " remove the empty line
+let s:m = s:m . '5lDJ'                    " put text after bullet
+execute s:m                             |" define the mapping
+unlet s:m
 
 " F12 ve edits .vimrc file
 " F12 vs sources .vimrc file
@@ -654,7 +651,7 @@ vnoremap <F12>X !boxes -r<space>
 
 " iTerm2 sends nul characters for anti-idle. Ignore those characters in
 " text mode.
-if has("mac") && !has("gui_running")
+if has('mac') && !has('gui_running')
     inoremap <C-@> <Nop>
     cnoremap <C-@> <Nop>
     lnoremap <C-@> <Nop>
@@ -700,7 +697,7 @@ function! s:Highlight_Init()
     highlight SpellCap term=reverse cterm=NONE ctermbg=darkblue gui=undercurl guisp=blue
     highlight SpellBad term=reverse cterm=NONE ctermbg=darkred gui=undercurl guisp=red
 
-    if version >= 700
+    if v:version >= 700
         highlight MatchParen guifg=Yellow guibg=darkgreen ctermfg=Yellow ctermbg=darkgreen
 
         " Popup menu colors.
@@ -774,7 +771,7 @@ function! s:Turn_syntax_on()
 endfunction
 
 function! <SID>Toggle_syntax()
-    if has("syntax_items")
+    if has('syntax_items')
         syntax off
     else
         call s:Turn_syntax_on()
@@ -791,7 +788,7 @@ call s:Highlight_Init()
 
 " ===== Maximize/unmaximize vertically. ===== {{{2
 function! <SID>Toggle_full_height()
-    if exists("s:orig_height")
+    if exists('s:orig_height')
         execute 'set lines=' . s:orig_height
         unlet s:orig_height
     else
@@ -805,12 +802,12 @@ command! FullHeight :call <SID>Toggle_full_height()
 
 " ===== Remove all buffers. ===== {{{2
 function! <SID>Del_all_buf()
-    let bufidx = 1
-    while bufidx <= bufnr("$")
-        if bufloaded(bufidx)
-            execute 'bd' bufidx
+    let l:bufidx = 1
+    while l:bufidx <= bufnr('$')
+        if bufloaded(l:bufidx)
+            execute 'bd' l:bufidx
         endif
-        let bufidx = bufidx + 1
+        let l:bufidx = l:bufidx + 1
     endw
 endfunction
 
@@ -907,7 +904,7 @@ endfunction
 " can't delete a menu item under gui_athena. This code here does not
 " delete menu items so it will work.
 
-if (version < 504 || has("gui_athena")) && has("autocmd")
+if (v:version < 504 || has('gui_athena')) && has('autocmd')
 
     " Helper function for the buffers menu.
     " Go to the buffer if it is already loaded. Otherwise load the file.
@@ -924,15 +921,15 @@ if (version < 504 || has("gui_athena")) && has("autocmd")
     " menu. The menu action either switches to the buffer if the buffer
     " still exists, or loads the file if the buffer has been deleted.
     function! Menu_add_buf()
-        let bufname = bufname("%")
-        let bufnum = bufnr("%")
-        if bufname != ""
-            let bufname = fnamemodify(bufname, ":p")
+        let l:bufname = bufname('%')
+        let l:bufnum = bufnr('%')
+        if l:bufname !=# ''
+            let l:bufname = fnamemodify(l:bufname, ':p')
             " The dot needs to be escaped too because it is a menu
             " separator.
-            let bufname = escape(bufname, ' \.')
-            let bufcmd=':call Goto_buf('.bufnum.",'".bufname."')<cr>"
-            execute '80amenu &Buffers.'.bufname bufcmd
+            let l:bufname = escape(l:bufname, ' \.')
+            let l:bufcmd=':call Goto_buf('.l:bufnum.",'".l:bufname."')<cr>"
+            execute '80amenu &Buffers.'.l:bufname l:bufcmd
         endif
     endfunction
 
@@ -957,7 +954,7 @@ endif " version < 504 || has("gui_athena")
 " Returns the current date in string form.
 " The substitution gets rid of the leading 0 in the day of the month.
 function! <SID>Date_string()
-    return substitute(strftime("%B %d, %Y"), " 0", " ", "")
+    return substitute(strftime('%B %d, %Y'), ' 0', ' ', '')
 endfunction
 
 " ===== Run ctags ===== {{{2
@@ -965,13 +962,13 @@ endfunction
 " Under win32, run ctags in the current directory because we can't
 " reliably do a cd.
 function! <SID>Run_ctags()
-    let ctagsrun = "ctags --if0 --totals --exclude=...* -n *.c *.cpp *.cc *.h"
-    if has("win32")
-        let ctagscmd = "!".ctagsrun
+    let l:ctagsrun = 'ctags --if0 --totals --exclude=...* -n *.c *.cpp *.cc *.h'
+    if has('win32')
+        let l:ctagscmd = '!'.l:ctagsrun
     else
-        let ctagscmd = "!cd ".expand("%:p:h").";".ctagsrun
+        let l:ctagscmd = '!cd '.expand('%:p:h').';'.l:ctagsrun
     endif
-    execute ctagscmd
+    execute l:ctagscmd
 endfunction
 
 " ===== Customize vim modes ===== {{{2
@@ -1044,7 +1041,7 @@ function! s:Set_text_mode()
     setlocal formatoptions=tcq2
 endfunction
 
-if has("autocmd")
+if has('autocmd')
     augroup vimrc_auto
         " Clear all auto-commands.
         autocmd!
@@ -1147,50 +1144,50 @@ endfunction
 " Adds the ability to word-complete in a regular (non-search) command-line
 " and to word-complete in the middle of the command-line.
 
-let s:lastcmdline = ""
-let s:lastcmdpos = ""
+let s:lastcmdline = ''
+let s:lastcmdpos = ''
 
 function! <SID>CmdlineComplete()
-    let cmdline = getcmdline()
-    let cmdpos = getcmdpos()
-    if cmdline == s:lastcmdline && cmdpos == s:lastcmdpos
+    let l:cmdline = getcmdline()
+    let l:cmdpos = getcmdpos()
+    if l:cmdline == s:lastcmdline && l:cmdpos == s:lastcmdpos
         " User invoked completion again without moving cursor or editing
-        let cmdline = s:origcmdline
-        let cmdpos = s:origcmdpos
+        let l:cmdline = s:origcmdline
+        let l:cmdpos = s:origcmdpos
         let s:completeDepth = s:completeDepth . "\<C-N>"
     else
         " Starting new completion
-        let s:origcmdline = cmdline
-        let s:origcmdpos = cmdpos
+        let s:origcmdline = l:cmdline
+        let s:origcmdpos = l:cmdpos
         let s:completeDepth = "\<C-N>"
     endif
 
     " Set paste option to disable indent
-    let paste = &l:paste
+    let l:paste = &l:paste
     setlocal paste
 
-    let savecol = col(".")
+    let l:savecol = col('.')
 
-    execute "normal! o" . cmdline . "\<C-O>" . cmdpos . "|" . s:completeDepth
+    execute 'normal! o' . l:cmdline . "\<C-O>" . l:cmdpos . '|' . s:completeDepth
 
     " Update the command line and position.
-    let s:lastcmdline = getline(".")
-    let s:lastcmdpos = col(".") + 1
+    let s:lastcmdline = getline('.')
+    let s:lastcmdpos = col('.') + 1
 
     " Check if we have come full circle and reset the search depth. This
     " needs to be done because Vim behaves in a weird way if too many
     " Ctrl-Ns are used in a macro.
     if s:lastcmdline == s:origcmdline
-        let s:completeDepth = ""
+        let s:completeDepth = ''
     endif
 
     " Undo changes and restore cursor position
-    execute "normal! u" . savecol . "|"
+    execute 'normal! u' . l:savecol . '|'
 
     " Restore paste option
-    let &l:paste = paste
+    let &l:paste = l:paste
 
-    let tmp = setcmdpos(s:lastcmdpos)
+    let l:tmp = setcmdpos(s:lastcmdpos)
     return s:lastcmdline
 endfunction
 
@@ -1203,21 +1200,21 @@ endfunction
 
 function! <SID>ToDecimals(deg, minwhole, mindec)
     " Trim leading zeros so that the string won't be treated as octal.
-    let deg = substitute(a:deg, "^0*", "", "")
-    let minwhole = substitute(a:minwhole, "^0*", "", "")
+    let l:deg = substitute(a:deg, '^0*', '', '')
+    let l:minwhole = substitute(a:minwhole, '^0*', '', '')
 
     " Force the decimal portion of the minutes to be 3 decimal places.
     " And then trim leading zeros.
-    let mindec = substitute(strpart(a:mindec.'000', 0, 3), "^0*", "", "")
+    let l:mindec = substitute(strpart(a:mindec.'000', 0, 3), '^0*', '', '')
 
-    let val = (minwhole * 1000000 + mindec * 1000 + 30) / 60
-    return deg . "." . strpart("000000", 0, 6 - strlen(val)) . val
+    let l:val = (l:minwhole * 1000000 + l:mindec * 1000 + 30) / 60
+    return l:deg . '.' . strpart('000000', 0, 6 - strlen(l:val)) . l:val
 endfunction
 
 function! <SID>ConvertCoords()
-    let coord = '\(\d\+\)\D\+\(\d\+\)\D\+\(\d\+\)'
-    let x = substitute(getline("."), '\D*'.coord.'\D\+'.coord.'.*', '\=<SID>ToDecimals(submatch(1), submatch(2), submatch(3)) . "\<cr>-" . <SID>ToDecimals(submatch(4), submatch(5), submatch(6))', "")
-    execute "normal o\<home>" . x . "\<esc>"
+    let l:coord = '\(\d\+\)\D\+\(\d\+\)\D\+\(\d\+\)'
+    let l:x = substitute(getline('.'), '\D*'.l:coord.'\D\+'.l:coord.'.*', '\=<SID>ToDecimals(submatch(1), submatch(2), submatch(3)) . "\<cr>-" . <SID>ToDecimals(submatch(4), submatch(5), submatch(6))', '')
+    execute "normal o\<home>" . l:x . "\<esc>"
 endfunction
 
 " ------------------------------------------------------------------
@@ -1234,35 +1231,35 @@ endfunction
 " convert waypoint to ID number
 " returns -1 if invalid waypoint
 function! s:GCtoID(waypt)
-    let waypt = toupper(a:waypt)
-    let WPTCHARS = "0123456789ABCDEFGHJKMNPQRTVWXYZ"
+    let l:waypt = toupper(a:waypt)
+    let l:WPTCHARS = '0123456789ABCDEFGHJKMNPQRTVWXYZ'
 
-    if match(waypt, '^GC[0-9A-F]\{1,4}$') >= 0
-        return "0x" . strpart(waypt, 2) + 0
+    if match(l:waypt, '^GC[0-9A-F]\{1,4}$') >= 0
+        return '0x' . strpart(l:waypt, 2) + 0
     " elseif match(waypt, '^GC[GHJ-KM-NP-RTV-Z][0-9A-HJ-KM-NP-RTV-Z]\{3}$') >= 0
-    elseif match(waypt, '^GC[' . strpart(WPTCHARS, 16) . '][' . WPTCHARS . ']\{3}$') >= 0
-        let accum = 0
-        let i = 2
-        while i < 6
+    elseif match(l:waypt, '^GC[' . strpart(l:WPTCHARS, 16) . '][' . l:WPTCHARS . ']\{3}$') >= 0
+        let l:accum = 0
+        let l:i = 2
+        while l:i < 6
             " echo waypt[i]
-            let accum = accum * 31 + match(WPTCHARS, waypt[i])
-            if i == 2
-                let accum = accum - 16
+            let l:accum = l:accum * 31 + match(l:WPTCHARS, l:waypt[l:i])
+            if l:i == 2
+                let l:accum = l:accum - 16
             endif
-            let i = i + 1
+            let l:i = l:i + 1
         endwhile
-        return accum + 65536
-    elseif match(waypt, '^GC[' . WPTCHARS . ']\{5}$') >= 0
-        let accum = 0
-        let i = 2
-        while i < 7
-            let accum = accum * 31 + match(WPTCHARS, waypt[i])
-            if i == 2
-                let accum = accum - 1
+        return l:accum + 65536
+    elseif match(l:waypt, '^GC[' . l:WPTCHARS . ']\{5}$') >= 0
+        let l:accum = 0
+        let l:i = 2
+        while l:i < 7
+            let l:accum = l:accum * 31 + match(l:WPTCHARS, l:waypt[l:i])
+            if l:i == 2
+                let l:accum = l:accum - 1
             endif
-            let i = i + 1
+            let l:i = l:i + 1
         endwhile
-        return accum + 512401
+        return l:accum + 512401
     else
         return -1
     endif
@@ -1272,44 +1269,43 @@ endfunction
 " waypt cache-title
 " into a HTML geocache link.
 function! <SID>ConvertGC()
+    let l:gcregex = 'GC[0-9A-Za-z]\{1,5}'
 
-    let gcregex = 'GC[0-9A-Za-z]\{1,5}'
+    let l:fmt1 = '^\s*\d\+\.\s\+\(.*\)\s\+(.\{-})\s\+(\('.l:gcregex.'\))\s*$'
+    let l:fmt2 = '^\s*\(.*\)\s\+by\s\+.\{-}\s\+(\('.l:gcregex.'\))\s*$'
+    let l:fmt3 = '^\s*\('.l:gcregex.'\)\s\+\(.\{-}\)\s*$'
 
-    let fmt1 = '^\s*\d\+\.\s\+\(.*\)\s\+(.\{-})\s\+(\('.gcregex.'\))\s*$'
-    let fmt2 = '^\s*\(.*\)\s\+by\s\+.\{-}\s\+(\('.gcregex.'\))\s*$'
-    let fmt3 = '^\s*\('.gcregex.'\)\s\+\(.\{-}\)\s*$'
+    let l:line = getline('.')
+    let l:waypt = ''
+    let l:title = ''
 
-    let line = getline(".")
-    let waypt = ""
-    let title = ""
-
-    let res = matchlist(line, fmt1)
-    if res != []
-        let waypt = res[2]
-        let title = res[1]
+    let l:res = matchlist(l:line, l:fmt1)
+    if l:res != []
+        let l:waypt = l:res[2]
+        let l:title = l:res[1]
     else
-        let res = matchlist(line, fmt2)
-        if res != []
-            let waypt = res[2]
-            let title = res[1]
+        let l:res = matchlist(l:line, l:fmt2)
+        if l:res != []
+            let l:waypt = l:res[2]
+            let l:title = l:res[1]
         else
-            let res = matchlist(line, fmt3)
-            if res != []
-                let waypt = res[1]
-                let title = res[2]
+            let l:res = matchlist(l:line, l:fmt3)
+            if l:res != []
+                let l:waypt = l:res[1]
+                let l:title = l:res[2]
             endif
         endif
     endif
 
-    let title = substitute(title, '&', '\&amp;', 'g')
-    let title = substitute(title, '<', '\&lt;', 'g')
-    let title = substitute(title, '>', '\&gt;', 'g')
+    let l:title = substitute(l:title, '&', '\&amp;', 'g')
+    let l:title = substitute(l:title, '<', '\&lt;', 'g')
+    let l:title = substitute(l:title, '>', '\&gt;', 'g')
 
 "    echo "waypt = ". waypt. ", title = ". title . "."
 
-    let id = s:GCtoID(waypt)
-    if id >= 0
-        call setline(".", "<p><a href=\"http://www.geocaching.com/seek/cache_details.aspx?pf=y&ID=" . id . "&log=y&decrypt=y\">" . title . "</a>")
+    let l:id = s:GCtoID(l:waypt)
+    if l:id >= 0
+        call setline('.', "<p><a href=\"http://www.geocaching.com/seek/cache_details.aspx?pf=y&ID=" . l:id . "&log=y&decrypt=y\">" . l:title . '</a>')
     endif
 endfunction
 
@@ -1320,65 +1316,65 @@ vnoremap ,c :call <SID>ConvertGC()<cr>
 
 " Get the content of the n'th element in a series of elements.
 function! s:xml_get_nth(xmlstr, elem, n)
-    let matchres = matchlist(a:xmlstr, '<'.a:elem.'\%( [^>]*\)\?>\(.\{-}\)</'.a:elem.'>', -1, a:n)
-    return matchres == [] ? "" : matchres[1]
+    let l:matchres = matchlist(a:xmlstr, '<'.a:elem.'\%( [^>]*\)\?>\(.\{-}\)</'.a:elem.'>', -1, a:n)
+    return l:matchres == [] ? '' : l:matchres[1]
 endfunction
 
 " Remove leading and trailing whitespace.
 function! s:trim_both(s)
     " Remove trailing whitespace.
-    let s = substitute(a:s, '\s\+$', '', '')
+    let l:s = substitute(a:s, '\s\+$', '', '')
 
     " Remove leading whitespace.
-    return substitute(s, '^\s\+', '', '')
+    return substitute(l:s, '^\s\+', '', '')
 endfunction
 
 " ,M Convert new-style my caches HTML to a list of links.
 function! s:Convert_mycaches_3() range
-    let m1 = 'http://www\.geocaching\.com/seek/cache_details\.aspx[^"]*'
-    let m2 = '<a href="'.m1.'">\(.*\)</a>'
+    let l:m1 = 'http://www\.geocaching\.com/seek/cache_details\.aspx[^"]*'
+    let l:m2 = '<a href="'.l:m1.'">\(.*\)</a>'
 
-    let header = '<lj-cut text="The caches...">'."\<cr>".'<div style="margin: 10px 30px; border: 1px dashed; padding: 10px;">'."\<cr>"
-    let footer = '</div>'."\<cr>".'</lj-cut>'."\<cr>"
+    let l:header = '<lj-cut text="The caches...">'."\<cr>".'<div style="margin: 10px 30px; border: 1px dashed; padding: 10px;">'."\<cr>"
+    let l:footer = '</div>'."\<cr>".'</lj-cut>'."\<cr>"
 
-    let outstr = ""
-    let str = join(getline(a:firstline, a:lastline), "")
+    let l:outstr = ''
+    let l:str = join(getline(a:firstline, a:lastline), '')
 
     " Remove ^M characters.
-    let str = substitute(str, '\r', '', 'g')
+    let l:str = substitute(l:str, '\r', '', 'g')
 
-    let trcount = 1
+    let l:trcount = 1
     while 1
-        let logitem = s:xml_get_nth(str, 'tr', trcount)
-        if logitem == ""
+        let l:logitem = s:xml_get_nth(l:str, 'tr', l:trcount)
+        if l:logitem ==# ''
             break
         endif
 
-        let linkitem = s:xml_get_nth(logitem, 'td', 3)
+        let l:linkitem = s:xml_get_nth(l:logitem, 'td', 3)
 
         " Get cache link.
-        let linkstr = matchstr(linkitem, m1, 0)
-        if linkstr != ""
+        let l:linkstr = matchstr(l:linkitem, l:m1, 0)
+        if l:linkstr !=# ''
 
             " Get cache name.
-            let matchres = matchlist(linkitem, m2)
-            let name = s:trim_both(matchres[1])
+            let l:matchres = matchlist(l:linkitem, l:m2)
+            let l:name = s:trim_both(l:matchres[1])
 
-            let state = s:trim_both(s:xml_get_nth(logitem, 'td', 4))
+            let l:state = s:trim_both(s:xml_get_nth(l:logitem, 'td', 4))
             
-            let link = '<a href="'.linkstr.'">'.name.' ('.state.")</a>\r"
+            let l:link = '<a href="'.l:linkstr.'">'.l:name.' ('.l:state.")</a>\r"
 
             " Prepend to reverse the order of the log items.
-            let outstr = link . outstr
+            let l:outstr = l:link . l:outstr
         endif
 
-        let trcount += 1
+        let l:trcount += 1
     endwhile
 
     " Pick the correct change command so that autoindent is not in effect.
     " We want the inserted lines to have no indent.
-    let changecmd = &autoindent ? "change!" : "change"
-    silent execute "normal :" . a:firstline . "," . a:lastline . changecmd . "\<cr>" . header . outstr . footer . "\<esc>"
+    let l:changecmd = &autoindent ? 'change!' : 'change'
+    silent execute 'normal :' . a:firstline . ',' . a:lastline . l:changecmd . "\<cr>" . l:header . l:outstr . l:footer . "\<esc>"
 endfunction
 
 vnoremap ,M :call <SID>Convert_mycaches_3()<cr>
@@ -1386,12 +1382,12 @@ vnoremap ,M :call <SID>Convert_mycaches_3()<cr>
 " ===== Convert text to HTML ===== {{{2
 " Convert text to HTML by escaping <, >, ", and &.
 function! <SID>HtmlizeText()
-    let line = getline(".")
-    let line = substitute(line, '&', '\&amp;', 'g')
-    let line = substitute(line, '<', '\&lt;', 'g')
-    let line = substitute(line, '>', '\&gt;', 'g')
-    let line = substitute(line, '"', '\&quot;', 'g')
-    call setline(".", line)
+    let l:line = getline('.')
+    let l:line = substitute(l:line, '&', '\&amp;', 'g')
+    let l:line = substitute(l:line, '<', '\&lt;', 'g')
+    let l:line = substitute(l:line, '>', '\&gt;', 'g')
+    let l:line = substitute(l:line, '"', '\&quot;', 'g')
+    call setline('.', l:line)
 endfunction
 
 nnoremap ,h :call <SID>HtmlizeText()<cr>
@@ -1399,9 +1395,9 @@ vnoremap ,h :call <SID>HtmlizeText()<cr>
 
 " ===== Convert Topozone URL to Geobloggers tags for Flickr. ===== {{{2
 function! <SID>ConvertGeoTag()
-    let coords = '.\{-}\(\d\+\.\d\+\).\{-}\(-\d\+\.\d\+\).*'
-    let x = substitute(getline("."), coords, 'geotagged geo:lat=\1 geo:lon=\2', '')
-    execute "normal o" . x . "\<cr><a href=\"http://www.geobloggers.com\">geotagged</a>\<esc>"
+    let l:coords = '.\{-}\(\d\+\.\d\+\).\{-}\(-\d\+\.\d\+\).*'
+    let l:x = substitute(getline('.'), l:coords, 'geotagged geo:lat=\1 geo:lon=\2', '')
+    execute 'normal o' . l:x . "\<cr><a href=\"http://www.geobloggers.com\">geotagged</a>\<esc>"
 endfunction
 
 nnoremap ,f :call <SID>ConvertGeoTag()<cr>
@@ -1428,8 +1424,8 @@ function! s:equal_toggle(lineno) abort
 endfunction
 
 function! s:do_equal_toggle(type) abort
-    for lnum in range(line("'["), line("']"))
-        call s:equal_toggle(lnum)
+    for l:lnum in range(line("'["), line("']"))
+        call s:equal_toggle(l:lnum)
     endfor
 endfunction
 
@@ -1459,10 +1455,10 @@ endif
 
 " Source a local vimrc file if one exists. This is useful for
 " customizations that differ from system to system.
-if $HOME != "" && filereadable($HOME."/vimrc.local")
-    execute "source ".$HOME."/vimrc.local"
-elseif $VIM != "" && filereadable($VIM."/vimrc.local")
-    execute "source ".$VIM."/vimrc.local"
+if $HOME !=# '' && filereadable($HOME.'/vimrc.local')
+    execute 'source '.$HOME.'/vimrc.local'
+elseif $VIM !=# '' && filereadable($VIM.'/vimrc.local')
+    execute 'source '.$VIM.'/vimrc.local'
 endif
 
 " }}}1

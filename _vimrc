@@ -439,7 +439,11 @@ endif
 
 " Special font for the Mac
 if has('mac') && has('gui_running')
-    set guifont=monaco:h14
+    if hostname() =~ '^\cdonhaven'
+        set guifont=monaco:h13
+    else
+        set guifont=monaco:h14
+    endif
 endif
 
 
@@ -1463,4 +1467,4 @@ endif
 
 " }}}1
 
-" Last updated: December 6, 2016
+" Last updated: January 18, 2017

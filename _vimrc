@@ -1058,7 +1058,6 @@ if has('autocmd')
         autocmd FileType php         call <SID>Set_generic_code_mode()
         autocmd FileType css,scss    call <SID>Set_generic_code_mode()
         autocmd FileType perl        call <SID>Set_generic_code_mode()
-        autocmd FileType python      call <SID>Set_generic_code_mode()
         autocmd FileType html        call <SID>Set_generic_code_mode()
         autocmd FileType javascript  call <SID>Set_generic_code_mode()
         autocmd FileType coffee      call <SID>Set_generic_code_mode()
@@ -1071,6 +1070,7 @@ if has('autocmd')
         autocmd FileType ruby,eruby call <SID>Set_ruby_mode()
         autocmd FileType vim        call <SID>Set_vimscript_mode()
         autocmd FileType d          call <SID>Set_vimscript_mode()
+        autocmd FileType python     call <SID>Set_vimscript_mode()
         autocmd FileType text       call <SID>Set_text_mode()
 
         " Clear some artifacts in console Vim.
@@ -1467,4 +1467,4 @@ endif
 
 " }}}1
 
-" Last updated: January 18, 2017
+" Last updated: February 28, 2017

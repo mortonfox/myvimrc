@@ -264,7 +264,7 @@ Plugin 'godlygeek/tabular'
 " endfunction
 
 " Plugin 'jnwhiteh/vim-golang'
-Plugin 'JarrodCTaylor/vim-shell-executor'
+" Plugin 'JarrodCTaylor/vim-shell-executor'
 
 Plugin 'jistr/vim-nerdtree-tabs'
 " Don't open NERDTree on GUI startup.
@@ -356,7 +356,7 @@ Plugin 'tommcdo/vim-lion'
 Plugin 'tpope/vim-commentary'
 let g:commentary_map_backslash=0
 
-Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 " Plugin 'tpope/vim-repeat'

@@ -296,6 +296,15 @@ set statusline+=%{gutentags#statusline('\ [TAGS]')}
 let g:gutentags_cache_dir=$HOME.'/gutentags'
 let g:gutentags_project_root=['.svn']
 
+Plugin 'mbbill/undotree'
+" F9 toggles undotree.
+nnoremap <F9> :UndotreeToggle<cr>
+
+if has("persistent_undo")
+    set undodir=~/undodir/
+    set undofile
+endif
+
 " Plugin 'michaelavila/selecta.vim'
 
 " " Find all files in all non-dot directories starting in the working directory.
@@ -335,13 +344,9 @@ inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
 
 " Plugin 'scrooloose/syntastic'
 " Turn off syntastic balloons.
-let g:syntastic_enable_balloons = 0
+" let g:syntastic_enable_balloons = 0
 
-Plugin 'sjl/gundo.vim'
-" F9 toggles Gundo.
-nnoremap <F9> :silent GundoToggle<cr>
-vnoremap <F9> <esc>:silent GundoToggle<cr>
-inoremap <F9> <esc>:silent GundoToggle<cr>
+" Plugin 'sjl/gundo.vim'
 
 Plugin 'solarnz/thrift.vim'
 
@@ -1467,4 +1472,4 @@ endif
 
 " }}}1
 
-" Last updated: February 28, 2017
+" Last updated: September 29, 2017

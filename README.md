@@ -12,6 +12,3 @@ problems, so this name is portable.
 
 This vimrc uses Vundle to pull in other plugins, so follow the instructions at
 <https://github.com/gmarik/vundle> for initial installation.
-
-In addition, I use some custom NERDTree plugins from
-<https://github.com/mortonfox/nerdtree-iterm>

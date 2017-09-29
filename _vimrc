@@ -299,6 +299,8 @@ let g:gutentags_project_root=['.svn']
 Plugin 'mbbill/undotree'
 " F9 toggles undotree.
 nnoremap <F9> :UndotreeToggle<cr>
+let g:undotree_WindowLayout = 3
+let g:undotree_ShortIndicators = 1
 
 if has("persistent_undo")
     set undodir=~/undodir/

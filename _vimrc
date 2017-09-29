@@ -150,6 +150,13 @@ set suffixes+=.exe
 set suffixes+=.dll
 " mode for fast tty
 set ttyfast
+
+" Enable persistent undo
+if has('persistent_undo')
+    set undodir=~/undodir/
+    set undofile
+endif
+
 " allow cursor to wrap across line boundaries for all commands
 set whichwrap=b,s,h,l,<,>,[,]
 " Show command line completion menu.
@@ -296,16 +303,11 @@ set statusline+=%{gutentags#statusline('\ [TAGS]')}
 let g:gutentags_cache_dir=$HOME.'/gutentags'
 let g:gutentags_project_root=['.svn']
 
-Plugin 'mbbill/undotree'
+" Plugin 'mbbill/undotree'
 " F9 toggles undotree.
-nnoremap <F9> :UndotreeToggle<cr>
-let g:undotree_WindowLayout = 3
-let g:undotree_ShortIndicators = 1
-
-if has('persistent_undo')
-    set undodir=~/undodir/
-    set undofile
-endif
+" nnoremap <F9> :UndotreeToggle<cr>
+" let g:undotree_WindowLayout = 3
+" let g:undotree_ShortIndicators = 1
 
 " Plugin 'michaelavila/selecta.vim'
 
@@ -348,7 +350,13 @@ inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
 " Turn off syntastic balloons.
 " let g:syntastic_enable_balloons = 0
 
+Plugin 'simnalamburt/vim-mundo'
+nnoremap <F9> :MundoToggle<CR>
+let g:mundo_right = 1
+
 " Plugin 'sjl/gundo.vim'
+" nnoremap <F9> :GundoToggle<CR>
+" let g:gundo_right = 1
 
 Plugin 'solarnz/thrift.vim'
 

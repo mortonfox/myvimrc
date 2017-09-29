@@ -1052,6 +1052,14 @@ function! s:Set_text_mode()
     " q = Format comments with gq.
     " 2 = Use second line's indent to format rest of paragraph.
     setlocal formatoptions=tcq2
+
+    " Break up inserts into smaller undo chunks.
+    inoremap <buffer> . .<c-g>u
+    inoremap <buffer> ? ?<c-g>u
+    inoremap <buffer> ! !<c-g>u
+    inoremap <buffer> , ,<c-g>u
+    inoremap <buffer> ; ;<c-g>u
+    inoremap <buffer> : :<c-g>u
 endfunction
 
 if has('autocmd')

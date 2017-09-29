@@ -383,6 +383,7 @@ Plugin 'vim-ruby/vim-ruby'
 
 Plugin 'w0rp/ale'
 let g:ale_ruby_rubocop_options = '--lint'
+let g:ale_set_balloons = 0
 
 Plugin 'yegappan/mru'
 

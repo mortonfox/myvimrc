@@ -351,11 +351,11 @@ inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
 " let g:syntastic_enable_balloons = 0
 
 Plugin 'simnalamburt/vim-mundo'
-nnoremap <F9> :MundoToggle<CR>
+nnoremap <F9> :silent MundoToggle<CR>
 let g:mundo_right = 1
 
 " Plugin 'sjl/gundo.vim'
-" nnoremap <F9> :GundoToggle<CR>
+" nnoremap <F9> :silent GundoToggle<CR>
 " let g:gundo_right = 1
 
 Plugin 'solarnz/thrift.vim'

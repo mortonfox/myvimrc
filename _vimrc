@@ -1026,6 +1026,10 @@ function! s:Set_ruby_mode()
 
     " Workaround needed because Perl ftplugin adds a colon to iskeyword globally.
     setlocal iskeyword-=:
+
+    " Turn off balloon expr.
+    setlocal noballooneval
+    setlocal balloonexpr=
 endfunction
 
 " Function for setting up Vim to edit Vimscript source files.

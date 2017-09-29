@@ -302,7 +302,7 @@ nnoremap <F9> :UndotreeToggle<cr>
 let g:undotree_WindowLayout = 3
 let g:undotree_ShortIndicators = 1
 
-if has("persistent_undo")
+if has('persistent_undo')
     set undodir=~/undodir/
     set undofile
 endif
@@ -446,7 +446,8 @@ endif
 
 " Special font for the Mac
 if has('mac') && has('gui_running')
-    if hostname() =~ '^\cdonhaven'
+    if hostname() =~? '^donhaven'
+        " Use smaller font on my laptop.
         set guifont=monaco:h13
     else
         set guifont=monaco:h14

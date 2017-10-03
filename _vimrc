@@ -56,6 +56,14 @@ endfunction
 " have a name.
 " set buffer options when first entering a buffer
 set cpoptions=AFs
+
+" Set swapfile location.
+let s:vimrc_swapdir = expand('~/vim/swapdir')
+if !isdirectory(s:vimrc_swapdir)
+    call mkdir(s:vimrc_swapdir, 'p', 0700)
+endif
+execute 'set directory^='.s:vimrc_swapdir
+
 " Display as much of the last line as possible.
 set display=lastline
 " Do not equalize window heights after closing a window.
@@ -153,7 +161,11 @@ set ttyfast
 
 " Enable persistent undo
 if has('persistent_undo')
-    set undodir=~/undodir/
+    let s:vimrc_undodir = expand('~/vim/undodir')
+    if !isdirectory(s:vimrc_undodir)
+        call mkdir(s:vimrc_undodir, 'p', 0700)
+    endif
+    execute 'set undodir^='.s:vimrc_undodir
     set undofile
 endif
 
@@ -300,7 +312,7 @@ Plugin 'kchmck/vim-coffee-script'
 
 Plugin 'ludovicchabant/vim-gutentags'
 set statusline+=%{gutentags#statusline('\ [TAGS]')}
-let g:gutentags_cache_dir=$HOME.'/gutentags'
+let g:gutentags_cache_dir='~/vim/gutentags'
 let g:gutentags_project_root=['.svn']
 
 " Plugin 'mbbill/undotree'
@@ -1496,4 +1508,4 @@ endif
 
 " }}}1
 
-" Last updated: September 29, 2017
+" Last updated: October 3, 2017

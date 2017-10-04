@@ -1114,6 +1114,10 @@ if has('autocmd')
         autocmd FileType python     call <SID>Set_vimscript_mode()
         autocmd FileType text       call <SID>Set_text_mode()
 
+        " Save crontab file in place. Otherwise crontab -e may think the file
+        " has not changed.
+        autocmd FileType crontab setlocal backupcopy=yes
+
         " Clear some artifacts in console Vim.
         autocmd VimEnter * redraw
 
@@ -1508,4 +1512,4 @@ endif
 
 " }}}1
 
-" Last updated: October 3, 2017
+" Last updated: October 4, 2017

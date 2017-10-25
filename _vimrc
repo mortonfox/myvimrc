@@ -372,11 +372,6 @@ let g:mundo_right = 1
 
 Plugin 'solarnz/thrift.vim'
 
-Plugin 'tek/vim-quickbuf'
-" Shift-F4 brings up QuickBuf.
-" let g:qb_hotkey = '<S-F4>'
-let g:quickbuf_map = '<S-F4>'
-
 Plugin 'tommcdo/vim-exchange'
 Plugin 'tommcdo/vim-lion'
 
@@ -421,7 +416,10 @@ Plugin 'Align'
 " Plugin 'IndentAnything'
 " Plugin 'javacomplete'
 " Plugin 'Javascript-Indentation'
-" Plugin 'QuickBuf'
+
+Plugin 'QuickBuf'
+" Shift-F4 brings up QuickBuf.
+let g:qb_hotkey = '<S-F4>'
 
 Plugin 'twitvim/twitvim'
 " Plugin 'file:///Users/pcheah/proj/twitvim'

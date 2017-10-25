@@ -182,9 +182,6 @@ omapclear
 imapclear
 cmapclear
 
-" runtime bundle/vim-pathogen/autoload/pathogen.vim
-" silent! execute pathogen#infect()
-
 " ===== Load Vundle ===== {{{2
 filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim
@@ -198,7 +195,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 " --- original repos on GitHub ---
 
-" Plugin 'aaronbieber/vim-vault'
 Plugin 'AndrewRadev/splitjoin.vim'
 
 Plugin 'artnez/vim-wipeout'
@@ -238,7 +234,6 @@ vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 
 Plugin 'dhruvasagar/vim-vinegar'
-" Plugin 'edsono/vim-matchit'
 Plugin 'elixir-lang/vim-elixir'
 
 Plugin 'gabesoft/vim-ags'
@@ -315,26 +310,6 @@ set statusline+=%{gutentags#statusline('\ [TAGS]')}
 let g:gutentags_cache_dir='~/vim/gutentags'
 let g:gutentags_project_root=['.svn']
 
-" Plugin 'mbbill/undotree'
-" F9 toggles undotree.
-" nnoremap <F9> :UndotreeToggle<cr>
-" let g:undotree_WindowLayout = 3
-" let g:undotree_ShortIndicators = 1
-
-" Plugin 'michaelavila/selecta.vim'
-
-" " Find all files in all non-dot directories starting in the working directory.
-" " Fuzzy select one of those. Open the selected file with :e.
-" nnoremap <leader>sf :call SelectaFile()<cr>
-
-" " Find all buffers that have been opened.
-" " Fuzzy select one of those. Open the selected file with :b.
-" nnoremap <leader>sb :call SelectaBuffer()<cr>
-
-" " Find previously run commands.
-" " Fuzzy select one of those. Run that command with :
-" nnoremap <leader>sh :call SelectaHistoryCommand()<cr>
-
 " Plugin 'mileszs/ack.vim'
 
 Plugin 'mortonfox/nerdtree-ags'
@@ -344,9 +319,7 @@ Plugin 'mortonfox/nerdtree-iterm'
 let g:nerdtree_iterm_iterm_version = 3
 
 Plugin 'mortonfox/nerdtree-reuse-currenttab'
-" Plugin 'mtth/scratch.vim'
 Plugin 'ngmy/vim-rubocop'
-" Plugin 'nicoraffo/conque'
 Plugin 'pangloss/vim-javascript'
 " Plugin 'rking/ag.vim'
 Plugin 'rust-lang/rust.vim'
@@ -386,13 +359,6 @@ Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
 
-" Plugin 'troydm/asyncfinder.vim'
-" let g:asyncfinder_ignore_dirs="['.AppleDouble','.DS_Store','.git','.hg','.bzr','.svn','.idea','.redcar']"
-" let g:asyncfinder_ignore_files="['*.sw?']"
-" nnoremap <F12>f :AsyncFinder<cr>
-" vnoremap <F12>f <esc>:AsyncFinder<cr>
-" inoremap <F12>f <esc>:AsyncFinder<cr>
-
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'vim-ruby/vim-ruby'
 
@@ -413,9 +379,6 @@ vmap ,d <Plug>SchleppDup
 " --- vim-scripts repos ---
 
 Plugin 'Align'
-" Plugin 'IndentAnything'
-" Plugin 'javacomplete'
-" Plugin 'Javascript-Indentation'
 
 Plugin 'QuickBuf'
 " Shift-F4 brings up QuickBuf.
@@ -1510,4 +1473,4 @@ endif
 
 " }}}1
 
-" Last updated: October 4, 2017
+" Last updated: October 25, 2017

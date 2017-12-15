@@ -366,9 +366,10 @@ Plugin 'w0rp/ale'
 let g:ale_ruby_rubocop_options = '--lint'
 let g:ale_set_balloons = 0
 
-" Linting on text change seems to break <ctrl-\><ctrl-o> in insert mode at the
-" end of the first line. Turning this feature off to avoid that.
-let g:ale_lint_on_text_changed = 'never'
+" The ale_echo_cursor feature seems to break <ctrl-\><ctrl-o> in insert mode
+" at the end of the line when there's an error on the line. The cursor ends up
+" one left of where it should be. Turning this feature off to avoid that.
+let g:ale_echo_cursor = 0
 
 Plugin 'yegappan/mru'
 

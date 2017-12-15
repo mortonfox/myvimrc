@@ -366,6 +366,10 @@ Plugin 'w0rp/ale'
 let g:ale_ruby_rubocop_options = '--lint'
 let g:ale_set_balloons = 0
 
+" Linting on text change seems to break <ctrl-\><ctrl-o> in insert mode at the
+" end of the first line. Turning this feature off to avoid that.
+let g:ale_lint_on_text_changed = 'never'
+
 Plugin 'yegappan/mru'
 
 Plugin 'zirrostig/vim-schlepp'
@@ -1473,4 +1477,4 @@ endif
 
 " }}}1
 
-" Last updated: October 25, 2017
+" Last updated: December 14, 2017

@@ -319,6 +319,11 @@ Plugin 'mortonfox/nerdtree-iterm'
 let g:nerdtree_iterm_iterm_version = 3
 
 Plugin 'mortonfox/nerdtree-reuse-currenttab'
+
+Plugin 'mortonfox/QuickBuf'
+" Shift-F4 brings up QuickBuf.
+let g:qb_hotkey = '<S-F4>'
+
 Plugin 'ngmy/vim-rubocop'
 Plugin 'pangloss/vim-javascript'
 " Plugin 'rking/ag.vim'
@@ -379,10 +384,6 @@ vmap ,d <Plug>SchleppDup
 " --- vim-scripts repos ---
 
 Plugin 'Align'
-
-Plugin 'QuickBuf'
-" Shift-F4 brings up QuickBuf.
-let g:qb_hotkey = '<S-F4>'
 
 Plugin 'twitvim/twitvim'
 " Plugin 'file:///Users/pcheah/proj/twitvim'

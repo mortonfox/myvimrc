@@ -366,11 +366,6 @@ Plugin 'w0rp/ale'
 let g:ale_ruby_rubocop_options = '--lint'
 let g:ale_set_balloons = 0
 
-" The ale_echo_cursor feature seems to break <ctrl-\><ctrl-o> in insert mode
-" at the end of the line when there's an error on the line. The cursor ends up
-" one left of where it should be. Turning this feature off to avoid that.
-let g:ale_echo_cursor = 0
-
 Plugin 'yegappan/mru'
 
 Plugin 'zirrostig/vim-schlepp'
@@ -1478,4 +1473,4 @@ endif
 
 " }}}1
 
-" Last updated: December 14, 2017
+" Last updated: December 19, 2017

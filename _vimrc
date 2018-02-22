@@ -236,7 +236,7 @@ inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 Plugin 'dhruvasagar/vim-vinegar'
 Plugin 'elixir-lang/vim-elixir'
 
-Plugin 'gabesoft/vim-ags'
+" Plugin 'gabesoft/vim-ags'
 " The following autocmd fixes a weird issue with syntax highlighting in the
 " vim-ags search results window.
 autocmd BufNewFile,BufRead *.agsv call s:Turn_syntax_on()
@@ -310,9 +310,13 @@ set statusline+=%{gutentags#statusline('\ [TAGS]')}
 let g:gutentags_cache_dir='~/vim/gutentags'
 let g:gutentags_project_root=['.svn']
 
+Plugin 'mhinz/vim-grepper'
+let g:grepper = {}
+let g:grepper.dir = 'repo,filecwd'
+
 " Plugin 'mileszs/ack.vim'
 
-Plugin 'mortonfox/nerdtree-ags'
+" Plugin 'mortonfox/nerdtree-ags'
 Plugin 'mortonfox/nerdtree-clip'
 
 Plugin 'mortonfox/nerdtree-iterm'
@@ -1474,4 +1478,4 @@ endif
 
 " }}}1
 
-" Last updated: December 19, 2017
+" Last updated: February 22, 2018

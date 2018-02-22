@@ -288,8 +288,8 @@ nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
 vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
 imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
 
-" Plugin 'junegunn/fzf'
-" Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 " let g:fzf_launcher = '/Users/pcheah/bin/in_a_new_term.sh %s'
 
 Plugin 'junegunn/vim-easy-align'

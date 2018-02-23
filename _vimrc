@@ -364,6 +364,7 @@ let g:commentary_map_backslash=0
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 " Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
@@ -1478,4 +1479,4 @@ endif
 
 " }}}1
 
-" Last updated: February 22, 2018
+" Last updated: February 23, 2018

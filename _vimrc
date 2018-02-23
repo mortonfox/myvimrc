@@ -330,6 +330,7 @@ let g:qb_hotkey = '<S-F4>'
 
 Plugin 'ngmy/vim-rubocop'
 Plugin 'pangloss/vim-javascript'
+Plugin 'qpkorr/vim-bufkill'
 " Plugin 'rking/ag.vim'
 Plugin 'rust-lang/rust.vim'
 

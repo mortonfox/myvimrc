@@ -433,16 +433,26 @@ if (has('win32') || has('win64')) && has('gui_running')
     set guifont=Fixedsys:h9
 endif
 
-" Special font for the Mac
 if has('mac') && has('gui_running')
+    " Special font for the Mac
     if hostname() =~? '^donhaven'
         " Use smaller font on my laptop.
         set guifont=monaco:h13
     else
         set guifont=monaco:h14
     endif
-endif
 
+    " Map cmd-1 thru cmd-9 to switch tabs.
+    nnoremap <silent> <D-1> :silent! 1tabnext<cr>
+    nnoremap <silent> <D-2> :silent! 2tabnext<cr>
+    nnoremap <silent> <D-3> :silent! 3tabnext<cr>
+    nnoremap <silent> <D-4> :silent! 4tabnext<cr>
+    nnoremap <silent> <D-5> :silent! 5tabnext<cr>
+    nnoremap <silent> <D-6> :silent! 6tabnext<cr>
+    nnoremap <silent> <D-7> :silent! 7tabnext<cr>
+    nnoremap <silent> <D-8> :silent! 8tabnext<cr>
+    nnoremap <silent> <D-9> :silent! 9tabnext<cr>
+endif
 
 " If the gvim window is too small, try setting it larger.
 if &lines < 40 && has('gui_running')
@@ -1480,4 +1490,4 @@ endif
 
 " }}}1
 
-" Last updated: February 23, 2018
+" Last updated: February 27, 2018

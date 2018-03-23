@@ -315,6 +315,7 @@ let g:grepper = {}
 let g:grepper.dir = 'repo,filecwd'
 
 " Plugin 'mileszs/ack.vim'
+Plugin 'moll/vim-bbye'
 
 " Plugin 'mortonfox/nerdtree-ags'
 Plugin 'mortonfox/nerdtree-clip'
@@ -322,7 +323,8 @@ Plugin 'mortonfox/nerdtree-clip'
 Plugin 'mortonfox/nerdtree-iterm'
 let g:nerdtree_iterm_iterm_version = 3
 
-Plugin 'mortonfox/nerdtree-reuse-currenttab'
+" Plugin 'mortonfox/nerdtree-reuse-currenttab'
+Plugin 'mortonfox/nerdtree-reuse-none'
 
 Plugin 'mortonfox/QuickBuf'
 " Shift-F4 brings up QuickBuf.
@@ -330,7 +332,7 @@ let g:qb_hotkey = '<S-F4>'
 
 Plugin 'ngmy/vim-rubocop'
 Plugin 'pangloss/vim-javascript'
-Plugin 'qpkorr/vim-bufkill'
+" Plugin 'qpkorr/vim-bufkill'
 " Plugin 'rking/ag.vim'
 Plugin 'rust-lang/rust.vim'
 
@@ -1490,4 +1492,4 @@ endif
 
 " }}}1
 
-" Last updated: February 27, 2018
+" Last updated: March 23, 2018

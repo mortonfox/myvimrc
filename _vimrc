@@ -84,7 +84,7 @@ set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 " Disable menus.
 set guioptions-=m
 " Visual mode controls global window system selection.
-set guioptions+=a
+" set guioptions+=a
 " Use console dialogs.
 set guioptions+=c
 " Disable toolbar.
@@ -1492,4 +1492,4 @@ endif
 
 " }}}1
 
-" Last updated: March 23, 2018
+" Last updated: April 27, 2018

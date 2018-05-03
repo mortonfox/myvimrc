@@ -824,60 +824,6 @@ function! <SID>Del_all_buf()
     endw
 endfunction
 
-" ===== Buffer menu ===== {{{2
-" VIM 5.4 and later comes with a buffer menu script so we don't need
-" this one. However, that script is disabled for gui_athena so we have
-" to use this one anyway if that is the case. In the VIM buffer menu
-" script comments, it mentions that the code is disabled because you
-" can't delete a menu item under gui_athena. This code here does not
-" delete menu items so it will work.
-
-if (v:version < 504 || has('gui_athena')) && has('autocmd')
-
-    " Helper function for the buffers menu.
-    " Go to the buffer if it is already loaded. Otherwise load the file.
-
-    function! Goto_buf(bufnum, bufname)
-        if bufexists(a:bufnum)
-            execute 'buffer' a:bufnum
-        else
-            execute 'edit' a:bufname
-        endif
-    endfunction
-    
-    " This user-defined function adds the current buffer to the Buffers
-    " menu. The menu action either switches to the buffer if the buffer
-    " still exists, or loads the file if the buffer has been deleted.
-    function! Menu_add_buf()
-        let l:bufname = bufname('%')
-        let l:bufnum = bufnr('%')
-        if l:bufname !=# ''
-            let l:bufname = fnamemodify(l:bufname, ':p')
-            " The dot needs to be escaped too because it is a menu
-            " separator.
-            let l:bufname = escape(l:bufname, ' \.')
-            let l:bufcmd=':call Goto_buf('.l:bufnum.",'".l:bufname."')<cr>"
-            execute '80amenu &Buffers.'.l:bufname l:bufcmd
-        endif
-    endfunction
-
-    " Add a List All menu item to the Buffers menu.
-    80amenu &Buffers.List\ All<tab>:ls :ls<cr>
-
-    augroup vimrc_buffers
-        " Clear auto-commands.
-        autocmd!
-
-        " This will maintain a list of Buffers in a pull-down menu. Because
-        " of vim problems, we do not remove deleted buffers from the menu.
-        autocmd BufNewFile * call Menu_add_buf()
-        autocmd BufReadPost * call Menu_add_buf()
-        autocmd BufWritePost * call Menu_add_buf()
-        autocmd BufEnter * call Menu_add_buf()
-        autocmd WinEnter * call Menu_add_buf()
-    augroup END
-endif " version < 504 || has("gui_athena")
-
 " ===== Insert/update timestamp ===== {{{2
 " Returns the current date in string form.
 " The substitution gets rid of the leading 0 in the day of the month.

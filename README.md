@@ -11,4 +11,4 @@ problems, so this name is portable.
 ## Plugins Needed
 
 This vimrc uses Vundle to pull in other plugins, so follow the instructions at
-<https://github.com/gmarik/vundle> for initial installation.
+<https://github.com/VundleVim/Vundle.vim> for initial installation.

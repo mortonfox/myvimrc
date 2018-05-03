@@ -824,91 +824,6 @@ function! <SID>Del_all_buf()
     endw
 endfunction
 
-" ===== Commentify ===== {{{2
-" A function that commentifies or uncommentifies a line. (for C
-" programs)
-" function! <SID>Commentify_c()
-"     if getline(".") =~ '^\s*/\* ' && getline(".") =~ ' \*/\s*$'
-"       normal ^3x$xxx
-"     else
-"       execute "normal ^i/* \<esc>A */\<esc>"
-"     endif
-" endfunction
-
-" A function that commentifies or uncommentifies a line. (for Java
-" programs)
-" function! <SID>Commentify_java()
-"     if getline(".") =~ '^\s*// ' 
-"       normal ^3x
-"     else
-"       execute "normal ^i// \<esc>"
-"     endif
-" endfunction
-
-" A function that commentifies or uncommentifies a line. (for Perl
-" scripts)
-" function! <SID>Commentify_perl()
-"     if getline(".") =~ '^# '
-"       call setline('.', strpart(getline('.'), 2))
-"     else
-"       call setline('.', '# '.getline('.'))
-"     endif
-" endfunction
-
-" A function that commentifies or uncommentifies a line. (for vim
-" scripts)
-" function! <SID>Commentify_vim()
-"     if getline(".") =~ '^" '
-"       call setline('.', strpart(getline('.'), 2))
-"     else
-"       call setline('.', '" '.getline('.'))
-"     endif
-" endfunction
-
-" A function that commentifies or uncommentifies a line. (for TeX)
-" function! <SID>Commentify_tex()
-"     if getline(".") =~ '^% '
-"       normal 0xx
-"     else
-"       execute "normal 0i% \<esc>"
-"     endif
-" endfunction
-
-" A function that commentifies or uncommentifies a line. (for Lua)
-" function! <SID>Commentify_lua()
-"     if getline(".") =~ '^-- '
-"       normal 0xxx
-"     else
-"       execute "normal 0i-- \<esc>"
-"     endif
-" endfunction
-
-" A function that commentifies or uncommentifies a line. It adapts to
-" the source code using the current vim syntax.
-" function! <SID>Commentify()
-"     " The current_syntax variable may not exist in a new buffer.
-"     if (exists("b:current_syntax"))
-"       if b:current_syntax == "c" || b:current_syntax == "cpp"
-"           call <SID>Commentify_c()
-"       elseif b:current_syntax == "java" || b:current_syntax == "cs"
-"           call <SID>Commentify_java()
-"       elseif b:current_syntax == "vim"
-"           call <SID>Commentify_vim()
-"       elseif b:current_syntax == "tex"
-"           call <SID>Commentify_tex()
-"       elseif b:current_syntax == "lua"
-"           call <SID>Commentify_lua()
-"       else
-"           call <SID>Commentify_perl()
-"       endif
-"     endif
-" endfunction
-
-" F12 t commentifies or uncommentifies a single line.
-" nnoremap <f12>t :call <SID>Commentify()<CR>
-" inoremap <f12>t <esc>:call <SID>Commentify()<CR>
-" vnoremap <f12>t :call <SID>Commentify()<CR>
-
 " ===== Buffer menu ===== {{{2
 " VIM 5.4 and later comes with a buffer menu script so we don't need
 " this one. However, that script is disabled for gui_athena so we have
@@ -1492,4 +1407,4 @@ endif
 
 " }}}1
 
-" Last updated: April 27, 2018
+" Last updated: May 3, 2018

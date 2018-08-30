@@ -932,7 +932,7 @@ if has('autocmd')
         " Clear all auto-commands.
         autocmd!
 
-        autocmd FileType * call <SID>Set_default_mode()
+        autocmd FileType *           call <SID>Set_default_mode()
 
         autocmd FileType java        call <SID>Set_generic_code_mode()
         autocmd FileType cs          call <SID>Set_generic_code_mode()
@@ -954,6 +954,7 @@ if has('autocmd')
         autocmd FileType d          call <SID>Set_vimscript_mode()
         autocmd FileType python     call <SID>Set_vimscript_mode()
         autocmd FileType json       call <SID>Set_vimscript_mode()
+        autocmd FileType markdown   call <SID>Set_vimscript_mode()
         autocmd FileType text       call <SID>Set_text_mode()
 
         " Save crontab file in place. Otherwise crontab -e may think the file

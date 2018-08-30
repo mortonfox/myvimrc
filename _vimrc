@@ -953,6 +953,7 @@ if has('autocmd')
         autocmd FileType vim        call <SID>Set_vimscript_mode()
         autocmd FileType d          call <SID>Set_vimscript_mode()
         autocmd FileType python     call <SID>Set_vimscript_mode()
+        autocmd FileType json       call <SID>Set_vimscript_mode()
         autocmd FileType text       call <SID>Set_text_mode()
 
         " Save crontab file in place. Otherwise crontab -e may think the file
@@ -1353,4 +1354,4 @@ endif
 
 " }}}1
 
-" Last updated: May 3, 2018
+" Last updated: August 30, 2018

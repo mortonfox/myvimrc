@@ -372,6 +372,8 @@ Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-unimpaired'
 
+Plugin 'udalov/kotlin-vim'
+
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'vim-ruby/vim-ruby'
 
@@ -1355,4 +1357,4 @@ endif
 
 " }}}1
 
-" Last updated: August 30, 2018
+" Last updated: October 25, 2018

@@ -208,6 +208,22 @@ inoremap <F12><F4> <C-o>:Wipeout<cr>
 " vmap <expr> <C-j> DVB_Drag('down')
 " vmap <expr> ,d DVB_Duplicate() 
 
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+
+" Shift-F5 brings up LanguageClient context menu.
+nnoremap <S-F5> :call LanguageClient_contextMenu()<CR>
+
+set completefunc=LanguageClient#complete
+
 Plug 'chrisbra/csv.vim'
 " Don't conceal delimiters.
 let g:csv_no_conceal = 1

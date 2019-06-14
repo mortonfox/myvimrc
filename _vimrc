@@ -182,28 +182,25 @@ omapclear
 imapclear
 cmapclear
 
-" ===== Load Vundle ===== {{{2
-filetype off
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" ===== Install vim-plug and plugins =====
 
-" let Vundle manage Vundle
-" required! 
-Plugin 'VundleVim/Vundle.vim'
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" My Plugins here:
+call plug#begin('~/.vim/plugged')
 
-" --- original repos on GitHub ---
+Plug 'AndrewRadev/splitjoin.vim'
 
-Plugin 'AndrewRadev/splitjoin.vim'
-
-Plugin 'artnez/vim-wipeout'
+Plug 'artnez/vim-wipeout'
 " F12 F4 wipes out non-visible buffers.
 nnoremap <F12><F4> :Wipeout<cr>
 vnoremap <F12><F4> <esc>:Wipeout<cr>gv
 inoremap <F12><F4> <C-o>:Wipeout<cr>
 
-" Plugin 'atweiden/vim-dragvisuals'
+" Plug 'atweiden/vim-dragvisuals'
 " Map ctrl-h/j/k/l in visual mode to drag the block.
 " vmap <expr> <C-h> DVB_Drag('left')
 " vmap <expr> <C-l> DVB_Drag('right')
@@ -211,7 +208,7 @@ inoremap <F12><F4> <C-o>:Wipeout<cr>
 " vmap <expr> <C-j> DVB_Drag('down')
 " vmap <expr> ,d DVB_Duplicate() 
 
-Plugin 'chrisbra/csv.vim'
+Plug 'chrisbra/csv.vim'
 " Don't conceal delimiters.
 let g:csv_no_conceal = 1
 " Customize CSV highlights.
@@ -221,7 +218,7 @@ highlight CSVDelimiter guifg=cyan guibg=black ctermfg=cyan ctermbg=black
 highlight CSVColumnHeaderEven guifg=green guibg=#000066 ctermfg=green ctermbg=DarkBlue
 highlight CSVColumnHeaderOdd guifg=green guibg=black ctermfg=green ctermbg=black
 
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Use CtrlPMRU as default.
 let g:ctrlp_cmd = 'CtrlPMRUFiles'
 " Increase size of MRU cache.
@@ -233,17 +230,17 @@ nnoremap <F12><F12> :CtrlPBuffer<cr>
 vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 
-Plugin 'dhruvasagar/vim-vinegar'
-Plugin 'elixir-lang/vim-elixir'
+Plug 'dhruvasagar/vim-vinegar'
+Plug 'elixir-lang/vim-elixir'
 
-" Plugin 'gabesoft/vim-ags'
+" Plug 'gabesoft/vim-ags'
 " The following autocmd fixes a weird issue with syntax highlighting in the
 " vim-ags search results window.
 autocmd BufNewFile,BufRead *.agsv call s:Turn_syntax_on()
 
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 
-" Plugin 'haya14busa/incsearch.vim'
+" Plug 'haya14busa/incsearch.vim'
 " map /  <Plug>(incsearch-forward)
 " map ?  <Plug>(incsearch-backward)
 " map g/ <Plug>(incsearch-stay)
@@ -277,10 +274,10 @@ Plugin 'godlygeek/tabular'
 "     IncSearchNoreMap <Tab> <Over>(buffer-complete)
 " endfunction
 
-" Plugin 'jnwhiteh/vim-golang'
-" Plugin 'JarrodCTaylor/vim-shell-executor'
+" Plug 'jnwhiteh/vim-golang'
+" Plug 'JarrodCTaylor/vim-shell-executor'
 
-Plugin 'jistr/vim-nerdtree-tabs'
+Plug 'jistr/vim-nerdtree-tabs'
 " Don't open NERDTree on GUI startup.
 let g:nerdtree_tabs_open_on_gui_startup = 0
 " F7 will toggle NERDTree.
@@ -288,102 +285,103 @@ nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
 vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
 imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
 
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 " let g:fzf_launcher = '/Users/pcheah/bin/in_a_new_term.sh %s'
 
-Plugin 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 " F12 a invokes EasyAlign.
 nmap <F12>a <Plug>(EasyAlign)
 vmap <F12>a <Plug>(EasyAlign)
 
-Plugin 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
 
-" Plugin 'kien/rainbow_parentheses.vim'
+" Plug 'kien/rainbow_parentheses.vim'
 " " F8 toggles rainbow parentheses.
 " nnoremap <F8> :RainbowParenthesesToggle<cr>
 " vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
 " inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
 
-Plugin 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 set statusline+=%{gutentags#statusline('\ [TAGS]')}
 let g:gutentags_cache_dir='~/vim/gutentags'
 let g:gutentags_project_root=['.svn']
 
-Plugin 'mhinz/vim-grepper'
+Plug 'mhinz/vim-grepper'
 let g:grepper = {}
 let g:grepper.dir = 'repo,filecwd'
 
-" Plugin 'mileszs/ack.vim'
-Plugin 'moll/vim-bbye'
+" Plug 'mileszs/ack.vim'
+Plug 'moll/vim-bbye'
 
-" Plugin 'mortonfox/nerdtree-ags'
-Plugin 'mortonfox/nerdtree-clip'
+" Plug 'mortonfox/nerdtree-ags'
+Plug 'mortonfox/nerdtree-clip'
 
-Plugin 'mortonfox/nerdtree-iterm'
+Plug 'mortonfox/nerdtree-iterm'
 let g:nerdtree_iterm_iterm_version = 3
 
-" Plugin 'mortonfox/nerdtree-reuse-currenttab'
-Plugin 'mortonfox/nerdtree-reuse-none'
+" Plug 'mortonfox/nerdtree-reuse-currenttab'
+Plug 'mortonfox/nerdtree-reuse-none'
 
-Plugin 'mortonfox/QuickBuf'
+Plug 'mortonfox/QuickBuf'
 " Shift-F4 brings up QuickBuf.
 let g:qb_hotkey = '<S-F4>'
 
-Plugin 'ngmy/vim-rubocop'
-Plugin 'pangloss/vim-javascript'
-" Plugin 'qpkorr/vim-bufkill'
-" Plugin 'rking/ag.vim'
-Plugin 'rust-lang/rust.vim'
+Plug 'ngmy/vim-rubocop'
+Plug 'pangloss/vim-javascript'
+" Plug 'qpkorr/vim-bufkill'
+" Plug 'rking/ag.vim'
+Plug 'rust-lang/rust.vim'
 
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 let g:NERDTreeCascadeSingleChildDir=0
 " Ctrl-F7 finds the current file in the NERDTree.
 nnoremap <silent> <S-F7> :NERDTreeFind<CR>
 vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
 inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
 
-" Plugin 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 " Turn off syntastic balloons.
 " let g:syntastic_enable_balloons = 0
 
-Plugin 'simnalamburt/vim-mundo'
+Plug 'simnalamburt/vim-mundo'
 nnoremap <F9> :silent MundoToggle<CR>
 let g:mundo_right = 1
 
-" Plugin 'sjl/gundo.vim'
+" Plug 'sjl/gundo.vim'
 " nnoremap <F9> :silent GundoToggle<CR>
 " let g:gundo_right = 1
 
-Plugin 'solarnz/thrift.vim'
+Plug 'solarnz/thrift.vim'
 
-Plugin 'tommcdo/vim-exchange'
-Plugin 'tommcdo/vim-lion'
+Plug 'tommcdo/vim-exchange'
+Plug 'tommcdo/vim-lion'
 
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 let g:commentary_map_backslash=0
 
-" Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-" Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'tpope/vim-scriptease'
-Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-unimpaired'
+" Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-unimpaired'
 
-Plugin 'udalov/kotlin-vim'
+Plug 'udalov/kotlin-vim'
 
-Plugin 'vimoutliner/vimoutliner'
-Plugin 'vim-ruby/vim-ruby'
+Plug 'vimoutliner/vimoutliner'
+Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/Align'
 
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 let g:ale_ruby_rubocop_options = '--lint'
 let g:ale_set_balloons = 0
 
-Plugin 'yegappan/mru'
+Plug 'yegappan/mru'
 
-Plugin 'zirrostig/vim-schlepp'
+Plug 'zirrostig/vim-schlepp'
 " Map ctrl-h/j/k/l in visual mode to drag the block.
 vmap <C-h> <Plug>SchleppUp
 vmap <C-l> <Plug>SchleppDown
@@ -391,16 +389,10 @@ vmap <C-k> <Plug>SchleppLeft
 vmap <C-j> <Plug>SchleppRight
 vmap ,d <Plug>SchleppDup
 
-" --- vim-scripts repos ---
+" Plug 'twitvim/twitvim'
+" Plug 'file:///Users/pcheah/proj/twitvim'
 
-Plugin 'Align'
-
-Plugin 'twitvim/twitvim'
-" Plugin 'file:///Users/pcheah/proj/twitvim'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on
+call plug#end()
 
 " ===== Other Initialization ===== {{{2
 
@@ -1357,4 +1349,4 @@ endif
 
 " }}}1
 
-" Last updated: October 25, 2018
+" Last updated: June 14, 2019

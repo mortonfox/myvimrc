@@ -208,21 +208,21 @@ inoremap <F12><F4> <C-o>:Wipeout<cr>
 " vmap <expr> <C-j> DVB_Drag('down')
 " vmap <expr> ,d DVB_Duplicate() 
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-    \ }
+" let g:LanguageClient_serverCommands = {
+"     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+"     \ 'python': ['/usr/local/bin/pyls'],
+"     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+"     \ }
 
-" Shift-F5 brings up LanguageClient context menu.
-nnoremap <S-F5> :call LanguageClient_contextMenu()<CR>
+" " Shift-F5 brings up LanguageClient context menu.
+" nnoremap <S-F5> :call LanguageClient_contextMenu()<CR>
 
-set completefunc=LanguageClient#complete
+" set completefunc=LanguageClient#complete
 
 Plug 'chrisbra/csv.vim'
 " Don't conceal delimiters.
@@ -342,6 +342,8 @@ Plug 'mortonfox/nerdtree-reuse-none'
 Plug 'mortonfox/QuickBuf'
 " Shift-F4 brings up QuickBuf.
 let g:qb_hotkey = '<S-F4>'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'ngmy/vim-rubocop'
 Plug 'pangloss/vim-javascript'
@@ -1365,4 +1367,4 @@ endif
 
 " }}}1
 
-" Last updated: June 14, 2019
+" Last updated: July 17, 2019

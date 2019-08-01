@@ -310,6 +310,9 @@ Plug 'junegunn/vim-easy-align'
 nmap <F12>a <Plug>(EasyAlign)
 vmap <F12>a <Plug>(EasyAlign)
 
+" To get Vim help for vim-plug itself.
+Plug 'junegunn/vim-plug'
+
 Plug 'kchmck/vim-coffee-script'
 
 " Plug 'kien/rainbow_parentheses.vim'

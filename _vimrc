@@ -57,6 +57,11 @@ endfunction
 " set buffer options when first entering a buffer
 set cpoptions=AFs
 
+" Use histogram diff algorithm and indent heuristic.
+if has('nvim-0.3.2') || has("patch-8.1.0360")
+    set diffopt=filler,internal,algorithm:histogram,indent-heuristic
+endif
+
 " Set swapfile location.
 let s:vimrc_swapdir = expand('~/vim/swapdir')
 if !isdirectory(s:vimrc_swapdir)
@@ -1480,4 +1485,4 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" Last updated: July 31, 2019
+" Last updated: August 7, 2019

@@ -15,6 +15,7 @@ if has('autocmd')
         autocmd!
         " Use clipboard register, if available.
         autocmd VimEnter * call <SID>set_clipboard()
+        autocmd VimEnter * CocDisable
     augroup END
 endif
 
@@ -1485,4 +1486,4 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" Last updated: August 7, 2019
+" Last updated: October 14, 2019

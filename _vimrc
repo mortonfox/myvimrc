@@ -50,6 +50,10 @@ function! <SID>set_clipboard()
     endif
 endfunction
 
+" Show menu even when there is only one match.
+" Show popup with more info.
+set completeopt=menuone,popup
+
 " :write command with a file name sets alternate file name for the current
 " window.
 " :write command with a file name sets name of buffer if the buffer does not
@@ -143,8 +147,6 @@ set showcmd
 set showmatch
 " Truncate long messages.
 set shortmess+=T
-" Always show signcolumns
-set signcolumn=yes
 " override ignorecase if search pattern contains upper case characters
 set smartcase
 " Customize status line
@@ -214,22 +216,6 @@ inoremap <F12><F4> <C-o>:Wipeout<cr>
 " vmap <expr> <C-k> DVB_Drag('up')
 " vmap <expr> <C-j> DVB_Drag('down')
 " vmap <expr> ,d DVB_Duplicate() 
-
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
-
-" let g:LanguageClient_serverCommands = {
-"     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-"     \ 'python': ['/usr/local/bin/pyls'],
-"     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-"     \ }
-
-" " Shift-F5 brings up LanguageClient context menu.
-" nnoremap <S-F5> :call LanguageClient_contextMenu()<CR>
-
-" set completefunc=LanguageClient#complete
 
 Plug 'chrisbra/csv.vim'
 " Don't conceal delimiters.
@@ -361,7 +347,29 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+
+" Echo diagnostic error for the current line to status.
 let g:lsp_diagnostics_echo_cursor = 1
+
+" Don't automatically show autocomplete popup menu.
+let g:asyncomplete_auto_popup = 0
+
+" Don't override user completeopt.
+let g:asyncomplete_auto_completeopt = 0
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    " nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> <f2> <plug>(lsp-rename)
+    imap <buffer> <c-space> <Plug>(asyncomplete_force_refresh)
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that have the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 " Plug 'qpkorr/vim-bufkill'
 " Plug 'rking/ag.vim'
@@ -511,11 +519,6 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 nnoremap <C-k> <C-W>k
 nnoremap <C-j> <C-W>j
-
-" map F2 key to save file in insert and command modes
-nnoremap <F2> :write<CR>
-vnoremap <F2> <esc>:write<CR>gv
-inoremap <F2> <C-O>:write<CR>
 
 " F3 toggles no-linebreak mode
 nnoremap <F3> :call <SID>Toggle_no_lbr()<cr>
@@ -1380,4 +1383,4 @@ endif
 
 " }}}1
 
-" Last updated: January 9, 2020
+" Last updated: January 22, 2020

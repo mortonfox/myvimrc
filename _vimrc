@@ -9,14 +9,12 @@ set encoding=utf-8
 " features have been enabled.
 silent! set noautochdir
 
-if has('autocmd')
-    augroup cmdt_auto
-        " Clear all auto-commands.
-        autocmd!
-        " Use clipboard register, if available.
-        autocmd VimEnter * call <SID>set_clipboard()
-    augroup END
-endif
+augroup cmdt_auto
+    " Clear all auto-commands.
+    autocmd!
+    " Use clipboard register, if available.
+    autocmd VimEnter * call <SID>set_clipboard()
+augroup END
 
 " copy indent when starting a new line
 set autoindent
@@ -366,7 +364,7 @@ function! s:on_lsp_buffer_enabled() abort
 endfunction
 
 augroup lsp_install
-    au!
+    autocmd!
     " call s:on_lsp_buffer_enabled only for languages that have the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
@@ -955,54 +953,52 @@ function! s:Set_text_mode()
     inoremap <buffer> : :<c-g>u
 endfunction
 
-if has('autocmd')
-    augroup vimrc_auto
-        " Clear all auto-commands.
-        autocmd!
+augroup vimrc_auto
+    " Clear all auto-commands.
+    autocmd!
 
-        autocmd FileType *           call <SID>Set_default_mode()
+    autocmd FileType *           call <SID>Set_default_mode()
 
-        autocmd FileType java        call <SID>Set_generic_code_mode()
-        autocmd FileType cs          call <SID>Set_generic_code_mode()
-        autocmd FileType dosbatch,sh call <SID>Set_generic_code_mode()
-        autocmd FileType php         call <SID>Set_generic_code_mode()
-        autocmd FileType css,scss    call <SID>Set_generic_code_mode()
-        autocmd FileType perl        call <SID>Set_generic_code_mode()
-        autocmd FileType html        call <SID>Set_generic_code_mode()
-        autocmd FileType javascript  call <SID>Set_generic_code_mode()
-        autocmd FileType coffee      call <SID>Set_generic_code_mode()
-        autocmd FileType clojure     call <SID>Set_generic_code_mode()
-        autocmd FileType haskell     call <SID>Set_generic_code_mode()
-        autocmd FileType conf        call <SID>Set_generic_code_mode()
-        autocmd FileType thrift      call <SID>Set_generic_code_mode()
+    autocmd FileType java        call <SID>Set_generic_code_mode()
+    autocmd FileType cs          call <SID>Set_generic_code_mode()
+    autocmd FileType dosbatch,sh call <SID>Set_generic_code_mode()
+    autocmd FileType php         call <SID>Set_generic_code_mode()
+    autocmd FileType css,scss    call <SID>Set_generic_code_mode()
+    autocmd FileType perl        call <SID>Set_generic_code_mode()
+    autocmd FileType html        call <SID>Set_generic_code_mode()
+    autocmd FileType javascript  call <SID>Set_generic_code_mode()
+    autocmd FileType coffee      call <SID>Set_generic_code_mode()
+    autocmd FileType clojure     call <SID>Set_generic_code_mode()
+    autocmd FileType haskell     call <SID>Set_generic_code_mode()
+    autocmd FileType conf        call <SID>Set_generic_code_mode()
+    autocmd FileType thrift      call <SID>Set_generic_code_mode()
 
-        autocmd FileType c,cpp      call <SID>Set_c_mode()
-        autocmd FileType ruby,eruby call <SID>Set_ruby_mode()
-        autocmd FileType vim        call <SID>Set_vimscript_mode()
-        autocmd FileType d          call <SID>Set_vimscript_mode()
-        autocmd FileType python     call <SID>Set_vimscript_mode()
-        autocmd FileType json       call <SID>Set_vimscript_mode()
-        autocmd FileType markdown   call <SID>Set_vimscript_mode()
-        autocmd FileType text       call <SID>Set_text_mode()
+    autocmd FileType c,cpp      call <SID>Set_c_mode()
+    autocmd FileType ruby,eruby call <SID>Set_ruby_mode()
+    autocmd FileType vim        call <SID>Set_vimscript_mode()
+    autocmd FileType d          call <SID>Set_vimscript_mode()
+    autocmd FileType python     call <SID>Set_vimscript_mode()
+    autocmd FileType json       call <SID>Set_vimscript_mode()
+    autocmd FileType markdown   call <SID>Set_vimscript_mode()
+    autocmd FileType text       call <SID>Set_text_mode()
 
-        " Save crontab file in place. Otherwise crontab -e may think the file
-        " has not changed.
-        autocmd FileType crontab setlocal backupcopy=yes
+    " Save crontab file in place. Otherwise crontab -e may think the file
+    " has not changed.
+    autocmd FileType crontab setlocal backupcopy=yes
 
-        " Clear some artifacts in console Vim.
-        autocmd VimEnter * redraw
+    " Clear some artifacts in console Vim.
+    autocmd VimEnter * redraw
 
-        " autocmd BufRead,BufNewFile *.thrift setfiletype thrift
-        " autocmd Syntax thrift source ~/.vim/thrift.vim
+    " autocmd BufRead,BufNewFile *.thrift setfiletype thrift
+    " autocmd Syntax thrift source ~/.vim/thrift.vim
 
-        " Override file type for .md since I'm not working on Modula-2
-        " files.
-        autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
+    " Override file type for .md since I'm not working on Modula-2
+    " files.
+    autocmd BufRead,BufNewFile *.md setlocal filetype=markdown
 
-        " Use conf file type for monit files.
-        autocmd BufRead,BufNewFile monitrc setlocal filetype=conf
-    augroup END
-endif
+    " Use conf file type for monit files.
+    autocmd BufRead,BufNewFile monitrc setlocal filetype=conf
+augroup END
 
 " ===== Toggle line break mode ===== {{{2
 " Function for changing options so that we can edit paragraphs without
@@ -1383,4 +1379,4 @@ endif
 
 " }}}1
 
-" Last updated: January 22, 2020
+" Last updated: January 24, 2020

@@ -237,6 +237,11 @@ nnoremap <F12><F12> :CtrlPBuffer<cr>
 vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 
+Plug 'desmap/ale-sensible'
+Plug 'dense-analysis/ale'
+let g:ale_ruby_rubocop_options = '--lint'
+let g:ale_set_balloons = 0
+
 Plug 'dhruvasagar/vim-vinegar'
 Plug 'elixir-lang/vim-elixir'
 
@@ -414,10 +419,6 @@ Plug 'udalov/kotlin-vim'
 Plug 'vimoutliner/vimoutliner'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/Align'
-
-Plug 'w0rp/ale'
-let g:ale_ruby_rubocop_options = '--lint'
-let g:ale_set_balloons = 0
 
 Plug 'yegappan/mru'
 
@@ -1379,4 +1380,4 @@ endif
 
 " }}}1
 
-" Last updated: January 24, 2020
+" Last updated: January 31, 2020

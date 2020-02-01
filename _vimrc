@@ -137,14 +137,16 @@ set scrolloff=5
 set shiftround
 " number of spaces for ^T/^D
 set shiftwidth=4
-" shorten file messages
-set shortmess=atIA
+" a = shorten file messages.
+" t = truncate file message at the start.
+" I = no intro message.
+" A = no ATTENTION message when existing swap file is found.
+" T = truncate long messages.
+set shortmess=atIAT
 " show command in status line
 set showcmd
 " show matching bracket
 set showmatch
-" Truncate long messages.
-set shortmess+=T
 " override ignorecase if search pattern contains upper case characters
 set smartcase
 " Customize status line
@@ -1448,4 +1450,4 @@ endif
 
 " }}}1
 
-" Last updated: January 31, 2020
+" Last updated: February 1, 2020

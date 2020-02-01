@@ -544,9 +544,13 @@ if has('mac') && has('gui_running')
     " Special font for the Mac
     if hostname() =~? '^donhaven'
         " Use smaller font on my laptop.
-        set guifont=monaco:h13
+        " set guifont=monaco:h13
+        set guifont=CascadiaMonoPL-Regular:h13
+        set linespace=2
     else
-        set guifont=monaco:h14
+        " set guifont=monaco:h14
+        set guifont=CascadiaMonoPL-Regular:h14
+        set linespace=2
     endif
 
     " Map cmd-1 thru cmd-9 to switch tabs.

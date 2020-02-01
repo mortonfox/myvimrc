@@ -199,8 +199,10 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" Switch between single-line and multiline forms of code
 Plug 'AndrewRadev/splitjoin.vim'
 
+" Destroy all buffers that are not open in any tabs or windows.
 Plug 'artnez/vim-wipeout'
 " F12 F4 wipes out non-visible buffers.
 nnoremap <F12><F4> :Wipeout<cr>
@@ -215,6 +217,7 @@ inoremap <F12><F4> <C-o>:Wipeout<cr>
 " vmap <expr> <C-j> DVB_Drag('down')
 " vmap <expr> ,d DVB_Duplicate() 
 
+" Filetype plugin for csv files
 Plug 'chrisbra/csv.vim'
 " Don't conceal delimiters.
 let g:csv_no_conceal = 1
@@ -225,6 +228,7 @@ highlight CSVDelimiter guifg=cyan guibg=black ctermfg=cyan ctermbg=black
 highlight CSVColumnHeaderEven guifg=green guibg=#000066 ctermfg=green ctermbg=DarkBlue
 highlight CSVColumnHeaderOdd guifg=green guibg=black ctermfg=green ctermbg=black
 
+" Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'ctrlpvim/ctrlp.vim'
 " Use CtrlPMRU as default.
 let g:ctrlp_cmd = 'CtrlPMRUFiles'
@@ -237,19 +241,27 @@ nnoremap <F12><F12> :CtrlPBuffer<cr>
 vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
 
+" Pretty, responsive and smooth defaults for a sane ALE, gets you started in 30 seconds
 Plug 'desmap/ale-sensible'
+" Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
 Plug 'dense-analysis/ale'
+" Only run lint cops. No style cops.
 let g:ale_ruby_rubocop_options = '--lint'
+" Turn off balloons.
 let g:ale_set_balloons = 0
 
+" Fork of vinegar.vim that works with NERDTree.
 Plug 'dhruvasagar/vim-vinegar'
-Plug 'elixir-lang/vim-elixir'
+
+" Vim configuration files for Elixir
+Plug 'elixir-editors/vim-elixir'
 
 " Plug 'gabesoft/vim-ags'
 " The following autocmd fixes a weird issue with syntax highlighting in the
 " vim-ags search results window.
-autocmd BufNewFile,BufRead *.agsv call s:Turn_syntax_on()
+" autocmd BufNewFile,BufRead *.agsv call s:Turn_syntax_on()
 
+" Vim script for text filtering and alignment
 Plug 'godlygeek/tabular'
 
 " Plug 'haya14busa/incsearch.vim'
@@ -289,6 +301,7 @@ Plug 'godlygeek/tabular'
 " Plug 'jnwhiteh/vim-golang'
 " Plug 'JarrodCTaylor/vim-shell-executor'
 
+" NERDTree and tabs together in Vim, painlessly
 Plug 'jistr/vim-nerdtree-tabs'
 " Don't open NERDTree on GUI startup.
 let g:nerdtree_tabs_open_on_gui_startup = 0
@@ -297,10 +310,12 @@ nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
 vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
 imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
 
+" A command-line fuzzy finder
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 " let g:fzf_launcher = '/Users/pcheah/bin/in_a_new_term.sh %s'
 
+" A Vim alignment plugin
 Plug 'junegunn/vim-easy-align'
 " F12 a invokes EasyAlign.
 nmap <F12>a <Plug>(EasyAlign)
@@ -309,6 +324,7 @@ vmap <F12>a <Plug>(EasyAlign)
 " To get Vim help for vim-plug itself.
 Plug 'junegunn/vim-plug'
 
+" This project adds CoffeeScript support to vim. It covers syntax, indenting, compiling, and more.
 Plug 'kchmck/vim-coffee-script'
 
 " Plug 'kien/rainbow_parentheses.vim'
@@ -317,34 +333,50 @@ Plug 'kchmck/vim-coffee-script'
 " vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
 " inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
 
+" A Vim plugin that manages your tag files bolt80.com/gutentags
 Plug 'ludovicchabant/vim-gutentags'
 set statusline+=%{gutentags#statusline('\ [TAGS]')}
 let g:gutentags_cache_dir='~/vim/gutentags'
 let g:gutentags_project_root=['.svn']
 
+" Use your favorite grep tool (ag, ack, git grep, ripgrep, pt, sift, findstr,
+" grep) to start an asynchronous search. All matches will be put in a quickfix
+" or location list.
 Plug 'mhinz/vim-grepper'
 let g:grepper = {}
 let g:grepper.dir = 'repo,filecwd'
 
 " Plug 'mileszs/ack.vim'
+
+" Bbye allows you to do delete buffers (close files) without closing your windows or messing up your layout.
 Plug 'moll/vim-bbye'
 
 " Plug 'mortonfox/nerdtree-ags'
+
+" NERDTree plugin to add selected path to clipboard
 Plug 'mortonfox/nerdtree-clip'
 
+" NERDTree plugin to open the selected folder in iTerm.
 Plug 'mortonfox/nerdtree-iterm'
 let g:nerdtree_iterm_iterm_version = 3
 
 " Plug 'mortonfox/nerdtree-reuse-currenttab'
+
+" NERDTree customization that stops it from reusing a window from any tab when opening a file node
 Plug 'mortonfox/nerdtree-reuse-none'
 
+" Very small, clean but quick and powerful buffer manager!
 Plug 'mortonfox/QuickBuf'
 " Shift-F4 brings up QuickBuf.
 let g:qb_hotkey = '<S-F4>'
 
+" The Vim RuboCop plugin runs RuboCop and displays the results in Vim
 Plug 'ngmy/vim-rubocop'
+
+" Vastly improved Javascript indentation and syntax support in Vim
 Plug 'pangloss/vim-javascript'
 
+" async language server protocol plugin for vim and neovim
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -376,19 +408,19 @@ augroup END
 
 " Plug 'qpkorr/vim-bufkill'
 " Plug 'rking/ag.vim'
+
+" Vim configuration for Rust.
 Plug 'rust-lang/rust.vim'
 
-Plug 'scrooloose/nerdtree'
+" A tree explorer plugin for vim.
+Plug 'preservim/nerdtree'
 let g:NERDTreeCascadeSingleChildDir=0
 " Ctrl-F7 finds the current file in the NERDTree.
 nnoremap <silent> <S-F7> :NERDTreeFind<CR>
 vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
 inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
 
-" Plug 'scrooloose/syntastic'
-" Turn off syntastic balloons.
-" let g:syntastic_enable_balloons = 0
-
+" Vim undo tree visualizer simnalamburt.github.io/vim-mundo
 Plug 'simnalamburt/vim-mundo'
 nnoremap <F9> :silent MundoToggle<CR>
 let g:mundo_right = 1
@@ -397,31 +429,60 @@ let g:mundo_right = 1
 " nnoremap <F9> :silent GundoToggle<CR>
 " let g:gundo_right = 1
 
+" Syntax highlighting for thrift definition files.
 Plug 'solarnz/thrift.vim'
 
+" Easy text exchange operator for Vim
 Plug 'tommcdo/vim-exchange'
+
+" A simple alignment operator for Vim text editor
 Plug 'tommcdo/vim-lion'
 
+" commentary.vim: comment stuff ou
 Plug 'tpope/vim-commentary'
 let g:commentary_map_backslash=0
 
 " Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-surround'
+
+" fugitive.vim: A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
+
 " Plug 'tpope/vim-repeat'
+
+" rhubarb.vim: GitHub extension for fugitive.vim
 Plug 'tpope/vim-rhubarb'
+
+" scriptease.vim: A Vim plugin for Vim plugins
 Plug 'tpope/vim-scriptease'
+
+" speeddating.vim: use CTRL-A/CTRL-X to increment dates, times, and more
 Plug 'tpope/vim-speeddating'
+
+" surround.vim: quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'
+
+" unimpaired.vim: Pairs of handy bracket mappings
 Plug 'tpope/vim-unimpaired'
 
+" Kotlin plugin for Vim. Featuring: syntax highlighting, basic indentation, Syntastic support
 Plug 'udalov/kotlin-vim'
 
+" VimOutliner is an outline processor with many of the same features as
+" Grandview, More, Thinktank, Ecco, etc. Features include tree
+" expand/collapse, tree promotion/demotion, level sensitive colors,
+" interoutline linking, and body text.
 Plug 'vimoutliner/vimoutliner'
+
+" Vim/Ruby Configuration Files
 Plug 'vim-ruby/vim-ruby'
+
+" Help folks to align text, eqns, declarations, tables, etc
 Plug 'vim-scripts/Align'
 
+" Most Recently Used (MRU) Vim Plugin
 Plug 'yegappan/mru'
 
+" Vim plugin for easily moving text selections around
 Plug 'zirrostig/vim-schlepp'
 " Map ctrl-h/j/k/l in visual mode to drag the block.
 vmap <C-h> <Plug>SchleppUp

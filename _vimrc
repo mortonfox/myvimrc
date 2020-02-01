@@ -218,7 +218,7 @@ inoremap <F12><F4> <C-o>:Wipeout<cr>
 " vmap <expr> ,d DVB_Duplicate() 
 
 " Filetype plugin for csv files
-Plug 'chrisbra/csv.vim'
+" Plug 'chrisbra/csv.vim'
 " Don't conceal delimiters.
 let g:csv_no_conceal = 1
 " Customize CSV highlights.
@@ -254,7 +254,7 @@ let g:ale_set_balloons = 0
 Plug 'dhruvasagar/vim-vinegar'
 
 " Vim configuration files for Elixir
-Plug 'elixir-editors/vim-elixir'
+" Plug 'elixir-editors/vim-elixir'
 
 " Plug 'gabesoft/vim-ags'
 " The following autocmd fixes a weird issue with syntax highlighting in the
@@ -325,7 +325,7 @@ vmap <F12>a <Plug>(EasyAlign)
 Plug 'junegunn/vim-plug'
 
 " This project adds CoffeeScript support to vim. It covers syntax, indenting, compiling, and more.
-Plug 'kchmck/vim-coffee-script'
+" Plug 'kchmck/vim-coffee-script'
 
 " Plug 'kien/rainbow_parentheses.vim'
 " " F8 toggles rainbow parentheses.
@@ -374,7 +374,15 @@ let g:qb_hotkey = '<S-F4>'
 Plug 'ngmy/vim-rubocop'
 
 " Vastly improved Javascript indentation and syntax support in Vim
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
+
+" A tree explorer plugin for vim.
+Plug 'preservim/nerdtree'
+let g:NERDTreeCascadeSingleChildDir=0
+" Ctrl-F7 finds the current file in the NERDTree.
+nnoremap <silent> <S-F7> :NERDTreeFind<CR>
+vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
+inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
 
 " async language server protocol plugin for vim and neovim
 Plug 'prabirshrestha/async.vim'
@@ -407,18 +415,17 @@ augroup lsp_install
 augroup END
 
 " Plug 'qpkorr/vim-bufkill'
+
+" Vim and Neovim plugin to reveal the commit messages under the cursor
+Plug 'rhysd/git-messenger.vim'
+
 " Plug 'rking/ag.vim'
 
 " Vim configuration for Rust.
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 
-" A tree explorer plugin for vim.
-Plug 'preservim/nerdtree'
-let g:NERDTreeCascadeSingleChildDir=0
-" Ctrl-F7 finds the current file in the NERDTree.
-nnoremap <silent> <S-F7> :NERDTreeFind<CR>
-vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
-inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
+" A solid language pack for Vim.
+Plug 'sheerun/vim-polyglot'
 
 " Vim undo tree visualizer simnalamburt.github.io/vim-mundo
 Plug 'simnalamburt/vim-mundo'
@@ -430,7 +437,7 @@ let g:mundo_right = 1
 " let g:gundo_right = 1
 
 " Syntax highlighting for thrift definition files.
-Plug 'solarnz/thrift.vim'
+" Plug 'solarnz/thrift.vim'
 
 " Easy text exchange operator for Vim
 Plug 'tommcdo/vim-exchange'
@@ -465,7 +472,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 " Kotlin plugin for Vim. Featuring: syntax highlighting, basic indentation, Syntastic support
-Plug 'udalov/kotlin-vim'
+" Plug 'udalov/kotlin-vim'
 
 " VimOutliner is an outline processor with many of the same features as
 " Grandview, More, Thinktank, Ecco, etc. Features include tree
@@ -474,7 +481,7 @@ Plug 'udalov/kotlin-vim'
 Plug 'vimoutliner/vimoutliner'
 
 " Vim/Ruby Configuration Files
-Plug 'vim-ruby/vim-ruby'
+" Plug 'vim-ruby/vim-ruby'
 
 " Help folks to align text, eqns, declarations, tables, etc
 Plug 'vim-scripts/Align'

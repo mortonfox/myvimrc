@@ -547,10 +547,16 @@ if has('mac') && has('gui_running')
         " set guifont=monaco:h13
         set guifont=CascadiaMonoPL-Regular:h13
         set linespace=2
+        if has("gui_macvim")
+            set macthinstrokes
+        endif
     else
         " set guifont=monaco:h14
         set guifont=CascadiaMonoPL-Regular:h14
         set linespace=2
+        if has("gui_macvim")
+            set macthinstrokes
+        endif
     endif
 
     " Map cmd-1 thru cmd-9 to switch tabs.

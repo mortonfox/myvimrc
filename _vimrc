@@ -339,7 +339,7 @@ Plug 'junegunn/vim-plug'
 Plug 'ludovicchabant/vim-gutentags'
 set statusline+=%{gutentags#statusline('\ [TAGS]')}
 let g:gutentags_cache_dir='~/vim/gutentags'
-let g:gutentags_project_root=['.svn']
+" let g:gutentags_project_root=['.svn', '.git']
 
 " Use your favorite grep tool (ag, ack, git grep, ripgrep, pt, sift, findstr,
 " grep) to start an asynchronous search. All matches will be put in a quickfix
@@ -1460,4 +1460,4 @@ endif
 
 " }}}1
 
-" Last updated: February 1, 2020
+" Last updated: March 23, 2020

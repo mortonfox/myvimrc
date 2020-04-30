@@ -235,18 +235,17 @@ highlight CSVDelimiter guifg=cyan guibg=black ctermfg=cyan ctermbg=black
 highlight CSVColumnHeaderEven guifg=green guibg=#000066 ctermfg=green ctermbg=DarkBlue
 highlight CSVColumnHeaderOdd guifg=green guibg=black ctermfg=green ctermbg=black
 
-" Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
-Plug 'ctrlpvim/ctrlp.vim'
-" Use CtrlPMRU as default.
-let g:ctrlp_cmd = 'CtrlPMRUFiles'
-" Increase size of MRU cache.
-let g:ctrlp_mruf_max = 2000
-" Don't jump to an existing window when opening a file.
-let g:ctrlp_switch_buffer = ''
-" F12 F12: Invoke CtrlP in buffer mode.
-nnoremap <F12><F12> :CtrlPBuffer<cr>
-vnoremap <F12><F12> <esc>:CtrlPBuffer<cr>
-inoremap <F12><F12> <esc>:CtrlPBuffer<cr>
+" *** Replaced by mappings to fzf-vim.
+" " Active fork of kien/ctrlp.vim—Fuzzy file, buffer, mru, tag, etc finder.
+" Plug 'ctrlpvim/ctrlp.vim'
+" " Use CtrlPMRU as default.
+" let g:ctrlp_cmd = 'CtrlPMRUFiles'
+" " Increase size of MRU cache.
+" let g:ctrlp_mruf_max = 2000
+" " Don't jump to an existing window when opening a file.
+" let g:ctrlp_switch_buffer = ''
+" " F12 F12: Invoke CtrlP in buffer mode.
+" nnoremap <F12><F12> :CtrlPBuffer<cr>
 
 " Pretty, responsive and smooth defaults for a sane ALE, gets you started in 30 seconds
 Plug 'desmap/ale-sensible'
@@ -321,6 +320,8 @@ imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 " let g:fzf_launcher = '/Users/pcheah/bin/in_a_new_term.sh %s'
+nnoremap <C-p> :History<cr>
+nnoremap <f12><f12> :Buffers<cr>
 
 " A Vim alignment plugin
 Plug 'junegunn/vim-easy-align'
@@ -1438,19 +1439,19 @@ nnoremap <F12>= :set operatorfunc=<SID>do_equal_toggle<cr>g@
 " ===== Use the Silver Searcher for searching, if available ===== {{{2
 " Borrowed from: http://robots.thoughtbot.com/faster-grepping-in-vim/
 
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" if executable('ag')
+"   " Use ag over grep
+"   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+"   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"   let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+"   " ag is fast enough that CtrlP doesn't need to cache
+"   let g:ctrlp_use_caching = 0
 
-  " Don't use this if we have the ag plugin.
-  " command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-endif
+"   " Don't use this if we have the ag plugin.
+"   " command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+" endif
 
 " }}}1
 " ----- Local vimrc ----- {{{1

@@ -201,6 +201,11 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" Changes Vim working directory to project root (identified by presence of known directory or file).
+Plug 'airblade/vim-rooter'
+" Don't echo project directory.
+let g:rooter_silent_chdir = 1
+
 " Switch between single-line and multiline forms of code
 Plug 'AndrewRadev/splitjoin.vim'
 

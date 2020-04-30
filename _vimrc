@@ -349,9 +349,9 @@ let g:gutentags_cache_dir='~/vim/gutentags'
 " Use your favorite grep tool (ag, ack, git grep, ripgrep, pt, sift, findstr,
 " grep) to start an asynchronous search. All matches will be put in a quickfix
 " or location list.
-Plug 'mhinz/vim-grepper'
-let g:grepper = {}
-let g:grepper.dir = 'repo,filecwd'
+" Plug 'mhinz/vim-grepper'
+" let g:grepper = {}
+" let g:grepper.dir = 'repo,filecwd'
 
 " Plug 'mileszs/ack.vim'
 

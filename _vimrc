@@ -213,8 +213,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'artnez/vim-wipeout'
 " F12 F4 wipes out non-visible buffers.
 nnoremap <F12><F4> :Wipeout<cr>
-vnoremap <F12><F4> <esc>:Wipeout<cr>gv
-inoremap <F12><F4> <C-o>:Wipeout<cr>
 
 " Plug 'atweiden/vim-dragvisuals'
 " Map ctrl-h/j/k/l in visual mode to drag the block.
@@ -313,8 +311,6 @@ Plug 'jistr/vim-nerdtree-tabs'
 let g:nerdtree_tabs_open_on_gui_startup = 0
 " F7 will toggle NERDTree.
 nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
-vmap <silent> <F7> <esc><plug>NERDTreeTabsToggle<CR>gv
-imap <silent> <F7> <C-O><plug>NERDTreeTabsToggle<CR>
 
 " A command-line fuzzy finder
 Plug 'junegunn/fzf'
@@ -338,8 +334,6 @@ Plug 'junegunn/vim-plug'
 " Plug 'kien/rainbow_parentheses.vim'
 " " F8 toggles rainbow parentheses.
 " nnoremap <F8> :RainbowParenthesesToggle<cr>
-" vnoremap <F8> <esc>:RainbowParenthesesToggle<cr>gv
-" inoremap <F8> <c-o>:RainbowParenthesesToggle<cr>
 
 " A Vim plugin that manages your tag files bolt80.com/gutentags
 Plug 'ludovicchabant/vim-gutentags'
@@ -389,8 +383,6 @@ Plug 'preservim/nerdtree'
 let g:NERDTreeCascadeSingleChildDir=0
 " Ctrl-F7 finds the current file in the NERDTree.
 nnoremap <silent> <S-F7> :NERDTreeFind<CR>
-vnoremap <silent> <S-F7> <esc>:NERDTreeFind<CR>
-inoremap <silent> <S-F7> <C-O>:NERDTreeFind<CR>
 
 " async language server protocol plugin for vim and neovim
 Plug 'prabirshrestha/async.vim'
@@ -607,8 +599,6 @@ nnoremap <C-j> <C-W>j
 
 " F3 toggles no-linebreak mode
 nnoremap <F3> :call <SID>Toggle_no_lbr()<cr>
-vnoremap <F3> <esc>:call <SID>Toggle_no_lbr()<cr>gv
-inoremap <F3> <esc>:call <SID>Toggle_no_lbr()<cr>
 
 " F4 toggles list mode
 nnoremap <F4> :set invlist list?<cr>
@@ -626,26 +616,16 @@ set pastetoggle=<F5>
 " Map F6 key to go to the next buffer and Shift-F6 to go to the previous
 " buffer.
 nnoremap <F6> :bnext<CR>
-vnoremap <F6> <esc>:bnext<CR>
-inoremap <F6> <C-O>:bnext<CR>
 nnoremap <S-F6> :bprevious<CR>
-vnoremap <S-F6> <esc>:bprevious<CR>
-inoremap <S-F6> <C-O>:bprevious<CR>
 
 " Ctrl-F8 toggles syntax coloring on and off
 nnoremap <C-F8> :call <SID>Toggle_syntax()<cr>
-vnoremap <C-F8> <esc>:call <SID>Toggle_syntax()<cr>gv
-inoremap <C-F8> <esc>:call <SID>Toggle_syntax()<cr>
 
 " Shift-F8 will show syntax item at cursor
 nnoremap <S-F8> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
-vnoremap <S-F8> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>gv
-inoremap <S-F8> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
 " F9 will toggle taglist.
 " nnoremap <silent> <F9> :TlistToggle<cr>
-" vnoremap <silent> <F9> <esc>:TlistToggle<cr>
-" inoremap <silent> <F9> <C-O>:TlistToggle<cr>
 
 " let Tlist_Process_File_Always = 1
 " let Tlist_Use_Right_Window = 1
@@ -654,14 +634,10 @@ inoremap <S-F8> <esc>:echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
 " Ctrl-F9 toggles full height mode
 nnoremap <C-F9> :call <SID>Toggle_full_height()<cr>
-vnoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>gv
-inoremap <C-F9> <esc>:call <SID>Toggle_full_height()<cr>
 
 " F11 c: change current directory to the directory in which the current
 " file resides.
 nnoremap <F11>c :cd <C-R>=expand("%:p:h")<cr><cr>
-vnoremap <F11>c <esc>:cd <C-R>=expand("%:p:h")<cr><cr>
-inoremap <F11>c <esc>:cd <C-R>=expand("%:p:h")<cr><cr>
 
 " F11 h: startup directory (home)
 let s:startdir=getcwd()
@@ -669,55 +645,40 @@ function! <SID>GetStartDir()
     return s:startdir
 endfunction
 nnoremap <F11>h :execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
-vnoremap <F11>h <esc>:execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
-inoremap <F11>h <esc>:execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
 
 " F12 a runs tal on the current paragraph or visual range.
 " F12 A does the same thing but waits for user to type in arguments.
 " nnoremap <F12>a {!}tal<cr>
-" inoremap <F12>a <esc>{!}tal<cr>
 " vnoremap <F12>a !tal<cr>
 " nnoremap <F12>A {!}tal<space>
-" inoremap <F12>A <esc>{!}tal<space>
 " vnoremap <F12>A !tal<space>
 
 " F12 b runs boxes on the current paragraph or visual range.
 " F12 B does the same thing but waits for user to type in arguments.
 nnoremap <F12>b {!}boxes<cr>
-inoremap <F12>b <esc>{!}boxes<cr>
 vnoremap <F12>b !boxes<cr>
 nnoremap <F12>B {!}boxes<space>
-inoremap <F12>B <esc>{!}boxes<space>
 vnoremap <F12>B !boxes<space>
 
 " F12 c runs ctags in the current file's directory.
 nnoremap <F12>c :call <SID>Run_ctags()<cr>
-vnoremap <F12>c <esc>:call <SID>Run_ctags()<cr>gv
-inoremap <F12>c <esc>:call <SID>Run_ctags()<cr>
 
 " F12 d removes all buffers.
 nnoremap <F12>d :call <SID>Del_all_buf()<cr>
-vnoremap <F12>d <esc>:call <SID>Del_all_buf()<cr>
-inoremap <F12>d <esc>:call <SID>Del_all_buf()<cr>
 
 " F12 e: edit another file in the same directory as the current file.
 set wildcharm=<c-z>
 nnoremap <F12>e :e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
-vnoremap <F12>e <esc>:e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
-inoremap <F12>e <esc>:e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
 
 " F12 g converts coordinates from N ddd mm.mmm W ddd mm.mmm to 
 " dd.ddddd -dd.ddddd
 nnoremap <f12>g :call <SID>ConvertCoords()<cr>
-vnoremap <f12>g <esc>:call <SID>ConvertCoords()<cr>gv
 
 " F12 l updates a 'Last up-dated:' line
 " Need to use a [s] here so that this macro won't change itself if
 " invoked on this file.
 let s:m = '1G/La[s]t updated:/e+0<CR>a <C-R>=<SID>Date_string()<CR><CR><ESC>dd'
 execute 'nnoremap <F12>l' s:m
-execute 'inoremap <F12>l <esc>' . s:m . 'i'
-execute 'vnoremap <F12>l <esc>' . s:m . 'gv'
 unlet s:m
 
 " F12 m runs Marked on the Markdown file.
@@ -733,10 +694,8 @@ augroup END
 " F12 p runs par on the current paragraph or visual range
 " F12 P does the same thing but waits for user to type in arguments.
 nnoremap <F12>p {!}par<cr>
-inoremap <F12>p <esc>{!}par<cr>
 vnoremap <F12>p !par<cr>
 nnoremap <F12>P {!}par<space>
-inoremap <F12>P <esc>{!}par<space>
 vnoremap <F12>P !par<space>
 
 " F12 s inserts a date stamp.
@@ -768,10 +727,8 @@ nnoremap <F12>vs :source $MYVIMRC<cr>
 " F12 x runs boxes -r on the current paragraph or visual range.
 " F12 X does the same thing but waits for user to type in arguments.
 nnoremap <F12>x {!}boxes -r<cr>
-inoremap <F12>x <esc>{!}boxes -r<cr>
 vnoremap <F12>x !boxes -r<cr>
 nnoremap <F12>X {!}boxes -r<space>
-inoremap <F12>X <esc>{!}boxes -r<space>
 vnoremap <F12>X !boxes -r<space>
 
 " iTerm2 sends nul characters for anti-idle. Ignore those characters in
@@ -1466,4 +1423,4 @@ endif
 
 " }}}1
 
-" Last updated: March 23, 2020
+" Last updated: April 30, 2020

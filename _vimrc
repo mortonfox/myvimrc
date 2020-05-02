@@ -317,6 +317,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 " let g:fzf_launcher = '/Users/pcheah/bin/in_a_new_term.sh %s'
 nnoremap <C-p> :History<cr>
+nnoremap <C-q> :Files<cr>
 nnoremap <f12><f12> :Buffers<cr>
 
 " A Vim alignment plugin

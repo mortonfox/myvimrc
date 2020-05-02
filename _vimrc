@@ -320,6 +320,8 @@ nnoremap <C-p> :History<cr>
 nnoremap <C-q> :Files<cr>
 nnoremap <f12><f12> :Buffers<cr>
 
+Plug 'junegunn/vim-peekaboo'
+
 " A Vim alignment plugin
 Plug 'junegunn/vim-easy-align'
 " F12 a invokes EasyAlign.
@@ -1424,4 +1426,4 @@ endif
 
 " }}}1
 
-" Last updated: April 30, 2020
+" Last updated: May 1, 2020

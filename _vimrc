@@ -784,8 +784,10 @@ function! s:Highlight_Init()
     highlight CursorLine term=underline cterm=NONE ctermfg=white ctermbg=darkblue gui=NONE guifg=white guibg=blue
     highlight Visual term=reverse cterm=NONE ctermfg=black ctermbg=cyan gui=NONE guifg=black guibg=#32CED7
     highlight IncSearch term=reverse cterm=NONE ctermfg=black ctermbg=cyan gui=NONE guifg=black guibg=#32CED7
-    highlight SpellCap term=reverse cterm=NONE ctermbg=darkblue gui=undercurl guisp=blue
-    highlight SpellBad term=reverse cterm=NONE ctermbg=darkred gui=undercurl guisp=red
+    highlight SpellCap term=reverse cterm=NONE ctermfg=white ctermbg=darkblue gui=undercurl guisp=blue
+    highlight SpellBad term=reverse cterm=NONE ctermfg=white ctermbg=darkred gui=undercurl guisp=red
+    highlight SpellLocal term=reverse cterm=NONE ctermfg=white ctermbg=darkyellow gui=undercurl guisp=green
+    highlight SpellRare term=reverse cterm=NONE ctermfg=white ctermbg=darkmagenta gui=undercurl guisp=magenta
 
     if v:version >= 700
         highlight MatchParen guifg=Yellow guibg=DarkGreen ctermfg=Yellow ctermbg=DarkGreen

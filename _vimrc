@@ -265,6 +265,9 @@ Plug 'dhruvasagar/vim-vinegar'
 " vim-ags search results window.
 " autocmd BufNewFile,BufRead *.agsv call s:Turn_syntax_on()
 
+" HOCON mode
+Plug 'GEverding/vim-hocon'
+
 " Vim script for text filtering and alignment
 Plug 'godlygeek/tabular'
 
@@ -320,6 +323,7 @@ nnoremap <C-p> :History<cr>
 nnoremap <C-q> :Files<cr>
 nnoremap <f12><f12> :Buffers<cr>
 
+" Show registers when you hit " or @ in normal mode or Ctrl-R in insert mode.
 Plug 'junegunn/vim-peekaboo'
 
 " A Vim alignment plugin
@@ -1426,4 +1430,4 @@ endif
 
 " }}}1
 
-" Last updated: May 1, 2020
+" Last updated: May 5, 2020

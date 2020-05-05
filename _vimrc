@@ -1037,10 +1037,6 @@ augroup vimrc_auto
     " has not changed.
     autocmd FileType crontab setlocal backupcopy=yes
 
-
-    " autocmd BufRead,BufNewFile *.thrift setfiletype thrift
-    " autocmd Syntax thrift source ~/.vim/thrift.vim
-
     " Override file type for .md since I'm not working on Modula-2
     " files.
     autocmd BufRead,BufNewFile *.md setlocal filetype=markdown

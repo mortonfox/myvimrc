@@ -1037,8 +1037,6 @@ augroup vimrc_auto
     " has not changed.
     autocmd FileType crontab setlocal backupcopy=yes
 
-    " Clear some artifacts in console Vim.
-    autocmd VimEnter * redraw
 
     " autocmd BufRead,BufNewFile *.thrift setfiletype thrift
     " autocmd Syntax thrift source ~/.vim/thrift.vim

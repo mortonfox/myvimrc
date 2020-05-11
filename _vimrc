@@ -50,7 +50,11 @@ endfunction
 
 " Show menu even when there is only one match.
 " Show popup with more info.
-set completeopt=menuone,popup
+if has('nvim')
+    set completeopt=menuone,preview
+else
+    set completeopt=menuone,popup
+endif
 
 " :write command with a file name sets alternate file name for the current
 " window.
@@ -1426,4 +1430,4 @@ endif
 
 " }}}1
 
-" Last updated: May 5, 2020
+" Last updated: May 10, 2020

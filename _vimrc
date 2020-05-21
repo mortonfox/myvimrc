@@ -83,6 +83,14 @@ set noequalalways
 set fileformats=unix,dos
 " g is on by default for search and replace
 set gdefault
+
+" Use ag or rg, if available, for grepprg.
+if executable('rg')
+    set grepprg=rg\ --vimgrep
+elseif executable('ag')
+    set grepprg=ag\ --vimgrep
+endif
+
 " GUI cursor options
 " In visual mode, the cursor needs to be a little different from the
 " selection color for visibility.
@@ -131,6 +139,8 @@ set mouse=a
 set mousehide
 " Support Ctrl-A and Ctrl-X for letters and hex numbers, not octal
 set nrformats=alpha,hex
+" Allow find to search in dir tree.
+set path+=**
 " Set paper size
 set printoptions=paper:letter
 " show line/column of cursor position
@@ -1430,4 +1440,4 @@ endif
 
 " }}}1
 
-" Last updated: May 10, 2020
+" Last updated: May 21, 2020

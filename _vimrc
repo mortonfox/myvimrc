@@ -56,12 +56,14 @@ else
     set completeopt=menuone,popup
 endif
 
-" :write command with a file name sets alternate file name for the current
+" A = :write command with a file name sets alternate file name for the current
 " window.
-" :write command with a file name sets name of buffer if the buffer does not
+" F = :write command with a file name sets name of buffer if the buffer does not
 " have a name.
-" set buffer options when first entering a buffer
-set cpoptions=AFs
+" s = set buffer options when first entering a buffer
+" B = A backslash has no special meaning in mappings, abbreviations, etc.
+" vim-peekaboo and many other plugins seem to assume this setting.
+set cpoptions=AFsB
 
 " Use histogram diff algorithm and indent heuristic.
 if has('nvim-0.3.2') || has("patch-8.1.0360")
@@ -159,6 +161,9 @@ set shiftwidth=4
 set shortmess=atIAT
 " show command in status line
 set showcmd
+" When completing a word in insert mode from the tags file, show both the tag
+" name and the search pattern as possible matches.
+set showfulltag
 " show matching bracket
 set showmatch
 " override ignorecase if search pattern contains upper case characters
@@ -1440,4 +1445,4 @@ endif
 
 " }}}1
 
-" Last updated: May 21, 2020
+" Last updated: June 8, 2020

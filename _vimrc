@@ -338,7 +338,7 @@ nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 " let g:fzf_launcher = '/Users/pcheah/bin/in_a_new_term.sh %s'
-nnoremap <C-p> :History<cr>
+nnoremap <C-p> :FZFMru<cr>
 nnoremap <C-q> :Files<cr>
 nnoremap <f12><f12> :Buffers<cr>
 
@@ -514,6 +514,9 @@ Plug 'vim-scripts/Align'
 
 " Most Recently Used (MRU) Vim Plugin
 Plug 'yegappan/mru'
+let MRU_File = '~/vim/mru_files'
+let MRU_Max_Entries = 1000
+let MRU_Add_Menu = 0
 
 " Vim plugin for easily moving text selections around
 Plug 'zirrostig/vim-schlepp'
@@ -1445,4 +1448,4 @@ endif
 
 " }}}1
 
-" Last updated: June 8, 2020
+" Last updated: June 18, 2020

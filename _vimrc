@@ -417,6 +417,13 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 
+" Disable Ruby language server.
+let g:lsp_settings = {
+\  'solargraph': {
+\    'disabled': 1,
+\   }
+\}
+
 " Echo diagnostic error for the current line to status.
 let g:lsp_diagnostics_echo_cursor = 1
 
@@ -1448,4 +1455,4 @@ endif
 
 " }}}1
 
-" Last updated: June 18, 2020
+" Last updated: August 3, 2020

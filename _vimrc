@@ -376,6 +376,9 @@ let g:gutentags_cache_dir='~/vim/gutentags'
 " let g:grepper = {}
 " let g:grepper.dir = 'repo,filecwd'
 
+Plug 'mhinz/vim-mix-format'
+let g:mix_format_on_save = 1
+
 " Plug 'mileszs/ack.vim'
 
 " Bbye allows you to do delete buffers (close files) without closing your windows or messing up your layout.

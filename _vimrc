@@ -361,6 +361,8 @@ Plug 'junegunn/vim-plug'
 " " F8 toggles rainbow parentheses.
 " nnoremap <F8> :RainbowParenthesesToggle<cr>
 
+" Plug 'lambdalisue/fern.vim'
+
 " A Vim plugin that manages your tag files bolt80.com/gutentags
 Plug 'ludovicchabant/vim-gutentags'
 set statusline+=%{gutentags#statusline('\ [TAGS]')}
@@ -1455,4 +1457,4 @@ endif
 
 " }}}1
 
-" Last updated: August 3, 2020
+" Last updated: October 12, 2020

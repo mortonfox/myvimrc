@@ -403,6 +403,8 @@ Plug 'mortonfox/QuickBuf'
 " Shift-F4 brings up QuickBuf.
 let g:qb_hotkey = '<S-F4>'
 
+Plug 'mzlogin/vim-markdown-toc'
+
 " The Vim RuboCop plugin runs RuboCop and displays the results in Vim
 Plug 'ngmy/vim-rubocop'
 
@@ -1460,4 +1462,4 @@ endif
 
 " }}}1
 
-" Last updated: October 12, 2020
+" Last updated: January 22, 2021

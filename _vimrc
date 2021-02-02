@@ -81,6 +81,8 @@ execute 'set directory^='.s:vimrc_swapdir
 set display=lastline
 " Do not equalize window heights after closing a window.
 set noequalalways
+" Expand tabs.
+set expandtab
 " Detect these fileformats.
 set fileformats=unix,dos
 " g is on by default for search and replace
@@ -184,6 +186,8 @@ set suffixes+=.jpg
 set suffixes+=.png
 set suffixes+=.exe
 set suffixes+=.dll
+" Default tab stop.
+set tabstop=8
 " mode for fast tty
 set ttyfast
 
@@ -466,6 +470,8 @@ Plug 'rhysd/git-messenger.vim'
 
 " A solid language pack for Vim.
 Plug 'sheerun/vim-polyglot'
+" Turn off sensible because otherwise init.vim in vim-polyglot will set tabstop to 2.
+let g:polyglot_disabled = ['sensible']
 
 " Vim undo tree visualizer simnalamburt.github.io/vim-mundo
 Plug 'simnalamburt/vim-mundo'
@@ -1059,7 +1065,7 @@ augroup vimrc_auto
     autocmd FileType coffee      call <SID>Set_generic_code_mode()
     autocmd FileType clojure     call <SID>Set_generic_code_mode()
     autocmd FileType haskell     call <SID>Set_generic_code_mode()
-    autocmd FileType conf        call <SID>Set_generic_code_mode()
+    autocmd FileType conf, hocon call <SID>Set_generic_code_mode()
     autocmd FileType thrift      call <SID>Set_generic_code_mode()
 
     autocmd FileType c,cpp      call <SID>Set_c_mode()
@@ -1462,4 +1468,4 @@ endif
 
 " }}}1
 
-" Last updated: January 22, 2021
+" Last updated: February 2, 2021

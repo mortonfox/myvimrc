@@ -1065,7 +1065,7 @@ augroup vimrc_auto
     autocmd FileType coffee      call <SID>Set_generic_code_mode()
     autocmd FileType clojure     call <SID>Set_generic_code_mode()
     autocmd FileType haskell     call <SID>Set_generic_code_mode()
-    autocmd FileType conf, hocon call <SID>Set_generic_code_mode()
+    autocmd FileType conf,hocon  call <SID>Set_generic_code_mode()
     autocmd FileType thrift      call <SID>Set_generic_code_mode()
 
     autocmd FileType c,cpp      call <SID>Set_c_mode()
@@ -1468,4 +1468,4 @@ endif
 
 " }}}1
 
-" Last updated: February 2, 2021
+" Last updated: March 18, 2021

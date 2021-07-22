@@ -418,6 +418,11 @@ Plug 'ngmy/vim-rubocop'
 " A tree explorer plugin for vim.
 Plug 'preservim/nerdtree'
 let g:NERDTreeCascadeSingleChildDir=0
+
+" When hitting <cr> in a NERDTree window, open the file in that window even if
+" it is already open in another window in the same tab.
+let g:NERDTreeCustomOpenArgs = {'file': {'reuse': '', 'where': 'p'}}
+
 " Ctrl-F7 finds the current file in the NERDTree.
 nnoremap <silent> <S-F7> :NERDTreeFind<CR>
 
@@ -1468,4 +1473,4 @@ endif
 
 " }}}1
 
-" Last updated: March 18, 2021
+" Last updated: July 22, 2021

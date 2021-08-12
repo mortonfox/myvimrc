@@ -505,7 +505,8 @@ let g:commentary_map_backslash=0
 " fugitive.vim: A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
 
-" Plug 'tpope/vim-repeat'
+" Add support for repeating plugin commands.
+Plug 'tpope/vim-repeat'
 
 " rhubarb.vim: GitHub extension for fugitive.vim
 Plug 'tpope/vim-rhubarb'
@@ -1473,4 +1474,4 @@ endif
 
 " }}}1
 
-" Last updated: July 22, 2021
+" Last updated: August 12, 2021

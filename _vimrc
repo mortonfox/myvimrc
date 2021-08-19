@@ -365,7 +365,11 @@ Plug 'junegunn/vim-plug'
 " " F8 toggles rainbow parentheses.
 " nnoremap <F8> :RainbowParenthesesToggle<cr>
 
-" Plug 'lambdalisue/fern.vim'
+" General purpose asynchronous tree explorer
+Plug 'lambdalisue/fern.vim'
+
+" Make the fern.vim as a default file explorer instead of Netrw
+Plug 'lambdalisue/fern-hijack.vim'
 
 " A Vim plugin that manages your tag files bolt80.com/gutentags
 Plug 'ludovicchabant/vim-gutentags'
@@ -1462,6 +1466,67 @@ nnoremap <F12>= :set operatorfunc=<SID>do_equal_toggle<cr>g@
 " endif
 
 " }}}1
+
+" ----- Customizations for fern.vim ----- {{{1
+
+" Custom settings and mappings.
+let g:fern#disable_default_mappings = 1
+
+nnoremap <silent> _ :Fern %:h -opener=edit/split -reveal=%<cr>
+
+function! FernInit() abort
+    " Disable _ mapping in Fern buffer to prevent problems.
+    nmap <buffer> _ <Nop>
+
+    " Open/close folder or open a file.
+    nmap <buffer><expr>
+                \ <Plug>(fern-cr-action)
+                \ fern#smart#leaf(
+                \   "\<Plug>(fern-action-open:edit-or-error)",
+                \   "\<Plug>(fern-action-expand)",
+                \   "\<Plug>(fern-action-collapse)",
+                \ )
+    nmap <buffer> <CR> <Plug>(fern-cr-action)
+    nmap <buffer> <2-LeftMouse> <Plug>(fern-cr-action)
+
+    " Navigate up/down folders.
+    nmap <buffer><nowait> - <Plug>(fern-action-leave)
+    nmap <buffer><nowait> < <Plug>(fern-action-leave)
+    nmap <buffer><nowait> > <Plug>(fern-action-enter)
+
+    " Create new path.
+    nmap <buffer> n <Plug>(fern-action-new-path)
+
+    " Delete path.
+    nmap <buffer> d <Plug>(fern-action-trash)
+
+    " Copy path.
+    nmap <buffer> c <Plug>(fern-action-copy)
+
+    " Move/rename path with prompt.
+    nmap <buffer> m <Plug>(fern-action-move)
+
+    " Move/rename path with renamer buffer.
+    nmap <buffer> M <Plug>(fern-action-rename)
+
+    " Toggle hidden files.
+    nmap <buffer> h <Plug>(fern-action-hidden:toggle)
+
+    " Reload Fern buffer.
+    nmap <buffer> r <Plug>(fern-action-reload)
+
+    " Mark/unmark path.
+    nmap <buffer> <Space> <Plug>(fern-action-mark:toggle)
+endfunction
+
+augroup FernGroup
+  autocmd!
+  autocmd FileType fern call FernInit()
+augroup END
+
+
+" }}}1
+
 " ----- Local vimrc ----- {{{1
 
 " Source a local vimrc file if one exists. This is useful for
@@ -1474,4 +1539,4 @@ endif
 
 " }}}1
 
-" Last updated: August 12, 2021
+" Last updated: August 18, 2021

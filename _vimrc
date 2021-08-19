@@ -371,6 +371,10 @@ Plug 'lambdalisue/fern.vim'
 " Make the fern.vim as a default file explorer instead of Netrw
 Plug 'lambdalisue/fern-hijack.vim'
 
+" collapse or leave action for fern.vim
+Plug 'hrsh7th/fern-mapping-collapse-or-leave.vim'
+let g:fern#mapping#collapse_or_leave#disable_default_mappings = 1
+
 " A Vim plugin that manages your tag files bolt80.com/gutentags
 Plug 'ludovicchabant/vim-gutentags'
 set statusline+=%{gutentags#statusline('\ [TAGS]')}
@@ -1490,7 +1494,7 @@ function! FernInit() abort
     nmap <buffer> <2-LeftMouse> <Plug>(fern-cr-action)
 
     " Navigate up/down folders.
-    nmap <buffer><nowait> - <Plug>(fern-action-leave)
+    nmap <buffer><nowait> - <Plug>(fern-action-collapse-or-leave)
     nmap <buffer><nowait> < <Plug>(fern-action-leave)
     nmap <buffer><nowait> > <Plug>(fern-action-enter)
 

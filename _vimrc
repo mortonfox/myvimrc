@@ -1082,6 +1082,7 @@ augroup vimrc_auto
     autocmd FileType conf,hocon  call <SID>Set_generic_code_mode()
     autocmd FileType conf,hocon  setlocal commentstring=#\ %s
     autocmd FileType thrift      call <SID>Set_generic_code_mode()
+    autocmd FileType elixir      call <SID>Set_generic_code_mode()
 
     autocmd FileType c,cpp      call <SID>Set_c_mode()
     autocmd FileType ruby,eruby call <SID>Set_ruby_mode()
@@ -1544,4 +1545,4 @@ endif
 
 " }}}1
 
-" Last updated: August 26, 2021
+" Last updated: July 16, 2022

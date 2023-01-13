@@ -137,6 +137,8 @@ set lazyredraw
 set listchars+=nbsp:%
 " magic search patterns
 set magic
+" Enable modeline
+set modeline
 " Enable mouse in console Vim.
 set mouse=a
 " hide the mouse pointer while typing characters
@@ -1545,4 +1547,4 @@ endif
 
 " }}}1
 
-" Last updated: July 16, 2022
+" Last updated: January 13, 2023

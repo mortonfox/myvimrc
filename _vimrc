@@ -639,10 +639,10 @@ else
     nnoremap <silent> <A-t> :silent! tabnew<cr>
 
     " Map ctrl-w to close a tab.
-    nnoremap <silent> <C-w> :silent! tabclose<cr>
+    nnoremap <silent> <C-w> :confirm close<cr>
 
     " Map ctrl-s to save the file.
-    nnoremap <silent> <C-s> :write<cr>
+    nnoremap <silent> <C-s> :confirm write<cr>
 
     " Map alt-1 thru alt-9 to switch tabs.
     nnoremap <silent> <A-1> :silent! 1tabnext<cr>
@@ -654,6 +654,17 @@ else
     nnoremap <silent> <A-7> :silent! 7tabnext<cr>
     nnoremap <silent> <A-8> :silent! 8tabnext<cr>
     nnoremap <silent> <A-9> :silent! 9tabnext<cr>
+
+    vnoremap <special> <A-x> "+x
+
+    vnoremap <special> <A-c> "+y
+
+    cnoremap <special> <A-c> <C-Y>
+
+    nnoremap <special> <A-v> "+gP
+    cnoremap <special> <A-v> <C-R>+
+    execute 'vnoremap <script> <special> <A-v>' paste#paste_cmd['v']
+    execute 'inoremap <script> <special> <A-v>' paste#paste_cmd['i']
 endif
 
 " If the gvim window is too small, try setting it larger.
@@ -1569,4 +1580,4 @@ endif
 
 " }}}1
 
-" Last updated: January 14, 2023
+" Last updated: January 15, 2023

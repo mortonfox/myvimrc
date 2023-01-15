@@ -621,7 +621,9 @@ if has('mac') && has('gui_running')
             set macthinstrokes
         endif
     endif
+endif
 
+if has('mac')
     " Map cmd-1 thru cmd-9 to switch tabs.
     nnoremap <silent> <D-1> :silent! 1tabnext<cr>
     nnoremap <silent> <D-2> :silent! 2tabnext<cr>
@@ -632,6 +634,26 @@ if has('mac') && has('gui_running')
     nnoremap <silent> <D-7> :silent! 7tabnext<cr>
     nnoremap <silent> <D-8> :silent! 8tabnext<cr>
     nnoremap <silent> <D-9> :silent! 9tabnext<cr>
+else
+    " Map alt-t to open a tab.
+    nnoremap <silent> <A-t> :silent! tabnew<cr>
+
+    " Map ctrl-w to close a tab.
+    nnoremap <silent> <C-w> :silent! tabclose<cr>
+
+    " Map ctrl-s to save the file.
+    nnoremap <silent> <C-s> :write<cr>
+
+    " Map alt-1 thru alt-9 to switch tabs.
+    nnoremap <silent> <A-1> :silent! 1tabnext<cr>
+    nnoremap <silent> <A-2> :silent! 2tabnext<cr>
+    nnoremap <silent> <A-3> :silent! 3tabnext<cr>
+    nnoremap <silent> <A-4> :silent! 4tabnext<cr>
+    nnoremap <silent> <A-5> :silent! 5tabnext<cr>
+    nnoremap <silent> <A-6> :silent! 6tabnext<cr>
+    nnoremap <silent> <A-7> :silent! 7tabnext<cr>
+    nnoremap <silent> <A-8> :silent! 8tabnext<cr>
+    nnoremap <silent> <A-9> :silent! 9tabnext<cr>
 endif
 
 " If the gvim window is too small, try setting it larger.
@@ -1547,4 +1569,4 @@ endif
 
 " }}}1
 
-" Last updated: January 13, 2023
+" Last updated: January 14, 2023

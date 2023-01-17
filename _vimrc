@@ -638,8 +638,8 @@ else
     " Map alt-t to open a tab.
     nnoremap <silent> <A-t> :silent! tabnew<cr>
 
-    " Map ctrl-w to close a tab.
-    nnoremap <silent> <C-w> :confirm close<cr>
+    " Map alt-w to close a window.
+    nnoremap <silent> <A-w> :confirm close<cr>
 
     " Map ctrl-s to save the file.
     nnoremap <silent> <C-s> :confirm write<cr>
@@ -1580,4 +1580,4 @@ endif
 
 " }}}1
 
-" Last updated: January 15, 2023
+" Last updated: January 16, 2023

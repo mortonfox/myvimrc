@@ -633,7 +633,7 @@ if has('mac')
     nnoremap <silent> <D-6> :silent! 6tabnext<cr>
     nnoremap <silent> <D-7> :silent! 7tabnext<cr>
     nnoremap <silent> <D-8> :silent! 8tabnext<cr>
-    nnoremap <silent> <D-9> :silent! 9tabnext<cr>
+    nnoremap <silent> <D-9> :silent! tablast<cr>
 else
     " Map alt-t to open a tab.
     nnoremap <silent> <A-t> :silent! tabnew<cr>
@@ -641,8 +641,9 @@ else
     " Map alt-w to close a window.
     nnoremap <silent> <A-w> :confirm close<cr>
 
-    " Map ctrl-s to save the file.
+    " Map ctrl-s / alt-s to save the file.
     nnoremap <silent> <C-s> :confirm write<cr>
+    nnoremap <silent> <A-s> :confirm write<cr>
 
     " Map alt-1 thru alt-9 to switch tabs.
     nnoremap <silent> <A-1> :silent! 1tabnext<cr>
@@ -653,7 +654,7 @@ else
     nnoremap <silent> <A-6> :silent! 6tabnext<cr>
     nnoremap <silent> <A-7> :silent! 7tabnext<cr>
     nnoremap <silent> <A-8> :silent! 8tabnext<cr>
-    nnoremap <silent> <A-9> :silent! 9tabnext<cr>
+    nnoremap <silent> <A-9> :silent! tablast<cr>
 
     vnoremap <special> <A-x> "+x
 
@@ -1580,4 +1581,4 @@ endif
 
 " }}}1
 
-" Last updated: January 16, 2023
+" Last updated: January 18, 2023

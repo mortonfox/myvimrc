@@ -644,6 +644,7 @@ else
     " Map ctrl-s / alt-s to save the file.
     nnoremap <silent> <C-s> :confirm write<cr>
     nnoremap <silent> <A-s> :confirm write<cr>
+    imap <A-s> <C-o><A-s>
 
     " Map alt-1 thru alt-9 to switch tabs.
     nnoremap <silent> <A-1> :silent! 1tabnext<cr>
@@ -1581,4 +1582,4 @@ endif
 
 " }}}1
 
-" Last updated: January 19, 2023
+" Last updated: January 20, 2023

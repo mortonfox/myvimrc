@@ -445,6 +445,9 @@ Plug 'mattn/vim-lsp-settings'
 
 " Disable Ruby language server.
 let g:lsp_settings = {
+\  'typeprof': {
+\    'disabled': 1,
+\   },
 \  'solargraph': {
 \    'disabled': 1,
 \   }
@@ -1582,4 +1585,4 @@ endif
 
 " }}}1
 
-" Last updated: January 20, 2023
+" Last updated: January 30, 2023

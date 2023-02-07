@@ -638,6 +638,9 @@ if has('mac')
     nnoremap <silent> <D-8> :silent! 8tabnext<cr>
     nnoremap <silent> <D-9> :silent! tablast<cr>
 else
+    " Some mappings borrowed from macmap in vim source code.
+    " See https://github.com/vim/vim/blob/master/runtime/macmap.vim
+
     " Map alt-t to open a tab.
     nnoremap <silent> <A-t> :silent! tabnew<cr>
 
@@ -648,6 +651,13 @@ else
     nnoremap <silent> <C-s> :confirm write<cr>
     nnoremap <silent> <A-s> :confirm write<cr>
     imap <A-s> <C-o><A-s>
+
+    " Map alt-a to select all.
+    nnoremap <silent> <A-a> :if &selectmode != ""<Bar>execute ":norm gggH<C-O>G"<Bar> else<Bar>exe ":norm ggVG"<Bar>endif<CR>
+    vmap <A-a> <Esc><A-a>
+    imap <A-a> <Esc><A-a>
+    cmap <A-a> <C-C><A-a>
+    omap <A-a> <Esc><A-a>
 
     " Map alt-1 thru alt-9 to switch tabs.
     nnoremap <silent> <A-1> :silent! 1tabnext<cr>
@@ -1585,4 +1595,4 @@ endif
 
 " }}}1
 
-" Last updated: January 30, 2023
+" Last updated: February 7, 2023

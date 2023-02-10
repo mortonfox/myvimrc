@@ -587,7 +587,7 @@ let g:vimpager_use_gvim = 1
 
 " In vim 5.4 with GTK+, the .font resource does not work.
 if has('gui_gtk') && has('gui_running')
-    set guifont=Cascadia\ Mono\ PL\ 13,DejaVu\ Sans\ Mono\ 13,7x14bold
+    set guifont=Source\ Code\ Pro\ 13,Cascadia\ Mono\ PL\ 13,DejaVu\ Sans\ Mono\ 13,7x14bold
 endif
 
 if (has('win32') || has('win64')) && has('gui_running')
@@ -1595,4 +1595,4 @@ endif
 
 " }}}1
 
-" Last updated: February 9, 2023
+" Last updated: February 10, 2023

@@ -587,7 +587,7 @@ let g:vimpager_use_gvim = 1
 
 " In vim 5.4 with GTK+, the .font resource does not work.
 if has('gui_gtk') && has('gui_running')
-    set guifont=Source\ Code\ Pro\ 13,Cascadia\ Mono\ PL\ 13,DejaVu\ Sans\ Mono\ 13,7x14bold
+    set guifont=CommitMono\ weight=453\ 13,Source\ Code\ Pro\ 13,Cascadia\ Mono\ PL\ 13,DejaVu\ Sans\ Mono\ 13,7x14bold
 endif
 
 if (has('win32') || has('win64')) && has('gui_running')
@@ -683,8 +683,8 @@ else
 endif
 
 " If the gvim window is too small, try setting it larger.
-if &lines < 40 && has('gui_running')
-    set lines=40
+if &lines < 30 && has('gui_running')
+    set lines=30
 endif
 
 " ----- Hotkey Customization ----- {{{1
@@ -785,7 +785,10 @@ nnoremap <F12>e :e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
 
 " F12 g converts coordinates from N ddd mm.mmm W ddd mm.mmm to 
 " dd.ddddd -dd.ddddd
-nnoremap <f12>g :call <SID>ConvertCoords()<cr>
+" nnoremap <f12>g :call <SID>ConvertCoords()<cr>
+
+" F12 g opens Fugitive in vertical split mode
+nnoremap <f12>g :vertical Git<cr>
 
 " F12 l updates a 'Last up-dated:' line
 " Need to use a [s] here so that this macro won't change itself if
@@ -1595,4 +1598,4 @@ endif
 
 " }}}1
 
-" Last updated: February 10, 2023
+" Last updated: September 6, 2023

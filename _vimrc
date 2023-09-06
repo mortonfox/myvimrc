@@ -1128,7 +1128,7 @@ augroup vimrc_auto
     autocmd FileType css,scss    call <SID>Set_generic_code_mode()
     autocmd FileType perl        call <SID>Set_generic_code_mode()
     autocmd FileType html        call <SID>Set_generic_code_mode()
-    autocmd FileType javascript  call <SID>Set_generic_code_mode()
+    autocmd FileType javascript,typescript  call <SID>Set_generic_code_mode()
     autocmd FileType coffee      call <SID>Set_generic_code_mode()
     autocmd FileType clojure     call <SID>Set_generic_code_mode()
     autocmd FileType haskell     call <SID>Set_generic_code_mode()

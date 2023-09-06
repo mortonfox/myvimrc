@@ -798,14 +798,14 @@ execute 'nnoremap <F12>l' s:m
 unlet s:m
 
 " F12 m runs Marked on the Markdown file.
-function! s:Run_marked()
-    silent !open -a "Marked 2" %
-    redraw!
-endfunction
-augroup markdown_auto
-    autocmd!
-    autocmd FileType markdown nnoremap <buffer> <F12>m :call <SID>Run_marked()<cr>
-augroup END
+" function! s:Run_marked()
+"     silent !open -a "Marked 2" %
+"     redraw!
+" endfunction
+" augroup markdown_auto
+"     autocmd!
+"     autocmd FileType markdown nnoremap <buffer> <F12>m :call <SID>Run_marked()<cr>
+" augroup END
 
 " F12 p runs par on the current paragraph or visual range
 " F12 P does the same thing but waits for user to type in arguments.

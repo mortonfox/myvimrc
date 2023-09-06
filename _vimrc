@@ -537,6 +537,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 " Kotlin plugin for Vim. Featuring: syntax highlighting, basic indentation, Syntastic support
+" Superseded by polyglot
 " Plug 'udalov/kotlin-vim'
 
 " VimOutliner is an outline processor with many of the same features as
@@ -546,6 +547,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vimoutliner/vimoutliner'
 
 " Vim/Ruby Configuration Files
+" Superseded by polyglot
 " Plug 'vim-ruby/vim-ruby'
 
 " Help folks to align text, eqns, declarations, tables, etc
@@ -774,7 +776,7 @@ nnoremap <F12>B {!}boxes<space>
 vnoremap <F12>B !boxes<space>
 
 " F12 c runs ctags in the current file's directory.
-nnoremap <F12>c :call <SID>Run_ctags()<cr>
+" nnoremap <F12>c :call <SID>Run_ctags()<cr>
 
 " F12 d removes all buffers.
 nnoremap <F12>d :call <SID>Del_all_buf()<cr>
@@ -1023,15 +1025,15 @@ endfunction
 " Runs ctags in the current file's directory.
 " Under win32, run ctags in the current directory because we can't
 " reliably do a cd.
-function! <SID>Run_ctags()
-    let l:ctagsrun = 'ctags --if0 --totals --exclude=...* -n *.c *.cpp *.cc *.h'
-    if has('win32')
-        let l:ctagscmd = '!'.l:ctagsrun
-    else
-        let l:ctagscmd = '!cd '.expand('%:p:h').';'.l:ctagsrun
-    endif
-    execute l:ctagscmd
-endfunction
+" function! <SID>Run_ctags()
+"     let l:ctagsrun = 'ctags --if0 --totals --exclude=...* -n *.c *.cpp *.cc *.h'
+"     if has('win32')
+"         let l:ctagscmd = '!'.l:ctagsrun
+"     else
+"         let l:ctagscmd = '!cd '.expand('%:p:h').';'.l:ctagsrun
+"     endif
+"     execute l:ctagscmd
+" endfunction
 
 " ===== Customize vim modes ===== {{{2
 " Function for setting up vim buffer defaults.
@@ -1218,52 +1220,52 @@ endfunction
 " Adds the ability to word-complete in a regular (non-search) command-line
 " and to word-complete in the middle of the command-line.
 
-let s:lastcmdline = ''
-let s:lastcmdpos = ''
+" let s:lastcmdline = ''
+" let s:lastcmdpos = ''
 
-function! <SID>CmdlineComplete()
-    let l:cmdline = getcmdline()
-    let l:cmdpos = getcmdpos()
-    if l:cmdline == s:lastcmdline && l:cmdpos == s:lastcmdpos
-        " User invoked completion again without moving cursor or editing
-        let l:cmdline = s:origcmdline
-        let l:cmdpos = s:origcmdpos
-        let s:completeDepth = s:completeDepth . "\<C-N>"
-    else
-        " Starting new completion
-        let s:origcmdline = l:cmdline
-        let s:origcmdpos = l:cmdpos
-        let s:completeDepth = "\<C-N>"
-    endif
+" function! <SID>CmdlineComplete()
+"     let l:cmdline = getcmdline()
+"     let l:cmdpos = getcmdpos()
+"     if l:cmdline == s:lastcmdline && l:cmdpos == s:lastcmdpos
+"         " User invoked completion again without moving cursor or editing
+"         let l:cmdline = s:origcmdline
+"         let l:cmdpos = s:origcmdpos
+"         let s:completeDepth = s:completeDepth . "\<C-N>"
+"     else
+"         " Starting new completion
+"         let s:origcmdline = l:cmdline
+"         let s:origcmdpos = l:cmdpos
+"         let s:completeDepth = "\<C-N>"
+"     endif
 
-    " Set paste option to disable indent
-    let l:paste = &l:paste
-    setlocal paste
+"     " Set paste option to disable indent
+"     let l:paste = &l:paste
+"     setlocal paste
 
-    let l:savecol = col('.')
+"     let l:savecol = col('.')
 
-    execute 'normal! o' . l:cmdline . "\<C-O>" . l:cmdpos . '|' . s:completeDepth
+"     execute 'normal! o' . l:cmdline . "\<C-O>" . l:cmdpos . '|' . s:completeDepth
 
-    " Update the command line and position.
-    let s:lastcmdline = getline('.')
-    let s:lastcmdpos = col('.') + 1
+"     " Update the command line and position.
+"     let s:lastcmdline = getline('.')
+"     let s:lastcmdpos = col('.') + 1
 
-    " Check if we have come full circle and reset the search depth. This
-    " needs to be done because Vim behaves in a weird way if too many
-    " Ctrl-Ns are used in a macro.
-    if s:lastcmdline == s:origcmdline
-        let s:completeDepth = ''
-    endif
+"     " Check if we have come full circle and reset the search depth. This
+"     " needs to be done because Vim behaves in a weird way if too many
+"     " Ctrl-Ns are used in a macro.
+"     if s:lastcmdline == s:origcmdline
+"         let s:completeDepth = ''
+"     endif
 
-    " Undo changes and restore cursor position
-    execute 'normal! u' . l:savecol . '|'
+"     " Undo changes and restore cursor position
+"     execute 'normal! u' . l:savecol . '|'
 
-    " Restore paste option
-    let &l:paste = l:paste
+"     " Restore paste option
+"     let &l:paste = l:paste
 
-    let l:tmp = setcmdpos(s:lastcmdpos)
-    return s:lastcmdline
-endfunction
+"     let l:tmp = setcmdpos(s:lastcmdpos)
+"     return s:lastcmdline
+" endfunction
 
 " cnoremap <F12> <C-\>e<SID>CmdlineComplete()<cr>
 
@@ -1272,24 +1274,24 @@ endfunction
 " For converting coordinates from N ddd mm.mmm W ddd mm.mmm to 
 " dd.ddddd -dd.ddddd
 
-function! <SID>ToDecimals(deg, minwhole, mindec)
-    " Trim leading zeros so that the string won't be treated as octal.
-    let l:deg = substitute(a:deg, '^0*', '', '')
-    let l:minwhole = substitute(a:minwhole, '^0*', '', '')
+" function! <SID>ToDecimals(deg, minwhole, mindec)
+"     " Trim leading zeros so that the string won't be treated as octal.
+"     let l:deg = substitute(a:deg, '^0*', '', '')
+"     let l:minwhole = substitute(a:minwhole, '^0*', '', '')
 
-    " Force the decimal portion of the minutes to be 3 decimal places.
-    " And then trim leading zeros.
-    let l:mindec = substitute(strpart(a:mindec.'000', 0, 3), '^0*', '', '')
+"     " Force the decimal portion of the minutes to be 3 decimal places.
+"     " And then trim leading zeros.
+"     let l:mindec = substitute(strpart(a:mindec.'000', 0, 3), '^0*', '', '')
 
-    let l:val = (l:minwhole * 1000000 + l:mindec * 1000 + 30) / 60
-    return l:deg . '.' . strpart('000000', 0, 6 - strlen(l:val)) . l:val
-endfunction
+"     let l:val = (l:minwhole * 1000000 + l:mindec * 1000 + 30) / 60
+"     return l:deg . '.' . strpart('000000', 0, 6 - strlen(l:val)) . l:val
+" endfunction
 
-function! <SID>ConvertCoords()
-    let l:coord = '\(\d\+\)\D\+\(\d\+\)\D\+\(\d\+\)'
-    let l:x = substitute(getline('.'), '\D*'.l:coord.'\D\+'.l:coord.'.*', '\=<SID>ToDecimals(submatch(1), submatch(2), submatch(3)) . "\<cr>-" . <SID>ToDecimals(submatch(4), submatch(5), submatch(6))', '')
-    execute "normal o\<home>" . l:x . "\<esc>"
-endfunction
+" function! <SID>ConvertCoords()
+"     let l:coord = '\(\d\+\)\D\+\(\d\+\)\D\+\(\d\+\)'
+"     let l:x = substitute(getline('.'), '\D*'.l:coord.'\D\+'.l:coord.'.*', '\=<SID>ToDecimals(submatch(1), submatch(2), submatch(3)) . "\<cr>-" . <SID>ToDecimals(submatch(4), submatch(5), submatch(6))', '')
+"     execute "normal o\<home>" . l:x . "\<esc>"
+" endfunction
 
 " ------------------------------------------------------------------
 " Convert geocaching URL followed by cache name into a HTML link.
@@ -1342,116 +1344,116 @@ endfunction
 " ,c Convert a line of the form
 " waypt cache-title
 " into a HTML geocache link.
-function! <SID>ConvertGC()
-    let l:gcregex = 'GC[0-9A-Za-z]\{1,5}'
+" function! <SID>ConvertGC()
+"     let l:gcregex = 'GC[0-9A-Za-z]\{1,5}'
 
-    let l:fmt1 = '^\s*\d\+\.\s\+\(.*\)\s\+(.\{-})\s\+(\('.l:gcregex.'\))\s*$'
-    let l:fmt2 = '^\s*\(.*\)\s\+by\s\+.\{-}\s\+(\('.l:gcregex.'\))\s*$'
-    let l:fmt3 = '^\s*\('.l:gcregex.'\)\s\+\(.\{-}\)\s*$'
+"     let l:fmt1 = '^\s*\d\+\.\s\+\(.*\)\s\+(.\{-})\s\+(\('.l:gcregex.'\))\s*$'
+"     let l:fmt2 = '^\s*\(.*\)\s\+by\s\+.\{-}\s\+(\('.l:gcregex.'\))\s*$'
+"     let l:fmt3 = '^\s*\('.l:gcregex.'\)\s\+\(.\{-}\)\s*$'
 
-    let l:line = getline('.')
-    let l:waypt = ''
-    let l:title = ''
+"     let l:line = getline('.')
+"     let l:waypt = ''
+"     let l:title = ''
 
-    let l:res = matchlist(l:line, l:fmt1)
-    if l:res != []
-        let l:waypt = l:res[2]
-        let l:title = l:res[1]
-    else
-        let l:res = matchlist(l:line, l:fmt2)
-        if l:res != []
-            let l:waypt = l:res[2]
-            let l:title = l:res[1]
-        else
-            let l:res = matchlist(l:line, l:fmt3)
-            if l:res != []
-                let l:waypt = l:res[1]
-                let l:title = l:res[2]
-            endif
-        endif
-    endif
+"     let l:res = matchlist(l:line, l:fmt1)
+"     if l:res != []
+"         let l:waypt = l:res[2]
+"         let l:title = l:res[1]
+"     else
+"         let l:res = matchlist(l:line, l:fmt2)
+"         if l:res != []
+"             let l:waypt = l:res[2]
+"             let l:title = l:res[1]
+"         else
+"             let l:res = matchlist(l:line, l:fmt3)
+"             if l:res != []
+"                 let l:waypt = l:res[1]
+"                 let l:title = l:res[2]
+"             endif
+"         endif
+"     endif
 
-    let l:title = substitute(l:title, '&', '\&amp;', 'g')
-    let l:title = substitute(l:title, '<', '\&lt;', 'g')
-    let l:title = substitute(l:title, '>', '\&gt;', 'g')
+"     let l:title = substitute(l:title, '&', '\&amp;', 'g')
+"     let l:title = substitute(l:title, '<', '\&lt;', 'g')
+"     let l:title = substitute(l:title, '>', '\&gt;', 'g')
 
-"    echo "waypt = ". waypt. ", title = ". title . "."
+" "    echo "waypt = ". waypt. ", title = ". title . "."
 
-    let l:id = s:GCtoID(l:waypt)
-    if l:id >= 0
-        call setline('.', "<p><a href=\"http://www.geocaching.com/seek/cache_details.aspx?pf=y&ID=" . l:id . "&log=y&decrypt=y\">" . l:title . '</a>')
-    endif
-endfunction
+"     let l:id = s:GCtoID(l:waypt)
+"     if l:id >= 0
+"         call setline('.', "<p><a href=\"http://www.geocaching.com/seek/cache_details.aspx?pf=y&ID=" . l:id . "&log=y&decrypt=y\">" . l:title . '</a>')
+"     endif
+" endfunction
 
-nnoremap ,c :call <SID>ConvertGC()<cr>
-vnoremap ,c :call <SID>ConvertGC()<cr>
+" nnoremap ,c :call <SID>ConvertGC()<cr>
+" vnoremap ,c :call <SID>ConvertGC()<cr>
 
 " ===== Convert My Caches HTML to list of links. (new) ===== {{{2
 
 " Get the content of the n'th element in a series of elements.
-function! s:xml_get_nth(xmlstr, elem, n)
-    let l:matchres = matchlist(a:xmlstr, '<'.a:elem.'\%( [^>]*\)\?>\(.\{-}\)</'.a:elem.'>', -1, a:n)
-    return l:matchres == [] ? '' : l:matchres[1]
-endfunction
+" function! s:xml_get_nth(xmlstr, elem, n)
+"     let l:matchres = matchlist(a:xmlstr, '<'.a:elem.'\%( [^>]*\)\?>\(.\{-}\)</'.a:elem.'>', -1, a:n)
+"     return l:matchres == [] ? '' : l:matchres[1]
+" endfunction
 
-" Remove leading and trailing whitespace.
-function! s:trim_both(s)
-    " Remove trailing whitespace.
-    let l:s = substitute(a:s, '\s\+$', '', '')
+" " Remove leading and trailing whitespace.
+" function! s:trim_both(s)
+"     " Remove trailing whitespace.
+"     let l:s = substitute(a:s, '\s\+$', '', '')
 
-    " Remove leading whitespace.
-    return substitute(l:s, '^\s\+', '', '')
-endfunction
+"     " Remove leading whitespace.
+"     return substitute(l:s, '^\s\+', '', '')
+" endfunction
 
-" ,M Convert new-style my caches HTML to a list of links.
-function! s:Convert_mycaches_3() range
-    let l:m1 = 'http://www\.geocaching\.com/seek/cache_details\.aspx[^"]*'
-    let l:m2 = '<a href="'.l:m1.'">\(.*\)</a>'
+" " ,M Convert new-style my caches HTML to a list of links.
+" function! s:Convert_mycaches_3() range
+"     let l:m1 = 'http://www\.geocaching\.com/seek/cache_details\.aspx[^"]*'
+"     let l:m2 = '<a href="'.l:m1.'">\(.*\)</a>'
 
-    let l:header = '<lj-cut text="The caches...">'."\<cr>".'<div style="margin: 10px 30px; border: 1px dashed; padding: 10px;">'."\<cr>"
-    let l:footer = '</div>'."\<cr>".'</lj-cut>'."\<cr>"
+"     let l:header = '<lj-cut text="The caches...">'."\<cr>".'<div style="margin: 10px 30px; border: 1px dashed; padding: 10px;">'."\<cr>"
+"     let l:footer = '</div>'."\<cr>".'</lj-cut>'."\<cr>"
 
-    let l:outstr = ''
-    let l:str = join(getline(a:firstline, a:lastline), '')
+"     let l:outstr = ''
+"     let l:str = join(getline(a:firstline, a:lastline), '')
 
-    " Remove ^M characters.
-    let l:str = substitute(l:str, '\r', '', 'g')
+"     " Remove ^M characters.
+"     let l:str = substitute(l:str, '\r', '', 'g')
 
-    let l:trcount = 1
-    while 1
-        let l:logitem = s:xml_get_nth(l:str, 'tr', l:trcount)
-        if l:logitem ==# ''
-            break
-        endif
+"     let l:trcount = 1
+"     while 1
+"         let l:logitem = s:xml_get_nth(l:str, 'tr', l:trcount)
+"         if l:logitem ==# ''
+"             break
+"         endif
 
-        let l:linkitem = s:xml_get_nth(l:logitem, 'td', 3)
+"         let l:linkitem = s:xml_get_nth(l:logitem, 'td', 3)
 
-        " Get cache link.
-        let l:linkstr = matchstr(l:linkitem, l:m1, 0)
-        if l:linkstr !=# ''
+"         " Get cache link.
+"         let l:linkstr = matchstr(l:linkitem, l:m1, 0)
+"         if l:linkstr !=# ''
 
-            " Get cache name.
-            let l:matchres = matchlist(l:linkitem, l:m2)
-            let l:name = s:trim_both(l:matchres[1])
+"             " Get cache name.
+"             let l:matchres = matchlist(l:linkitem, l:m2)
+"             let l:name = s:trim_both(l:matchres[1])
 
-            let l:state = s:trim_both(s:xml_get_nth(l:logitem, 'td', 4))
+"             let l:state = s:trim_both(s:xml_get_nth(l:logitem, 'td', 4))
             
-            let l:link = '<a href="'.l:linkstr.'">'.l:name.' ('.l:state.")</a>\r"
+"             let l:link = '<a href="'.l:linkstr.'">'.l:name.' ('.l:state.")</a>\r"
 
-            " Prepend to reverse the order of the log items.
-            let l:outstr = l:link . l:outstr
-        endif
+"             " Prepend to reverse the order of the log items.
+"             let l:outstr = l:link . l:outstr
+"         endif
 
-        let l:trcount += 1
-    endwhile
+"         let l:trcount += 1
+"     endwhile
 
-    " Pick the correct change command so that autoindent is not in effect.
-    " We want the inserted lines to have no indent.
-    let l:changecmd = &autoindent ? 'change!' : 'change'
-    silent execute 'normal :' . a:firstline . ',' . a:lastline . l:changecmd . "\<cr>" . l:header . l:outstr . l:footer . "\<esc>"
-endfunction
+"     " Pick the correct change command so that autoindent is not in effect.
+"     " We want the inserted lines to have no indent.
+"     let l:changecmd = &autoindent ? 'change!' : 'change'
+"     silent execute 'normal :' . a:firstline . ',' . a:lastline . l:changecmd . "\<cr>" . l:header . l:outstr . l:footer . "\<esc>"
+" endfunction
 
-vnoremap ,M :call <SID>Convert_mycaches_3()<cr>
+" vnoremap ,M :call <SID>Convert_mycaches_3()<cr>
 
 " ===== Convert text to HTML ===== {{{2
 " Convert text to HTML by escaping <, >, ", and &.
@@ -1468,44 +1470,44 @@ nnoremap ,h :call <SID>HtmlizeText()<cr>
 vnoremap ,h :call <SID>HtmlizeText()<cr>
 
 " ===== Convert Topozone URL to Geobloggers tags for Flickr. ===== {{{2
-function! <SID>ConvertGeoTag()
-    let l:coords = '.\{-}\(\d\+\.\d\+\).\{-}\(-\d\+\.\d\+\).*'
-    let l:x = substitute(getline('.'), l:coords, 'geotagged geo:lat=\1 geo:lon=\2', '')
-    execute 'normal o' . l:x . "\<cr><a href=\"http://www.geobloggers.com\">geotagged</a>\<esc>"
-endfunction
+" function! <SID>ConvertGeoTag()
+"     let l:coords = '.\{-}\(\d\+\.\d\+\).\{-}\(-\d\+\.\d\+\).*'
+"     let l:x = substitute(getline('.'), l:coords, 'geotagged geo:lat=\1 geo:lon=\2', '')
+"     execute 'normal o' . l:x . "\<cr><a href=\"http://www.geobloggers.com\">geotagged</a>\<esc>"
+" endfunction
 
-nnoremap ,f :call <SID>ConvertGeoTag()<cr>
-vnoremap ,f <esc>:call <SID>ConvertGeoTag()<cr>gv
+" nnoremap ,f :call <SID>ConvertGeoTag()<cr>
+" vnoremap ,f <esc>:call <SID>ConvertGeoTag()<cr>gv
 
 " ===== Add LJ user tag around the current word. ===== {{{2
-nnoremap ,u ciw<lj user="<c-r>""><esc>
-vnoremap ,u c<lj user="<c-r>""><esc>
+" nnoremap ,u ciw<lj user="<c-r>""><esc>
+" vnoremap ,u c<lj user="<c-r>""><esc>
 
-nnoremap ,U ciw<lj comm="<c-r>""><esc>
-vnoremap ,U c<lj comm="<c-r>""><esc>
+" nnoremap ,U ciw<lj comm="<c-r>""><esc>
+" vnoremap ,U c<lj comm="<c-r>""><esc>
 
 " Update for Dreamwidth. Use this for both users and communities.
-nnoremap ,u ciw<user name="<c-r>"" site="livejournal.com"><esc>
-vnoremap ,u c<user name="<c-r>"" site="livejournal.com"><esc>
+" nnoremap ,u ciw<user name="<c-r>"" site="livejournal.com"><esc>
+" vnoremap ,u c<user name="<c-r>"" site="livejournal.com"><esc>
 
 " ===== Toggle between name and name=aname in nuvigc shell script. ===== {{{2
-function! s:equal_toggle_2(str) abort
-    return join(map(split(a:str), stridx(a:str, '=') < 0 ? 'v:val."=a".v:val' : 'split(v:val, "=")[0]'))
-endfunction
+" function! s:equal_toggle_2(str) abort
+"     return join(map(split(a:str), stridx(a:str, '=') < 0 ? 'v:val."=a".v:val' : 'split(v:val, "=")[0]'))
+" endfunction
 
-function! s:equal_toggle(lineno) abort
-    call setline(a:lineno, substitute(getline(a:lineno), '(\(.*\))', '\="(".s:equal_toggle_2(submatch(1)).")"', ''))
-endfunction
+" function! s:equal_toggle(lineno) abort
+"     call setline(a:lineno, substitute(getline(a:lineno), '(\(.*\))', '\="(".s:equal_toggle_2(submatch(1)).")"', ''))
+" endfunction
 
-function! s:do_equal_toggle(type) abort
-    for l:lnum in range(line("'["), line("']"))
-        call s:equal_toggle(l:lnum)
-    endfor
-endfunction
+" function! s:do_equal_toggle(type) abort
+"     for l:lnum in range(line("'["), line("']"))
+"         call s:equal_toggle(l:lnum)
+"     endfor
+" endfunction
 
-nnoremap <F12>== :call <SID>equal_toggle('.')<cr>
-vnoremap <F12>= :call <SID>equal_toggle('.')<cr>
-nnoremap <F12>= :set operatorfunc=<SID>do_equal_toggle<cr>g@
+" nnoremap <F12>== :call <SID>equal_toggle('.')<cr>
+" vnoremap <F12>= :call <SID>equal_toggle('.')<cr>
+" nnoremap <F12>= :set operatorfunc=<SID>do_equal_toggle<cr>g@
 
 " ===== Use the Silver Searcher for searching, if available ===== {{{2
 " Borrowed from: http://robots.thoughtbot.com/faster-grepping-in-vim/

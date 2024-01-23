@@ -1477,7 +1477,7 @@ function! <SID>copy_codewars()
     let curline = line('.')
     let lastline = line('$')
 
-    let i = curline - 1
+    let i = max([1, curline - 1])
     let startrange = i
     while 1
         if match(getline(i), marker) >= 0
@@ -1491,7 +1491,7 @@ function! <SID>copy_codewars()
         let i = i - 1
     endwhile
 
-    let i = curline + 1
+    let i = min([lastline, curline + 1])
     let endrange = i
     while 1
         if match(getline(i), marker) >= 0

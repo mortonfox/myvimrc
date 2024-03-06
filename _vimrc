@@ -712,6 +712,10 @@ nnoremap <C-l> <C-W>l
 nnoremap <C-k> <C-W>k
 nnoremap <C-j> <C-W>j
 
+" Turn off F1 help key
+nnoremap <F1> <NOP>
+inoremap <F1> <NOP>
+
 " F3 toggles no-linebreak mode
 nnoremap <F3> :call <SID>Toggle_no_lbr()<cr>
 
@@ -1642,4 +1646,4 @@ endif
 
 " }}}1
 
-" Last updated: January 23, 2024
+" Last updated: March 6, 2024

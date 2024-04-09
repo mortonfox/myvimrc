@@ -131,8 +131,8 @@ set infercase
 set nojoinspaces
 " last window always has status line
 set laststatus=2
-" do not redraw while executing macros
-set lazyredraw
+" do not suppress delay redraws
+set nolazyredraw
 " make non-breaking spaces visible
 set listchars+=nbsp:%
 " magic search patterns
@@ -1646,4 +1646,4 @@ endif
 
 " }}}1
 
-" Last updated: April 1, 2024
+" Last updated: April 9, 2024

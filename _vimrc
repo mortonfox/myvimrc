@@ -591,7 +591,8 @@ let g:vimpager_use_gvim = 1
 if has('gui_gtk') && has('gui_running')
     function! <SID>SetGuiFont()
         execute 'set guifont=CommitMono\ weight=453\ ' . s:font_size . ',Source\ Code\ Pro\ ' . s:font_size . ',Cascadia\ Mono\ PL\ ' . s:font_size . ',DejaVu\ Sans\ Mono\ ' . s:font_size . ',7x14bold'
-        echom 'Font size set to ' . s:font_size
+        redraw
+        echo 'Font size set to ' . s:font_size
     endfunction
 
     function! <SID>ChangeGuiFontSize(incr)

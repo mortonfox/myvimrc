@@ -589,7 +589,33 @@ let g:vimpager_use_gvim = 1
 
 " In vim 5.4 with GTK+, the .font resource does not work.
 if has('gui_gtk') && has('gui_running')
-    set guifont=CommitMono\ weight=453\ 16,Source\ Code\ Pro\ 16,Cascadia\ Mono\ PL\ 16,DejaVu\ Sans\ Mono\ 16,7x14bold
+    function! <SID>SetGuiFont()
+        execute 'set guifont=CommitMono\ weight=453\ ' . s:font_size . ',Source\ Code\ Pro\ ' . s:font_size . ',Cascadia\ Mono\ PL\ ' . s:font_size . ',DejaVu\ Sans\ Mono\ ' . s:font_size . ',7x14bold'
+        echom 'Font size set to ' . s:font_size
+    endfunction
+
+    function! <SID>ChangeGuiFontSize(incr)
+        let s:font_size += a:incr
+        if s:font_size < 14
+            let s:font_size = 14
+        endif
+        if s:font_size > 30
+            let s:font_size = 30
+        endif
+        call <SID>SetGuiFont()
+    endfunction
+
+    function! <SID>ResetGuiFontSize()
+        let s:font_size = 16
+        call <SID>SetGuiFont()
+    endfunction
+
+    nnoremap <C-0> :call <SID>ResetGuiFontSize()<cr>
+    nnoremap <C-_> :call <SID>ChangeGuiFontSize(-1)<cr>
+    nnoremap <C-=> :call <SID>ChangeGuiFontSize(1)<cr>
+
+    " set guifont=CommitMono\ weight=453\ 16,Source\ Code\ Pro\ 16,Cascadia\ Mono\ PL\ 16,DejaVu\ Sans\ Mono\ 16,7x14bold
+    call <SID>ResetGuiFontSize()
 endif
 
 if (has('win32') || has('win64')) && has('gui_running')
@@ -1646,4 +1672,4 @@ endif
 
 " }}}1
 
-" Last updated: April 9, 2024
+" Last updated: May 26, 2024

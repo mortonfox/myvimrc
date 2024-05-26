@@ -1,5 +1,8 @@
 " ----- General Options ----- {{{1
 
+" keep redraw delays on until vimrc ends
+set lazyredraw
+
 " Set the character encoding used inside Vim.
 " This option has to come before autochdir in order to not trigger
 " a bug with relative pathnames on Vim startup.
@@ -131,8 +134,6 @@ set infercase
 set nojoinspaces
 " last window always has status line
 set laststatus=2
-" do not suppress delay redraws
-set nolazyredraw
 " make non-breaking spaces visible
 set listchars+=nbsp:%
 " magic search patterns
@@ -592,8 +593,6 @@ if has('gui_gtk') && has('gui_running')
     function! <SID>SetGuiFont()
         let str = 'set guifont=CommitMono\ weight=453\ FONTSIZE,Source\ Code\ Pro\ FONTSIZE,Cascadia\ Mono\ PL\ FONTSIZE,DejaVu\ Sans\ Mono\ FONTSIZE,7x14bold'
         execute substitute(str, 'FONTSIZE', s:font_size, 'g')
-        redraw
-        echo 'Font size set to ' . s:font_size
     endfunction
 
     function! <SID>ChangeGuiFontSize(incr)
@@ -605,6 +604,8 @@ if has('gui_gtk') && has('gui_running')
             let s:font_size = 30
         endif
         call <SID>SetGuiFont()
+        redraw
+        echo 'Font size set to ' . s:font_size
     endfunction
 
     function! <SID>ResetGuiFontSize()
@@ -1673,5 +1674,8 @@ elseif $VIM !=# '' && filereadable($VIM.'/vimrc.local')
 endif
 
 " }}}1
+
+" stop suppressing redraw delays
+set nolazyredraw
 
 " Last updated: May 26, 2024

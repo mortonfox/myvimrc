@@ -590,7 +590,8 @@ let g:vimpager_use_gvim = 1
 " In vim 5.4 with GTK+, the .font resource does not work.
 if has('gui_gtk') && has('gui_running')
     function! <SID>SetGuiFont()
-        execute 'set guifont=CommitMono\ weight=453\ ' . s:font_size . ',Source\ Code\ Pro\ ' . s:font_size . ',Cascadia\ Mono\ PL\ ' . s:font_size . ',DejaVu\ Sans\ Mono\ ' . s:font_size . ',7x14bold'
+        let str = 'set guifont=CommitMono\ weight=453\ FONTSIZE,Source\ Code\ Pro\ FONTSIZE,Cascadia\ Mono\ PL\ FONTSIZE,DejaVu\ Sans\ Mono\ FONTSIZE,7x14bold'
+        execute substitute(str, 'FONTSIZE', s:font_size, 'g')
         redraw
         echo 'Font size set to ' . s:font_size
     endfunction
@@ -611,11 +612,11 @@ if has('gui_gtk') && has('gui_running')
         call <SID>SetGuiFont()
     endfunction
 
+    " Ctrl-minus, ctrl-equals to decr/incr font size. Ctrl-zero to reset it.
     nnoremap <C-0> :call <SID>ResetGuiFontSize()<cr>
     nnoremap <C-_> :call <SID>ChangeGuiFontSize(-1)<cr>
     nnoremap <C-=> :call <SID>ChangeGuiFontSize(1)<cr>
 
-    " set guifont=CommitMono\ weight=453\ 16,Source\ Code\ Pro\ 16,Cascadia\ Mono\ PL\ 16,DejaVu\ Sans\ Mono\ 16,7x14bold
     call <SID>ResetGuiFontSize()
 endif
 

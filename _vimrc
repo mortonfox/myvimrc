@@ -1179,6 +1179,7 @@ augroup vimrc_auto
     autocmd FileType python     call <SID>Set_vimscript_mode()
     autocmd FileType json       call <SID>Set_vimscript_mode()
     autocmd FileType markdown   call <SID>Set_vimscript_mode()
+    autocmd FileType rust       call <SID>Set_vimscript_mode()
     autocmd FileType text       call <SID>Set_text_mode()
 
     " Save crontab file in place. Otherwise crontab -e may think the file
@@ -1678,4 +1679,4 @@ endif
 " stop suppressing redraw delays
 set nolazyredraw
 
-" Last updated: May 26, 2024
+" Last updated: September 9, 2024

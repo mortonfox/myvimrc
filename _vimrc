@@ -591,7 +591,7 @@ let g:vimpager_use_gvim = 1
 " In vim 5.4 with GTK+, the .font resource does not work.
 if has('gui_gtk') && has('gui_running')
     function! <SID>SetGuiFont()
-        let str = 'set guifont=CommitMono\ weight=453\ FONTSIZE,Source\ Code\ Pro\ FONTSIZE,Cascadia\ Mono\ PL\ FONTSIZE,DejaVu\ Sans\ Mono\ FONTSIZE,7x14bold'
+        let str = 'set guifont=0xProto\ Nerd\ Font\ FONTSIZE,CommitMono\ weight=453\ FONTSIZE,Source\ Code\ Pro\ FONTSIZE,Cascadia\ Mono\ PL\ FONTSIZE,DejaVu\ Sans\ Mono\ FONTSIZE,7x14bold'
         execute substitute(str, 'FONTSIZE', s:font_size, 'g')
     endfunction
 
@@ -1679,4 +1679,4 @@ endif
 " stop suppressing redraw delays
 set nolazyredraw
 
-" Last updated: September 9, 2024
+" Last updated: November 4, 2024

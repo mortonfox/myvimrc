@@ -1158,7 +1158,7 @@ augroup vimrc_auto
 
     autocmd FileType java        call <SID>Set_generic_code_mode()
     autocmd FileType cs          call <SID>Set_generic_code_mode()
-    autocmd FileType dosbatch,sh call <SID>Set_generic_code_mode()
+    autocmd FileType dosbatch    call <SID>Set_generic_code_mode()
     autocmd FileType php         call <SID>Set_generic_code_mode()
     autocmd FileType css,scss    call <SID>Set_generic_code_mode()
     autocmd FileType perl        call <SID>Set_generic_code_mode()
@@ -1176,6 +1176,7 @@ augroup vimrc_auto
     autocmd FileType ruby,eruby call <SID>Set_ruby_mode()
     autocmd FileType vim        call <SID>Set_vimscript_mode()
     autocmd FileType d          call <SID>Set_vimscript_mode()
+    autocmd FileType sh         call <SID>Set_vimscript_mode()
     autocmd FileType python     call <SID>Set_vimscript_mode()
     autocmd FileType json       call <SID>Set_vimscript_mode()
     autocmd FileType markdown   call <SID>Set_vimscript_mode()

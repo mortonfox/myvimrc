@@ -588,6 +588,12 @@ let g:vimpager_use_gvim = 1
 
 " ----- GUI customization ----- {{{1
 
+if has('gui_gtk') && has('gui_running')
+    " Workaround for gx command failing silently in gvim.
+    " https://vi.stackexchange.com/questions/5032/gx-not-opening-url-in-gvim-but-works-in-terminal
+    let g:netrw_browsex_viewer="setsid xdg-open"
+endif
+
 " In vim 5.4 with GTK+, the .font resource does not work.
 if has('gui_gtk') && has('gui_running')
     function! <SID>SetGuiFont()
@@ -1680,4 +1686,4 @@ endif
 " stop suppressing redraw delays
 set nolazyredraw
 
-" Last updated: January 12, 2025
+" Last updated: January 15, 2025

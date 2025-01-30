@@ -369,14 +369,14 @@ Plug 'junegunn/vim-plug'
 " nnoremap <F8> :RainbowParenthesesToggle<cr>
 
 " General purpose asynchronous tree explorer
-Plug 'lambdalisue/fern.vim'
+" Plug 'lambdalisue/fern.vim'
 
 " Make the fern.vim as a default file explorer instead of Netrw
-Plug 'lambdalisue/fern-hijack.vim'
+" Plug 'lambdalisue/fern-hijack.vim'
 
 " collapse or leave action for fern.vim
-Plug 'hrsh7th/fern-mapping-collapse-or-leave.vim'
-let g:fern#mapping#collapse_or_leave#disable_default_mappings = 1
+" Plug 'hrsh7th/fern-mapping-collapse-or-leave.vim'
+" let g:fern#mapping#collapse_or_leave#disable_default_mappings = 1
 
 " A Vim plugin that manages your tag files bolt80.com/gutentags
 Plug 'ludovicchabant/vim-gutentags'
@@ -1614,59 +1614,59 @@ nnoremap <f12>[ :call <SID>copy_codewars()<cr>
 " ----- Customizations for fern.vim ----- {{{1
 
 " Custom settings and mappings.
-let g:fern#disable_default_mappings = 1
+" let g:fern#disable_default_mappings = 1
 
-nnoremap <silent> _ :Fern %:h -opener=edit/split -reveal=%<cr>
+" nnoremap <silent> _ :Fern %:h -opener=edit/split -reveal=%<cr>
 
-function! FernInit() abort
-    " Disable _ mapping in Fern buffer to prevent problems.
-    nmap <buffer> _ <Nop>
+" function! FernInit() abort
+"     " Disable _ mapping in Fern buffer to prevent problems.
+"     nmap <buffer> _ <Nop>
 
-    " Open/close folder or open a file.
-    nmap <buffer><expr>
-                \ <Plug>(fern-cr-action)
-                \ fern#smart#leaf(
-                \   "\<Plug>(fern-action-open:edit-or-error)",
-                \   "\<Plug>(fern-action-expand)",
-                \   "\<Plug>(fern-action-collapse)",
-                \ )
-    nmap <buffer> <CR> <Plug>(fern-cr-action)
-    nmap <buffer> <2-LeftMouse> <Plug>(fern-cr-action)
+"     " Open/close folder or open a file.
+"     nmap <buffer><expr>
+"                 \ <Plug>(fern-cr-action)
+"                 \ fern#smart#leaf(
+"                 \   "\<Plug>(fern-action-open:edit-or-error)",
+"                 \   "\<Plug>(fern-action-expand)",
+"                 \   "\<Plug>(fern-action-collapse)",
+"                 \ )
+"     nmap <buffer> <CR> <Plug>(fern-cr-action)
+"     nmap <buffer> <2-LeftMouse> <Plug>(fern-cr-action)
 
-    " Navigate up/down folders.
-    nmap <buffer><nowait> - <Plug>(fern-action-collapse-or-leave)
-    nmap <buffer><nowait> < <Plug>(fern-action-leave)
-    nmap <buffer><nowait> > <Plug>(fern-action-enter)
+"     " Navigate up/down folders.
+"     nmap <buffer><nowait> - <Plug>(fern-action-collapse-or-leave)
+"     nmap <buffer><nowait> < <Plug>(fern-action-leave)
+"     nmap <buffer><nowait> > <Plug>(fern-action-enter)
 
-    " Create new path.
-    nmap <buffer> n <Plug>(fern-action-new-path)
+"     " Create new path.
+"     nmap <buffer> n <Plug>(fern-action-new-path)
 
-    " Delete path.
-    nmap <buffer> d <Plug>(fern-action-trash)
+"     " Delete path.
+"     nmap <buffer> d <Plug>(fern-action-trash)
 
-    " Copy path.
-    nmap <buffer> c <Plug>(fern-action-copy)
+"     " Copy path.
+"     nmap <buffer> c <Plug>(fern-action-copy)
 
-    " Move/rename path with prompt.
-    nmap <buffer> m <Plug>(fern-action-move)
+"     " Move/rename path with prompt.
+"     nmap <buffer> m <Plug>(fern-action-move)
 
-    " Move/rename path with renamer buffer.
-    nmap <buffer> M <Plug>(fern-action-rename)
+"     " Move/rename path with renamer buffer.
+"     nmap <buffer> M <Plug>(fern-action-rename)
 
-    " Toggle hidden files.
-    nmap <buffer> h <Plug>(fern-action-hidden:toggle)
+"     " Toggle hidden files.
+"     nmap <buffer> h <Plug>(fern-action-hidden:toggle)
 
-    " Reload Fern buffer.
-    nmap <buffer> r <Plug>(fern-action-reload)
+"     " Reload Fern buffer.
+"     nmap <buffer> r <Plug>(fern-action-reload)
 
-    " Mark/unmark path.
-    nmap <buffer> <Space> <Plug>(fern-action-mark:toggle)
-endfunction
+"     " Mark/unmark path.
+"     nmap <buffer> <Space> <Plug>(fern-action-mark:toggle)
+" endfunction
 
-augroup FernGroup
-  autocmd!
-  autocmd FileType fern call FernInit()
-augroup END
+" augroup FernGroup
+"   autocmd!
+"   autocmd FileType fern call FernInit()
+" augroup END
 
 
 " }}}1
@@ -1686,4 +1686,4 @@ endif
 " stop suppressing redraw delays
 set nolazyredraw
 
-" Last updated: January 15, 2025
+" Last updated: January 30, 2025

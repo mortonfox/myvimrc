@@ -595,37 +595,37 @@ if has('gui_gtk') && has('gui_running')
 endif
 
 " In vim 5.4 with GTK+, the .font resource does not work.
-if has('gui_gtk') && has('gui_running')
-    function! <SID>SetGuiFont()
-        let str = 'set guifont=0xProto\ Nerd\ Font\ FONTSIZE,CommitMono\ Nerd\ Font\ Mono\ FONTSIZE,DejaVu\ Sans\ Mono\ FONTSIZE,7x14bold'
-        execute substitute(str, 'FONTSIZE', s:font_size, 'g')
-    endfunction
+" if has('gui_gtk') && has('gui_running')
+"     function! <SID>SetGuiFont()
+"         let str = 'set guifont=0xProto\ Nerd\ Font\ FONTSIZE,CommitMono\ Nerd\ Font\ Mono\ FONTSIZE,DejaVu\ Sans\ Mono\ FONTSIZE,7x14bold'
+"         execute substitute(str, 'FONTSIZE', s:font_size, 'g')
+"     endfunction
 
-    function! <SID>ChangeGuiFontSize(incr)
-        let s:font_size += a:incr
-        if s:font_size < 14
-            let s:font_size = 14
-        endif
-        if s:font_size > 30
-            let s:font_size = 30
-        endif
-        call <SID>SetGuiFont()
-        redraw
-        echo 'Font size set to ' . s:font_size
-    endfunction
+"     function! <SID>ChangeGuiFontSize(incr)
+"         let s:font_size += a:incr
+"         if s:font_size < 14
+"             let s:font_size = 14
+"         endif
+"         if s:font_size > 30
+"             let s:font_size = 30
+"         endif
+"         call <SID>SetGuiFont()
+"         redraw
+"         echo 'Font size set to ' . s:font_size
+"     endfunction
 
-    function! <SID>ResetGuiFontSize()
-        let s:font_size = 16
-        call <SID>SetGuiFont()
-    endfunction
+"     function! <SID>ResetGuiFontSize()
+"         let s:font_size = 16
+"         call <SID>SetGuiFont()
+"     endfunction
 
-    " Ctrl-minus, ctrl-equals to decr/incr font size. Ctrl-zero to reset it.
-    nnoremap <C-0> :call <SID>ResetGuiFontSize()<cr>
-    nnoremap <C-_> :call <SID>ChangeGuiFontSize(-1)<cr>
-    nnoremap <C-=> :call <SID>ChangeGuiFontSize(1)<cr>
+"     " Ctrl-minus, ctrl-equals to decr/incr font size. Ctrl-zero to reset it.
+"     nnoremap <C-0> :call <SID>ResetGuiFontSize()<cr>
+"     nnoremap <C-_> :call <SID>ChangeGuiFontSize(-1)<cr>
+"     nnoremap <C-=> :call <SID>ChangeGuiFontSize(1)<cr>
 
-    call <SID>ResetGuiFontSize()
-endif
+"     call <SID>ResetGuiFontSize()
+" endif
 
 if (has('win32') || has('win64')) && has('gui_running')
     " Disable middle mouse paste in win32 GUI. That is very annoying with a
@@ -1682,6 +1682,62 @@ elseif $VIM !=# '' && filereadable($VIM.'/vimrc.local')
 endif
 
 " }}}1
+
+vim9cmd const MINFONTSIZE = 8
+vim9cmd const MAXFONTSIZE = 36
+vim9cmd const ORIGFONTSTR = '0xProto Nerd Font 18,CommitMono Nerd Font Mono 18,DejaVu Sans Mono 18,7x14bold'
+
+def! s:GetFontSize(): number
+    var freq = {}
+    for font in split(&guifont, ',')
+        var m = matchlist(font, '\s\+\(\d\+\)$')
+        if m != []
+            var sz = m[1]
+            if !has_key(freq, sz)
+                freq[sz] = 0
+            endif
+            freq[sz] += 1
+            echo freq
+        endif
+    endfor
+    var top = max(freq)
+    for [k, v] in items(freq)
+        if v == top
+            return str2nr(k)
+        endif
+    endfor
+    throw 'Cannot determine current font size'
+enddef
+
+def! s:ChangeFontSize(oldsize: number, newsize: number)
+    var results = []
+    for font in split(&guifont, ',')
+        add(results, substitute(font, '\(\s\)' .. oldsize .. '$', '\1' .. newsize, ''))
+    endfor
+    &guifont = join(results, ',')
+    redraw
+    echo 'Font size set to ' .. newsize
+enddef
+
+def! IncrFontSize(incr: number)
+    var oldsize = s:GetFontSize()
+    var newsize = min([max([oldsize + incr, MINFONTSIZE]), MAXFONTSIZE])
+    s:ChangeFontSize(oldsize, newsize)
+enddef
+
+def! ResetFontSize()
+    &guifont = ORIGFONTSTR
+enddef
+
+defcompile
+
+if has('gui_gtk') && has('gui_running')
+    call ResetFontSize()
+
+    nnoremap <C-0> <ScriptCmd>call ResetFontSize()<cr>
+    nnoremap <C-_> <ScriptCmd>call IncrFontSize(-1)<cr>
+    nnoremap <C-=> <ScriptCmd>call IncrFontSize(1)<cr>
+endif
 
 " stop suppressing redraw delays
 set nolazyredraw

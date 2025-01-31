@@ -1,5 +1,9 @@
 vim9script
 
+const MINFONTSIZE = 8
+const MAXFONTSIZE = 36
+const ORIGFONTSTR = '0xProto Nerd Font 18,CommitMono Nerd Font Mono 18,DejaVu Sans Mono 18,7x14bold'
+
 def GetFontSize(): number
     var freq = {}
     for font in split(&guifont, ',')
@@ -22,4 +26,26 @@ def GetFontSize(): number
     throw 'Cannot determine current font size'
 enddef
 
-nnoremap <f3> <ScriptCmd>echo GetFontSize()<cr>
+def ChangeFontSize(oldsize: number, newsize: number)
+    var results = []
+    for font in split(&guifont, ',')
+        add(results, substitute(font, '\(\s\)' .. oldsize .. '$', '\1' .. newsize, ''))
+    endfor
+    &guifont = join(results, ',')
+    redraw
+    echo 'Font size set to ' .. newsize
+enddef
+
+def IncrFontSize(incr: number)
+    var oldsize = GetFontSize()
+    var newsize = min([max([oldsize + incr, MINFONTSIZE]), MAXFONTSIZE])
+    ChangeFontSize(oldsize, newsize)
+enddef
+
+def ResetFontSize()
+    &guifont = ORIGFONTSTR
+enddef
+
+nnoremap <C-a> <ScriptCmd>ResetFontSize()<cr>
+nnoremap <C-b> <ScriptCmd>IncrFontSize(1)<cr>
+nnoremap <C-c> <ScriptCmd>IncrFontSize(-1)<cr>

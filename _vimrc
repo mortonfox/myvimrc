@@ -1685,7 +1685,8 @@ endif
 
 vim9cmd const MINFONTSIZE = 8
 vim9cmd const MAXFONTSIZE = 36
-vim9cmd const ORIGFONTSTR = '0xProto Nerd Font 18,CommitMono Nerd Font Mono 18,DejaVu Sans Mono 18,7x14bold'
+" vim9cmd const ORIGFONTSTR = '0xProto Nerd Font 18,CommitMono Nerd Font Mono 18,DejaVu Sans Mono 18,7x14bold'
+vim9cmd const ORIGFONTSTR = '0xProto 18,Annotation Mono 18,DejaVu Sans Mono 18,7x14bold'
 
 def! s:GetFontSize(): number
     var freq = {}
@@ -1742,4 +1743,4 @@ endif
 " stop suppressing redraw delays
 set nolazyredraw
 
-" Last updated: January 30, 2025
+" Last updated: May 22, 2025

@@ -1163,6 +1163,7 @@ augroup vimrc_auto
     autocmd FileType *           call <SID>Set_default_mode()
 
     autocmd FileType java        call <SID>Set_generic_code_mode()
+    autocmd FileType kotlin      call <SID>Set_generic_code_mode()
     autocmd FileType cs          call <SID>Set_generic_code_mode()
     autocmd FileType dosbatch    call <SID>Set_generic_code_mode()
     autocmd FileType php         call <SID>Set_generic_code_mode()
@@ -1743,4 +1744,4 @@ endif
 " stop suppressing redraw delays
 set nolazyredraw
 
-" Last updated: May 22, 2025
+" Last updated: July 8, 2025

@@ -594,39 +594,6 @@ if has('gui_gtk') && has('gui_running')
     let g:netrw_browsex_viewer="setsid xdg-open"
 endif
 
-" In vim 5.4 with GTK+, the .font resource does not work.
-" if has('gui_gtk') && has('gui_running')
-"     function! <SID>SetGuiFont()
-"         let str = 'set guifont=0xProto\ Nerd\ Font\ FONTSIZE,CommitMono\ Nerd\ Font\ Mono\ FONTSIZE,DejaVu\ Sans\ Mono\ FONTSIZE,7x14bold'
-"         execute substitute(str, 'FONTSIZE', s:font_size, 'g')
-"     endfunction
-
-"     function! <SID>ChangeGuiFontSize(incr)
-"         let s:font_size += a:incr
-"         if s:font_size < 14
-"             let s:font_size = 14
-"         endif
-"         if s:font_size > 30
-"             let s:font_size = 30
-"         endif
-"         call <SID>SetGuiFont()
-"         redraw
-"         echo 'Font size set to ' . s:font_size
-"     endfunction
-
-"     function! <SID>ResetGuiFontSize()
-"         let s:font_size = 16
-"         call <SID>SetGuiFont()
-"     endfunction
-
-"     " Ctrl-minus, ctrl-equals to decr/incr font size. Ctrl-zero to reset it.
-"     nnoremap <C-0> :call <SID>ResetGuiFontSize()<cr>
-"     nnoremap <C-_> :call <SID>ChangeGuiFontSize(-1)<cr>
-"     nnoremap <C-=> :call <SID>ChangeGuiFontSize(1)<cr>
-
-"     call <SID>ResetGuiFontSize()
-" endif
-
 if (has('win32') || has('win64')) && has('gui_running')
     " Disable middle mouse paste in win32 GUI. That is very annoying with a
     " wheel mouse.
@@ -709,10 +676,11 @@ else
 
     vnoremap <special> <A-x> "+x
 
+    " Alt-c copies to clipboard
     vnoremap <special> <A-c> "+y
-
     cnoremap <special> <A-c> <C-Y>
 
+    " Alt-v pastes from clipboard
     nnoremap <special> <A-v> "+gP
     cnoremap <special> <A-v> <C-R>+
     execute 'vnoremap <script> <special> <A-v>' paste#paste_cmd['v']
@@ -1312,191 +1280,6 @@ endfunction
 " cnoremap <F12> <C-\>e<SID>CmdlineComplete()<cr>
 
 
-" ===== Convert to decimal coordinates ===== {{{2
-" For converting coordinates from N ddd mm.mmm W ddd mm.mmm to 
-" dd.ddddd -dd.ddddd
-
-" function! <SID>ToDecimals(deg, minwhole, mindec)
-"     " Trim leading zeros so that the string won't be treated as octal.
-"     let l:deg = substitute(a:deg, '^0*', '', '')
-"     let l:minwhole = substitute(a:minwhole, '^0*', '', '')
-
-"     " Force the decimal portion of the minutes to be 3 decimal places.
-"     " And then trim leading zeros.
-"     let l:mindec = substitute(strpart(a:mindec.'000', 0, 3), '^0*', '', '')
-
-"     let l:val = (l:minwhole * 1000000 + l:mindec * 1000 + 30) / 60
-"     return l:deg . '.' . strpart('000000', 0, 6 - strlen(l:val)) . l:val
-" endfunction
-
-" function! <SID>ConvertCoords()
-"     let l:coord = '\(\d\+\)\D\+\(\d\+\)\D\+\(\d\+\)'
-"     let l:x = substitute(getline('.'), '\D*'.l:coord.'\D\+'.l:coord.'.*', '\=<SID>ToDecimals(submatch(1), submatch(2), submatch(3)) . "\<cr>-" . <SID>ToDecimals(submatch(4), submatch(5), submatch(6))', '')
-"     execute "normal o\<home>" . l:x . "\<esc>"
-" endfunction
-
-" ------------------------------------------------------------------
-" Convert geocaching URL followed by cache name into a HTML link.
-"     function! Convert_gc_url()
-"       s+^\([^ ]*?\)[^ ]*\(ID=\d\+\)[^ ]* \+\(.*\)$+<p><a href="\1pf=y\&\2\&log=y\&decrypt=y">\3</a>+e
-"     endfunction
-
-"     map ,c :call Convert_gc_url()<cr>
-"     vmap ,c :call Convert_gc_url()<cr>
-"     imap ,c <esc>:call Convert_gc_url()<cr>
-
-" ===== Generate HTML geocache link ===== {{{2
-" convert waypoint to ID number
-" returns -1 if invalid waypoint
-function! s:GCtoID(waypt)
-    let l:waypt = toupper(a:waypt)
-    let l:WPTCHARS = '0123456789ABCDEFGHJKMNPQRTVWXYZ'
-
-    if match(l:waypt, '^GC[0-9A-F]\{1,4}$') >= 0
-        return '0x' . strpart(l:waypt, 2) + 0
-    " elseif match(waypt, '^GC[GHJ-KM-NP-RTV-Z][0-9A-HJ-KM-NP-RTV-Z]\{3}$') >= 0
-    elseif match(l:waypt, '^GC[' . strpart(l:WPTCHARS, 16) . '][' . l:WPTCHARS . ']\{3}$') >= 0
-        let l:accum = 0
-        let l:i = 2
-        while l:i < 6
-            " echo waypt[i]
-            let l:accum = l:accum * 31 + match(l:WPTCHARS, l:waypt[l:i])
-            if l:i == 2
-                let l:accum = l:accum - 16
-            endif
-            let l:i = l:i + 1
-        endwhile
-        return l:accum + 65536
-    elseif match(l:waypt, '^GC[' . l:WPTCHARS . ']\{5}$') >= 0
-        let l:accum = 0
-        let l:i = 2
-        while l:i < 7
-            let l:accum = l:accum * 31 + match(l:WPTCHARS, l:waypt[l:i])
-            if l:i == 2
-                let l:accum = l:accum - 1
-            endif
-            let l:i = l:i + 1
-        endwhile
-        return l:accum + 512401
-    else
-        return -1
-    endif
-endfunction
-
-" ,c Convert a line of the form
-" waypt cache-title
-" into a HTML geocache link.
-" function! <SID>ConvertGC()
-"     let l:gcregex = 'GC[0-9A-Za-z]\{1,5}'
-
-"     let l:fmt1 = '^\s*\d\+\.\s\+\(.*\)\s\+(.\{-})\s\+(\('.l:gcregex.'\))\s*$'
-"     let l:fmt2 = '^\s*\(.*\)\s\+by\s\+.\{-}\s\+(\('.l:gcregex.'\))\s*$'
-"     let l:fmt3 = '^\s*\('.l:gcregex.'\)\s\+\(.\{-}\)\s*$'
-
-"     let l:line = getline('.')
-"     let l:waypt = ''
-"     let l:title = ''
-
-"     let l:res = matchlist(l:line, l:fmt1)
-"     if l:res != []
-"         let l:waypt = l:res[2]
-"         let l:title = l:res[1]
-"     else
-"         let l:res = matchlist(l:line, l:fmt2)
-"         if l:res != []
-"             let l:waypt = l:res[2]
-"             let l:title = l:res[1]
-"         else
-"             let l:res = matchlist(l:line, l:fmt3)
-"             if l:res != []
-"                 let l:waypt = l:res[1]
-"                 let l:title = l:res[2]
-"             endif
-"         endif
-"     endif
-
-"     let l:title = substitute(l:title, '&', '\&amp;', 'g')
-"     let l:title = substitute(l:title, '<', '\&lt;', 'g')
-"     let l:title = substitute(l:title, '>', '\&gt;', 'g')
-
-" "    echo "waypt = ". waypt. ", title = ". title . "."
-
-"     let l:id = s:GCtoID(l:waypt)
-"     if l:id >= 0
-"         call setline('.', "<p><a href=\"http://www.geocaching.com/seek/cache_details.aspx?pf=y&ID=" . l:id . "&log=y&decrypt=y\">" . l:title . '</a>')
-"     endif
-" endfunction
-
-" nnoremap ,c :call <SID>ConvertGC()<cr>
-" vnoremap ,c :call <SID>ConvertGC()<cr>
-
-" ===== Convert My Caches HTML to list of links. (new) ===== {{{2
-
-" Get the content of the n'th element in a series of elements.
-" function! s:xml_get_nth(xmlstr, elem, n)
-"     let l:matchres = matchlist(a:xmlstr, '<'.a:elem.'\%( [^>]*\)\?>\(.\{-}\)</'.a:elem.'>', -1, a:n)
-"     return l:matchres == [] ? '' : l:matchres[1]
-" endfunction
-
-" " Remove leading and trailing whitespace.
-" function! s:trim_both(s)
-"     " Remove trailing whitespace.
-"     let l:s = substitute(a:s, '\s\+$', '', '')
-
-"     " Remove leading whitespace.
-"     return substitute(l:s, '^\s\+', '', '')
-" endfunction
-
-" " ,M Convert new-style my caches HTML to a list of links.
-" function! s:Convert_mycaches_3() range
-"     let l:m1 = 'http://www\.geocaching\.com/seek/cache_details\.aspx[^"]*'
-"     let l:m2 = '<a href="'.l:m1.'">\(.*\)</a>'
-
-"     let l:header = '<lj-cut text="The caches...">'."\<cr>".'<div style="margin: 10px 30px; border: 1px dashed; padding: 10px;">'."\<cr>"
-"     let l:footer = '</div>'."\<cr>".'</lj-cut>'."\<cr>"
-
-"     let l:outstr = ''
-"     let l:str = join(getline(a:firstline, a:lastline), '')
-
-"     " Remove ^M characters.
-"     let l:str = substitute(l:str, '\r', '', 'g')
-
-"     let l:trcount = 1
-"     while 1
-"         let l:logitem = s:xml_get_nth(l:str, 'tr', l:trcount)
-"         if l:logitem ==# ''
-"             break
-"         endif
-
-"         let l:linkitem = s:xml_get_nth(l:logitem, 'td', 3)
-
-"         " Get cache link.
-"         let l:linkstr = matchstr(l:linkitem, l:m1, 0)
-"         if l:linkstr !=# ''
-
-"             " Get cache name.
-"             let l:matchres = matchlist(l:linkitem, l:m2)
-"             let l:name = s:trim_both(l:matchres[1])
-
-"             let l:state = s:trim_both(s:xml_get_nth(l:logitem, 'td', 4))
-            
-"             let l:link = '<a href="'.l:linkstr.'">'.l:name.' ('.l:state.")</a>\r"
-
-"             " Prepend to reverse the order of the log items.
-"             let l:outstr = l:link . l:outstr
-"         endif
-
-"         let l:trcount += 1
-"     endwhile
-
-"     " Pick the correct change command so that autoindent is not in effect.
-"     " We want the inserted lines to have no indent.
-"     let l:changecmd = &autoindent ? 'change!' : 'change'
-"     silent execute 'normal :' . a:firstline . ',' . a:lastline . l:changecmd . "\<cr>" . l:header . l:outstr . l:footer . "\<esc>"
-" endfunction
-
-" vnoremap ,M :call <SID>Convert_mycaches_3()<cr>
-
 " ===== Convert text to HTML ===== {{{2
 " Convert text to HTML by escaping <, >, ", and &.
 function! <SID>HtmlizeText()
@@ -1552,65 +1335,6 @@ function! <SID>copy_codewars()
 endfunction
 
 nnoremap <special> <f12>[ :call <SID>copy_codewars()<cr>
-
-" ===== Convert Topozone URL to Geobloggers tags for Flickr. ===== {{{2
-" function! <SID>ConvertGeoTag()
-"     let l:coords = '.\{-}\(\d\+\.\d\+\).\{-}\(-\d\+\.\d\+\).*'
-"     let l:x = substitute(getline('.'), l:coords, 'geotagged geo:lat=\1 geo:lon=\2', '')
-"     execute 'normal o' . l:x . "\<cr><a href=\"http://www.geobloggers.com\">geotagged</a>\<esc>"
-" endfunction
-
-" nnoremap ,f :call <SID>ConvertGeoTag()<cr>
-" vnoremap ,f <esc>:call <SID>ConvertGeoTag()<cr>gv
-
-" ===== Add LJ user tag around the current word. ===== {{{2
-" nnoremap ,u ciw<lj user="<c-r>""><esc>
-" vnoremap ,u c<lj user="<c-r>""><esc>
-
-" nnoremap ,U ciw<lj comm="<c-r>""><esc>
-" vnoremap ,U c<lj comm="<c-r>""><esc>
-
-" Update for Dreamwidth. Use this for both users and communities.
-" nnoremap ,u ciw<user name="<c-r>"" site="livejournal.com"><esc>
-" vnoremap ,u c<user name="<c-r>"" site="livejournal.com"><esc>
-
-" ===== Toggle between name and name=aname in nuvigc shell script. ===== {{{2
-" function! s:equal_toggle_2(str) abort
-"     return join(map(split(a:str), stridx(a:str, '=') < 0 ? 'v:val."=a".v:val' : 'split(v:val, "=")[0]'))
-" endfunction
-
-" function! s:equal_toggle(lineno) abort
-"     call setline(a:lineno, substitute(getline(a:lineno), '(\(.*\))', '\="(".s:equal_toggle_2(submatch(1)).")"', ''))
-" endfunction
-
-" function! s:do_equal_toggle(type) abort
-"     for l:lnum in range(line("'["), line("']"))
-"         call s:equal_toggle(l:lnum)
-"     endfor
-" endfunction
-
-" nnoremap <F12>== :call <SID>equal_toggle('.')<cr>
-" vnoremap <F12>= :call <SID>equal_toggle('.')<cr>
-" nnoremap <F12>= :set operatorfunc=<SID>do_equal_toggle<cr>g@
-
-" ===== Use the Silver Searcher for searching, if available ===== {{{2
-" Borrowed from: http://robots.thoughtbot.com/faster-grepping-in-vim/
-
-" if executable('ag')
-"   " Use ag over grep
-"   set grepprg=ag\ --nogroup\ --nocolor
-
-"   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-"   let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
-
-"   " ag is fast enough that CtrlP doesn't need to cache
-"   let g:ctrlp_use_caching = 0
-
-"   " Don't use this if we have the ag plugin.
-"   " command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-" endif
-
-" }}}1
 
 " ----- Customizations for fern.vim ----- {{{1
 

@@ -1410,9 +1410,9 @@ endif
 
 vim9cmd const MINFONTSIZE = 8
 vim9cmd const MAXFONTSIZE = 36
-" vim9cmd const ORIGFONTSTR = '0xProto Nerd Font 18,CommitMono Nerd Font Mono 18,DejaVu Sans Mono 18,7x14bold'
 vim9cmd const ORIGFONTSTR = '0xProto 18,Annotation Mono 18,DejaVu Sans Mono 18,7x14bold'
 
+" get current font size by parsing the ends of font specs from &guifont
 def! s:GetFontSize(): number
     var freq = {}
     for font in split(&guifont, ',')
@@ -1435,6 +1435,7 @@ def! s:GetFontSize(): number
     throw 'Cannot determine current font size'
 enddef
 
+" Manipulate &guifont items to change font size
 def! s:ChangeFontSize(oldsize: number, newsize: number)
     var results = []
     for font in split(&guifont, ',')

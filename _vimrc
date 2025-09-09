@@ -714,6 +714,7 @@ else
     cnoremap <special> <A-c> <C-Y>
 
     nnoremap <special> <A-v> "+gP
+    inoremap <special> <A-v> <C-R>+
     cnoremap <special> <A-v> <C-R>+
     execute 'vnoremap <script> <special> <A-v>' paste#paste_cmd['v']
     execute 'inoremap <script> <special> <A-v>' paste#paste_cmd['i']

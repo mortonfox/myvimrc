@@ -238,7 +238,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 " Destroy all buffers that are not open in any tabs or windows.
 Plug 'artnez/vim-wipeout'
 " F12 F4 wipes out non-visible buffers.
-nnoremap <F12><F4> :Wipeout<cr>
+nnoremap <special> <F12><F4> :Wipeout<cr>
 
 " Plug 'atweiden/vim-dragvisuals'
 " Map ctrl-h/j/k/l in visual mode to drag the block.
@@ -339,15 +339,15 @@ Plug 'jistr/vim-nerdtree-tabs'
 " Don't open NERDTree on GUI startup.
 let g:nerdtree_tabs_open_on_gui_startup = 0
 " F7 will toggle NERDTree.
-nmap <silent> <F7> <plug>NERDTreeTabsToggle<CR>
+nmap <special> <silent> <F7> <plug>NERDTreeTabsToggle<CR>
 
 " A command-line fuzzy finder
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 " let g:fzf_launcher = '/Users/pcheah/bin/in_a_new_term.sh %s'
-nnoremap <C-p> :FZFMru<cr>
-nnoremap <C-q> :Files<cr>
-nnoremap <f12><f12> :Buffers<cr>
+nnoremap <special> <C-p> :FZFMru<cr>
+nnoremap <special> <C-q> :Files<cr>
+nnoremap <special> <f12><f12> :Buffers<cr>
 
 " Show registers when you hit " or @ in normal mode or Ctrl-R in insert mode.
 Plug 'junegunn/vim-peekaboo'
@@ -435,7 +435,7 @@ let g:NERDTreeCascadeSingleChildDir=0
 let g:NERDTreeCustomOpenArgs = {'file': {'reuse': '', 'where': 'p'}}
 
 " Ctrl-F7 finds the current file in the NERDTree.
-nnoremap <silent> <S-F7> :NERDTreeFind<CR>
+nnoremap <special> <silent> <S-F7> :NERDTreeFind<CR>
 
 " async language server protocol plugin for vim and neovim
 Plug 'prabirshrestha/async.vim'
@@ -494,7 +494,7 @@ let g:polyglot_disabled = ['sensible']
 
 " Vim undo tree visualizer simnalamburt.github.io/vim-mundo
 Plug 'simnalamburt/vim-mundo'
-nnoremap <F9> :silent MundoToggle<CR>
+nnoremap <special> <F9> :silent MundoToggle<CR>
 let g:mundo_right = 1
 
 " Plug 'sjl/gundo.vim'
@@ -665,47 +665,47 @@ endif
 
 if has('mac')
     " Map cmd-1 thru cmd-9 to switch tabs.
-    nnoremap <silent> <D-1> :silent! 1tabnext<cr>
-    nnoremap <silent> <D-2> :silent! 2tabnext<cr>
-    nnoremap <silent> <D-3> :silent! 3tabnext<cr>
-    nnoremap <silent> <D-4> :silent! 4tabnext<cr>
-    nnoremap <silent> <D-5> :silent! 5tabnext<cr>
-    nnoremap <silent> <D-6> :silent! 6tabnext<cr>
-    nnoremap <silent> <D-7> :silent! 7tabnext<cr>
-    nnoremap <silent> <D-8> :silent! 8tabnext<cr>
-    nnoremap <silent> <D-9> :silent! tablast<cr>
+    nnoremap <special> <silent> <D-1> :silent! 1tabnext<cr>
+    nnoremap <special> <silent> <D-2> :silent! 2tabnext<cr>
+    nnoremap <special> <silent> <D-3> :silent! 3tabnext<cr>
+    nnoremap <special> <silent> <D-4> :silent! 4tabnext<cr>
+    nnoremap <special> <silent> <D-5> :silent! 5tabnext<cr>
+    nnoremap <special> <silent> <D-6> :silent! 6tabnext<cr>
+    nnoremap <special> <silent> <D-7> :silent! 7tabnext<cr>
+    nnoremap <special> <silent> <D-8> :silent! 8tabnext<cr>
+    nnoremap <special> <silent> <D-9> :silent! tablast<cr>
 else
     " Some mappings borrowed from macmap in vim source code.
     " See https://github.com/vim/vim/blob/master/runtime/macmap.vim
 
     " Map alt-t to open a tab.
-    nnoremap <silent> <A-t> :silent! tabnew<cr>
+    nnoremap <special> <silent> <A-t> :silent! tabnew<cr>
 
     " Map alt-w to close a window.
-    nnoremap <silent> <A-w> :confirm close<cr>
+    nnoremap <special> <silent> <A-w> :confirm close<cr>
 
     " Map ctrl-s / alt-s to save the file.
-    nnoremap <silent> <C-s> :confirm write<cr>
-    nnoremap <silent> <A-s> :confirm write<cr>
-    imap <A-s> <C-o><A-s>
+    nnoremap <special> <silent> <C-s> :confirm write<cr>
+    nnoremap <special> <silent> <A-s> :confirm write<cr>
+    imap <special> <A-s> <C-o><A-s>
 
     " Map alt-a to select all.
     nnoremap <silent> <A-a> :if &selectmode != ""<Bar>execute ":norm gggH<C-O>G"<Bar> else<Bar>exe ":norm ggVG"<Bar>endif<CR>
-    vmap <A-a> <Esc><A-a>
-    imap <A-a> <Esc><A-a>
-    cmap <A-a> <C-C><A-a>
-    omap <A-a> <Esc><A-a>
+    vmap <special> <A-a> <Esc><A-a>
+    imap <special> <A-a> <Esc><A-a>
+    cmap <special> <A-a> <C-C><A-a>
+    omap <special> <A-a> <Esc><A-a>
 
     " Map alt-1 thru alt-9 to switch tabs.
-    nnoremap <silent> <A-1> :silent! 1tabnext<cr>
-    nnoremap <silent> <A-2> :silent! 2tabnext<cr>
-    nnoremap <silent> <A-3> :silent! 3tabnext<cr>
-    nnoremap <silent> <A-4> :silent! 4tabnext<cr>
-    nnoremap <silent> <A-5> :silent! 5tabnext<cr>
-    nnoremap <silent> <A-6> :silent! 6tabnext<cr>
-    nnoremap <silent> <A-7> :silent! 7tabnext<cr>
-    nnoremap <silent> <A-8> :silent! 8tabnext<cr>
-    nnoremap <silent> <A-9> :silent! tablast<cr>
+    nnoremap <special> <silent> <A-1> :silent! 1tabnext<cr>
+    nnoremap <special> <silent> <A-2> :silent! 2tabnext<cr>
+    nnoremap <special> <silent> <A-3> :silent! 3tabnext<cr>
+    nnoremap <special> <silent> <A-4> :silent! 4tabnext<cr>
+    nnoremap <special> <silent> <A-5> :silent! 5tabnext<cr>
+    nnoremap <special> <silent> <A-6> :silent! 6tabnext<cr>
+    nnoremap <special> <silent> <A-7> :silent! 7tabnext<cr>
+    nnoremap <special> <silent> <A-8> :silent! 8tabnext<cr>
+    nnoremap <special> <silent> <A-9> :silent! tablast<cr>
 
     vnoremap <special> <A-x> "+x
 
@@ -730,7 +730,7 @@ endif
 " shift-insert will now paste text from clipboard
 nnoremap <S-Insert> "*P
 vnoremap <S-Insert> "-d"*P
-noremap! <S-Insert> <C-R><C-R>*
+noremap! <special> <S-Insert> <C-R><C-R>*
 vnoremap <C-Insert> "*y
 vnoremap <S-Delete> "*d
 vnoremap <C-Delete> "*d
@@ -743,41 +743,41 @@ vnoremap <C-S-Tab> gT
 
 " Map ctrl-h/j/k/l to move to other windows.
 " Idea borrowed from spf13-vim. (http://vim.spf13.com/)
-nnoremap <C-h> <C-W>h
-nnoremap <C-l> <C-W>l
-nnoremap <C-k> <C-W>k
-nnoremap <C-j> <C-W>j
+nnoremap <special> <C-h> <C-W>h
+nnoremap <special> <C-l> <C-W>l
+nnoremap <special> <C-k> <C-W>k
+nnoremap <special> <C-j> <C-W>j
 
 " Turn off F1 help key
 nnoremap <F1> <NOP>
 inoremap <F1> <NOP>
 
 " F3 toggles no-linebreak mode
-nnoremap <F3> :call <SID>Toggle_no_lbr()<cr>
+nnoremap <special> <F3> :call <SID>Toggle_no_lbr()<cr>
 
 " F4 toggles list mode
-nnoremap <F4> :set invlist list?<cr>
-vnoremap <F4> <esc>:set invlist list?<cr>gv
-inoremap <F4> <C-o>:set invlist list?<cr>
+nnoremap <special> <F4> :set invlist list?<cr>
+vnoremap <special> <F4> <esc>:set invlist list?<cr>gv
+inoremap <special> <F4> <C-o>:set invlist list?<cr>
 
 " F5 toggles paste mode
-nnoremap <F5> :set invpaste paste?<CR>
-vnoremap <F5> <esc>:set invpaste paste?<CR>gv
+nnoremap <special> <F5> :set invpaste paste?<CR>
+vnoremap <special> <F5> <esc>:set invpaste paste?<CR>gv
 " pastetoggle key in vim 5.4 allows us to get out of paste mode
 " even from within insert mode.
-inoremap <F5> <C-O>:set invpaste<CR>
+inoremap <special> <F5> <C-O>:set invpaste<CR>
 set pastetoggle=<F5>
 
 " Map F6 key to go to the next buffer and Shift-F6 to go to the previous
 " buffer.
-nnoremap <F6> :bnext<CR>
-nnoremap <S-F6> :bprevious<CR>
+nnoremap <special> <F6> :bnext<CR>
+nnoremap <special> <S-F6> :bprevious<CR>
 
 " Ctrl-F8 toggles syntax coloring on and off
-nnoremap <C-F8> :call <SID>Toggle_syntax()<cr>
+nnoremap <special> <C-F8> :call <SID>Toggle_syntax()<cr>
 
 " Shift-F8 will show syntax item at cursor
-nnoremap <S-F8> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
+nnoremap <special> <S-F8> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 
 " F9 will toggle taglist.
 " nnoremap <silent> <F9> :TlistToggle<cr>
@@ -788,18 +788,18 @@ nnoremap <S-F8> :echo synIDattr(synID(line("."), col("."), 1), "name")<CR>
 " let Tlist_Show_Menu = 1
 
 " Ctrl-F9 toggles full height mode
-nnoremap <C-F9> :call <SID>Toggle_full_height()<cr>
+nnoremap <special> <C-F9> :call <SID>Toggle_full_height()<cr>
 
 " F11 c: change current directory to the directory in which the current
 " file resides.
-nnoremap <F11>c :cd <C-R>=expand("%:p:h")<cr><cr>
+nnoremap <special> <F11>c :cd <C-R>=expand("%:p:h")<cr><cr>
 
 " F11 h: startup directory (home)
 let s:startdir=getcwd()
 function! <SID>GetStartDir()
     return s:startdir
 endfunction
-nnoremap <F11>h :execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
+nnoremap <special> <F11>h :execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
 
 " F12 a runs tal on the current paragraph or visual range.
 " F12 A does the same thing but waits for user to type in arguments.
@@ -810,27 +810,27 @@ nnoremap <F11>h :execute "cd" '<c-r>=<SID>GetStartDir()<cr>'<cr>:pwd<cr>
 
 " F12 b runs boxes on the current paragraph or visual range.
 " F12 B does the same thing but waits for user to type in arguments.
-nnoremap <F12>b {!}boxes<cr>
-vnoremap <F12>b !boxes<cr>
-nnoremap <F12>B {!}boxes<space>
-vnoremap <F12>B !boxes<space>
+nnoremap <special> <F12>b {!}boxes<cr>
+vnoremap <special> <F12>b !boxes<cr>
+nnoremap <special> <F12>B {!}boxes<space>
+vnoremap <special> <F12>B !boxes<space>
 
 " F12 c runs ctags in the current file's directory.
 " nnoremap <F12>c :call <SID>Run_ctags()<cr>
 
 " F12 d removes all buffers.
-nnoremap <F12>d :call <SID>Del_all_buf()<cr>
+nnoremap <special> <F12>d :call <SID>Del_all_buf()<cr>
 
 " F12 e: edit another file in the same directory as the current file.
 set wildcharm=<c-z>
-nnoremap <F12>e :e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
+nnoremap <special> <F12>e :e <C-R>=expand("%:p:h")."/"<cr><c-z><s-tab>
 
 " F12 g converts coordinates from N ddd mm.mmm W ddd mm.mmm to 
 " dd.ddddd -dd.ddddd
 " nnoremap <f12>g :call <SID>ConvertCoords()<cr>
 
 " F12 g opens Fugitive in vertical split mode
-nnoremap <f12>g :vertical Git<cr>
+nnoremap <special> <f12>g :vertical Git<cr>
 
 " F12 l updates a 'Last up-dated:' line
 " Need to use a [s] here so that this macro won't change itself if
@@ -851,16 +851,16 @@ unlet s:m
 
 " F12 p runs par on the current paragraph or visual range
 " F12 P does the same thing but waits for user to type in arguments.
-nnoremap <F12>p {!}par<cr>
-vnoremap <F12>p !par<cr>
-nnoremap <F12>P {!}par<space>
-vnoremap <F12>P !par<space>
+nnoremap <special> <F12>p {!}par<cr>
+vnoremap <special> <F12>p !par<cr>
+nnoremap <special> <F12>P {!}par<space>
+vnoremap <special> <F12>P !par<space>
 
 " F12 s inserts a date stamp.
 " F12 s in visual mode replaces the selection with a date stamp.
-nnoremap <F12>s i<C-R>=<SID>Date_string()<CR><ESC>
-vnoremap <F12>s c<C-R>=<SID>Date_string()<CR><ESC>
-inoremap <F12>s <C-R>=<SID>Date_string()<CR>
+nnoremap <special> <F12>s i<C-R>=<SID>Date_string()<CR><ESC>
+vnoremap <special> <F12>s c<C-R>=<SID>Date_string()<CR><ESC>
+inoremap <special> <F12>s <C-R>=<SID>Date_string()<CR>
 
 " F12 u: This mapping will format any bullet list. It requires
 " that there is an empty line above and below each list entry. The
@@ -879,15 +879,15 @@ unlet s:m
 
 " F12 ve edits .vimrc file
 " F12 vs sources .vimrc file
-nnoremap <F12>ve :edit $MYVIMRC<cr>
-nnoremap <F12>vs :source $MYVIMRC<cr>
+nnoremap <special> <F12>ve :edit $MYVIMRC<cr>
+nnoremap <special> <F12>vs :source $MYVIMRC<cr>
 
 " F12 x runs boxes -r on the current paragraph or visual range.
 " F12 X does the same thing but waits for user to type in arguments.
-nnoremap <F12>x {!}boxes -r<cr>
-vnoremap <F12>x !boxes -r<cr>
-nnoremap <F12>X {!}boxes -r<space>
-vnoremap <F12>X !boxes -r<space>
+nnoremap <special> <F12>x {!}boxes -r<cr>
+vnoremap <special> <F12>x !boxes -r<cr>
+nnoremap <special> <F12>X {!}boxes -r<space>
+vnoremap <special> <F12>X !boxes -r<space>
 
 " iTerm2 sends nul characters for anti-idle. Ignore those characters in
 " text mode.
@@ -1149,12 +1149,12 @@ function! s:Set_text_mode()
     setlocal formatoptions=tcq2
 
     " Break up inserts into smaller undo chunks.
-    inoremap <buffer> . .<c-g>u
-    inoremap <buffer> ? ?<c-g>u
-    inoremap <buffer> ! !<c-g>u
-    inoremap <buffer> , ,<c-g>u
-    inoremap <buffer> ; ;<c-g>u
-    inoremap <buffer> : :<c-g>u
+    inoremap <special> <buffer> . .<c-g>u
+    inoremap <special> <buffer> ? ?<c-g>u
+    inoremap <special> <buffer> ! !<c-g>u
+    inoremap <special> <buffer> , ,<c-g>u
+    inoremap <special> <buffer> ; ;<c-g>u
+    inoremap <special> <buffer> : :<c-g>u
 endfunction
 
 augroup vimrc_auto
@@ -1212,17 +1212,17 @@ function! <SID>Set_no_lbr()
     " Map up and down keys to line-oriented up and down.
     nnoremap <buffer> <Up> gk
     vnoremap <buffer> <Up> gk
-    inoremap <buffer> <Up> <C-o>gk
+    inoremap <special> <buffer> <Up> <C-o>gk
     nnoremap <buffer> <Down> gj
     vnoremap <buffer> <Down> gj
-    inoremap <buffer> <Down> <C-o>gj
+    inoremap <special> <buffer> <Down> <C-o>gj
     " Map home and end keys to line-oriented home and end.
     nnoremap <buffer> <Home> g0
     vnoremap <buffer> <Home> g0
-    inoremap <buffer> <Home> <C-o>g0
+    inoremap <special> <buffer> <Home> <C-o>g0
     nnoremap <buffer> <End> g$
     vnoremap <buffer> <End> g$
-    inoremap <buffer> <End> <C-o>g$
+    inoremap <special> <buffer> <End> <C-o>g$
 endfunction
 
 " Reset all the options set by Set_no_lbr()
@@ -1509,8 +1509,8 @@ function! <SID>HtmlizeText()
     call setline('.', l:line)
 endfunction
 
-nnoremap ,h :call <SID>HtmlizeText()<cr>
-vnoremap ,h :call <SID>HtmlizeText()<cr>
+nnoremap <special> ,h :call <SID>HtmlizeText()<cr>
+vnoremap <special> ,h :call <SID>HtmlizeText()<cr>
 
 " ===== Macros for Codewars ===== {{{2
 
@@ -1552,7 +1552,7 @@ function! <SID>copy_codewars()
     execute cmd
 endfunction
 
-nnoremap <f12>[ :call <SID>copy_codewars()<cr>
+nnoremap <special> <f12>[ :call <SID>copy_codewars()<cr>
 
 " ===== Convert Topozone URL to Geobloggers tags for Flickr. ===== {{{2
 " function! <SID>ConvertGeoTag()
@@ -1737,12 +1737,12 @@ defcompile
 if has('gui_gtk') && has('gui_running')
     call ResetFontSize()
 
-    nnoremap <C-0> <ScriptCmd>call ResetFontSize()<cr>
-    nnoremap <C-_> <ScriptCmd>call IncrFontSize(-1)<cr>
-    nnoremap <C-=> <ScriptCmd>call IncrFontSize(1)<cr>
+    nnoremap <special> <C-0> <ScriptCmd>call ResetFontSize()<cr>
+    nnoremap <special> <C-_> <ScriptCmd>call IncrFontSize(-1)<cr>
+    nnoremap <special> <C-=> <ScriptCmd>call IncrFontSize(1)<cr>
 endif
 
 " stop suppressing redraw delays
 set nolazyredraw
 
-" Last updated: July 8, 2025
+" Last updated: September 9, 2025

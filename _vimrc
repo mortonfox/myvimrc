@@ -174,12 +174,7 @@ set showmatch
 " override ignorecase if search pattern contains upper case characters
 set smartcase
 " Customize status line
-if v:version >= 700
-    set statusline=%f%#User1#
-else
-    set statusline=%f%1*
-endif
-set statusline+=\ [%M%R%W]\ [%{&fileformat}]%y\ B%n%a
+set statusline=%f\ [%M%R%W]\ [%{&fileformat}]%y\ B%n%a
 set statusline+=\ %=L%l/%L\ C%-4(%c%V/%{strlen(getline('.'))}%)\ %3p%%
 " match .err (Watcom C++ errors) files last
 " match graphics files and executables last
@@ -884,10 +879,11 @@ command! -range=% CleanNBSP :<line1>,<line2>call s:clean_nbsp()
 
 " Initialize all highlights that have nothing to do with syntax.
 function! s:Highlight_Init()
-    highlight StatusLine gui=bold guifg=yellow guibg=#505050
-    highlight StatusLineNC gui=NONE guifg=yellow guibg=#505050
-    highlight User1 term=inverse cterm=inverse 
-    highlight User1 gui=NONE guifg=green guibg=#505050
+    highlight StatusLine gui=bold guifg=#dfdfdf guibg=#003f5f
+    highlight StatusLineNC gui=NONE guifg=#bfbfbf guibg=#003f5f
+    highlight TabLine gui=bold guifg=#dfdfdf guibg=#1f1f1f
+    highlight TabLineFill gui=bold guifg=#dfdfdf guibg=#1f1f1f
+    highlight TabLineSel gui=bold guifg=#dfdfdf guibg=#003f5f
     highlight SignColumn ctermbg=black ctermfg=Cyan guibg=black guifg=Cyan
         
     " color customizations
@@ -1469,4 +1465,4 @@ endif
 " stop suppressing redraw delays
 set nolazyredraw
 
-" Last updated: September 9, 2025
+" Last updated: September 23, 2025

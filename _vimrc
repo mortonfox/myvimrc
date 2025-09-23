@@ -120,6 +120,8 @@ set guioptions-=l
 set guioptions-=L
 set guioptions-=r
 set guioptions-=R
+" Disable GTK tab line
+set guioptions-=e
 " hide current buffer when switching to a new file
 set hidden
 " increase amount of command line history kept
@@ -881,8 +883,8 @@ command! -range=% CleanNBSP :<line1>,<line2>call s:clean_nbsp()
 function! s:Highlight_Init()
     highlight StatusLine gui=bold guifg=#dfdfdf guibg=#003f5f
     highlight StatusLineNC gui=NONE guifg=#bfbfbf guibg=#003f5f
-    highlight TabLine gui=bold guifg=#dfdfdf guibg=#1f1f1f
-    highlight TabLineFill gui=bold guifg=#dfdfdf guibg=#1f1f1f
+    highlight TabLine gui=bold guifg=#dfdfdf guibg=#2f2f2f
+    highlight TabLineFill gui=bold guifg=#dfdfdf guibg=#2f2f2f
     highlight TabLineSel gui=bold guifg=#dfdfdf guibg=#003f5f
     highlight SignColumn ctermbg=black ctermfg=Cyan guibg=black guifg=Cyan
         

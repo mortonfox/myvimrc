@@ -1149,6 +1149,7 @@ augroup vimrc_auto
     autocmd FileType ruby,eruby call <SID>Set_ruby_mode()
     autocmd FileType vim        call <SID>Set_vimscript_mode()
     autocmd FileType d          call <SID>Set_vimscript_mode()
+    autocmd FileType go         call <SID>Set_vimscript_mode()
     autocmd FileType sh         call <SID>Set_vimscript_mode()
     autocmd FileType python     call <SID>Set_vimscript_mode()
     autocmd FileType json       call <SID>Set_vimscript_mode()
@@ -1467,4 +1468,4 @@ endif
 " stop suppressing redraw delays
 set nolazyredraw
 
-" Last updated: September 23, 2025
+" Last updated: October 7, 2025

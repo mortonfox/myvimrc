@@ -126,6 +126,8 @@ set guioptions-=e
 set hidden
 " increase amount of command line history kept
 set history=50
+" do not highlight searches
+set nohlsearch
 " ignore case in searches
 set ignorecase
 " incremental search
@@ -1468,4 +1470,4 @@ endif
 " stop suppressing redraw delays
 set nolazyredraw
 
-" Last updated: October 7, 2025
+" Last updated: February 2, 2026

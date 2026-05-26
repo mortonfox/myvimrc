@@ -673,6 +673,10 @@ else
     nnoremap <special> <silent> <A-8> :silent! 8tabnext<cr>
     nnoremap <special> <silent> <A-9> :silent! tablast<cr>
 
+    " Ctrl-PageDown / PageUp moves the tab.
+    nnoremap <special> <silent> <C-PageDown> :silent! +tabmove<cr>
+    nnoremap <special> <silent> <C-PageUp> :silent! -tabmove<cr>
+
     vnoremap <special> <A-x> "+x
 
     " Alt-c copies to clipboard
@@ -1470,4 +1474,4 @@ endif
 " stop suppressing redraw delays
 set nolazyredraw
 
-" Last updated: February 2, 2026
+" Last updated: May 26, 2026
